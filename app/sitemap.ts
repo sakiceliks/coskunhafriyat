@@ -1,0 +1,83 @@
+import type { MetadataRoute } from "next"
+import { getServices, getProjects, getBlogPosts } from "@/lib/database"
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = "https://hafriyatmaster.com"
+
+  // Static pages
+  const staticPages = [
+    {
+      url: baseUrl,
+      lastModified: new Date(),
+      changeFrequency: "daily" as const,
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/services`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/projects`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "daily" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    },
+  ]
+
+  try {
+    // Dynamic service pages
+    const services = await getServices()
+    const servicePages = services.map((service: any) => ({
+      url: `${baseUrl}/services/${service.slug}`,
+      lastModified: new Date(service.updated_at || service.created_at),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    }))
+
+    // Dynamic project pages
+    const projects = await getProjects()
+    const projectPages = projects.map((project: any) => ({
+      url: `${baseUrl}/projects/${project.id}`,
+      lastModified: new Date(project.updated_at || project.created_at),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }))
+
+    // Dynamic blog pages
+    const blogPosts = await getBlogPosts()
+    const blogPages = blogPosts
+      .filter((post: any) => post.is_published)
+      .map((post: any) => ({
+        url: `${baseUrl}/blog/${post.slug}`,
+        lastModified: new Date(post.updated_at || post.published_date),
+        changeFrequency: "monthly" as const,
+        priority: 0.6,
+      }))
+
+    return [...staticPages, ...servicePages, ...projectPages, ...blogPages]
+  } catch (error) {
+    console.error("Error generating sitemap:", error)
+    // Return static pages only if database fails
+    return staticPages
+  }
+}

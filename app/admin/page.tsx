@@ -1,0 +1,128 @@
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  getServices,
+  getProjects,
+  getBlogPosts,
+  getPageContent,
+  getTeamMembers,
+  getCompanyStats,
+  getFaqs,
+} from "@/lib/database"
+import { ServicesManager } from "@/components/admin/services-manager"
+import { ProjectsManager } from "@/components/admin/projects-manager"
+import { BlogManager } from "@/components/admin/blog-manager"
+import { PageContentManager } from "@/components/admin/page-content-manager"
+import { BarChart3, Briefcase, PenTool, FileText } from "lucide-react"
+
+export const metadata = {
+  title: "Yönetim Paneli | HafriyatMaster",
+  description: "HafriyatMaster yönetim paneli - hizmetler, projeler ve blog yönetimi",
+}
+
+export default async function AdminPage() {
+  // In a real app, you'd check authentication here
+  // For demo purposes, we'll skip auth
+
+  const [services, projects, blogPosts, pageContent, teamMembers, companyStats, faqs] = await Promise.all([
+    getServices(),
+    getProjects(),
+    getBlogPosts(),
+    getPageContent("homepage"), // Get all page content
+    getTeamMembers(),
+    getCompanyStats(),
+    getFaqs(),
+  ])
+
+  const allPageContent = await Promise.all([
+    getPageContent("homepage"),
+    getPageContent("about"),
+    getPageContent("contact"),
+  ]).then((results) => results.flat())
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <div className="container mx-auto px-4 py-8">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Yönetim Paneli</h1>
+          <p className="text-gray-600">İçerik ve proje yönetimi merkezi</p>
+        </div>
+
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Toplam Hizmet</CardTitle>
+              <Briefcase className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{services.length}</div>
+              <p className="text-xs text-muted-foreground">Aktif hizmet sayısı</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Toplam Proje</CardTitle>
+              <BarChart3 className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{projects.length}</div>
+              <p className="text-xs text-muted-foreground">Tamamlanan proje</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Blog Yazısı</CardTitle>
+              <PenTool className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{blogPosts.length}</div>
+              <p className="text-xs text-muted-foreground">Yayınlanan yazı</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Sayfa İçerikleri</CardTitle>
+              <FileText className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{allPageContent.length}</div>
+              <p className="text-xs text-muted-foreground">Düzenlenebilir içerik</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Management Tabs */}
+        <Tabs defaultValue="services" className="space-y-6">
+          <TabsList className="grid w-full grid-cols-4">
+            <TabsTrigger value="services">Hizmetler</TabsTrigger>
+            <TabsTrigger value="projects">Projeler</TabsTrigger>
+            <TabsTrigger value="blog">Blog</TabsTrigger>
+            <TabsTrigger value="pages">Sayfa İçerikleri</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="services" className="space-y-6">
+            <ServicesManager services={services} />
+          </TabsContent>
+
+          <TabsContent value="projects" className="space-y-6">
+            <ProjectsManager projects={projects} />
+          </TabsContent>
+
+          <TabsContent value="blog" className="space-y-6">
+            <BlogManager blogPosts={blogPosts} />
+          </TabsContent>
+
+          <TabsContent value="pages" className="space-y-6">
+            <PageContentManager
+              pageContent={allPageContent}
+              teamMembers={teamMembers}
+              companyStats={companyStats}
+              faqs={faqs}
+            />
+          </TabsContent>
+        </Tabs>
+      </div>
+    </div>
+  )
+}
