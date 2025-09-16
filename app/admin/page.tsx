@@ -10,7 +10,7 @@ import {
   getFaqs,
 } from "@/lib/database"
 import { ServicesManager } from "@/components/admin/services-manager"
-import { ProjectsManager } from "@/components/admin/projeler-manager"
+import { ProjectsManager } from "@/components/admin/projects-manager"
 import { BlogManager } from "@/components/admin/blog-manager"
 import { PageContentManager } from "@/components/admin/page-content-manager"
 import { BarChart3, Briefcase, PenTool, FileText } from "lucide-react"
