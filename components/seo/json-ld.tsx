@@ -18,11 +18,11 @@ export function OrganizationJsonLd() {
   const organizationData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "HafriyatMaster",
+    name: "Coşkun Hafriyat",
     description: "İstanbul'da profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri",
-    url: "https://hafriyatmaster.com",
+    url: "https://coskunhafriyat.com",
     telephone: "+90-212-XXX-XXXX",
-    email: "info@hafriyatmaster.com",
+    email: "info@coskunhafriyat.com",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Örnek Mahallesi, Örnek Sokak No:1",
@@ -97,8 +97,8 @@ export function ServiceJsonLd({ service }: { service: any }) {
     description: service.description || service.short_description,
     provider: {
       "@type": "LocalBusiness",
-      name: "HafriyatMaster",
-      url: "https://hafriyatmaster.com",
+      name: "Coşkun Hafriyat",
+      url: "https://coskunhafriyat.com",
     },
     serviceType: service.title,
     areaServed: {
@@ -139,24 +139,24 @@ export function ArticleJsonLd({ article }: { article: any }) {
     "@type": "Article",
     headline: article.title,
     description: article.excerpt,
-    image: article.featured_image || "https://hafriyatmaster.com/og-default.jpg",
+    image: article.featured_image || "https://coskunhafriyat.com/og-default.jpg",
     author: {
       "@type": "Person",
-      name: article.author || "HafriyatMaster",
+      name: article.author || "Coşkun Hafriyat",
     },
     publisher: {
       "@type": "Organization",
-      name: "HafriyatMaster",
+      name: "Coşkun Hafriyat",
       logo: {
         "@type": "ImageObject",
-        url: "https://hafriyatmaster.com/logo.png",
+        url: "https://coskunhafriyat.com/logo.png",
       },
     },
     datePublished: article.published_date,
     dateModified: article.updated_at || article.published_date,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://hafriyatmaster.com/blog/${article.slug}`,
+      "@id": `https://coskunhafriyat.com/blog/${article.slug}`,
     },
     ...(article.tags && {
       keywords: article.tags.join(", "),
@@ -175,7 +175,7 @@ export function ProjectJsonLd({ project }: { project: any }) {
     description: project.description || project.short_description,
     creator: {
       "@type": "Organization",
-      name: "HafriyatMaster",
+      name: "Coşkun Hafriyat",
     },
     dateCreated: project.start_date,
     datePublished: project.completion_date,
@@ -210,7 +210,7 @@ export function BreadcrumbJsonLd({ items }: { items: Array<{ name: string; url: 
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: `https://hafriyatmaster.com${item.url}`,
+      item: `https://coskunhafriyat.com${item.url}`,
     })),
   }
 

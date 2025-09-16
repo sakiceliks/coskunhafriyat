@@ -96,7 +96,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.2 }}
                     className="flex flex-col"
                   >
-                    <span className="text-base sm:text-lg font-bold">HafriyatMaster</span>
+                    <span className="text-base sm:text-lg font-bold">Coşkun Hafriyat</span>
                     <span className="text-[10px] sm:text-xs text-muted-foreground">İş Makinesi Kiralama</span>
                   </motion.div>
                 </Link>
@@ -141,52 +141,52 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     transition={{ delay: 0.4, staggerChildren: 0.1 }}
                   >
                     <MobileSubNavItem
-                      href="/services/excavation"
+                      href="/hizmetler/hafriyat"
                       label="Hafriyat ve Kazı"
-                      isActive={pathname === "/services/excavation"}
+                      isActive={pathname === "/hizmetler/hafriyat"}
                       onClick={onClose}
                     />
                     <MobileSubNavItem
-                      href="/services/machinery"
+                      href="/hizmetler/is-makinesi-kiralama"
                       label="İş Makinesi Kiralama"
-                      isActive={pathname === "/services/machinery"}
+                      isActive={pathname === "/hizmetler/is-makinesi-kiralama"}
                       onClick={onClose}
                     />
                     <MobileSubNavItem
-                      href="/services/demolition"
+                      href="/hizmetler/yikim-hizmetleri"
                       label="Yıkım Hizmetleri"
-                      isActive={pathname === "/services/demolition"}
+                      isActive={pathname === "/hizmetler/yikim-hizmetleri"}
                       onClick={onClose}
                     />
                     <MobileSubNavItem
-                      href="/services/transport"
+                      href="/hizmetler/nakliye-tasimacilik"
                       label="Nakliye ve Taşıma"
-                      isActive={pathname === "/services/transport"}
+                      isActive={pathname === "/hizmetler/nakliye-tasimacilik"}
                       onClick={onClose}
                     />
                   </motion.div>
                 </motion.div>
 
                 <MobileNavItem
-                  href="/projects"
+                  href="/projeler"
                   label="Projeler"
-                  isActive={pathname === "/projects"}
+                  isActive={pathname === "/projeler"}
                   onClick={onClose}
                   delay={0.3}
                 />
 
                 <MobileNavItem
-                  href="/about"
+                  href="/hakkimizda"
                   label="Hakkımızda"
-                  isActive={pathname === "/about"}
+                  isActive={pathname === "/hakkimizda"}
                   onClick={onClose}
                   delay={0.4}
                 />
 
                 <MobileNavItem
-                  href="/contact"
+                  href="/iletisim"
                   label="İletişim"
-                  isActive={pathname === "/contact"}
+                  isActive={pathname === "/iletisim"}
                   onClick={onClose}
                   delay={0.5}
                 />
@@ -203,7 +203,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   delay: 0.7,
                 }}
               >
-                <Link href="/contact#quote-form" onClick={onClose}>
+                <Link href="/iletisim#quote-form" onClick={onClose}>
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}

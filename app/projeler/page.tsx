@@ -9,22 +9,22 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { getProjects } from "@/lib/database"
 
 export const metadata = {
-  title: "Projelerimiz | HafriyatMaster - Başarılı Hafriyat ve Kazı Projeleri",
+  title: "Projelerimiz | Coşkun Hafriyat - Başarılı Hafriyat ve Kazı Projeleri",
   description:
-    "HafriyatMaster'ın tamamladığı hafriyat, kazı ve yıkım projelerini keşfedin. ✓ Konut ✓ Ticari ✓ Sanayi ✓ Villa projeleri. İstanbul genelinde başarılı proje portföyümüz.",
+    "Coşkun Hafriyat'ın tamamladığı hafriyat, kazı ve yıkım projelerini keşfedin. ✓ Konut ✓ Ticari ✓ Sanayi ✓ Villa projeleri. İstanbul genelinde başarılı proje portföyümüz.",
   keywords:
     "hafriyat projeleri, kazı projeleri, yıkım projeleri, konut hafriyat, ticari kazı, sanayi hafriyat, villa kazı",
   openGraph: {
-    title: "Projelerimiz | HafriyatMaster",
-    description: "HafriyatMaster'ın tamamladığı hafriyat, kazı ve yıkım projelerini keşfedin",
-    url: "https://hafriyatmaster.com/projects",
-    siteName: "HafriyatMaster",
+    title: "Projelerimiz | Coşkun Hafriyat",
+    description: "Coşkun Hafriyat'ın tamamladığı hafriyat, kazı ve yıkım projelerini keşfedin",
+    url: "https://coskunhafriyat.com/projeler",
+    siteName: "Coşkun Hafriyat",
     images: [
       {
-        url: "https://hafriyatmaster.com/projects-og.jpg",
+        url: "https://coskunhafriyat.com/projeler-og.jpg",
         width: 1200,
         height: 630,
-        alt: "HafriyatMaster Projeleri",
+        alt: "Coşkun Hafriyat Projeleri",
       },
     ],
     locale: "tr_TR",
@@ -32,12 +32,12 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Projelerimiz | HafriyatMaster",
-    description: "HafriyatMaster'ın tamamladığı hafriyat, kazı ve yıkım projelerini keşfedin",
-    images: ["https://hafriyatmaster.com/projects-og.jpg"],
+    title: "Projelerimiz | Coşkun Hafriyat",
+    description: "Coşkun Hafriyat'ın tamamladığı hafriyat, kazı ve yıkım projelerini keşfedin",
+    images: ["https://coskunhafriyat.com/projeler-og.jpg"],
   },
   alternates: {
-    canonical: "https://hafriyatmaster.com/projects",
+    canonical: "https://coskunhafriyat.com/projeler",
   },
 }
 
@@ -54,7 +54,7 @@ export default async function ProjectsPage() {
 
   const breadcrumbItems = [
     { name: "Ana Sayfa", url: "/" },
-    { name: "Projelerimiz", url: "/projects" },
+    { name: "Projelerimiz", url: "/projeler" },
   ]
 
   return (
@@ -247,7 +247,7 @@ export default async function ProjectsPage() {
               bizimle iletişime geçin.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Link href="/contact">
+              <Link href="/iletisim">
                 <Button
                   size="lg"
                   className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-6 md:px-8 w-full sm:w-auto"
@@ -287,7 +287,7 @@ function ProjectCard({ project }: { project: any }) {
           <div className="p-4 md:p-6 w-full">
             <h3 className="text-lg md:text-xl font-bold text-white">{project.title}</h3>
             <p className="text-amber-300 mb-4">{project.project_type}</p>
-            <Link href={`/projects/${project.id}`}>
+            <Link href={`/projeler/${project.id}`}>
               <Button variant="outline" className="text-white border-white hover:bg-white/20 bg-transparent">
                 Detayları Görün
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -331,7 +331,7 @@ function ProjectCard({ project }: { project: any }) {
         </div>
       </CardContent>
       <CardFooter className="p-4 md:p-6 pt-0">
-        <Link href={`/projects/${project.id}`}>
+        <Link href={`/projeler/${project.id}`}>
           <Button
             variant="outline"
             className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white text-sm sm:text-base w-full bg-transparent"

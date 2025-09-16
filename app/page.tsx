@@ -64,7 +64,7 @@ export default function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                <Link href="/services" className="w-full sm:w-auto">
+                <Link href="/hizmetler" className="w-full sm:w-auto">
                   <AnimatedButton
                     size="lg"
                     className="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 sm:px-8 w-full sm:w-auto"
@@ -75,7 +75,7 @@ export default function Home() {
                     <ChevronRight className="ml-2 h-4 w-4" />
                   </AnimatedButton>
                 </Link>
-                <Link href="/projects" className="w-full sm:w-auto">
+                <Link href="/projeler" className="w-full sm:w-auto">
                   <HoverButton
                     size="lg"
                     variant="outline"
@@ -210,7 +210,7 @@ export default function Home() {
                   inanıyoruz. Geleneksel ustalığı son teknoloji ile birleştirerek, zamanın testine dayanacak projeler
                   sunuyoruz.
                 </p>
-                <Link href="/contact">
+                <Link href="/iletisim">
                   <AnimatedButton
                     className="bg-amber-500 hover:bg-amber-600 text-white font-semibold"
                     hoverEffect="shine"
@@ -341,7 +341,7 @@ export default function Home() {
               ve mükemmellikle hayata geçirmeye hazır.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Link href="/contact" className="w-full sm:w-auto">
+              <Link href="/iletisim" className="w-full sm:w-auto">
                 <HoverButton
                   size="lg"
                   className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 md:px-8 w-full sm:w-auto"
@@ -351,7 +351,7 @@ export default function Home() {
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </HoverButton>
               </Link>
-              <Link href="/contact" className="w-full sm:w-auto">
+              <Link href="/iletisim" className="w-full sm:w-auto">
                 <AnimatedButton
                   size="lg"
                   variant="outline"

@@ -7,21 +7,21 @@ import { Button } from "@/components/ui/button"
 import { getServices } from "@/lib/database"
 
 export const metadata = {
-  title: "Hizmetlerimiz | HafriyatMaster - Profesyonel Hafriyat, Kazı ve Yıkım Hizmetleri",
+  title: "Hizmetlerimiz | Coşkun Hafriyat - Profesyonel Hafriyat, Kazı ve Yıkım Hizmetleri",
   description:
     "İstanbul'da profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri. ✓ Deneyimli ekip ✓ Modern ekipman ✓ Uygun fiyat ✓ 7/24 hizmet. Ücretsiz keşif için hemen arayın!",
   keywords: "hafriyat, kazı, yıkım, nakliye, İstanbul, profesyonel, uygun fiyat",
   openGraph: {
-    title: "Hizmetlerimiz | HafriyatMaster",
+    title: "Hizmetlerimiz | Coşkun Hafriyat",
     description: "İstanbul'da profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri",
-    url: "https://hafriyatmaster.com/services",
-    siteName: "HafriyatMaster",
+    url: "https://coskunhafriyat.com/hizmetler",
+    siteName: "Coşkun Hafriyat",
     images: [
       {
-        url: "https://hafriyatmaster.com/services-og.jpg",
+        url: "https://coskunhafriyat.com/hizmetler-og.jpg",
         width: 1200,
         height: 630,
-        alt: "HafriyatMaster Hizmetleri",
+        alt: "Coşkun Hafriyat Hizmetleri",
       },
     ],
     locale: "tr_TR",
@@ -29,12 +29,12 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hizmetlerimiz | HafriyatMaster",
+    title: "Hizmetlerimiz | Coşkun Hafriyat",
     description: "İstanbul'da profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri",
-    images: ["https://hafriyatmaster.com/services-og.jpg"],
+    images: ["https://coskunhafriyat.com/hizmetler-og.jpg"],
   },
   alternates: {
-    canonical: "https://hafriyatmaster.com/services",
+    canonical: "https://coskunhafriyat.com/hizmetler",
   },
 }
 
@@ -43,7 +43,7 @@ export default async function ServicesPage() {
 
   const breadcrumbItems = [
     { name: "Ana Sayfa", url: "/" },
-    { name: "Hizmetlerimiz", url: "/services" },
+    { name: "Hizmetlerimiz", url: "/hizmetler" },
   ]
 
   return (
@@ -124,7 +124,7 @@ export default async function ServicesPage() {
                       </div>
                     )}
 
-                    <Link href={`/services/${service.slug || service.id}`}>
+                    <Link href={`/hizmetler/${service.slug || service.id}`}>
                       <Button className="bg-amber-500 hover:bg-amber-600 text-black w-full">
                         Detayları Görün
                         <ArrowRight className="ml-2 h-4 w-4" />
@@ -200,9 +200,9 @@ export default async function ServicesPage() {
                 <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-3 md:mb-4">
                   Neden Bizi Seçmelisiniz
                 </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6">HafriyatMaster Farkı</h2>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6">Coşkun Hafriyat Farkı</h2>
                 <p className="text-base md:text-lg text-gray-700 mb-5 md:mb-8">
-                  HafriyatMaster'ı seçtiğinizde, mükemmellik, yenilik ve tam memnuniyetinize odaklanan bir ortak
+                  Coşkun Hafriyat'ı seçtiğinizde, mükemmellik, yenilik ve tam memnuniyetinize odaklanan bir ortak
                   seçiyorsunuz.
                 </p>
                 <div className="space-y-4 md:space-y-6">
@@ -228,11 +228,11 @@ export default async function ServicesPage() {
               Projenizi Başlatmaya Hazır mısınız?
             </h2>
             <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-xl md:max-w-2xl mx-auto mb-6 md:mb-10">
-              Ücretsiz danışmanlık için bugün bizimle iletişime geçin ve HafriyatMaster'ın vizyonunuzu nasıl hayata
+              Ücretsiz danışmanlık için bugün bizimle iletişime geçin ve Coşkun Hafriyat'ın vizyonunuzu nasıl hayata
               geçirebileceğini keşfedin.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Link href="/contact">
+              <Link href="/iletisim">
                 <Button
                   size="lg"
                   className="bg-amber-500 hover:bg-amber-600 text-black font-medium px-6 md:px-8 w-full sm:w-auto"

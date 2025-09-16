@@ -62,7 +62,7 @@ export function ProjectsManager({ projects }: ProjectsManagerProps) {
     }
 
     try {
-      const response = await fetch("/api/admin/projects", {
+      const response = await fetch("/api/admin/projeler", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -102,7 +102,7 @@ export function ProjectsManager({ projects }: ProjectsManagerProps) {
     }
 
     try {
-      const response = await fetch(`/api/admin/projects/${editingProject.id}`, {
+      const response = await fetch(`/api/admin/projeler/${editingProject.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -125,7 +125,7 @@ export function ProjectsManager({ projects }: ProjectsManagerProps) {
   const handleDeleteProject = async (id: number) => {
     if (confirm("Bu projeyi silmek istediğinizden emin misiniz?")) {
       try {
-        const response = await fetch(`/api/admin/projects/${id}`, {
+        const response = await fetch(`/api/admin/projeler/${id}`, {
           method: "DELETE",
         })
 
@@ -191,7 +191,7 @@ export function ProjectsManager({ projects }: ProjectsManagerProps) {
               <div className="flex justify-between items-center">
                 <div className="flex space-x-2">
                   <Button variant="outline" size="sm" asChild>
-                    <a href={`/projects/${project.id}`} target="_blank" rel="noreferrer">
+                    <a href={`/projeler/${project.id}`} target="_blank" rel="noreferrer">
                       <Eye className="h-4 w-4" />
                     </a>
                   </Button>

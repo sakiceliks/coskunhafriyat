@@ -23,22 +23,22 @@ export async function generateMetadata({ params }: ServicePageProps) {
 
   if (!service) {
     return {
-      title: "Hizmet Bulunamadı | HafriyatMaster",
+      title: "Hizmet Bulunamadı | Coşkun Hafriyat",
     }
   }
 
   return {
-    title: `${service.title} | HafriyatMaster - Profesyonel Hafriyat Hizmetleri`,
+    title: `${service.title} | Coşkun Hafriyat - Profesyonel Hafriyat Hizmetleri`,
     description: service.description || service.short_description,
     keywords: `${service.title}, hafriyat, kazı, yıkım, İstanbul, profesyonel hizmet`,
     openGraph: {
-      title: `${service.title} | HafriyatMaster`,
+      title: `${service.title} | Coşkun Hafriyat`,
       description: service.description || service.short_description,
-      url: `https://hafriyatmaster.com/services/${service.slug || service.id}`,
-      siteName: "HafriyatMaster",
+      url: `https://coskunhafriyat.com/hizmetler/${service.slug || service.id}`,
+      siteName: "Coşkun Hafriyat",
       images: [
         {
-          url: service.image_url || "https://hafriyatmaster.com/service-default-og.jpg",
+          url: service.image_url || "https://coskunhafriyat.com/service-default-og.jpg",
           width: 1200,
           height: 630,
           alt: service.title,
@@ -49,12 +49,12 @@ export async function generateMetadata({ params }: ServicePageProps) {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${service.title} | HafriyatMaster`,
+      title: `${service.title} | Coşkun Hafriyat`,
       description: service.description || service.short_description,
-      images: [service.image_url || "https://hafriyatmaster.com/service-default-og.jpg"],
+      images: [service.image_url || "https://coskunhafriyat.com/service-default-og.jpg"],
     },
     alternates: {
-      canonical: `https://hafriyatmaster.com/services/${service.slug || service.id}`,
+      canonical: `https://coskunhafriyat.com/hizmetler/${service.slug || service.id}`,
     },
   }
 }
@@ -73,8 +73,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
   const breadcrumbItems = [
     { name: "Ana Sayfa", url: "/" },
-    { name: "Hizmetlerimiz", url: "/services" },
-    { name: service.title, url: `/services/${service.slug || service.id}` },
+    { name: "Hizmetlerimiz", url: "/hizmetler" },
+    { name: service.title, url: `/hizmetler/${service.slug || service.id}` },
   ]
 
   return (
@@ -96,7 +96,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           />
           <div className="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center">
             <Link
-              href="/services"
+              href="/hizmetler"
               className="inline-flex items-center text-white/80 hover:text-white mb-4 transition-colors"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
@@ -155,13 +155,13 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 Uzman ekibimizden ücretsiz keşif ve detaylı teklif almak için hemen iletişime geçin.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/contact">
+                <Link href="/iletisim">
                   <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-8">
                     <Phone className="mr-2 h-5 w-5" />
                     Hemen Ara
                   </Button>
                 </Link>
-                <Link href="/contact">
+                <Link href="/iletisim">
                   <Button
                     size="lg"
                     variant="outline"

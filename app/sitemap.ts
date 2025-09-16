@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next"
 import { getServices, getProjects, getBlogPosts } from "@/lib/database"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://hafriyatmaster.com"
+  const baseUrl = "https://coskunhafriyat.com"
 
   // Static pages
   const staticPages = [
@@ -13,13 +13,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: `${baseUrl}/services`,
+      url: `${baseUrl}/hizmetler`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/projects`,
+      url: `${baseUrl}/projeler`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.9,
@@ -31,13 +31,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/about`,
+      url: `${baseUrl}/hakkimizda`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/contact`,
+      url: `${baseUrl}/iletisim`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.6,
@@ -48,7 +48,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Dynamic service pages
     const services = await getServices()
     const servicePages = services.map((service: any) => ({
-      url: `${baseUrl}/services/${service.slug}`,
+      url: `${baseUrl}/hizmetler/${service.slug}`,
       lastModified: new Date(service.updated_at || service.created_at),
       changeFrequency: "monthly" as const,
       priority: 0.8,
@@ -57,7 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Dynamic project pages
     const projects = await getProjects()
     const projectPages = projects.map((project: any) => ({
-      url: `${baseUrl}/projects/${project.id}`,
+      url: `${baseUrl}/projeler/${project.id}`,
       lastModified: new Date(project.updated_at || project.created_at),
       changeFrequency: "monthly" as const,
       priority: 0.7,

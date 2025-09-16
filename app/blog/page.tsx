@@ -9,21 +9,21 @@ import { Badge } from "@/components/ui/badge"
 import { getBlogPosts } from "@/lib/database"
 
 export const metadata = {
-  title: "Blog | HafriyatMaster - Hafriyat ve İnşaat Sektörü Uzman Görüşleri",
+  title: "Blog | Coşkun Hafriyat - Hafriyat ve İnşaat Sektörü Uzman Görüşleri",
   description:
     "Hafriyat, kazı, yıkım ve iş makinesi kiralama konularında uzman görüşleri, ipuçları ve sektör haberleri. ✓ Güncel içerik ✓ Uzman tavsiyeleri ✓ Sektör analizi",
   keywords: "hafriyat blog, kazı ipuçları, yıkım teknikleri, iş makinesi, inşaat sektörü, uzman görüşleri",
   openGraph: {
-    title: "Blog | HafriyatMaster",
+    title: "Blog | Coşkun Hafriyat",
     description: "Hafriyat, kazı, yıkım ve iş makinesi kiralama konularında uzman görüşleri ve sektör haberleri",
-    url: "https://hafriyatmaster.com/blog",
-    siteName: "HafriyatMaster",
+    url: "https://coskunhafriyat.com/blog",
+    siteName: "Coşkun Hafriyat",
     images: [
       {
-        url: "https://hafriyatmaster.com/blog-og.jpg",
+        url: "https://coskunhafriyat.com/blog-og.jpg",
         width: 1200,
         height: 630,
-        alt: "HafriyatMaster Blog",
+        alt: "Coşkun Hafriyat Blog",
       },
     ],
     locale: "tr_TR",
@@ -31,12 +31,12 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog | HafriyatMaster",
+    title: "Blog | Coşkun Hafriyat",
     description: "Hafriyat, kazı, yıkım ve iş makinesi kiralama konularında uzman görüşleri",
-    images: ["https://hafriyatmaster.com/blog-og.jpg"],
+    images: ["https://coskunhafriyat.com/blog-og.jpg"],
   },
   alternates: {
-    canonical: "https://hafriyatmaster.com/blog",
+    canonical: "https://coskunhafriyat.com/blog",
   },
 }
 
@@ -127,7 +127,7 @@ export default async function BlogPage() {
             <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-xl md:max-w-2xl mx-auto mb-6 md:mb-8">
               Hafriyat ve inşaat sektöründeki en son gelişmeleri kaçırmayın. Blog yazılarımızı takip edin.
             </p>
-            <Link href="/contact">
+            <Link href="/iletisim">
               <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-6 md:px-8">
                 İletişime Geçin
                 <ArrowRight className="ml-2 h-4 w-4" />

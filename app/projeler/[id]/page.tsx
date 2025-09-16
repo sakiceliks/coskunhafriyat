@@ -18,22 +18,22 @@ export async function generateMetadata({ params }: ProjectPageProps) {
 
   if (!project) {
     return {
-      title: "Proje Bulunamadı | HafriyatMaster",
+      title: "Proje Bulunamadı | Coşkun Hafriyat",
     }
   }
 
   return {
-    title: `${project.title} | HafriyatMaster - ${project.project_type} Hafriyat Projesi`,
+    title: `${project.title} | Coşkun Hafriyat - ${project.project_type} Hafriyat Projesi`,
     description: project.description || project.short_description,
     keywords: `${project.title}, ${project.project_type}, hafriyat projesi, kazı projesi, ${project.location || "İstanbul"}`,
     openGraph: {
-      title: `${project.title} | HafriyatMaster`,
+      title: `${project.title} | Coşkun Hafriyat`,
       description: project.description || project.short_description,
-      url: `https://hafriyatmaster.com/projects/${project.id}`,
-      siteName: "HafriyatMaster",
+      url: `https://coskunhafriyat.com/projeler/${project.id}`,
+      siteName: "Coşkun Hafriyat",
       images: [
         {
-          url: project.image_url || "https://hafriyatmaster.com/project-default-og.jpg",
+          url: project.image_url || "https://coskunhafriyat.com/project-default-og.jpg",
           width: 1200,
           height: 630,
           alt: project.title,
@@ -44,12 +44,12 @@ export async function generateMetadata({ params }: ProjectPageProps) {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${project.title} | HafriyatMaster`,
+      title: `${project.title} | Coşkun Hafriyat`,
       description: project.description || project.short_description,
-      images: [project.image_url || "https://hafriyatmaster.com/project-default-og.jpg"],
+      images: [project.image_url || "https://coskunhafriyat.com/project-default-og.jpg"],
     },
     alternates: {
-      canonical: `https://hafriyatmaster.com/projects/${project.id}`,
+      canonical: `https://coskunhafriyat.com/projeler/${project.id}`,
     },
   }
 }
@@ -71,8 +71,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   const breadcrumbItems = [
     { name: "Ana Sayfa", url: "/" },
-    { name: "Projelerimiz", url: "/projects" },
-    { name: project.title, url: `/projects/${project.id}` },
+    { name: "Projelerimiz", url: "/projeler" },
+    { name: project.title, url: `/projeler/${project.id}` },
   ]
 
   return (
@@ -105,7 +105,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               {/* Back Button */}
-              <Link href="/projects" className="inline-flex items-center text-amber-600 hover:text-amber-700 mb-8">
+              <Link href="/projeler" className="inline-flex items-center text-amber-600 hover:text-amber-700 mb-8">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Tüm Projelere Dön
               </Link>
@@ -210,12 +210,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       </div>
                       <div className="flex items-center">
                         <Mail className="h-5 w-5 text-amber-500 mr-3" />
-                        <span className="text-gray-700">info@hafriyatmaster.com</span>
+                        <span className="text-gray-700">info@coskunhafriyat.com</span>
                       </div>
                     </div>
 
                     <div className="space-y-3">
-                      <Link href="/contact">
+                      <Link href="/iletisim">
                         <Button className="bg-amber-500 hover:bg-amber-600 text-black w-full">Teklif Formu</Button>
                       </Link>
                       <Link href="tel:02161234567">

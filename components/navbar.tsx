@@ -138,8 +138,8 @@ export function Navbar() {
                     whileHover={{ scale: 1.03 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <span className="inline xs:hidden">HM</span>
-                    <span className="hidden xs:inline">HafriyatMaster</span>
+                    <span className="inline xs:hidden">CH</span>
+                    <span className="hidden xs:inline">Coşkun Hafriyat</span>
                   </motion.span>
                   <span className="text-[10px] sm:text-xs text-muted-foreground hidden xs:inline">
                     İş Makinesi Kiralama
@@ -163,10 +163,10 @@ export function Navbar() {
                 <DropdownNavItem
                   label="Hizmetler"
                   items={[
-                    { href: "/services/excavation", label: "Hafriyat ve Kazı" },
-                    { href: "/services/machinery", label: "İş Makinesi Kiralama" },
-                    { href: "/services/demolition", label: "Yıkım Hizmetleri" },
-                    { href: "/services/transport", label: "Nakliye ve Taşıma" },
+                    { href: "/hizmetler/hafriyat", label: "Hafriyat ve Kazı" },
+                    { href: "/hizmetler/is-makinesi-kiralama", label: "İş Makinesi Kiralama" },
+                    { href: "/hizmetler/yikim-hizmetleri", label: "Yıkım Hizmetleri" },
+                    { href: "/hizmetler/nakliye-tasimacilik", label: "Nakliye ve Taşıma" },
                   ]}
                   pathname={pathname}
                   onHover={() => setHoveredItem("services")}
@@ -175,9 +175,9 @@ export function Navbar() {
                 />
 
                 <NavItem
-                  href="/projects"
+                  href="/projeler"
                   label="Projeler"
-                  isActive={pathname === "/projects"}
+                  isActive={pathname === "/projeler"}
                   onHover={() => setHoveredItem("projects")}
                   onLeave={() => setHoveredItem(null)}
                   isHovered={hoveredItem === "projects"}
@@ -193,18 +193,18 @@ export function Navbar() {
                 />
 
                 <NavItem
-                  href="/about"
+                  href="/hakkimizda"
                   label="Hakkımızda"
-                  isActive={pathname === "/about"}
+                  isActive={pathname === "/hakkimizda"}
                   onHover={() => setHoveredItem("about")}
                   onLeave={() => setHoveredItem(null)}
                   isHovered={hoveredItem === "about"}
                 />
 
                 <NavItem
-                  href="/contact"
+                  href="/iletisim"
                   label="İletişim"
-                  isActive={pathname === "/contact"}
+                  isActive={pathname === "/iletisim"}
                   onHover={() => setHoveredItem("contact")}
                   onLeave={() => setHoveredItem(null)}
                   isHovered={hoveredItem === "contact"}
@@ -214,7 +214,7 @@ export function Navbar() {
 
             {/* Desktop Right Side */}
             <div className="hidden md:flex items-center gap-2 lg:gap-4">
-              <Link href="/contact#quote-form">
+              <Link href="/iletisim#quote-form">
                 <AnimatedButton
                   className="bg-amber-600 hover:bg-amber-700 text-white font-medium text-sm sm:text-base h-9 sm:h-10 transition-all duration-300 shadow-md hover:shadow-lg"
                   hoverEffect="lift"

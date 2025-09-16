@@ -20,23 +20,23 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
 
   if (!post) {
     return {
-      title: "Blog Yazısı Bulunamadı | HafriyatMaster",
+      title: "Blog Yazısı Bulunamadı | Coşkun Hafriyat",
     }
   }
 
   return {
-    title: `${post.title} | HafriyatMaster Blog - Hafriyat ve İnşaat Uzman Görüşleri`,
+    title: `${post.title} | Coşkun Hafriyat Blog - Hafriyat ve İnşaat Uzman Görüşleri`,
     description: post.excerpt,
     keywords: post.tags?.join(", ") || "hafriyat, kazı, yıkım, inşaat, blog",
-    authors: [{ name: post.author || "HafriyatMaster" }],
+    authors: [{ name: post.author || "Coşkun Hafriyat" }],
     openGraph: {
-      title: `${post.title} | HafriyatMaster Blog`,
+      title: `${post.title} | Coşkun Hafriyat Blog`,
       description: post.excerpt,
-      url: `https://hafriyatmaster.com/blog/${post.slug}`,
-      siteName: "HafriyatMaster",
+      url: `https://coskunhafriyat.com/blog/${post.slug}`,
+      siteName: "Coşkun Hafriyat",
       images: [
         {
-          url: post.featured_image || "https://hafriyatmaster.com/blog-default-og.jpg",
+          url: post.featured_image || "https://coskunhafriyat.com/blog-default-og.jpg",
           width: 1200,
           height: 630,
           alt: post.title,
@@ -46,18 +46,18 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
       type: "article",
       publishedTime: post.published_date,
       modifiedTime: post.updated_at || post.published_date,
-      authors: [post.author || "HafriyatMaster"],
+      authors: [post.author || "Coşkun Hafriyat"],
       tags: post.tags || [],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${post.title} | HafriyatMaster Blog`,
+      title: `${post.title} | Coşkun Hafriyat Blog`,
       description: post.excerpt,
-      images: [post.featured_image || "https://hafriyatmaster.com/blog-default-og.jpg"],
+      images: [post.featured_image || "https://coskunhafriyat.com/blog-default-og.jpg"],
       creator: "@hafriyatmaster",
     },
     alternates: {
-      canonical: `https://hafriyatmaster.com/blog/${post.slug}`,
+      canonical: `https://coskunhafriyat.com/blog/${post.slug}`,
     },
   }
 }
@@ -194,7 +194,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               Profesyonel hafriyat, kazı ve iş makinesi kiralama hizmetlerimiz hakkında detaylı bilgi alın.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Link href="/contact">
+              <Link href="/iletisim">
                 <Button
                   size="lg"
                   className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-6 md:px-8 w-full sm:w-auto"
@@ -203,7 +203,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <Link href="/services">
+              <Link href="/hizmetler">
                 <Button
                   size="lg"
                   variant="outline"

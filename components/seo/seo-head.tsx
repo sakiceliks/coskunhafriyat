@@ -25,8 +25,8 @@ export function SEOHead({
   tags,
   noindex = false,
 }: SEOHeadProps) {
-  const siteName = "HafriyatMaster"
-  const siteUrl = "https://hafriyatmaster.com"
+  const siteName = "Coşkun Hafriyat"
+  const siteUrl = "https://coskunhafriyat.com"
   const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl
   const fullOgImage = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}`
 

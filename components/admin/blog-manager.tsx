@@ -272,7 +272,7 @@ function BlogPostForm({ post, onSubmit }: { post?: BlogPost; onSubmit: (formData
       <div className="grid grid-cols-2 gap-4">
         <div>
           <Label htmlFor="author">Yazar</Label>
-          <Input id="author" name="author" defaultValue={post?.author || "HafriyatMaster"} required />
+          <Input id="author" name="author" defaultValue={post?.author || "Coşkun Hafriyat"} required />
         </div>
         <div>
           <Label htmlFor="published_date">Yayın Tarihi</Label>

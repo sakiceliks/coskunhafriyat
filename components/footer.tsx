@@ -12,7 +12,7 @@ export function Footer() {
           <div className="text-center sm:text-left">
             <Link href="/" className="flex items-center gap-2 mb-4 sm:mb-6 justify-center sm:justify-start">
               <HardHat className="h-7 w-7 text-amber-500" />
-              <span className="text-xl font-bold text-white">HafriyatMaster</span>
+              <span className="text-xl font-bold text-white">Coşkun Hafriyat</span>
             </Link>
             <p className="text-gray-400 mb-6 text-sm sm:text-base">
               İstanbul genelinde hafriyat, kazı, yıkım ve nakliye hizmetleri ile güvenilir ortağınız. 2010'dan beri
@@ -44,7 +44,7 @@ export function Footer() {
             <ul className="space-y-2 sm:space-y-3">
               <li>
                 <Link
-                  href="/services/excavation"
+                  href="/hizmetler/hafriyat"
                   className="text-gray-400 text-sm sm:text-base hover:text-amber-500 transition-colors inline-block"
                 >
                   Hafriyat ve Kazı
@@ -52,7 +52,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/machinery"
+                  href="/hizmetler/is-makinesi-kiralama"
                   className="text-gray-400 text-sm sm:text-base hover:text-amber-500 transition-colors inline-block"
                 >
                   İş Makinesi Kiralama
@@ -60,7 +60,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/demolition"
+                  href="/hizmetler/yikim-hizmetleri"
                   className="text-gray-400 text-sm sm:text-base hover:text-amber-500 transition-colors inline-block"
                 >
                   Yıkım Hizmetleri
@@ -68,7 +68,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/transport"
+                  href="/hizmetler/nakliye-tasimacilik"
                   className="text-gray-400 text-sm sm:text-base hover:text-amber-500 transition-colors inline-block"
                 >
                   Nakliye ve Taşıma
@@ -76,7 +76,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/jcb-rental"
+                  href="/hizmetler/jcb-rental"
                   className="text-gray-400 text-sm sm:text-base hover:text-amber-500 transition-colors inline-block"
                 >
                   JCB Kiralama
@@ -84,7 +84,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/road-assistance"
+                  href="/hizmetler/road-assistance"
                   className="text-gray-400 text-sm sm:text-base hover:text-amber-500 transition-colors inline-block"
                 >
                   Yol Yardım
@@ -99,7 +99,7 @@ export function Footer() {
             <ul className="space-y-2 sm:space-y-3">
               <li>
                 <Link
-                  href="/about"
+                  href="/hakkimizda"
                   className="text-gray-400 text-sm sm:text-base hover:text-amber-500 transition-colors inline-block"
                 >
                   Hakkımızda
@@ -107,7 +107,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/projects"
+                  href="/projeler"
                   className="text-gray-400 text-sm sm:text-base hover:text-amber-500 transition-colors inline-block"
                 >
                   Projeler
@@ -139,7 +139,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href="/iletisim"
                   className="text-gray-400 text-sm sm:text-base hover:text-amber-500 transition-colors inline-block"
                 >
                   İletişim
@@ -164,11 +164,11 @@ export function Footer() {
               </li>
               <li className="flex items-start justify-center sm:justify-start">
                 <Mail className="h-5 w-5 text-amber-500 mr-3 mt-1 flex-shrink-0" />
-                <span className="text-gray-400 text-sm sm:text-base">info@hafriyatmaster.com</span>
+                <span className="text-gray-400 text-sm sm:text-base">info@coskunhafriyat.com</span>
               </li>
             </ul>
             <div className="mt-6">
-              <Link href="/contact#quote-form">
+              <Link href="/iletisim#quote-form">
                 <Button className="bg-amber-500 hover:bg-amber-600 text-black font-medium w-full transition-all duration-300">
                   Ücretsiz Teklif Alın
                 </Button>
@@ -179,7 +179,7 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-gray-800 mt-8 sm:mt-10 pt-6 text-center text-gray-400 text-sm max-w-6xl mx-auto">
-          <p>&copy; {new Date().getFullYear()} HafriyatMaster. Tüm hakları saklıdır.</p>
+          <p>&copy; {new Date().getFullYear()} Coşkun Hafriyat. Tüm hakları saklıdır.</p>
         </div>
       </div>
     </footer>

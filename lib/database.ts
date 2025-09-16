@@ -71,7 +71,7 @@ export async function getBlogPosts(featured?: boolean) {
   return result.map((post: any) => ({
     ...post,
     published_date: post.published_at,
-    author: post.author_id || "HafriyatMaster",
+    author: post.author_id || "Coşkun Hafriyat",
     updated_at: post.updated_at,
   }))
 }
@@ -90,7 +90,7 @@ export async function getBlogPostBySlug(slug: string) {
   return {
     ...post,
     published_date: post.published_at,
-    author: post.author_id || "HafriyatMaster", // Default author if author_id is null
+    author: post.author_id || "Coşkun Hafriyat", // Default author if author_id is null
     updated_at: post.updated_at,
   }
 }

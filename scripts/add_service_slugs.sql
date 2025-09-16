@@ -6,7 +6,7 @@ UPDATE services SET slug =
   CASE 
     WHEN title ILIKE '%hafriyat%' THEN 'hafriyat'
     WHEN title ILIKE '%nakliye%' OR title ILIKE '%transport%' THEN 'transport'
-    WHEN title ILIKE '%yıkım%' OR title ILIKE '%demolition%' THEN 'demolition'
+    WHEN title ILIKE '%yıkım%' OR title ILIKE '%yikim-hizmetleri%' THEN 'yikim-hizmetleri'
     WHEN title ILIKE '%kazı%' OR title ILIKE '%excavation%' THEN 'excavation'
     WHEN title ILIKE '%dolgu%' OR title ILIKE '%fill%' THEN 'fill'
     WHEN title ILIKE '%temizlik%' OR title ILIKE '%cleaning%' THEN 'cleaning'

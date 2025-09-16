@@ -5,9 +5,9 @@ import { ArrowRight, CheckCircle, Award, Clock, Target, Eye, Lightbulb, Compass,
 import { Button } from "@/components/ui/button"
 
 export const metadata = {
-  title: "About Us | BuildMaster Construction",
+  title: "Hakkımızda | Coşkun Hafriyat",
   description:
-    "Learn about BuildMaster Construction's history, values, and our expert team dedicated to excellence in construction.",
+    "Coşkun Hafriyat'nın tarihçesi, değerleri ve uzman ekibimiz hakkında bilgi edinin. Mükemmeliyeti inşa etmeye adanmış bir firmayız.",
 }
 
 export default function AboutPage() {
@@ -16,11 +16,11 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-black/60 z-10" />
-        <Image src="/images/about-team.png" alt="Construction team" fill className="object-cover" priority />
+        <Image src="/images/hakkimizda-team.png" alt="Uzman ekibimiz" fill className="object-cover" priority />
         <div className="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">About BuildMaster</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Coşkun Hafriyat Hakkında</h1>
           <p className="text-xl text-white/90 max-w-2xl">
-            Building excellence through innovation, quality craftsmanship, and unwavering commitment to our clients.
+            İnovasyon, kaliteli hizmet ve müşterilerimize sarsılmaz bağlılık ile mükemmeliyeti inşa ediyoruz.
           </p>
         </div>
       </section>
@@ -30,12 +30,11 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300 rounded-full text-sm font-medium mb-4">
-              Our Purpose
+              Amacımız
             </div>
-            <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">Mission & Vision</h2>
+            <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">Misyonumuz ve Vizyonumuz</h2>
             <p className="text-gray-700 dark:text-gray-300 text-lg">
-              Guided by our core principles, we strive to transform the construction industry and create lasting value
-              for our clients.
+              Temel ilkelerimiz rehberliğinde, iş makinesi kiralama sektörünü dönüştürmeye ve müşterilerimiz için kalıcı değer yaratmaya çalışıyoruz.
             </p>
           </div>
 
@@ -45,32 +44,28 @@ export default function AboutPage() {
                 <div className="bg-amber-100 dark:bg-amber-900 w-14 h-14 rounded-full flex items-center justify-center mr-4">
                   <Target className="h-7 w-7 text-amber-600 dark:text-amber-400" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Our Mission</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Misyonumuz</h3>
               </div>
               <p className="text-gray-700 dark:text-gray-300 mb-6">
-                To deliver exceptional construction services that exceed client expectations through innovation,
-                integrity, and craftsmanship. We are committed to:
+                İnovasyon, dürüstlük ve kaliteli hizmet ile müşteri beklentilerini aşan olağanüstü iş makinesi kiralama hizmetleri sunmak.
               </p>
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-amber-500 mr-3 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">
-                    Creating safe, sustainable, and functional spaces that enhance the quality of life for those who use
-                    them
+                    Müşterilerimizin projelerini güvenli, verimli ve zamanında tamamlamak için en son teknolojiye sahip makineler sunmak.
                   </p>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-amber-500 mr-3 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">
-                    Fostering a culture of excellence, continuous improvement, and professional growth among our team
-                    members
+                    Ekibimiz arasında sürekli gelişim ve profesyonel büyüme kültürünü teşvik etmek.
                   </p>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-amber-500 mr-3 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">
-                    Building lasting relationships with clients, partners, and communities through transparent
-                    communication and ethical practices
+                    Şeffaf iletişim ve etik uygulamalarla müşterilerimiz ve iş ortaklarımızla kalıcı ilişkiler kurmak.
                   </p>
                 </li>
               </ul>
@@ -81,30 +76,28 @@ export default function AboutPage() {
                 <div className="bg-amber-100 dark:bg-amber-900 w-14 h-14 rounded-full flex items-center justify-center mr-4">
                   <Eye className="h-7 w-7 text-amber-600 dark:text-amber-400" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Our Vision</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Vizyonumuz</h3>
               </div>
               <p className="text-gray-700 dark:text-gray-300 mb-6">
-                To be the most trusted and innovative construction company, recognized for:
+                İş makinesi kiralama sektöründe en güvenilir ve yenilikçi şirket olmak, şunlarla tanınmak:
               </p>
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-amber-500 mr-3 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">
-                    Setting new standards of excellence in construction quality, safety, and client satisfaction
+                    Makine kalitesi, güvenliği ve müşteri memnuniyetinde yeni standartlar belirlemek.
                   </p>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-amber-500 mr-3 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">
-                    Pioneering sustainable building practices that minimize environmental impact while maximizing
-                    efficiency and durability
+                    Çevresel etkiyi en aza indirirken verimliliği en üst düzeye çıkaran sorumlu kiralama uygulamalarına öncülük etmek.
                   </p>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-amber-500 mr-3 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">
-                    Creating positive change in the communities where we work through responsible business practices and
-                    meaningful engagement
+                    Sorumlu iş uygulamaları ve anlamlı katılımla çalıştığımız topluluklarda olumlu değişim yaratmak.
                   </p>
                 </li>
               </ul>
@@ -116,15 +109,13 @@ export default function AboutPage() {
               <div className="bg-amber-100 dark:bg-amber-900 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Lightbulb className="h-7 w-7 text-amber-600 dark:text-amber-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Our Approach</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Yaklaşımımız</h3>
               <p className="text-gray-700 dark:text-gray-300 text-lg mb-6">
-                We believe that successful construction is built on a foundation of collaboration, innovation, and
-                attention to detail. By combining traditional craftsmanship with cutting-edge technology, we deliver
-                projects that stand the test of time.
+                Başarılı bir projenin temelinde işbirliği, yenilik ve detaylara gösterilen özen olduğuna inanıyoruz. Kaliteli hizmet anlayışını, son teknolojiye sahip makinelerimizle birleştirerek zamana meydan okuyan sonuçlar sunuyoruz.
               </p>
-              <Link href="/contact">
+              <Link href="/iletisim">
                 <Button className="bg-amber-500 hover:bg-amber-600 text-black font-semibold">
-                  Partner With Us
+                  Bizimle Ortak Olun
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
@@ -139,31 +130,27 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             <div>
               <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300 rounded-full text-sm font-medium mb-4">
-                Our Story
+                Hikayemiz
               </div>
-              <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">Building a Legacy of Excellence</h2>
+              <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">Mükemmellik Mirası İnşa Ediyoruz</h2>
               <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg">
-                Founded in 2000, BuildMaster began as a small family-owned construction company with a vision to
-                transform the industry through innovation and quality craftsmanship.
+                2000 yılında kurulan Coşkun Hafriyat, iş makinesi kiralama sektörünü yenilikçilik ve kaliteli hizmet anlayışıyla dönüştürme vizyonuyla küçük bir aile şirketi olarak başladı.
               </p>
               <p className="text-gray-700 dark:text-gray-300 mb-6">
-                Over the past two decades, we've grown into a leading construction firm, completing over 500 projects
-                across residential, commercial, and industrial sectors. Our success is built on our commitment to
-                excellence, integrity, and client satisfaction.
+                Son yirmi yılda, konut, ticari ve endüstriyel sektörlerde 500'den fazla projeyi tamamlayarak lider bir kiralama firması haline geldik. Başarımız, mükemmelliğe, dürüstlüğe ve müşteri memnuniyetine olan bağlılığımız üzerine kurulmuştur.
               </p>
               <p className="text-gray-700 dark:text-gray-300 mb-6">
-                Today, BuildMaster continues to push the boundaries of construction, embracing new technologies and
-                sustainable practices to deliver exceptional results for our clients.
+                Bugün, Coşkun Hafriyat olarak, müşterilerimiz için olağanüstü sonuçlar sunmak amacıyla yeni teknolojileri ve sürdürülebilir uygulamaları benimseyerek sektörün sınırlarını zorlamaya devam ediyoruz.
               </p>
-              <Link href="/contact">
+              <Link href="/iletisim">
                 <Button className="bg-amber-500 hover:bg-amber-600 text-black font-semibold">
-                  Get in Touch
+                  İletişime Geçin
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
             </div>
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl">
-              <Image src="/images/about-story.png" alt="Company history" fill className="object-cover" />
+              <Image src="/images/hakkimizda-story.png" alt="Şirket geçmişi" fill className="object-cover" />
             </div>
           </div>
         </div>
@@ -174,11 +161,11 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300 rounded-full text-sm font-medium mb-4">
-              Our Values
+              Değerlerimiz
             </div>
-            <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">What Drives Us</h2>
+            <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">Bizi Yönlendiren Şey</h2>
             <p className="text-gray-700 dark:text-gray-300 text-lg">
-              Our core values guide everything we do, from how we interact with clients to how we approach each project.
+              Temel değerlerimiz, müşterilerimizle nasıl etkileşimde bulunduğumuzdan her projeye nasıl yaklaştığımıza kadar yaptığımız her şeye rehberlik eder.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
@@ -186,36 +173,36 @@ export default function AboutPage() {
               <div className="bg-amber-100 dark:bg-amber-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Award className="h-8 w-8 text-amber-600 dark:text-amber-400" />
               </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Excellence</h3>
+              <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Mükemmeliyet</h3>
               <p className="text-gray-700 dark:text-gray-300">
-                We strive for excellence in every aspect of our work, from planning to execution and beyond.
+                Planlamadan uygulamaya ve sonrasına kadar işimizin her alanında mükemmelliği hedefliyoruz.
               </p>
             </div>
             <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow text-center">
               <div className="bg-amber-100 dark:bg-amber-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Wrench className="h-8 w-8 text-amber-600 dark:text-amber-400" />
               </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Integrity</h3>
+              <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Dürüstlük</h3>
               <p className="text-gray-700 dark:text-gray-300">
-                We conduct our business with honesty, transparency, and ethical practices at all times.
+                İşimizi her zaman dürüstlük, şeffaflık ve etik uygulamalarla yürütüyoruz.
               </p>
             </div>
             <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow text-center">
               <div className="bg-amber-100 dark:bg-amber-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Compass className="h-8 w-8 text-amber-600 dark:text-amber-400" />
               </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Innovation</h3>
+              <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Yenilikçilik</h3>
               <p className="text-gray-700 dark:text-gray-300">
-                We embrace new technologies and methods to deliver innovative solutions for our clients.
+                Müşterilerimiz için yenilikçi çözümler sunmak amacıyla yeni teknolojileri ve yöntemleri benimsiyoruz.
               </p>
             </div>
             <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow text-center">
               <div className="bg-amber-100 dark:bg-amber-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Clock className="h-8 w-8 text-amber-600 dark:text-amber-400" />
               </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Reliability</h3>
+              <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Güvenilirlik</h3>
               <p className="text-gray-700 dark:text-gray-300">
-                We deliver on our promises, meeting deadlines and exceeding expectations consistently.
+                Sözlerimizi tutar, teslim tarihlerine uyar ve beklentileri sürekli olarak aşıyoruz.
               </p>
             </div>
           </div>
@@ -223,15 +210,15 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      {/* <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300 rounded-full text-sm font-medium mb-4">
-              Our Team
+              Ekibimiz
             </div>
-            <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">Meet Our Leadership</h2>
+            <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">Yönetim Kadromuzla Tanışın</h2>
             <p className="text-gray-700 dark:text-gray-300 text-lg">
-              Our experienced leadership team brings decades of industry expertise to every project.
+              Deneyimli yönetim ekibimiz, her projeye onlarca yıllık sektör uzmanlığını katıyor.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
@@ -263,7 +250,7 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Stats Section */}
       <section className="py-16 bg-amber-500 dark:bg-amber-600">
@@ -271,19 +258,19 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-5xl mx-auto">
             <div className="p-6">
               <div className="text-4xl font-bold text-white mb-2">500+</div>
-              <p className="text-black dark:text-gray-100 font-medium">Projects Completed</p>
+              <p className="text-black dark:text-gray-100 font-medium">Tamamlanan Proje</p>
             </div>
             <div className="p-6">
               <div className="text-4xl font-bold text-white mb-2">25+</div>
-              <p className="text-black dark:text-gray-100 font-medium">Years Experience</p>
+              <p className="text-black dark:text-gray-100 font-medium">Yıllık Deneyim</p>
             </div>
             <div className="p-6">
               <div className="text-4xl font-bold text-white mb-2">150+</div>
-              <p className="text-black dark:text-gray-100 font-medium">Expert Team Members</p>
+              <p className="text-black dark:text-gray-100 font-medium">Uzman Ekip Üyesi</p>
             </div>
             <div className="p-6">
               <div className="text-4xl font-bold text-white mb-2">98%</div>
-              <p className="text-black dark:text-gray-100 font-medium">Client Satisfaction</p>
+              <p className="text-black dark:text-gray-100 font-medium">Müşteri Memnuniyeti</p>
             </div>
           </div>
         </div>
@@ -292,24 +279,24 @@ export default function AboutPage() {
       {/* CTA Section */}
       <section className="py-20 bg-gray-900 dark:bg-black text-white">
         <div className="container mx-auto px-4 text-center max-w-4xl">
-          <h2 className="text-4xl font-bold mb-6">Ready to Work With Us?</h2>
+          <h2 className="text-4xl font-bold mb-6">Bizimle Çalışmaya Hazır Mısınız?</h2>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-10">
-            Contact us today to discuss your project needs and discover how BuildMaster can bring your vision to life.
+            Proje ihtiyaçlarınızı görüşmek ve Coşkun Hafriyat'nin vizyonunuzu nasıl hayata geçireceğini keşfetmek için bugün bize ulaşın.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/contact">
+            <Link href="/iletisim">
               <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-8">
-                Contact Us
+                İletişime Geçin
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
-            <Link href="/projects">
+            <Link href="/projeler">
               <Button
                 size="lg"
                 variant="outline"
                 className="text-white border-white hover:bg-white/10 font-semibold px-8"
               >
-                View Our Projects
+                Projelerimizi Görüntüleyin
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
@@ -325,9 +312,9 @@ import { Linkedin, Twitter, Facebook } from "lucide-react"
 
 const teamMembers = [
   {
-    name: "Michael Reynolds",
-    position: "CEO & Founder",
-    bio: "With over 30 years in construction, Michael founded BuildMaster with a vision to transform the industry through innovation and quality.",
+    name: "Murat Güçlü",
+    position: "CEO & Kurucu",
+    bio: "İnşaat sektöründeki 30 yılı aşkın deneyimiyle Murat, Coşkun Hafriyat'yi yenilikçilik ve kalite vizyonuyla kurdu.",
     image: "/images/team-1.png",
     social: [
       { icon: Linkedin, url: "#" },
@@ -336,9 +323,9 @@ const teamMembers = [
     ],
   },
   {
-    name: "Sarah Johnson",
-    position: "Chief Operations Officer",
-    bio: "Sarah oversees all operations, ensuring projects are delivered on time, within budget, and to the highest standards of quality.",
+    name: "Ayşe Demir",
+    position: "Operasyon Müdürü",
+    bio: "Ayşe, projelerin zamanında, bütçe dahilinde ve en yüksek kalite standartlarında teslim edilmesini sağlayarak tüm operasyonları denetler.",
     image: "/images/team-2.png",
     social: [
       { icon: Linkedin, url: "#" },
@@ -346,9 +333,9 @@ const teamMembers = [
     ],
   },
   {
-    name: "David Chen",
-    position: "Lead Architect",
-    bio: "David brings creative vision and technical expertise to every project, specializing in sustainable and innovative design solutions.",
+    name: "Mehmet Çelik",
+    position: "Lojistik Şefi",
+    bio: "Mehmet, makinelerin ve operatörlerin projeler için zamanında ve uygun şekilde hazırlanmasından ve taşınmasından sorumludur.",
     image: "/images/team-3.png",
     social: [
       { icon: Linkedin, url: "#" },
