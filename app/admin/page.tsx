@@ -26,24 +26,25 @@ export default async function AdminPage() {
   // In a real app, you'd check authentication here
   // For demo purposes, we'll skip auth
 
-  const [services, projects, blogPosts, pageContent, teamMembers, companyStats, faqs, regions] = await Promise.all([
-    getServices(),
-    getProjects(),
-    getBlogPosts(),
-    getPageContent("homepage"), // Get all page content
-    getTeamMembers(),
-    getCompanyStats(),
-    getFaqs(),
-    getRegions(),
-  ])
+  try {
+    const [services, projects, blogPosts, pageContent, teamMembers, companyStats, faqs, regions] = await Promise.all([
+      getServices(),
+      getProjects(),
+      getBlogPosts(),
+      getPageContent("homepage"), // Get all page content
+      getTeamMembers(),
+      getCompanyStats(),
+      getFaqs(),
+      getRegions().catch(() => []), // Regions tablosu yoksa boş array döndür
+    ])
 
-  const allPageContent = await Promise.all([
-    getPageContent("homepage"),
-    getPageContent("about"),
-    getPageContent("contact"),
-  ]).then((results) => results.flat())
+    const allPageContent = await Promise.all([
+      getPageContent("homepage"),
+      getPageContent("about"),
+      getPageContent("contact"),
+    ]).then((results) => results.flat())
 
-  return (
+    return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
@@ -142,5 +143,26 @@ export default async function AdminPage() {
         </Tabs>
       </div>
     </div>
-  )
+    )
+  } catch (error) {
+    console.error("Admin page error:", error)
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Veritabanı Bağlantı Hatası</h1>
+          <p className="text-gray-600 mb-4">
+            Veritabanı tabloları henüz oluşturulmamış. Lütfen migration scriptlerini çalıştırın.
+          </p>
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 max-w-md">
+            <h3 className="font-semibold text-yellow-800 mb-2">Gerekli Adımlar:</h3>
+            <ol className="text-sm text-yellow-700 text-left space-y-1">
+              <li>1. scripts/create-regions-table.sql</li>
+              <li>2. scripts/ensure-slug-columns.sql</li>
+              <li>3. scripts/02-seed-data.sql</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }

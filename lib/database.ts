@@ -383,24 +383,49 @@ export async function deleteFaq(id: number) {
 
 // Regions Management
 export async function getRegions(featured?: boolean) {
-  const sql = getDatabase()
-  if (featured) {
-    return await sql`SELECT * FROM regions WHERE is_active = true AND is_featured = true ORDER BY display_order, created_at DESC`
-  } else {
-    return await sql`SELECT * FROM regions WHERE is_active = true ORDER BY display_order, created_at DESC`
+  try {
+    const sql = getDatabase()
+    if (featured) {
+      return await sql`SELECT * FROM regions WHERE is_active = true AND is_featured = true ORDER BY display_order, created_at DESC`
+    } else {
+      return await sql`SELECT * FROM regions WHERE is_active = true ORDER BY display_order, created_at DESC`
+    }
+  } catch (error) {
+    console.error("Error fetching regions:", error)
+    // Eğer regions tablosu yoksa boş array döndür
+    if (error instanceof Error && error.message.includes('relation "regions" does not exist')) {
+      return []
+    }
+    throw error
   }
 }
 
 export async function getRegionById(id: number) {
-  const sql = getDatabase()
-  const result = await sql`SELECT * FROM regions WHERE id = ${id} AND is_active = true`
-  return result[0] || null
+  try {
+    const sql = getDatabase()
+    const result = await sql`SELECT * FROM regions WHERE id = ${id} AND is_active = true`
+    return result[0] || null
+  } catch (error) {
+    console.error("Error fetching region by id:", error)
+    if (error instanceof Error && error.message.includes('relation "regions" does not exist')) {
+      return null
+    }
+    throw error
+  }
 }
 
 export async function getRegionBySlug(slug: string) {
-  const sql = getDatabase()
-  const result = await sql`SELECT * FROM regions WHERE slug = ${slug} AND is_active = true`
-  return result[0] || null
+  try {
+    const sql = getDatabase()
+    const result = await sql`SELECT * FROM regions WHERE slug = ${slug} AND is_active = true`
+    return result[0] || null
+  } catch (error) {
+    console.error("Error fetching region by slug:", error)
+    if (error instanceof Error && error.message.includes('relation "regions" does not exist')) {
+      return null
+    }
+    throw error
+  }
 }
 
 export async function createRegion(data: any) {

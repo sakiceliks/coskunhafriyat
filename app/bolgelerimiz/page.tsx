@@ -42,7 +42,7 @@ export const metadata = {
 }
 
 export default async function RegionsPage() {
-  const regions = await getRegions()
+  const regions = await getRegions().catch(() => [])
 
   const breadcrumbItems = [
     { name: "Ana Sayfa", url: "/" },
@@ -91,7 +91,22 @@ export default async function RegionsPage() {
 
             <StaggerIn direction="up" staggerDelay={0.1}>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
-                {regions.map((region: any, index: number) => (
+                {regions.length === 0 ? (
+                  <div className="col-span-full text-center py-12">
+                    <div className="bg-gray-50 rounded-lg p-8">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Bölgelerimiz Yakında</h3>
+                      <p className="text-gray-600 mb-4">
+                        Hizmet verdiğimiz bölgelerin listesi yakında eklenecek.
+                      </p>
+                      <Link href="/iletisim">
+                        <Button className="bg-amber-500 hover:bg-amber-600 text-black">
+                          İletişime Geçin
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                ) : (
+                  regions.map((region: any, index: number) => (
                   <HoverCard key={region.id}>
                     <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-100">
                       <div className="relative h-48 md:h-56 overflow-hidden">
@@ -162,7 +177,8 @@ export default async function RegionsPage() {
                       </div>
                     </div>
                   </HoverCard>
-                ))}
+                  ))
+                )}
               </div>
             </StaggerIn>
           </div>
