@@ -16,12 +16,25 @@ import { ScrollProgress } from "@/components/animations/scroll-progress"
 import { getServices, getProjects, getRegions } from "@/lib/database"
 
 export default async function Home() {
-  // Veri çekme işlemleri
-  const [services, projects, regions] = await Promise.all([
-    getServices().catch(() => []),
-    getProjects().catch(() => []),
-    getRegions().catch(() => [])
-  ])
+  // Veri çekme işlemleri - hata durumunda boş array döndür
+  let services: any[] = []
+  let projects: any[] = []
+  let regions: any[] = []
+
+  try {
+    const [servicesData, projectsData, regionsData] = await Promise.all([
+      getServices().catch(() => []),
+      getProjects().catch(() => []),
+      getRegions().catch(() => [])
+    ])
+    
+    services = Array.isArray(servicesData) ? servicesData : []
+    projects = Array.isArray(projectsData) ? projectsData : []
+    regions = Array.isArray(regionsData) ? regionsData : []
+  } catch (error) {
+    console.error("Veri çekme hatası:", error)
+    // Hata durumunda boş array'ler kullan
+  }
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -121,7 +134,7 @@ export default async function Home() {
 
           <StaggerIn direction="up" staggerDelay={0.1}>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
-              {services.slice(0, 6).map((service: any, index: number) => (
+              {services.length > 0 ? services.slice(0, 6).map((service: any, index: number) => (
                 <HoverCard key={service.id}>
                   <div className="bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-100">
                     <div className="relative h-48 md:h-56 overflow-hidden">
@@ -147,7 +160,15 @@ export default async function Home() {
                     </div>
                   </div>
                 </HoverCard>
-              ))}
+              )) : (
+                <div className="col-span-full text-center py-12">
+                  <div className="bg-gray-100 rounded-2xl p-8 max-w-md mx-auto">
+                    <HardHat className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold text-gray-700 mb-2">Hizmetler Yakında</h3>
+                    <p className="text-gray-600 text-sm">Hizmetlerimiz şu anda güncelleniyor. Lütfen daha sonra tekrar kontrol edin.</p>
+                  </div>
+                </div>
+              )}
             </div>
           </StaggerIn>
 
@@ -185,7 +206,7 @@ export default async function Home() {
 
           <StaggerIn direction="up" staggerDelay={0.1}>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
-              {regions.slice(0, 6).map((region: any, index: number) => (
+              {regions.length > 0 ? regions.slice(0, 6).map((region: any, index: number) => (
                 <HoverCard key={region.id}>
                   <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-100">
                     <div className="relative h-48 md:h-56 overflow-hidden">
@@ -220,7 +241,15 @@ export default async function Home() {
                     </div>
                   </div>
                 </HoverCard>
-              ))}
+              )) : (
+                <div className="col-span-full text-center py-12">
+                  <div className="bg-gray-100 rounded-2xl p-8 max-w-md mx-auto">
+                    <MapPin className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold text-gray-700 mb-2">Bölgelerimiz Yakında</h3>
+                    <p className="text-gray-600 text-sm">Hizmet verdiğimiz bölgeler şu anda güncelleniyor. Lütfen daha sonra tekrar kontrol edin.</p>
+                  </div>
+                </div>
+              )}
             </div>
           </StaggerIn>
 
@@ -258,7 +287,7 @@ export default async function Home() {
 
           <StaggerIn direction="up" staggerDelay={0.1}>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
-              {projects.slice(0, 6).map((project: any, index: number) => (
+              {projects.length > 0 ? projects.slice(0, 6).map((project: any, index: number) => (
                 <HoverCard key={project.id}>
                   <div className="bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-100">
                     <div className="relative h-48 md:h-56 overflow-hidden">
@@ -300,7 +329,15 @@ export default async function Home() {
                     </div>
                   </div>
                 </HoverCard>
-              ))}
+              )) : (
+                <div className="col-span-full text-center py-12">
+                  <div className="bg-gray-100 rounded-2xl p-8 max-w-md mx-auto">
+                    <Hammer className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold text-gray-700 mb-2">Projelerimiz Yakında</h3>
+                    <p className="text-gray-600 text-sm">Başarılı projelerimiz şu anda güncelleniyor. Lütfen daha sonra tekrar kontrol edin.</p>
+                  </div>
+                </div>
+              )}
             </div>
           </StaggerIn>
 
