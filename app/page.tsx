@@ -6,6 +6,7 @@ import { ArrowRight, CheckCircle, ChevronRight, HardHat, Hammer, Compass, MapPin
 import { motion } from "framer-motion"
 import { AnimatedButton } from "@/components/ui/animated-button"
 import { HoverButton } from "@/components/ui/hover-button"
+import { Button } from "@/components/ui/button"
 import { FadeIn } from "@/components/animations/fade-in"
 import { StaggerIn } from "@/components/animations/stagger-in"
 import { ScaleIn } from "@/components/animations/scale-in"
