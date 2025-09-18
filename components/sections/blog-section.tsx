@@ -27,7 +27,7 @@ interface BlogSectionProps {
 
 export default function BlogSection({ blogPosts }: BlogSectionProps) {
   return (
-    <section className="py-12 md:py-20 bg-gray-50">
+    <section className="py-12 md:py-20 bg-gray-800">
       <div className="container mx-auto px-4">
         <FadeIn>
           <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">

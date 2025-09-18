@@ -83,7 +83,7 @@ export default async function ProjectsPage() {
         </section>
 
         {/* Projects Gallery */}
-        <section className="py-12 md:py-20 bg-white">
+        <section className="py-12 md:py-20 bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">
               <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-3 md:mb-4">
@@ -162,7 +162,7 @@ export default async function ProjectsPage() {
         </section>
 
         {/* Process Section */}
-        <section className="py-12 md:py-20 bg-gray-50">
+        <section className="py-12 md:py-20 bg-gray-800">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center max-w-6xl mx-auto">
               <div>

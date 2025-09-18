@@ -26,7 +26,7 @@ interface ProjectsSectionProps {
 
 export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
-    <section className="py-12 md:py-20 bg-white">
+    <section className="py-12 md:py-20 bg-gray-900">
       <div className="container mx-auto px-4">
         <FadeIn>
           <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">
