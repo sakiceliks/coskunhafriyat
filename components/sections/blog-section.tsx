@@ -17,7 +17,8 @@ interface BlogPost {
   excerpt: string
   image_url?: string
   author: string
-  created_at: string
+  created_at?: string
+  published_date?: string
   category?: string
 }
 
@@ -75,7 +76,7 @@ export default function BlogSection({ blogPosts }: BlogSectionProps) {
                       </div>
                       <div className="flex items-center">
                         <Calendar className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
-                        <span>{new Date(post.created_at).toLocaleDateString('tr-TR')}</span>
+                        <span>{new Date(post.published_date || post.created_at || new Date()).toLocaleDateString('tr-TR')}</span>
                       </div>
                     </div>
 

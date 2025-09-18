@@ -39,7 +39,15 @@ export const metadata = {
 }
 
 export default async function ServicesPage() {
-  const services = await getServices()
+  let services = []
+  
+  try {
+    services = await getServices()
+  } catch (error) {
+    console.error("Hizmetler yüklenirken hata:", error)
+    // Hata durumunda boş array kullan
+    services = []
+  }
 
   const breadcrumbItems = [
     { name: "Ana Sayfa", url: "/" },

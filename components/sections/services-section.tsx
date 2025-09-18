@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, HardHat } from "lucide-react"
+import { ArrowRight, HardHat, CheckCircle } from "lucide-react"
 import { motion } from "framer-motion"
 import { AnimatedButton } from "@/components/ui/animated-button"
 import { Button } from "@/components/ui/button"
@@ -16,6 +16,8 @@ interface Service {
   slug: string
   short_description: string
   image_url?: string
+  features?: string[]
+  price_range?: string
 }
 
 interface ServicesSectionProps {
@@ -59,6 +61,28 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
                     <p className="text-gray-700 mb-4 text-sm sm:text-base line-clamp-3">
                       {service.short_description}
                     </p>
+
+                    {service.price_range && (
+                      <div className="mb-4">
+                        <span className="inline-block bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-sm font-medium">
+                          {service.price_range}
+                        </span>
+                      </div>
+                    )}
+
+                    {service.features && service.features.length > 0 && (
+                      <div className="mb-5 md:mb-6">
+                        <ul className="space-y-1">
+                          {service.features.slice(0, 3).map((feature: string, idx: number) => (
+                            <li key={idx} className="flex items-center text-sm text-gray-600">
+                              <CheckCircle className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
                     <Link href={`/hizmetler/${service.slug}`}>
                       <Button className="bg-amber-500 hover:bg-amber-600 text-black w-full">
                         Detayları Görün

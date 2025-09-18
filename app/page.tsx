@@ -1,5 +1,3 @@
-"use client"
-
 import Link from "next/link"
 import Image from "next/image"
 import { ChevronRight, HardHat, Hammer, Compass } from "lucide-react"
@@ -16,7 +14,7 @@ import ServicesSection from "@/components/sections/services-section"
 import RegionsSection from "@/components/sections/regions-section"
 import ProjectsSection from "@/components/sections/projects-section"
 import BlogSection from "@/components/sections/blog-section"
-import { useState, useEffect } from "react"
+import { getServices, getProjects, getRegions, getBlogPosts } from "@/lib/database"
 
 // Mock data - veritabanı bağlantısı olmadığında kullanılacak
 const mockServices = [
@@ -70,15 +68,17 @@ const mockRegions = [
     id: 1,
     name: "Anadolu Yakası",
     slug: "anadolu-yakasi",
-    description: "Ataşehir, Üsküdar, Kadıköy ve çevresinde hizmet",
-    image_url: "/images/anadolu-yakasi.jpg"
+    short_description: "Ataşehir, Üsküdar, Kadıköy ve çevresinde hizmet",
+    image_url: "/images/anadolu-yakasi.jpg",
+    is_featured: true
   },
   {
     id: 2,
     name: "Avrupa Yakası",
     slug: "avrupa-yakasi",
-    description: "Beşiktaş, Şişli, Beyoğlu ve çevresinde hizmet",
-    image_url: "/images/avrupa-yakasi.jpg"
+    short_description: "Beşiktaş, Şişli, Beyoğlu ve çevresinde hizmet",
+    image_url: "/images/avrupa-yakasi.jpg",
+    is_featured: true
   }
 ]
 
@@ -89,7 +89,9 @@ const mockBlogPosts = [
     slug: "hafriyat-islerinde-dikkat-edilmesi-gerekenler",
     excerpt: "Hafriyat işlerinde güvenlik ve kalite için önemli noktalar",
     image_url: "/images/blog1.jpg",
-    created_at: "2024-01-15"
+    created_at: "2024-01-15",
+    author: "Coşkun Hafriyat",
+    published_date: "2024-01-15"
   },
   {
     id: 2,
@@ -97,48 +99,36 @@ const mockBlogPosts = [
     slug: "is-makinesi-secimi-nasil-yapilir",
     excerpt: "Doğru iş makinesi seçimi için rehber",
     image_url: "/images/blog2.jpg",
-    created_at: "2024-01-10"
+    created_at: "2024-01-10",
+    author: "Coşkun Hafriyat",
+    published_date: "2024-01-10"
   }
 ]
 
-export default function Home() {
-  const [services, setServices] = useState<any[]>([])
-  const [projects, setProjects] = useState<any[]>([])
-  const [regions, setRegions] = useState<any[]>([])
-  const [blogPosts, setBlogPosts] = useState<any[]>([])
-  const [loading, setLoading] = useState(true)
+export default async function Home() {
+  // Server-side veri yükleme
+  let services = mockServices
+  let projects = mockProjects
+  let regions = mockRegions
+  let blogPosts = mockBlogPosts
 
-  useEffect(() => {
-    // Client-side veri yükleme
-    const loadData = async () => {
-      try {
-        // Gerçek API çağrıları burada yapılabilir
-        const [servicesData, projectsData, regionsData, blogPostsData] = await Promise.all([
-         fetch('https://coskunhafriyat.com/api/admin/services').then(res => res.json()),
-         fetch('https://coskunhafriyat.com/api/admin/projects').then(res => res.json()),
-        fetch('https://coskunhafriyat.com/api/admin/regions').then(res => res.json()),
-      fetch('https://coskunhafriyat.com/api/admin/blog').then(res => res.json())
-       ])
+  try {
+    const [servicesData, projectsData, regionsData, blogPostsData] = await Promise.all([
+      getServices(),
+      getProjects(),
+      getRegions(),
+      getBlogPosts()
+    ])
 
-        // Şimdilik mock data kullanıyoruz
-        setServices(servicesData)
-        setProjects(projectsData)
-        setRegions(regionsData)
-        setBlogPosts(blogPostsData)
-        setLoading(false)
-      } catch (error) {
-        console.error("Veri yükleme hatası:", error)
-        // Hata durumunda mock data kullan
-        setServices(mockServices)
-        setProjects(mockProjects)
-        setRegions(mockRegions)
-        setBlogPosts(mockBlogPosts)
-        setLoading(false)
-      }
-    }
-
-    loadData()
-  }, [])
+    // Veritabanından gelen veriler varsa kullan
+    if (servicesData && servicesData.length > 0) services = servicesData
+    if (projectsData && projectsData.length > 0) projects = projectsData
+    if (regionsData && regionsData.length > 0) regions = regionsData
+    if (blogPostsData && blogPostsData.length > 0) blogPosts = blogPostsData
+  } catch (error) {
+    console.error("Veri yükleme hatası:", error)
+    // Hata durumunda mock data kullan (zaten yukarıda tanımlandı)
+  }
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -220,16 +210,16 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      {!loading && <ServicesSection services={services} />}
+      <ServicesSection services={services} />
 
       {/* Regions Section */}
-      {!loading && <RegionsSection regions={regions} />}
+      <RegionsSection regions={regions} />
 
       {/* Projects Section */}
-      {!loading && <ProjectsSection projects={projects} />}
+      <ProjectsSection projects={projects} />
 
       {/* Blog Section */}
-      {!loading && <BlogSection blogPosts={blogPosts} />}
+      <BlogSection blogPosts={blogPosts} />
 
       {/* Features Section */}
       <section className="py-10 md:py-16 bg-gray-50 dark:bg-gray-800">
