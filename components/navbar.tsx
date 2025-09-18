@@ -40,8 +40,8 @@ export function Navbar({ services }: NavbarProps) {
                 <span className="text-black font-bold text-xl">CH</span>
               </div>
               <div className="hidden sm:block">
-                <h3 className="text-xs font-bold text-white">Coşkun Hafriyat</h3>
-                <p className="text-[8px] text-gray-300">Profesyonel Hafriyat Hizmetleri</p>
+                <h1 className="text-xs font-bold text-gray-900">Coşkun Hafriyat</h1>
+                <p className="text-[8px] text-gray-600">Profesyonel Hafriyat Hizmetleri</p>
               </div>
             </Link>
 
