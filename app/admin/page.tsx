@@ -8,12 +8,14 @@ import {
   getTeamMembers,
   getCompanyStats,
   getFaqs,
+  getRegions,
 } from "@/lib/database"
 import { ServicesManager } from "@/components/admin/services-manager"
 import { ProjectsManager } from "@/components/admin/projects-manager"
 import { BlogManager } from "@/components/admin/blog-manager"
 import { PageContentManager } from "@/components/admin/page-content-manager"
-import { BarChart3, Briefcase, PenTool, FileText } from "lucide-react"
+import { RegionsManager } from "@/components/admin/regions-manager"
+import { BarChart3, Briefcase, PenTool, FileText, MapPin } from "lucide-react"
 
 export const metadata = {
   title: "Yönetim Paneli | Coşkun Hafriyat",
@@ -24,7 +26,7 @@ export default async function AdminPage() {
   // In a real app, you'd check authentication here
   // For demo purposes, we'll skip auth
 
-  const [services, projects, blogPosts, pageContent, teamMembers, companyStats, faqs] = await Promise.all([
+  const [services, projects, blogPosts, pageContent, teamMembers, companyStats, faqs, regions] = await Promise.all([
     getServices(),
     getProjects(),
     getBlogPosts(),
@@ -32,6 +34,7 @@ export default async function AdminPage() {
     getTeamMembers(),
     getCompanyStats(),
     getFaqs(),
+    getRegions(),
   ])
 
   const allPageContent = await Promise.all([
@@ -49,7 +52,7 @@ export default async function AdminPage() {
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Toplam Hizmet</CardTitle>
@@ -82,6 +85,16 @@ export default async function AdminPage() {
           </Card>
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Bölgelerimiz</CardTitle>
+              <MapPin className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{regions.length}</div>
+              <p className="text-xs text-muted-foreground">Aktif bölge sayısı</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Sayfa İçerikleri</CardTitle>
               <FileText className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
@@ -94,10 +107,11 @@ export default async function AdminPage() {
 
         {/* Management Tabs */}
         <Tabs defaultValue="services" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="services">Hizmetler</TabsTrigger>
             <TabsTrigger value="projects">Projeler</TabsTrigger>
             <TabsTrigger value="blog">Blog</TabsTrigger>
+            <TabsTrigger value="regions">Bölgelerimiz</TabsTrigger>
             <TabsTrigger value="pages">Sayfa İçerikleri</TabsTrigger>
           </TabsList>
 
@@ -111,6 +125,10 @@ export default async function AdminPage() {
 
           <TabsContent value="blog" className="space-y-6">
             <BlogManager blogPosts={blogPosts} />
+          </TabsContent>
+
+          <TabsContent value="regions" className="space-y-6">
+            <RegionsManager regions={regions} />
           </TabsContent>
 
           <TabsContent value="pages" className="space-y-6">

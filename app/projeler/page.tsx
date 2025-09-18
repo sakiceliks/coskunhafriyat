@@ -287,7 +287,7 @@ function ProjectCard({ project }: { project: any }) {
           <div className="p-4 md:p-6 w-full">
             <h3 className="text-lg md:text-xl font-bold text-white">{project.title}</h3>
             <p className="text-amber-300 mb-4">{project.project_type}</p>
-            <Link href={`/projeler/${project.id}`}>
+            <Link href={`/projeler/${project.slug || project.id}`}>
               <Button variant="outline" className="text-white border-white hover:bg-white/20 bg-transparent">
                 Detayları Görün
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -331,7 +331,7 @@ function ProjectCard({ project }: { project: any }) {
         </div>
       </CardContent>
       <CardFooter className="p-4 md:p-6 pt-0">
-        <Link href={`/projeler/${project.id}`}>
+        <Link href={`/projeler/${project.slug || project.id}`}>
           <Button
             variant="outline"
             className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white text-sm sm:text-base w-full bg-transparent"

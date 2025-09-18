@@ -9,7 +9,6 @@ import { AnimatePresence, motion } from "framer-motion"
 import { usePathname } from "next/navigation"
 import { ScrollToTop } from "@/components/scroll-to-top"
 
-// Initialize the fonts with display swap for better performance
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
@@ -26,17 +25,19 @@ const poppins = Poppins({
 
 export default function ClientLayout({
   children,
+  services,
 }: {
   children: React.ReactNode
+  services?: any[]
 }) {
   const pathname = usePathname()
 
   return (
-    <html lang="en" className={`${montserrat.variable} ${poppins.variable}`} suppressHydrationWarning>
+    <html lang="tr" className={`${montserrat.variable} ${poppins.variable}`} suppressHydrationWarning>
       <body className={`${poppins.className} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <div className="flex min-h-screen flex-col">
-            <Navbar />
+            <Navbar services={services ?? []} />
             <AnimatePresence mode="wait">
               <motion.main
                 key={pathname}

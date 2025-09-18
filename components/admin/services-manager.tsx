@@ -166,7 +166,7 @@ export function ServicesManager({ services }: ServicesManagerProps) {
               <div className="flex justify-between items-center">
                 <div className="flex space-x-2">
                   <Button variant="outline" size="sm" asChild>
-                    <a href={`/services/${service.slug || service.id}`} target="_blank" rel="noreferrer">
+                    <a href={`/hizmetler/${service.slug || service.id}`} target="_blank" rel="noreferrer">
                       <Eye className="h-4 w-4" />
                     </a>
                   </Button>

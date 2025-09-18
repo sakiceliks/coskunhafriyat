@@ -55,6 +55,12 @@ export async function getProjectById(id: number) {
   return result[0] || null
 }
 
+export async function getProjectBySlug(slug: string) {
+  const sql = getDatabase()
+  const result = await sql`SELECT * FROM projects WHERE slug = ${slug} AND is_active = true`
+  return result[0] || null
+}
+
 // Blog Posts - Updated to match actual schema
 export async function getBlogPosts(featured?: boolean) {
   const sql = getDatabase()
@@ -165,9 +171,17 @@ export async function createProject(data: any) {
     project_size,
   } = data
 
+  // Generate slug from title
+  const slug = title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .trim()
+
   const result = await sql`
-    INSERT INTO projects (title, description, short_description, image_url, gallery_images, location, completion_date, project_type, client_name, project_size)
-    VALUES (${title}, ${description}, ${short_description}, ${image_url}, ${gallery_images}, ${location}, ${completion_date}, ${project_type}, ${client_name}, ${project_size})
+    INSERT INTO projects (title, slug, description, short_description, image_url, gallery_images, location, completion_date, project_type, client_name, project_size)
+    VALUES (${title}, ${slug}, ${description}, ${short_description}, ${image_url}, ${gallery_images}, ${location}, ${completion_date}, ${project_type}, ${client_name}, ${project_size})
     RETURNING *
   `
 
@@ -189,9 +203,17 @@ export async function updateProject(id: number, data: any) {
     project_size,
   } = data
 
+  // Generate slug from title
+  const slug = title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .trim()
+
   const result = await sql`
     UPDATE projects 
-    SET title = ${title}, description = ${description}, short_description = ${short_description}, image_url = ${image_url}, 
+    SET title = ${title}, slug = ${slug}, description = ${description}, short_description = ${short_description}, image_url = ${image_url}, 
         gallery_images = ${gallery_images}, location = ${location}, completion_date = ${completion_date}, project_type = ${project_type},
         client_name = ${client_name}, project_size = ${project_size}, updated_at = NOW()
     WHERE id = ${id}
@@ -357,4 +379,101 @@ export async function updateFaq(id: number, data: any) {
 export async function deleteFaq(id: number) {
   const sql = getDatabase()
   await sql`UPDATE faqs SET is_active = false WHERE id = ${id}`
+}
+
+// Regions Management
+export async function getRegions(featured?: boolean) {
+  const sql = getDatabase()
+  if (featured) {
+    return await sql`SELECT * FROM regions WHERE is_active = true AND is_featured = true ORDER BY display_order, created_at DESC`
+  } else {
+    return await sql`SELECT * FROM regions WHERE is_active = true ORDER BY display_order, created_at DESC`
+  }
+}
+
+export async function getRegionById(id: number) {
+  const sql = getDatabase()
+  const result = await sql`SELECT * FROM regions WHERE id = ${id} AND is_active = true`
+  return result[0] || null
+}
+
+export async function getRegionBySlug(slug: string) {
+  const sql = getDatabase()
+  const result = await sql`SELECT * FROM regions WHERE slug = ${slug} AND is_active = true`
+  return result[0] || null
+}
+
+export async function createRegion(data: any) {
+  const sql = getDatabase()
+  const { 
+    name, 
+    description, 
+    short_description, 
+    image_url, 
+    gallery_images, 
+    location, 
+    services_offered, 
+    contact_phone, 
+    contact_email, 
+    is_featured, 
+    display_order 
+  } = data
+
+  // Generate slug from name
+  const slug = name
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .trim()
+
+  const result = await sql`
+    INSERT INTO regions (name, slug, description, short_description, image_url, gallery_images, location, services_offered, contact_phone, contact_email, is_featured, display_order)
+    VALUES (${name}, ${slug}, ${description}, ${short_description}, ${image_url}, ${gallery_images}, ${location}, ${services_offered}, ${contact_phone}, ${contact_email}, ${is_featured}, ${display_order})
+    RETURNING *
+  `
+
+  return result[0]
+}
+
+export async function updateRegion(id: number, data: any) {
+  const sql = getDatabase()
+  const { 
+    name, 
+    description, 
+    short_description, 
+    image_url, 
+    gallery_images, 
+    location, 
+    services_offered, 
+    contact_phone, 
+    contact_email, 
+    is_featured, 
+    display_order 
+  } = data
+
+  // Generate slug from name
+  const slug = name
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .trim()
+
+  const result = await sql`
+    UPDATE regions 
+    SET name = ${name}, slug = ${slug}, description = ${description}, short_description = ${short_description}, 
+        image_url = ${image_url}, gallery_images = ${gallery_images}, location = ${location}, 
+        services_offered = ${services_offered}, contact_phone = ${contact_phone}, contact_email = ${contact_email},
+        is_featured = ${is_featured}, display_order = ${display_order}, updated_at = NOW()
+    WHERE id = ${id}
+    RETURNING *
+  `
+
+  return result[0]
+}
+
+export async function deleteRegion(id: number) {
+  const sql = getDatabase()
+  await sql`UPDATE regions SET is_active = false WHERE id = ${id}`
 }

@@ -5,7 +5,7 @@ import { notFound } from "next/navigation"
 import { ProjectJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld"
 
 import { Button } from "@/components/ui/button"
-import { getProjectById } from "@/lib/database"
+import { getProjectById, getProjectBySlug } from "@/lib/database"
 
 interface ProjectPageProps {
   params: {
@@ -14,7 +14,12 @@ interface ProjectPageProps {
 }
 
 export async function generateMetadata({ params }: ProjectPageProps) {
-  const project = await getProjectById(Number.parseInt(params.id))
+  let project = await getProjectBySlug(params.id)
+
+  // If not found and the slug is numeric, try getting by ID
+  if (!project && /^\d+$/.test(params.id)) {
+    project = await getProjectById(Number.parseInt(params.id))
+  }
 
   if (!project) {
     return {
@@ -29,7 +34,7 @@ export async function generateMetadata({ params }: ProjectPageProps) {
     openGraph: {
       title: `${project.title} | Coşkun Hafriyat`,
       description: project.description || project.short_description,
-      url: `https://coskunhafriyat.com/projeler/${project.id}`,
+      url: `https://coskunhafriyat.com/projeler/${project.slug || project.id}`,
       siteName: "Coşkun Hafriyat",
       images: [
         {
@@ -49,13 +54,18 @@ export async function generateMetadata({ params }: ProjectPageProps) {
       images: [project.image_url || "https://coskunhafriyat.com/project-default-og.jpg"],
     },
     alternates: {
-      canonical: `https://coskunhafriyat.com/projeler/${project.id}`,
+      canonical: `https://coskunhafriyat.com/projeler/${project.slug || project.id}`,
     },
   }
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const project = await getProjectById(Number.parseInt(params.id))
+  let project = await getProjectBySlug(params.id)
+
+  // If not found and the slug is numeric, try getting by ID
+  if (!project && /^\d+$/.test(params.id)) {
+    project = await getProjectById(Number.parseInt(params.id))
+  }
 
   if (!project) {
     notFound()
@@ -72,7 +82,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const breadcrumbItems = [
     { name: "Ana Sayfa", url: "/" },
     { name: "Projelerimiz", url: "/projeler" },
-    { name: project.title, url: `/projeler/${project.id}` },
+    { name: project.title, url: `/projeler/${project.slug || project.id}` },
   ]
 
   return (

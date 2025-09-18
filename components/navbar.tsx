@@ -1,484 +1,260 @@
 "use client"
 
-import type React from "react"
-
-import { useState, useEffect, useRef, useCallback } from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { HardHat, ChevronDown, Menu, Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
-import { motion, AnimatePresence } from "framer-motion"
-
 import { Button } from "@/components/ui/button"
-import { AnimatedButton } from "@/components/ui/animated-button"
-import { useReducedMotion } from "@/hooks/use-reduced-motion"
-import { MobileMenu } from "@/components/mobile-menu"
+import { Separator } from "@/components/ui/separator"
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu"
+import { Phone, Mail, MapPin, X, ChevronRight, Menu, Instagram, Facebook, Twitter, Linkedin, Star, Clock, Users } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import { useState } from "react"
+import { cn } from "@/lib/utils"
 
-export function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const pathname = usePathname()
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(null)
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null)
-  const prefersReducedMotion = useReducedMotion()
+interface NavbarProps {
+  services: Array<{ title: string; slug: string }>
+}
 
-  const lastScrollYRef = useRef(0)
+export function Navbar({ services }: NavbarProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  // After mounting, we can access the theme
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  const handleScroll = useCallback(() => {
-    const currentScrollY = window.scrollY
-    const lastScrollY = lastScrollYRef.current
-
-    // Determine scroll direction
-    if (currentScrollY > lastScrollY + 5) {
-      setScrollDirection("down")
-    } else if (currentScrollY < lastScrollY - 5) {
-      setScrollDirection("up")
-    }
-
-    // Update scroll state
-    if (currentScrollY > 10) {
-      setScrolled(true)
-    } else {
-      setScrolled(false)
-    }
-
-    // Always show navbar at the top of the page
-    if (currentScrollY < 50) {
-      setScrollDirection("up")
-    }
-
-    lastScrollYRef.current = currentScrollY
-  }, [])
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true })
-
-    // Close mobile menu on route change
-    const handleRouteChange = () => {
-      setMobileMenuOpen(false)
-    }
-
-    window.addEventListener("popstate", handleRouteChange)
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-      window.removeEventListener("popstate", handleRouteChange)
-    }
-  }, [handleScroll])
-
-  // Toggle mobile menu with useCallback to ensure consistent behavior
-  const toggleMobileMenu = useCallback(() => {
-    setMobileMenuOpen((prevState) => !prevState)
-  }, [])
-
-  // Close mobile menu
-  const closeMobileMenu = useCallback(() => {
-    setMobileMenuOpen(false)
-  }, [])
-
-  // Navbar animation variants
-  const navVariants = {
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: prefersReducedMotion ? "tween" : "spring",
-        stiffness: 100,
-        damping: 20,
-        duration: prefersReducedMotion ? 0.1 : 0.3,
-      },
-    },
-    hidden: {
-      y: -100,
-      opacity: 0,
-      transition: {
-        type: prefersReducedMotion ? "tween" : "spring",
-        stiffness: 100,
-        damping: 20,
-        duration: prefersReducedMotion ? 0.1 : 0.3,
-      },
-    },
-  }
-
-  const shouldShowNavbar = scrollDirection === "up" || !scrolled || lastScrollYRef.current < 50
+  const navigationItems = [
+    { name: "Ana Sayfa", href: "/" },
+    { name: "Hakkımızda", href: "/hakkimizda" },
+    { name: "Hizmetler", href: "/hizmetler" },
+    { name: "Bölgelerimiz", href: "/bolgelerimiz" },
+    { name: "Projeler", href: "/projeler" },
+    { name: "İletişim", href: "/iletisim" }
+  ]
 
   return (
-    <>
-      <motion.header
-        className={`sticky top-0 z-50 w-full backdrop-blur-sm transition-all duration-300 ${
-          scrolled ? "bg-background/95 shadow-md" : "bg-background/80"
-        } safe-top`}
-        initial="visible"
-        animate={shouldShowNavbar ? "visible" : "hidden"}
-        variants={navVariants}
-      >
-        <div className="container mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 max-w-[1920px]">
-          <div className="flex h-14 sm:h-16 md:h-18 lg:h-20 items-center justify-between">
-            {/* Logo */}
-            <div className="flex items-center">
-              <Link href="/" className="flex items-center gap-1.5 sm:gap-2 group">
-                <motion.div
-                  whileHover={{ rotate: 15, scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className="bg-amber-500 text-white p-1.5 sm:p-2 rounded-lg"
-                >
-                  <HardHat className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />
-                </motion.div>
-                <div className="flex flex-col">
-                  <motion.span
-                    className="text-lg sm:text-xl md:text-2xl font-bold text-foreground leading-none"
-                    initial={{ opacity: 1 }}
-                    whileHover={{ scale: 1.03 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <span className="inline xs:hidden">CH</span>
-                    <span className="hidden xs:inline">Coşkun Hafriyat</span>
-                  </motion.span>
-                  <span className="text-[10px] sm:text-xs text-muted-foreground hidden xs:inline">
-                    İş Makinesi Kiralama
-                  </span>
-                </div>
-              </Link>
+    <div className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
+      <header className="relative z-20">
+        {/* Top Bar */}
+        <div className="bg-amber-500 text-black py-2 px-4">
+          <div className="container mx-auto flex items-center justify-between text-sm">
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <Phone className="h-4 w-4" />
+                <span className="font-medium">+90 531 281 29 58</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="h-4 w-4" />
+                <span>info@coskunhafriyat.com.tr</span>
+              </div>
             </div>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center justify-center">
-              <ul className="flex items-center space-x-0.5 sm:space-x-1 lg:space-x-2">
-                <NavItem
-                  href="/"
-                  label="Ana Sayfa"
-                  isActive={pathname === "/"}
-                  onHover={() => setHoveredItem("home")}
-                  onLeave={() => setHoveredItem(null)}
-                  isHovered={hoveredItem === "home"}
-                />
-
-                <DropdownNavItem
-                  label="Hizmetler"
-                  items={[
-                    { href: "/hizmetler/hafriyat", label: "Hafriyat ve Kazı" },
-                    { href: "/hizmetler/is-makinesi-kiralama", label: "İş Makinesi Kiralama" },
-                    { href: "/hizmetler/yikim-hizmetleri", label: "Yıkım Hizmetleri" },
-                    { href: "/hizmetler/nakliye-tasimacilik", label: "Nakliye ve Taşıma" },
-                  ]}
-                  pathname={pathname}
-                  onHover={() => setHoveredItem("services")}
-                  onLeave={() => setHoveredItem(null)}
-                  isHovered={hoveredItem === "services"}
-                />
-
-                <NavItem
-                  href="/projeler"
-                  label="Projeler"
-                  isActive={pathname === "/projeler"}
-                  onHover={() => setHoveredItem("projects")}
-                  onLeave={() => setHoveredItem(null)}
-                  isHovered={hoveredItem === "projects"}
-                />
-
-                <NavItem
-                  href="/blog"
-                  label="Blog"
-                  isActive={pathname.startsWith("/blog")}
-                  onHover={() => setHoveredItem("blog")}
-                  onLeave={() => setHoveredItem(null)}
-                  isHovered={hoveredItem === "blog"}
-                />
-
-                <NavItem
-                  href="/hakkimizda"
-                  label="Hakkımızda"
-                  isActive={pathname === "/hakkimizda"}
-                  onHover={() => setHoveredItem("about")}
-                  onLeave={() => setHoveredItem(null)}
-                  isHovered={hoveredItem === "about"}
-                />
-
-                <NavItem
-                  href="/iletisim"
-                  label="İletişim"
-                  isActive={pathname === "/iletisim"}
-                  onHover={() => setHoveredItem("contact")}
-                  onLeave={() => setHoveredItem(null)}
-                  isHovered={hoveredItem === "contact"}
-                />
-              </ul>
-            </nav>
-
-            {/* Desktop Right Side */}
-            <div className="hidden md:flex items-center gap-2 lg:gap-4">
-              <Link href="/iletisim#quote-form">
-                <AnimatedButton
-                  className="bg-amber-600 hover:bg-amber-700 text-white font-medium text-sm sm:text-base h-9 sm:h-10 transition-all duration-300 shadow-md hover:shadow-lg"
-                  hoverEffect="lift"
-                  iconAnimation={true}
-                >
-                  Teklif Alın
-                  <ChevronDown className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
-                </AnimatedButton>
-              </Link>
-
-              {/* Theme toggle button */}
-              {mounted && (
-                <motion.div
-                  whileHover={{ rotate: 15 }}
-                  whileTap={{ scale: 0.9, rotate: 30 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className="bg-gray-100 dark:bg-gray-800 p-1.5 sm:p-2 rounded-full"
-                >
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                    aria-label="Toggle theme"
-                    className="h-7 w-7 sm:h-8 sm:w-8 rounded-full"
-                    type="button"
-                  >
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={theme}
-                        initial={{ opacity: 0, rotate: -30, scale: 0.5 }}
-                        animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                        exit={{ opacity: 0, rotate: 30, scale: 0.5 }}
-                        transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
-                      >
-                        {theme === "dark" ? (
-                          <Sun className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-amber-500" />
-                        ) : (
-                          <Moon className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-gray-700 dark:text-gray-300" />
-                        )}
-                      </motion.div>
-                    </AnimatePresence>
-                  </Button>
-                </motion.div>
-              )}
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className="flex items-center gap-1.5 sm:gap-2 md:hidden">
-              {/* Mobile theme toggle */}
-              {mounted && (
-                <motion.div
-                  whileHover={{ rotate: 15 }}
-                  whileTap={{ scale: 0.9, rotate: 30 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                    aria-label="Toggle theme"
-                    className="h-8 w-8 sm:h-9 sm:w-9"
-                    type="button"
-                  >
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={theme}
-                        initial={{ opacity: 0, rotate: -30, scale: 0.5 }}
-                        animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                        exit={{ opacity: 0, rotate: 30, scale: 0.5 }}
-                        transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
-                      >
-                        {theme === "dark" ? (
-                          <Sun className="h-4 w-4 sm:h-5 sm:w-5 text-amber-500" />
-                        ) : (
-                          <Moon className="h-4 w-4 sm:h-5 sm:w-5 text-gray-700 dark:text-gray-300" />
-                        )}
-                      </motion.div>
-                    </AnimatePresence>
-                  </Button>
-                </motion.div>
-              )}
-
-              {/* Hamburger Menu Button */}
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-8 w-8 sm:h-9 sm:w-9 bg-amber-50 dark:bg-amber-900/20"
-                onClick={toggleMobileMenu}
-                aria-expanded={mobileMenuOpen}
-                aria-label="Toggle menu"
-                type="button"
-              >
-                <Menu className="h-4 w-4 sm:h-5 sm:w-5 text-amber-600 dark:text-amber-400" />
-              </Button>
+            <div className="hidden md:flex items-center gap-4">
+              <span className="text-amber-800 font-medium">7/24 Hizmet</span>
+              <SocialLinks />
             </div>
           </div>
         </div>
-      </motion.header>
 
-      {/* Mobile Menu - Now using a separate component for better isolation */}
-      <MobileMenu isOpen={mobileMenuOpen} onClose={closeMobileMenu} />
-    </>
-  )
-}
+        {/* Main Navigation */}
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-amber-500 rounded-lg flex items-center justify-center">
+                <span className="text-black font-bold text-xl">CH</span>
+              </div>
+              <div className="hidden sm:block">
+                <h1 className="text-xl font-bold text-gray-900">Coşkun Hafriyat</h1>
+                <p className="text-sm text-gray-600">Profesyonel Hafriyat Hizmetleri</p>
+              </div>
+            </Link>
 
-// Desktop Nav Item
-function NavItem({
-  href,
-  label,
-  isActive,
-  onHover,
-  onLeave,
-  isHovered,
-}: {
-  href: string
-  label: string
-  isActive: boolean
-  onHover: () => void
-  onLeave: () => void
-  isHovered: boolean
-}) {
-  return (
-    <li>
-      <Link
-        href={href}
-        className={`relative px-2 sm:px-3 py-1.5 sm:py-2 rounded-md text-sm sm:text-base font-medium transition-colors flex items-center focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 ${
-          isActive
-            ? "text-amber-500 dark:text-amber-400"
-            : "text-foreground hover:text-amber-500 hover:bg-amber-50/50 dark:hover:bg-amber-900/10"
-        }`}
-        onMouseEnter={onHover}
-        onMouseLeave={onLeave}
-      >
-        <motion.span
-          animate={isHovered && !isActive ? { y: -2 } : { y: 0 }}
-          transition={{ type: "spring", stiffness: 400, damping: 15 }}
-          className="inline-block"
-        >
-          {label}
-        </motion.span>
-        {isActive && (
-          <motion.div
-            className="absolute bottom-0 left-0 right-0 h-0.5 bg-amber-500"
-            layoutId="navbar-underline"
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          />
-        )}
-      </Link>
-    </li>
-  )
-}
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center space-x-8">
+              <NavigationMenu>
+                <NavigationMenuList>
+                  {navigationItems.map((item) => (
+                    <NavigationMenuItem key={item.name}>
+                      <Link href={item.href} legacyBehavior passHref>
+                        <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-amber-50 hover:text-amber-600 focus:bg-amber-50 focus:text-amber-600 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-amber-100 data-[state=open]:bg-amber-50">
+                          {item.name}
+                        </NavigationMenuLink>
+                      </Link>
+                    </NavigationMenuItem>
+                  ))}
+                </NavigationMenuList>
+              </NavigationMenu>
+            </nav>
 
-// Desktop Dropdown Nav Item
-function DropdownNavItem({
-  label,
-  items,
-  pathname,
-  onHover,
-  onLeave,
-  isHovered,
-}: {
-  label: string
-  items: { href: string; label: string }[]
-  pathname: string
-  onHover: () => void
-  onLeave: () => void
-  isHovered: boolean
-}) {
-  const isActive = items.some((item) => item.href === pathname)
-  const [isOpen, setIsOpen] = useState(false)
-  const dropdownRef = useRef<HTMLLIElement>(null)
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false)
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [])
-
-  // Handle keyboard navigation
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" || e.key === " ") {
-      setIsOpen(!isOpen)
-      e.preventDefault()
-    } else if (e.key === "Escape" && isOpen) {
-      setIsOpen(false)
-    }
-  }
-
-  return (
-    <li
-      className="relative"
-      ref={dropdownRef}
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
-    >
-      <button
-        className={`relative px-2 sm:px-3 py-1.5 sm:py-2 rounded-md text-sm sm:text-base font-medium transition-colors flex items-center ${
-          isActive
-            ? "text-amber-500"
-            : "text-foreground hover:text-amber-500 hover:bg-amber-50/50 dark:hover:bg-amber-900/10"
-        }`}
-        onMouseEnter={onHover}
-        onMouseLeave={onLeave}
-        onClick={() => setIsOpen(!isOpen)}
-        onKeyDown={handleKeyDown}
-        aria-expanded={isOpen}
-        aria-haspopup="true"
-        type="button"
-      >
-        <motion.span
-          animate={isHovered && !isActive ? { y: -2 } : { y: 0 }}
-          transition={{ type: "spring", stiffness: 400, damping: 15 }}
-          className="inline-flex items-center gap-1"
-        >
-          {label}
-          <motion.div animate={isOpen ? { rotate: 180 } : { rotate: 0 }} transition={{ duration: 0.2 }}>
-            <ChevronDown className="h-4 w-4" />
-          </motion.div>
-        </motion.span>
-        {isActive && (
-          <motion.div
-            className="absolute bottom-0 left-0 right-0 h-0.5 bg-amber-500"
-            layoutId="navbar-underline"
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          />
-        )}
-      </button>
-
-      {isOpen && (
-        <div
-          className="absolute left-0 mt-1 w-48 sm:w-56 rounded-xl bg-white dark:bg-gray-800 shadow-lg p-1.5 sm:p-2 z-50"
-          role="menu"
-          aria-orientation="vertical"
-          aria-labelledby="menu-button"
-        >
-          {items.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 5 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2, delay: index * 0.05 }}
-            >
-              <Link
-                href={item.href}
-                className={`block cursor-pointer text-sm sm:text-base py-1.5 sm:py-2 px-2.5 sm:px-3 rounded-lg ${
-                  pathname === item.href
-                    ? "text-amber-500 bg-amber-50 dark:bg-amber-900/20"
-                    : "hover:text-amber-500 hover:bg-amber-50/50 dark:hover:bg-amber-900/10"
-                }`}
-                onClick={() => setIsOpen(false)}
-                role="menuitem"
-              >
-                {item.label}
+            {/* CTA Buttons */}
+            <div className="hidden lg:flex items-center gap-3">
+              <Link href="/iletisim">
+                <Button variant="outline" size="sm" className="border-amber-500 text-amber-600 hover:bg-amber-50">
+                  <Phone className="h-4 w-4 mr-2" />
+                  Hemen Ara
+                </Button>
               </Link>
-            </motion.div>
-          ))}
+              <Link href="/iletisim">
+                <Button size="sm" className="bg-amber-500 hover:bg-amber-600 text-black">
+                  <Mail className="h-4 w-4 mr-2" />
+                  Teklif Al
+                </Button>
+              </Link>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="lg:hidden">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Toggle Menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-full sm:w-[400px] p-0">
+                <SheetTitle className="sr-only">Navigasyon Menüsü</SheetTitle>
+                <MobileMenu 
+                  navigationItems={navigationItems}
+                  services={services} 
+                  onClose={() => setIsMenuOpen(false)} 
+                />
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
-      )}
-    </li>
+      </header>
+    </div>
+  )
+}
+
+function SocialLinks() {
+  return (
+    <div className="flex gap-3">
+      <Link href="#" aria-label="Instagram" className="text-amber-800 hover:text-amber-900 transition-colors">
+        <Instagram className="h-4 w-4" />
+      </Link>
+      <Link href="#" aria-label="Facebook" className="text-amber-800 hover:text-amber-900 transition-colors">
+        <Facebook className="h-4 w-4" />
+      </Link>
+      <Link href="#" aria-label="Twitter" className="text-amber-800 hover:text-amber-900 transition-colors">
+        <Twitter className="h-4 w-4" />
+      </Link>
+      <Link href="#" aria-label="LinkedIn" className="text-amber-800 hover:text-amber-900 transition-colors">
+        <Linkedin className="h-4 w-4" />
+      </Link>
+    </div>
+  )
+}
+
+interface MobileMenuProps {
+  navigationItems: Array<{ name: string; href: string }>
+  services: Array<{ title: string; slug: string }>
+  onClose: () => void
+}
+
+function MobileMenu({ navigationItems, services, onClose }: MobileMenuProps) {
+  return (
+    <div className="flex flex-col h-full bg-white">
+      {/* Header */}
+      <div className="flex items-center justify-between p-6 border-b border-gray-200">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center">
+            <span className="text-black font-bold text-lg">CH</span>
+          </div>
+          <div>
+            <h1 className="text-lg font-bold text-gray-900">Coşkun Hafriyat</h1>
+            <p className="text-sm text-gray-600">Profesyonel Hafriyat Hizmetleri</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation */}
+      <div className="flex-1 overflow-y-auto">
+        <div className="p-6 space-y-6">
+          {/* Main Navigation */}
+          <div className="space-y-1">
+            <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Menü</h3>
+            {navigationItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={onClose}
+                className="flex items-center justify-between p-3 rounded-lg hover:bg-amber-50 transition-colors text-gray-900"
+              >
+                <span className="font-medium">{item.name}</span>
+                <ChevronRight className="h-4 w-4 text-gray-400" />
+              </Link>
+            ))}
+          </div>
+
+          <Separator className="bg-gray-200" />
+
+          {/* Services */}
+          <div className="space-y-1">
+            <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Hizmetlerimiz</h3>
+            {services.map((service) => (
+              <Link
+                key={service.title}
+                href={`/hizmetler/${service.slug}`}
+                onClick={onClose}
+                className="flex items-center justify-between p-3 rounded-lg hover:bg-amber-50 transition-colors text-gray-700"
+              >
+                <span className="text-sm">{service.title}</span>
+                <ChevronRight className="h-4 w-4 text-gray-400" />
+              </Link>
+            ))}
+          </div>
+
+          <Separator className="bg-gray-200" />
+
+          {/* Contact Info */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">İletişim</h3>
+            <div className="space-y-3">
+              <Link
+                href="tel:+905312812958"
+                className="flex items-center gap-3 p-3 rounded-lg hover:bg-amber-50 transition-colors text-gray-900"
+              >
+                <Phone className="h-5 w-5 text-amber-500" />
+                <div>
+                  <div className="font-medium">+90 531 281 29 58</div>
+                  <div className="text-sm text-gray-500">Hemen ara</div>
+                </div>
+              </Link>
+              <Link
+                href="mailto:info@coskunhafriyat.com.tr"
+                className="flex items-center gap-3 p-3 rounded-lg hover:bg-amber-50 transition-colors text-gray-900"
+              >
+                <Mail className="h-5 w-5 text-amber-500" />
+                <div>
+                  <div className="font-medium">info@coskunhafriyat.com.tr</div>
+                  <div className="text-sm text-gray-500">E-posta gönder</div>
+                </div>
+              </Link>
+              <div className="flex items-center gap-3 p-3">
+                <MapPin className="h-5 w-5 text-amber-500" />
+                <div>
+                  <div className="font-medium">İstanbul, Türkiye</div>
+                  <div className="text-sm text-gray-500">Tüm bölgelere hizmet</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="p-6 border-t border-gray-200 bg-gray-50">
+        <div className="space-y-4">
+          <div className="flex gap-2">
+            <Link href="/iletisim" className="flex-1" onClick={onClose}>
+              <Button className="w-full bg-amber-500 hover:bg-amber-600 text-black">
+                <Phone className="h-4 w-4 mr-2" />
+                Ücretsiz Keşif
+              </Button>
+            </Link>
+            <Link href="/iletisim" className="flex-1" onClick={onClose}>
+              <Button variant="outline" className="w-full border-amber-500 text-amber-600 hover:bg-amber-50">
+                <Mail className="h-4 w-4 mr-2" />
+                Teklif Al
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }

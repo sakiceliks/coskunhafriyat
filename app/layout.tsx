@@ -1,15 +1,18 @@
-import type React from "react"
 import "./globals.css"
+import { getServices } from "@/lib/database"
 import ClientLayout from "./client-layout"
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return <ClientLayout>{children}</ClientLayout>
+export const metadata = {
+  title: "Coşkun Hafriyat",
+  description: "Profesyonel hafriyat, kazı ve yıkım hizmetleri",
 }
 
-export const metadata = {
-      generator: 'v0.app'
-    };
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const services = await getServices()
+
+  return (
+    <ClientLayout services={services}>
+      {children}
+    </ClientLayout>
+  )
+}

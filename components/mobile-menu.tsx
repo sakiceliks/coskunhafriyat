@@ -1,316 +1,122 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { HardHat, ChevronRight, X } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { AnimatedButton } from "@/components/ui/animated-button"
+import { Separator } from "@/components/ui/separator"
+import { Phone, Mail, MapPin, X, ChevronRight } from "lucide-react"
+import Image from "next/image"
 
 interface MobileMenuProps {
-  isOpen: boolean
+  navigationItems: Array<{ name: string; href: string }>
+  services: Array<{ title: string; slug: string }>
   onClose: () => void
 }
 
-export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
-  const pathname = usePathname()
-  const menuRef = useRef<HTMLDivElement>(null)
-
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
-    }
-
-    return () => {
-      document.body.style.overflow = ""
-    }
-  }, [isOpen])
-
-  // Close mobile menu when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node) && isOpen) {
-        onClose()
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [isOpen, onClose])
-
-  // Close mobile menu on route change
-  useEffect(() => {
-    const handleRouteChange = () => {
-      if (isOpen) onClose()
-    }
-
-    window.addEventListener("popstate", handleRouteChange)
-    return () => window.removeEventListener("popstate", handleRouteChange)
-  }, [isOpen, onClose])
-
+export function MobileMenu({ navigationItems, services, onClose }: MobileMenuProps) {
   return (
-    <>
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
-            onClick={onClose}
-          />
-        )}
-      </AnimatePresence>
+    <div className="flex flex-col h-full bg-background">
+      {/* Header */}
+      <div className="flex items-center justify-between p-6 border-b">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <span className="text-primary-foreground font-bold">CH</span>
+          </div>
+<Image src="/logo.png" alt="Logo" width={200} height={200} />           
+        </div>
+        <Button variant="ghost" size="icon" onClick={onClose}>
+          <X className="h-5 w-5" />
+        </Button>
+      </div>
 
-      {/* Mobile Menu Panel */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            ref={menuRef}
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed top-0 right-0 bottom-0 w-[85vw] sm:w-[350px] bg-background border-l border-amber-200 dark:border-amber-800 z-50 md:hidden overflow-y-auto"
-          >
-            <div className="flex flex-col h-full p-4 sm:p-6">
-              <div className="flex items-center justify-between border-b py-3 sm:py-4">
-                <Link href="/" className="flex items-center gap-1.5 sm:gap-2" onClick={onClose}>
-                  <motion.div
-                    initial={{ rotate: -10, scale: 0.9 }}
-                    animate={{ rotate: 0, scale: 1 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 15, delay: 0.1 }}
-                    className="bg-amber-500 text-white p-1 sm:p-1.5 rounded-md"
-                  >
-                    <HardHat className="h-4 w-4 sm:h-5 sm:w-5" />
-                  </motion.div>
-                  <motion.div
-                    initial={{ x: -10, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.2 }}
-                    className="flex flex-col"
-                  >
-                    <span className="text-base sm:text-lg font-bold">Coşkun Hafriyat</span>
-                    <span className="text-[10px] sm:text-xs text-muted-foreground">İş Makinesi Kiralama</span>
-                  </motion.div>
-                </Link>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={onClose}
-                  className="h-8 w-8 sm:h-9 sm:w-9 bg-amber-50 dark:bg-amber-900/20"
-                  type="button"
-                >
-                  <X className="h-4 w-4 sm:h-5 sm:w-5 text-amber-600 dark:text-amber-400" />
-                  <span className="sr-only">Close menu</span>
-                </Button>
-              </div>
-
-              <nav className="flex flex-col gap-4 sm:gap-6 py-6 sm:py-8">
-                <MobileNavItem href="/" label="Ana Sayfa" isActive={pathname === "/"} onClick={onClose} delay={0.1} />
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 20,
-                    delay: 0.2,
-                  }}
-                  className="space-y-4"
-                >
-                  <motion.p
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="text-lg font-medium text-center"
-                  >
-                    Hizmetler
-                  </motion.p>
-                  <motion.div
-                    className="space-y-3"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.4, staggerChildren: 0.1 }}
-                  >
-                    <MobileSubNavItem
-                      href="/hizmetler/hafriyat"
-                      label="Hafriyat ve Kazı"
-                      isActive={pathname === "/hizmetler/hafriyat"}
-                      onClick={onClose}
-                    />
-                    <MobileSubNavItem
-                      href="/hizmetler/is-makinesi-kiralama"
-                      label="İş Makinesi Kiralama"
-                      isActive={pathname === "/hizmetler/is-makinesi-kiralama"}
-                      onClick={onClose}
-                    />
-                    <MobileSubNavItem
-                      href="/hizmetler/yikim-hizmetleri"
-                      label="Yıkım Hizmetleri"
-                      isActive={pathname === "/hizmetler/yikim-hizmetleri"}
-                      onClick={onClose}
-                    />
-                    <MobileSubNavItem
-                      href="/hizmetler/nakliye-tasimacilik"
-                      label="Nakliye ve Taşıma"
-                      isActive={pathname === "/hizmetler/nakliye-tasimacilik"}
-                      onClick={onClose}
-                    />
-                  </motion.div>
-                </motion.div>
-
-                <MobileNavItem
-                  href="/projeler"
-                  label="Projeler"
-                  isActive={pathname === "/projeler"}
-                  onClick={onClose}
-                  delay={0.3}
-                />
-
-                <MobileNavItem
-                  href="/hakkimizda"
-                  label="Hakkımızda"
-                  isActive={pathname === "/hakkimizda"}
-                  onClick={onClose}
-                  delay={0.4}
-                />
-
-                <MobileNavItem
-                  href="/iletisim"
-                  label="İletişim"
-                  isActive={pathname === "/iletisim"}
-                  onClick={onClose}
-                  delay={0.5}
-                />
-              </nav>
-
-              <motion.div
-                className="mt-auto border-t py-4 sm:py-6 text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 20,
-                  delay: 0.7,
-                }}
+      {/* Navigation */}
+      <div className="flex-1 overflow-y-auto">
+        <div className="p-6 space-y-6">
+          {/* Main Navigation */}
+          <div className="space-y-1">
+            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">Menü</h3>
+            {navigationItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={onClose}
+                className="flex items-center justify-between p-3 rounded-lg hover:bg-accent transition-colors"
               >
-                <Link href="/iletisim#quote-form" onClick={onClose}>
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                  >
-                    <AnimatedButton
-                      className="w-full bg-amber-500 hover:bg-amber-600 text-white font-medium text-sm sm:text-base transition-all duration-300 py-5 sm:py-6"
-                      hoverEffect="shine"
-                      iconAnimation={true}
-                    >
-                      Ücretsiz Teklif Alın
-                      <ChevronRight className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
-                    </AnimatedButton>
-                  </motion.div>
-                </Link>
-              </motion.div>
+                <span className="font-medium">{item.name}</span>
+                <ChevronRight className="h-4 w-4 text-muted-foreground" />
+              </a>
+            ))}
+          </div>
+
+          <Separator />
+
+          {/* Services */}
+          <div className="space-y-1">
+            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">Hizmetlerimiz</h3>
+            {services.map((service) => (
+              <a
+                key={service.title}
+                href={service.slug}
+                onClick={onClose}
+                className="flex items-center justify-between p-3 rounded-lg hover:bg-accent transition-colors"
+              >
+                <span className="text-sm">{service.title}</span>
+                <ChevronRight className="h-4 w-4 text-muted-foreground" />
+              </a>
+            ))}
+          </div>
+
+          <Separator />
+
+          {/* Contact Info */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">İletişim</h3>
+            <div className="space-y-3">
+              <a
+                href="tel:+905551234567"
+                className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent transition-colors"
+              >
+                <Phone className="h-5 w-5 text-primary" />
+                <div>
+                  <div className="font-medium">+90 (531) 281 29 58</div>
+                  <div className="text-sm text-muted-foreground">Hemen ara</div>
+                </div>
+              </a>
+              <a
+                href="mailto:info@zeminustasi.com.yt"
+                className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent transition-colors"
+              >
+                <Mail className="h-5 w-5 text-primary" />
+                <div>
+                  <div className="font-medium">info@coskunhafriyat.com.tr</div>
+                  <div className="text-sm text-muted-foreground">E-posta gönder</div>
+                </div>
+              </a>
+              <div className="flex items-center gap-3 p-3">
+                <MapPin className="h-5 w-5 text-primary" />
+                <div>
+                  <div className="font-medium">İstanbul, Türkiye</div>
+                  <div className="text-sm text-muted-foreground">Tüm bölgelere hizmet</div>
+                </div>
+              </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
-  )
-}
+          </div>
+        </div>
+      </div>
 
-// Mobile Nav Item
-function MobileNavItem({
-  href,
-  label,
-  isActive,
-  onClick,
-  delay = 0,
-}: {
-  href: string
-  label: string
-  isActive: boolean
-  onClick: () => void
-  delay?: number
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{
-        type: "spring",
-        stiffness: 300,
-        damping: 20,
-        delay: delay,
-      }}
-      whileHover={{ scale: 1.02 }}
-      className="overflow-hidden rounded-lg"
-    >
-      <Link
-        href={href}
-        className={`text-base sm:text-lg font-medium block text-center py-2 sm:py-3 px-3 sm:px-4 rounded-lg transition-all duration-300 ${
-          isActive ? "text-amber-500 bg-amber-50 dark:bg-amber-900/20" : ""
-        }`}
-        onClick={onClick}
-      >
-        <motion.span
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 400, damping: 15 }}
-          className="inline-block"
-        >
-          {label}
-        </motion.span>
-      </Link>
-    </motion.div>
-  )
-}
-
-// Mobile Sub Nav Item
-function MobileSubNavItem({
-  href,
-  label,
-  isActive,
-  onClick,
-}: {
-  href: string
-  label: string
-  isActive: boolean
-  onClick: () => void
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: -10 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      whileHover={{ scale: 1.02 }}
-      className="overflow-hidden rounded-lg"
-    >
-      <Link
-        href={href}
-        className={`block text-sm sm:text-base py-2 sm:py-2.5 px-3 sm:px-4 rounded-lg transition-all duration-300 text-center ${
-          isActive ? "text-amber-500 bg-amber-50 dark:bg-amber-900/20" : ""
-        }`}
-        onClick={onClick}
-      >
-        <motion.span
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 400, damping: 15 }}
-          className="inline-block"
-        >
-          {label}
-        </motion.span>
-      </Link>
-    </motion.div>
+      {/* Footer */}
+      <div className="p-6 border-t bg-muted/30">
+        <div className="space-y-4">
+          <div className="flex gap-2">
+            <Button className="flex-1" onClick={onClose}>
+              <Phone className="h-4 w-4 mr-2" />
+              Ücretsiz Keşif
+            </Button>
+            <Button variant="outline" className="flex-1 bg-transparent" onClick={onClose}>
+              Teklif Al
+            </Button>
+          </div>
+         
+        </div>
+      </div>
+    </div>
   )
 }

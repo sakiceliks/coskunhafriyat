@@ -124,7 +124,7 @@ export default async function ServicesPage() {
                       </div>
                     )}
 
-                    <Link href={`/hizmetler/${service.slug || service.id}`}>
+                    <Link href={`/hizmetler/${service.slug}`}>
                       <Button className="bg-amber-500 hover:bg-amber-600 text-black w-full">
                         Detayları Görün
                         <ArrowRight className="ml-2 h-4 w-4" />

@@ -14,12 +14,7 @@ interface ServicePageProps {
 }
 
 export async function generateMetadata({ params }: ServicePageProps) {
-  let service = await getServiceBySlug(params.slug)
-
-  // If not found and the slug is numeric, try getting by ID
-  if (!service && /^\d+$/.test(params.slug)) {
-    service = await getServiceById(Number.parseInt(params.slug))
-  }
+  const service = await getServiceBySlug(params.slug)
 
   if (!service) {
     return {
@@ -34,7 +29,7 @@ export async function generateMetadata({ params }: ServicePageProps) {
     openGraph: {
       title: `${service.title} | Coşkun Hafriyat`,
       description: service.description || service.short_description,
-      url: `https://coskunhafriyat.com/hizmetler/${service.slug || service.id}`,
+      url: `https://coskunhafriyat.com/hizmetler/${service.slug}`,
       siteName: "Coşkun Hafriyat",
       images: [
         {
@@ -54,18 +49,13 @@ export async function generateMetadata({ params }: ServicePageProps) {
       images: [service.image_url || "https://coskunhafriyat.com/service-default-og.jpg"],
     },
     alternates: {
-      canonical: `https://coskunhafriyat.com/hizmetler/${service.slug || service.id}`,
+      canonical: `https://coskunhafriyat.com/hizmetler/${service.slug}`,
     },
   }
 }
 
 export default async function ServicePage({ params }: ServicePageProps) {
-  let service = await getServiceBySlug(params.slug)
-
-  // If not found and the slug is numeric, try getting by ID
-  if (!service && /^\d+$/.test(params.slug)) {
-    service = await getServiceById(Number.parseInt(params.slug))
-  }
+  const service = await getServiceBySlug(params.slug)
 
   if (!service) {
     notFound()
@@ -74,7 +64,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const breadcrumbItems = [
     { name: "Ana Sayfa", url: "/" },
     { name: "Hizmetlerimiz", url: "/hizmetler" },
-    { name: service.title, url: `/hizmetler/${service.slug || service.id}` },
+    { name: service.title, url: `/hizmetler/${service.slug}` },
   ]
 
   return (
