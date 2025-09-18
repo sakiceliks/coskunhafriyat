@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { ChevronRight, HardHat, Hammer, Compass } from "lucide-react"
@@ -14,7 +16,7 @@ import ServicesSection from "@/components/sections/services-section"
 import RegionsSection from "@/components/sections/regions-section"
 import ProjectsSection from "@/components/sections/projects-section"
 import BlogSection from "@/components/sections/blog-section"
-import { getServices, getProjects, getRegions, getBlogPosts } from "@/lib/database"
+import { useState, useEffect } from "react"
 
 // Mock data - veritabanı bağlantısı olmadığında kullanılacak
 const mockServices = [
@@ -105,30 +107,44 @@ const mockBlogPosts = [
   }
 ]
 
-export default async function Home() {
-  // Server-side veri yükleme
-  let services = mockServices
-  let projects = mockProjects
-  let regions = mockRegions
-  let blogPosts = mockBlogPosts
+export default function Home() {
+  const [services, setServices] = useState<any[]>([])
+  const [projects, setProjects] = useState<any[]>([])
+  const [regions, setRegions] = useState<any[]>([])
+  const [blogPosts, setBlogPosts] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
 
-  try {
-    const [servicesData, projectsData, regionsData, blogPostsData] = await Promise.all([
-      getServices(),
-      getProjects(),
-      getRegions(),
-      getBlogPosts()
-    ])
+  useEffect(() => {
+    // Client-side veri yükleme
+    const loadData = async () => {
+      try {
+        // Local API çağrıları
+        const [servicesData, projectsData, regionsData, blogPostsData] = await Promise.all([
+         fetch('/api/admin/services').then(res => res.json()),
+         fetch('/api/admin/projects').then(res => res.json()),
+        fetch('/api/admin/regions').then(res => res.json()),
+      fetch('/api/admin/blog').then(res => res.json())
+       ])
 
-    // Veritabanından gelen veriler varsa kullan
-    if (servicesData && servicesData.length > 0) services = servicesData
-    if (projectsData && projectsData.length > 0) projects = projectsData
-    if (regionsData && regionsData.length > 0) regions = regionsData
-    if (blogPostsData && blogPostsData.length > 0) blogPosts = blogPostsData
-  } catch (error) {
-    console.error("Veri yükleme hatası:", error)
-    // Hata durumunda mock data kullan (zaten yukarıda tanımlandı)
-  }
+        // API'den gelen verileri kullan
+        setServices(servicesData)
+        setProjects(projectsData)
+        setRegions(regionsData)
+        setBlogPosts(blogPostsData)
+        setLoading(false)
+      } catch (error) {
+        console.error("Veri yükleme hatası:", error)
+        // Hata durumunda mock data kullan
+        setServices(mockServices)
+        setProjects(mockProjects)
+        setRegions(mockRegions)
+        setBlogPosts(mockBlogPosts)
+        setLoading(false)
+      }
+    }
+
+    loadData()
+  }, [])
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -210,16 +226,16 @@ export default async function Home() {
       </section>
 
       {/* Services Section */}
-      <ServicesSection services={services} />
+      {!loading && <ServicesSection services={services} />}
 
       {/* Regions Section */}
-      <RegionsSection regions={regions} />
+      {!loading && <RegionsSection regions={regions} />}
 
       {/* Projects Section */}
-      <ProjectsSection projects={projects} />
+      {!loading && <ProjectsSection projects={projects} />}
 
       {/* Blog Section */}
-      <BlogSection blogPosts={blogPosts} />
+      {!loading && <BlogSection blogPosts={blogPosts} />}
 
       {/* Features Section */}
       <section className="py-10 md:py-16 bg-gray-50 dark:bg-gray-800">
