@@ -34,8 +34,8 @@ export default function ClientLayout({
 
   return (
     <html lang="tr" className={`${montserrat.variable} ${poppins.variable}`} suppressHydrationWarning>
-      <body className={`${poppins.className} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+      <body className={`${poppins.className} antialiased bg-[#252A34] text-white`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           <div className="flex min-h-screen flex-col">
             <Navbar services={services ?? []} />
             <AnimatePresence mode="wait">

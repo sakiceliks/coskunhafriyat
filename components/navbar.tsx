@@ -27,7 +27,7 @@ export function Navbar({ services }: NavbarProps) {
   ]
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
+    <div className="fixed top-0 left-0 right-0 z-50 bg-[#252A34]/95 backdrop-blur-md border-b border-gray-600 shadow-sm">
       <header className="relative z-20">
         {/* Top Bar */}
   
@@ -40,8 +40,8 @@ export function Navbar({ services }: NavbarProps) {
                 <span className="text-black font-bold text-xl">CH</span>
               </div>
               <div className="hidden sm:block">
-                <h3 className="text-xs font-bold text-gray-900">Coşkun Hafriyat</h3>
-                <p className="text-[8px] text-gray-600">Profesyonel Hafriyat Hizmetleri</p>
+                <h3 className="text-xs font-bold text-white">Coşkun Hafriyat</h3>
+                <p className="text-[8px] text-gray-300">Profesyonel Hafriyat Hizmetleri</p>
               </div>
             </Link>
 
@@ -52,7 +52,7 @@ export function Navbar({ services }: NavbarProps) {
                   {navigationItems.map((item) => (
                     <NavigationMenuItem key={item.name}>
                       <Link href={item.href} legacyBehavior passHref>
-                        <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-amber-50 hover:text-amber-600 focus:bg-amber-50 focus:text-amber-600 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-amber-100 data-[state=open]:bg-amber-50">
+                        <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors text-white hover:bg-amber-500/20 hover:text-amber-500 focus:bg-amber-500/20 focus:text-amber-500 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-amber-500/30 data-[state=open]:bg-amber-500/20">
                           {item.name}
                         </NavigationMenuLink>
                       </Link>
@@ -65,7 +65,7 @@ export function Navbar({ services }: NavbarProps) {
             {/* CTA Buttons */}
             <div className="hidden lg:flex items-center gap-3">
               <Link href="/iletisim">
-                <Button variant="outline" size="sm" className="border-amber-500 text-amber-600 hover:bg-amber-50">
+                <Button variant="outline" size="sm" className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-black bg-transparent">
                   <Phone className="h-4 w-4 mr-2" />
                   Hemen Ara
                 </Button>

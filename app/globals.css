@@ -3,39 +3,39 @@
 
 @custom-variant dark (&:is(.dark *));
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+:root {
+  --background: #252A34;
+  --foreground: #ffffff;
+  --card: #2d3748;
+  --card-foreground: #ffffff;
+  --popover: #2d3748;
+  --popover-foreground: #ffffff;
+  --primary: #F59E0B;
+  --primary-foreground: #000000;
+  --secondary: #4a5568;
+  --secondary-foreground: #ffffff;
+  --muted: #4a5568;
+  --muted-foreground: #a0aec0;
+  --accent: #4a5568;
+  --accent-foreground: #ffffff;
+  --destructive: #e53e3e;
+  --destructive-foreground: #ffffff;
+  --border: #4a5568;
+  --input: #4a5568;
+  --ring: #F59E0B;
+  --chart-1: #F59E0B;
+  --chart-2: #68d391;
+  --chart-3: #63b3ed;
+  --chart-4: #f687b3;
+  --chart-5: #fbb6ce;
+  --sidebar: #252A34;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #F59E0B;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #4a5568;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #4a5568;
+  --sidebar-ring: #F59E0B;
 }
 
 @theme inline {
@@ -81,7 +81,7 @@
 @layer base {
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[#252A34] text-white;
   }
 }
 
@@ -104,53 +104,51 @@ h6 {
 
 /* Add these button color utility classes to ensure proper text contrast */
 .btn-primary {
-  @apply bg-amber-600 text-white hover:bg-amber-700 font-medium transition-all duration-300;
+  @apply bg-amber-500 text-black hover:bg-amber-600 font-medium transition-all duration-300;
 }
 
 .btn-secondary {
-  @apply bg-gray-700 text-white hover:bg-gray-800 font-medium transition-all duration-300;
+  @apply bg-gray-600 text-white hover:bg-gray-700 font-medium transition-all duration-300;
 }
 
 .btn-outline {
-  @apply border-2 border-amber-500 text-amber-600 hover:bg-amber-500 hover:text-white font-medium transition-all duration-300;
+  @apply border-2 border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-black font-medium transition-all duration-300;
 }
 
 .btn-dark {
-  @apply bg-gray-900 text-white hover:bg-black font-medium transition-all duration-300;
+  @apply bg-gray-800 text-white hover:bg-gray-900 font-medium transition-all duration-300;
 }
 
 .btn-light {
-  @apply bg-gray-100 text-gray-800 hover:bg-gray-200 font-medium transition-all duration-300;
+  @apply bg-gray-700 text-white hover:bg-gray-600 font-medium transition-all duration-300;
 }
 
 /* Ensure proper contrast for all button variants */
 .bg-amber-500,
 .bg-amber-600,
 .bg-amber-700 {
+  @apply text-black;
+}
+
+.bg-gray-800,
+.bg-gray-700,
+.bg-gray-600,
+.bg-gray-500 {
   @apply text-white;
 }
 
-.bg-white,
-.bg-gray-50,
-.bg-gray-100,
-.bg-gray-200 {
-  @apply text-gray-900;
-}
-
-.bg-gray-700,
-.bg-gray-800,
 .bg-gray-900,
 .bg-black {
   @apply text-white;
 }
 
 /* Ensure proper contrast for outline buttons */
-.border-amber-500.bg-transparent {
-  @apply text-amber-600 dark:text-amber-400;
+.border-amber-500 {
+  @apply text-amber-500;
 }
 
 .border-amber-500.bg-transparent:hover {
-  @apply text-white;
+  @apply text-black bg-amber-500;
 }
 
 .border-white.bg-transparent {
@@ -158,7 +156,7 @@ h6 {
 }
 
 .border-white.bg-transparent:hover {
-  @apply text-gray-900;
+  @apply text-black bg-white;
 }
 
 /* Mobile-first responsive typography */
@@ -249,45 +247,45 @@ button[size="icon"] {
 
 /* Ensure high contrast for all text */
 .text-gray-600 {
-  @apply dark:text-gray-300;
+  @apply text-gray-300;
 }
 
 .text-gray-700 {
-  @apply dark:text-gray-200;
+  @apply text-gray-200;
 }
 
 .text-gray-800 {
-  @apply dark:text-gray-100;
+  @apply text-gray-100;
 }
 
 .text-gray-900 {
-  @apply dark:text-white;
+  @apply text-white;
 }
 
 /* Ensure form elements have proper contrast */
 input,
 select,
 textarea {
-  @apply text-gray-900 dark:text-white bg-white dark:bg-gray-800;
+  @apply text-white bg-gray-700 border-gray-600;
   font-size: 1rem;
   min-height: 44px;
 }
 
 /* Custom theme colors */
 .theme-text {
-  @apply text-amber-600 dark:text-amber-400;
+  @apply text-amber-500;
 }
 
 .theme-bg {
-  @apply bg-amber-600 dark:bg-amber-700;
+  @apply bg-amber-500;
 }
 
 .theme-border {
-  @apply border-amber-500 dark:border-amber-400;
+  @apply border-amber-500;
 }
 
 .theme-hover {
-  @apply hover:bg-amber-700 dark:hover:bg-amber-800;
+  @apply hover:bg-amber-600;
 }
 
 /* Mobile-specific optimizations */

@@ -26,17 +26,17 @@ interface ProjectsSectionProps {
 
 export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
-    <section className="py-12 md:py-20 bg-white">
+    <section className="py-12 md:py-20 bg-[#252A34]">
       <div className="container mx-auto px-4">
         <FadeIn>
           <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">
-            <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-3 md:mb-4">
+            <div className="inline-block px-4 py-2 bg-amber-500/20 text-amber-500 rounded-full text-sm font-medium mb-3 md:mb-4">
               Projelerimiz
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-gray-900">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-white">
               Başarılı Projelerimiz
             </h2>
-            <p className="text-base md:text-lg text-gray-700">
+            <p className="text-base md:text-lg text-gray-300">
               Uzmanlığımızı ve mükemmellik taahhüdümüzü sergileyen başarılı projelerimizi keşfedin.
             </p>
           </div>
@@ -46,7 +46,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
             {projects.length > 0 ? projects.slice(0, 6).map((project: Project) => (
               <HoverCard key={project.id}>
-                <div className="bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-100">
+                <div className="bg-gray-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-600">
                   <div className="relative h-48 md:h-56 overflow-hidden">
                     <Image
                       src={project.image_url || "/images/hero-4.png"}
@@ -57,8 +57,8 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                     />
                   </div>
                   <div className="p-6 md:p-8">
-                    <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-gray-900">{project.title}</h3>
-                    <p className="text-gray-700 mb-4 text-sm sm:text-base line-clamp-3">
+                    <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-white">{project.title}</h3>
+                    <p className="text-gray-300 mb-4 text-sm sm:text-base line-clamp-3">
                       {project.short_description}
                     </p>
                     
@@ -66,13 +66,13 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                       {project.location && (
                         <div className="flex items-center">
                           <MapPin className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
-                          <span>{project.location}</span>
+                          <span className="text-gray-300">{project.location}</span>
                         </div>
                       )}
                       {project.project_type && (
                         <div className="flex items-center">
                           <HardHat className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
-                          <span>{project.project_type}</span>
+                          <span className="text-gray-300">{project.project_type}</span>
                         </div>
                       )}
                     </div>
@@ -88,10 +88,10 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
               </HoverCard>
             )) : (
               <div className="col-span-full text-center py-12">
-                <div className="bg-gray-100 rounded-2xl p-8 max-w-md mx-auto">
+                <div className="bg-gray-700 rounded-2xl p-8 max-w-md mx-auto">
                   <Hammer className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-gray-700 mb-2">Projelerimiz Yakında</h3>
-                  <p className="text-gray-600 text-sm">Başarılı projelerimiz şu anda güncelleniyor. Lütfen daha sonra tekrar kontrol edin.</p>
+                  <h3 className="text-lg font-semibold text-white mb-2">Projelerimiz Yakında</h3>
+                  <p className="text-gray-300 text-sm">Başarılı projelerimiz şu anda güncelleniyor. Lütfen daha sonra tekrar kontrol edin.</p>
                 </div>
               </div>
             )}
@@ -102,7 +102,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
           <Link href="/projeler">
             <AnimatedButton
               size="lg"
-              className="bg-amber-500 hover:bg-amber-600 text-white font-semibold"
+              className="bg-amber-500 hover:bg-amber-600 text-black font-semibold"
               hoverEffect="shine"
             >
               Tüm Projeleri Görün

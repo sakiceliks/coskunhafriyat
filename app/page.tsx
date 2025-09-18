@@ -238,59 +238,59 @@ export default function Home() {
       {!loading && <BlogSection blogPosts={blogPosts} />}
 
       {/* Features Section */}
-      <section className="py-10 md:py-16 bg-gray-50 dark:bg-gray-800">
+      <section className="py-10 md:py-16 bg-gray-800">
         <div className="container mx-auto px-4">
           <StaggerIn direction="up" staggerDelay={0.1}>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
               <HoverCard>
-                <div className="bg-white dark:bg-gray-900 p-6 md:p-8 rounded-xl text-center shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-gray-700 p-6 md:p-8 rounded-xl text-center shadow-sm hover:shadow-md transition-shadow">
                   <motion.div
                     whileHover={{ rotate: 15, scale: 1.1 }}
                     transition={{ duration: 0.3 }}
-                    className="bg-amber-100 dark:bg-amber-900 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                    className="bg-amber-500/20 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center mx-auto mb-4"
                   >
-                    <HardHat className="h-7 w-7 md:h-8 md:w-8 text-amber-600 dark:text-amber-400" />
+                    <HardHat className="h-7 w-7 md:h-8 md:w-8 text-amber-500" />
                   </motion.div>
-                  <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-gray-900 dark:text-white">
+                  <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-white">
                     Kalite Garantisi
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">
+                  <p className="text-gray-300 text-sm sm:text-base">
                     Projelerimiz en yüksek kalite ve dayanıklılık standartlarını karşılar, memnuniyet garantimizle
                     desteklenir.
                   </p>
                 </div>
               </HoverCard>
               <HoverCard>
-                <div className="bg-white dark:bg-gray-900 p-6 md:p-8 rounded-xl text-center shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-gray-700 p-6 md:p-8 rounded-xl text-center shadow-sm hover:shadow-md transition-shadow">
                   <motion.div
                     whileHover={{ rotate: 15, scale: 1.1 }}
                     transition={{ duration: 0.3 }}
-                    className="bg-amber-100 dark:bg-amber-900 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                    className="bg-amber-500/20 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center mx-auto mb-4"
                   >
-                    <Hammer className="h-7 w-7 md:h-8 md:w-8 text-amber-600 dark:text-amber-400" />
+                    <Hammer className="h-7 w-7 md:h-8 md:w-8 text-amber-500" />
                   </motion.div>
-                  <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-gray-900 dark:text-white">
+                  <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-white">
                     Uzman Operatörler
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">
+                  <p className="text-gray-300 text-sm sm:text-base">
                     Ekibimiz hafriyat alanında onlarca yıllık birleşik deneyime sahip yetenekli profesyonellerden
                     oluşur.
                   </p>
                 </div>
               </HoverCard>
               <HoverCard className="sm:col-span-2 md:col-span-1">
-                <div className="bg-white dark:bg-gray-900 p-6 md:p-8 rounded-xl text-center shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-gray-700 p-6 md:p-8 rounded-xl text-center shadow-sm hover:shadow-md transition-shadow">
                   <motion.div
                     whileHover={{ rotate: 15, scale: 1.1 }}
                     transition={{ duration: 0.3 }}
-                    className="bg-amber-100 dark:bg-amber-900 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                    className="bg-amber-500/20 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center mx-auto mb-4"
                   >
-                    <Compass className="h-7 w-7 md:h-8 md:w-8 text-amber-600 dark:text-amber-400" />
+                    <Compass className="h-7 w-7 md:h-8 md:w-8 text-amber-500" />
                   </motion.div>
-                  <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-gray-900 dark:text-white">
+                  <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-white">
                     Yenilikçi Çözümler
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">
+                  <p className="text-gray-300 text-sm sm:text-base">
                     Verimli ve sürdürülebilir sonuçlar sunmak için son teknoloji ve yöntemleri uyguluyoruz.
                   </p>
                 </div>
@@ -301,7 +301,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-10 md:py-16 bg-amber-500 dark:bg-amber-600">
+      <section className="py-10 md:py-16 bg-amber-500">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8 text-center max-w-5xl mx-auto">
             <FadeIn direction="up" delay={0.1}>
@@ -309,7 +309,7 @@ export default function Home() {
                 <div className="text-3xl md:text-4xl font-bold text-white mb-1 md:mb-2">
                   <CountUp end={500} suffix="+" />
                 </div>
-                <p className="text-black dark:text-gray-100 font-medium text-sm md:text-base">Tamamlanan Proje</p>
+                <p className="text-black font-medium text-sm md:text-base">Tamamlanan Proje</p>
               </div>
             </FadeIn>
             <FadeIn direction="up" delay={0.2}>
@@ -317,7 +317,7 @@ export default function Home() {
                 <div className="text-3xl md:text-4xl font-bold text-white mb-1 md:mb-2">
                   <CountUp end={15} suffix="+" />
                 </div>
-                <p className="text-black dark:text-gray-100 font-medium text-sm md:text-base">Yıllık Deneyim</p>
+                <p className="text-black font-medium text-sm md:text-base">Yıllık Deneyim</p>
               </div>
             </FadeIn>
             <FadeIn direction="up" delay={0.3}>
@@ -325,7 +325,7 @@ export default function Home() {
                 <div className="text-3xl md:text-4xl font-bold text-white mb-1 md:mb-2">
                   <CountUp end={50} suffix="+" />
                 </div>
-                <p className="text-black dark:text-gray-100 font-medium text-sm md:text-base">Uzman Ekip Üyesi</p>
+                <p className="text-black font-medium text-sm md:text-base">Uzman Ekip Üyesi</p>
               </div>
             </FadeIn>
             <FadeIn direction="up" delay={0.4}>
@@ -333,7 +333,7 @@ export default function Home() {
                 <div className="text-3xl md:text-4xl font-bold text-white mb-1 md:mb-2">
                   <CountUp end={98} suffix="%" />
                 </div>
-                <p className="text-black dark:text-gray-100 font-medium text-sm md:text-base">Müşteri Memnuniyeti</p>
+                <p className="text-black font-medium text-sm md:text-base">Müşteri Memnuniyeti</p>
               </div>
             </FadeIn>
           </div>
@@ -341,13 +341,13 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 md:py-20 bg-gray-900 dark:bg-black text-white">
+      <section className="py-12 md:py-20 bg-gray-900 text-white">
         <div className="container mx-auto px-4 text-center max-w-4xl">
           <FadeIn>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6">
               Hafriyat Projenizi Başlatmaya Hazır mısınız?
             </h2>
-            <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-xl sm:max-w-2xl mx-auto mb-6 md:mb-10">
+            <p className="text-gray-200 text-sm sm:text-base md:text-lg max-w-xl sm:max-w-2xl mx-auto mb-6 md:mb-10">
               Bugün ücretsiz danışmanlık ve fiyat teklifi için bizimle iletişime geçin. Ekibimiz vizyonunuzu hassasiyet
               ve mükemmellikle hayata geçirmeye hazır.
             </p>
@@ -355,7 +355,7 @@ export default function Home() {
               <Link href="/iletisim" className="w-full sm:w-auto">
                 <HoverButton
                   size="lg"
-                  className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 md:px-8 w-full sm:w-auto"
+                  className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-6 md:px-8 w-full sm:w-auto"
                   hoverEffect="ripple"
                 >
                   Ücretsiz Teklif Alın
@@ -366,7 +366,7 @@ export default function Home() {
                 <AnimatedButton
                   size="lg"
                   variant="outline"
-                  className="text-white border-white hover:bg-white/10 hover:text-white font-semibold px-6 md:px-8 w-full sm:w-auto"
+                  className="text-white border-white hover:bg-white hover:text-black font-semibold px-6 md:px-8 w-full sm:w-auto bg-transparent"
                   hoverEffect="pulse"
                   iconAnimation={true}
                 >
