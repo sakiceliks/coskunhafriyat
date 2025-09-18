@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, CheckCircle, ChevronRight, Eye, Lightbulb, HardHat, Hammer, Compass, Target } from "lucide-react"
+import { ArrowRight, CheckCircle, ChevronRight, HardHat, Hammer, Compass, MapPin, Star, Calendar, User, Ruler } from "lucide-react"
 import { motion } from "framer-motion"
 import { AnimatedButton } from "@/components/ui/animated-button"
 import { HoverButton } from "@/components/ui/hover-button"
@@ -12,8 +12,16 @@ import { ScaleIn } from "@/components/animations/scale-in"
 import { HoverCard } from "@/components/animations/hover-card"
 import { CountUp } from "@/components/animations/count-up"
 import { ScrollProgress } from "@/components/animations/scroll-progress"
+import { getServices, getProjects, getRegions } from "@/lib/database"
 
-export default function Home() {
+export default async function Home() {
+  // Veri çekme işlemleri
+  const [services, projects, regions] = await Promise.all([
+    getServices().catch(() => []),
+    getProjects().catch(() => []),
+    getRegions().catch(() => [])
+  ])
+
   return (
     <div className="flex min-h-screen flex-col">
       <ScrollProgress />
@@ -93,136 +101,220 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mission & Vision Section */}
-      <section className="py-12 md:py-20 bg-white dark:bg-gray-900">
+      {/* Services Section */}
+      <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4">
           <FadeIn>
             <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">
-              <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-400 rounded-full text-sm font-medium mb-3 md:mb-4">
-                Amacımız
+              <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-3 md:mb-4">
+                Hizmetlerimiz
               </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white">
-                Misyon & Vizyon
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-gray-900">
+                Profesyonel Hafriyat Hizmetleri
               </h2>
-              <p className="text-base md:text-lg text-gray-700 dark:text-gray-300">
-                Temel değerlerimizle yönlendirilen firmamız, hafriyat sektöründe dönüşüm yaratmaya ve müşterilerimiz
-                için kalıcı değer oluşturmaya çalışır.
+              <p className="text-base md:text-lg text-gray-700">
+                İhtiyacınıza özel hafriyat, kazı, yıkım ve nakliye çözümleri ile projelerinizi güvenle tamamlayın.
               </p>
             </div>
           </FadeIn>
 
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto">
-            <FadeIn direction="left" delay={0.2}>
-              <div className="bg-gray-50 dark:bg-gray-800 p-6 md:p-10 rounded-2xl shadow-md">
-                <div className="flex items-center mb-4 md:mb-6 justify-center sm:justify-start">
-                  <motion.div
-                    whileHover={{ rotate: 15, scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
-                    className="bg-amber-100 dark:bg-amber-900 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center mr-4"
-                  >
-                    <Target className="h-6 w-6 md:h-7 md:w-7 text-amber-600 dark:text-amber-400" />
-                  </motion.div>
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">Misyonumuz</h3>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300 mb-4 md:mb-6 text-sm sm:text-base text-center sm:text-left">
-                  İnovasyon, dürüstlük ve ustalıkla müşteri beklentilerini aşan olağanüstü hafriyat hizmetleri sunmak.
-                  Taahhüdümüz:
-                </p>
-                <StaggerIn direction="up" staggerDelay={0.1}>
-                  <div className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
-                    <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base text-left">
-                      Güvenli, sürdürülebilir ve fonksiyonel alanlar yaratarak kullanıcıların yaşam kalitesini artırmak
-                    </p>
+          <StaggerIn direction="up" staggerDelay={0.1}>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+              {services.slice(0, 6).map((service: any, index: number) => (
+                <HoverCard key={service.id}>
+                  <div className="bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-100">
+                    <div className="relative h-48 md:h-56 overflow-hidden">
+                      <Image
+                        src={service.image_url || "/images/hero-2.png"}
+                        alt={service.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                    </div>
+                    <div className="p-6 md:p-8">
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-gray-900">{service.title}</h3>
+                      <p className="text-gray-700 mb-4 text-sm sm:text-base line-clamp-3">
+                        {service.short_description}
+                      </p>
+                      <Link href={`/hizmetler/${service.slug}`}>
+                        <Button className="bg-amber-500 hover:bg-amber-600 text-black w-full">
+                          Detayları Görün
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
-                  <div className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
-                    <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base text-left">
-                      Ekip üyelerimiz arasında mükemmellik, sürekli gelişim ve profesyonel büyüme kültürünü teşvik etmek
-                    </p>
-                  </div>
-                  <div className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
-                    <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base text-left">
-                      Şeffaf iletişim ve etik uygulamalarla müşteriler, ortaklar ve toplumlarla kalıcı ilişkiler kurmak
-                    </p>
-                  </div>
-                </StaggerIn>
-              </div>
-            </FadeIn>
-
-            <FadeIn direction="right" delay={0.4}>
-              <div className="bg-gray-50 dark:bg-gray-800 p-6 md:p-10 rounded-2xl shadow-md">
-                <div className="flex items-center mb-4 md:mb-6 justify-center sm:justify-start">
-                  <motion.div
-                    whileHover={{ rotate: 15, scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
-                    className="bg-amber-100 dark:bg-amber-900 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center mr-4"
-                  >
-                    <Eye className="h-6 w-6 md:h-7 md:w-7 text-amber-600 dark:text-amber-400" />
-                  </motion.div>
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">Vizyonumuz</h3>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300 mb-4 md:mb-6 text-sm sm:text-base text-center sm:text-left">
-                  En güvenilir ve yenilikçi hafriyat şirketi olmak, şunlarla tanınmak:
-                </p>
-                <StaggerIn direction="up" staggerDelay={0.1}>
-                  <div className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
-                    <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base text-left">
-                      Hafriyat kalitesi, güvenlik ve müşteri memnuniyetinde yeni mükemmellik standartları belirlemek
-                    </p>
-                  </div>
-                  <div className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
-                    <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base text-left">
-                      Çevresel etkiyi minimize ederken verimliliği ve dayanıklılığı maksimize eden sürdürülebilir inşaat
-                      uygulamalarına öncülük etmek
-                    </p>
-                  </div>
-                  <div className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
-                    <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base text-left">
-                      Sorumlu iş uygulamaları ve anlamlı katılım yoluyla çalıştığımız toplumlarda olumlu değişim
-                      yaratmak
-                    </p>
-                  </div>
-                </StaggerIn>
-              </div>
-            </FadeIn>
-          </div>
-
-          <ScaleIn delay={0.6}>
-            <div className="mt-10 md:mt-16 text-center">
-              <div className="bg-amber-50 dark:bg-amber-900/30 p-6 md:p-8 rounded-2xl max-w-3xl mx-auto">
-                <motion.div
-                  whileHover={{ rotate: 15, scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-amber-100 dark:bg-amber-900 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center mx-auto mb-4"
-                >
-                  <Lightbulb className="h-6 w-6 md:h-7 md:w-7 text-amber-600 dark:text-amber-400" />
-                </motion.div>
-                <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-gray-900 dark:text-white">
-                  Yaklaşımımız
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base md:text-lg mb-5 md:mb-6">
-                  Başarılı hafriyat işlerinin işbirliği, inovasyon ve detaylara dikkat temeli üzerine kurulduğuna
-                  inanıyoruz. Geleneksel ustalığı son teknoloji ile birleştirerek, zamanın testine dayanacak projeler
-                  sunuyoruz.
-                </p>
-                <Link href="/iletisim">
-                  <AnimatedButton
-                    className="bg-amber-500 hover:bg-amber-600 text-white font-semibold"
-                    hoverEffect="shine"
-                    iconRotate={true}
-                  >
-                    Bizimle Ortaklık Kurun
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </AnimatedButton>
-                </Link>
-              </div>
+                </HoverCard>
+              ))}
             </div>
-          </ScaleIn>
+          </StaggerIn>
+
+          <div className="text-center mt-10">
+            <Link href="/hizmetler">
+              <AnimatedButton
+                size="lg"
+                className="bg-amber-500 hover:bg-amber-600 text-white font-semibold"
+                hoverEffect="shine"
+              >
+                Tüm Hizmetleri Görün
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </AnimatedButton>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Regions Section */}
+      <section className="py-12 md:py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <FadeIn>
+            <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">
+              <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-3 md:mb-4">
+                Bölgelerimiz
+              </div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-gray-900">
+                İstanbul Geneli Hizmet
+              </h2>
+              <p className="text-base md:text-lg text-gray-700">
+                Modern ekipmanlarımız ve deneyimli ekibimizle İstanbul'un her bölgesinde güvenilir hafriyat hizmetleri sunuyoruz.
+              </p>
+            </div>
+          </FadeIn>
+
+          <StaggerIn direction="up" staggerDelay={0.1}>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+              {regions.slice(0, 6).map((region: any, index: number) => (
+                <HoverCard key={region.id}>
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-100">
+                    <div className="relative h-48 md:h-56 overflow-hidden">
+                      <Image
+                        src={region.image_url || "/images/hero-3.png"}
+                        alt={region.name}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                      {region.is_featured && (
+                        <div className="absolute top-4 left-4 bg-amber-500 text-black px-3 py-1 rounded-full text-sm font-semibold flex items-center">
+                          <Star className="h-4 w-4 mr-1" />
+                          Öne Çıkan
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-6 md:p-8">
+                      <div className="flex items-center mb-3">
+                        <MapPin className="h-5 w-5 text-amber-500 mr-2" />
+                        <h3 className="text-xl md:text-2xl font-bold text-gray-900">{region.name}</h3>
+                      </div>
+                      <p className="text-gray-700 mb-4 text-sm sm:text-base line-clamp-3">
+                        {region.short_description}
+                      </p>
+                      <Link href={`/bolgelerimiz/${region.slug}`}>
+                        <Button className="bg-amber-500 hover:bg-amber-600 text-black w-full">
+                          Detayları Görün
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </HoverCard>
+              ))}
+            </div>
+          </StaggerIn>
+
+          <div className="text-center mt-10">
+            <Link href="/bolgelerimiz">
+              <AnimatedButton
+                size="lg"
+                className="bg-amber-500 hover:bg-amber-600 text-white font-semibold"
+                hoverEffect="shine"
+              >
+                Tüm Bölgeleri Görün
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </AnimatedButton>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section className="py-12 md:py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <FadeIn>
+            <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">
+              <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-3 md:mb-4">
+                Projelerimiz
+              </div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-gray-900">
+                Başarılı Projelerimiz
+              </h2>
+              <p className="text-base md:text-lg text-gray-700">
+                Uzmanlığımızı ve mükemmellik taahhüdümüzü sergileyen başarılı projelerimizi keşfedin.
+              </p>
+            </div>
+          </FadeIn>
+
+          <StaggerIn direction="up" staggerDelay={0.1}>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+              {projects.slice(0, 6).map((project: any, index: number) => (
+                <HoverCard key={project.id}>
+                  <div className="bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-100">
+                    <div className="relative h-48 md:h-56 overflow-hidden">
+                      <Image
+                        src={project.image_url || "/images/hero-4.png"}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                    </div>
+                    <div className="p-6 md:p-8">
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-gray-900">{project.title}</h3>
+                      <p className="text-gray-700 mb-4 text-sm sm:text-base line-clamp-3">
+                        {project.short_description}
+                      </p>
+                      
+                      <div className="space-y-2 text-sm text-gray-600 mb-4">
+                        {project.location && (
+                          <div className="flex items-center">
+                            <MapPin className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
+                            <span>{project.location}</span>
+                          </div>
+                        )}
+                        {project.project_type && (
+                          <div className="flex items-center">
+                            <HardHat className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
+                            <span>{project.project_type}</span>
+                          </div>
+                        )}
+                      </div>
+
+                      <Link href={`/projeler/${project.slug || project.id}`}>
+                        <Button className="bg-amber-500 hover:bg-amber-600 text-black w-full">
+                          Detayları Görün
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </HoverCard>
+              ))}
+            </div>
+          </StaggerIn>
+
+          <div className="text-center mt-10">
+            <Link href="/projeler">
+              <AnimatedButton
+                size="lg"
+                className="bg-amber-500 hover:bg-amber-600 text-white font-semibold"
+                hoverEffect="shine"
+              >
+                Tüm Projeleri Görün
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </AnimatedButton>
+            </Link>
+          </div>
         </div>
       </section>
 

@@ -30,25 +30,7 @@ export function Navbar({ services }: NavbarProps) {
     <div className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
       <header className="relative z-20">
         {/* Top Bar */}
-        <div className="bg-amber-500 text-black py-2 px-4">
-          <div className="container mx-auto flex items-center justify-between text-sm">
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
-                <span className="font-medium">+90 531 281 29 58</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
-                <span>info@coskunhafriyat.com.tr</span>
-              </div>
-            </div>
-            <div className="hidden md:flex items-center gap-4">
-              <span className="text-amber-800 font-medium">7/24 Hizmet</span>
-              <SocialLinks />
-            </div>
-          </div>
-        </div>
-
+  
         {/* Main Navigation */}
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -58,8 +40,8 @@ export function Navbar({ services }: NavbarProps) {
                 <span className="text-black font-bold text-xl">CH</span>
               </div>
               <div className="hidden sm:block">
-                <h1 className="text-xl font-bold text-gray-900">Coşkun Hafriyat</h1>
-                <p className="text-sm text-gray-600">Profesyonel Hafriyat Hizmetleri</p>
+                <h1 className="text-lg font-bold text-gray-900">Coşkun Hafriyat</h1>
+                <p className="text-xs text-gray-600">Profesyonel Hafriyat Hizmetleri</p>
               </div>
             </Link>
 
