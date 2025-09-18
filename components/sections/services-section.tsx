@@ -24,7 +24,7 @@ interface ServicesSectionProps {
 
 export default function ServicesSection({ services }: ServicesSectionProps) {
   return (
-    <section className="py-12 md:py-20 bg-gray-900">
+    <section className="py-12 md:py-20 bg-white">
       <div className="container mx-auto px-4">
         <FadeIn>
           <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">

@@ -232,7 +232,7 @@ export default function Home() {
       {!loading && <BlogSection blogPosts={blogPosts} />}
 
       {/* Features Section */}
-      <section className="py-10 md:py-16 bg-gray-100 dark:bg-gray-800">
+      <section className="py-10 md:py-16 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4">
           <StaggerIn direction="up" staggerDelay={0.1}>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
