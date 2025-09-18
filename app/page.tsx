@@ -113,18 +113,18 @@ export default function Home() {
     const loadData = async () => {
       try {
         // Gerçek API çağrıları burada yapılabilir
-        // const [servicesData, projectsData, regionsData, blogPostsData] = await Promise.all([
-        //   fetch('/api/services').then(res => res.json()),
-        //   fetch('/api/projects').then(res => res.json()),
-        //   fetch('/api/regions').then(res => res.json()),
-        //   fetch('/api/blog-posts').then(res => res.json())
-        // ])
+        const [servicesData, projectsData, regionsData, blogPostsData] = await Promise.all([
+         fetch('/api/services').then(res => res.json()),
+         fetch('/api/projects').then(res => res.json()),
+        fetch('/api/regions').then(res => res.json()),
+      fetch('/api/blog-posts').then(res => res.json())
+       ])
 
         // Şimdilik mock data kullanıyoruz
-        setServices(mockServices)
-        setProjects(mockProjects)
-        setRegions(mockRegions)
-        setBlogPosts(mockBlogPosts)
+        setServices(servicesData)
+        setProjects(projectsData)
+        setRegions(regionsData)
+        setBlogPosts(blogPostsData)
         setLoading(false)
       } catch (error) {
         console.error("Veri yükleme hatası:", error)
