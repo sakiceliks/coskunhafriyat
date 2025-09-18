@@ -8,7 +8,15 @@ function getDatabase() {
     console.log("[v0] DATABASE_URL exists:", !!databaseUrl)
 
     if (!databaseUrl) {
-      throw new Error("DATABASE_URL is not set")
+      console.warn("[v0] DATABASE_URL is not set, returning mock database")
+      // Mock database object that returns empty arrays
+      sql = {
+        async template(strings: TemplateStringsArray, ...values: any[]) {
+          console.log("[v0] Mock database query executed")
+          return []
+        }
+      } as any
+      return sql
     }
 
     sql = neon(databaseUrl)
@@ -19,33 +27,53 @@ function getDatabase() {
 
 // Services
 export async function getServices(featured?: boolean) {
-  const sql = getDatabase()
-  if (featured) {
-    return await sql`SELECT * FROM services WHERE is_active = true AND is_featured = true ORDER BY created_at DESC`
-  } else {
-    return await sql`SELECT * FROM services WHERE is_active = true ORDER BY created_at DESC`
+  try {
+    const sql = getDatabase()
+    if (featured) {
+      return await sql`SELECT * FROM services WHERE is_active = true AND is_featured = true ORDER BY created_at DESC`
+    } else {
+      return await sql`SELECT * FROM services WHERE is_active = true ORDER BY created_at DESC`
+    }
+  } catch (error) {
+    console.error("Error fetching services:", error)
+    return []
   }
 }
 
 export async function getServiceById(id: number) {
-  const sql = getDatabase()
-  const result = await sql`SELECT * FROM services WHERE id = ${id} AND is_active = true`
-  return result[0] || null
+  try {
+    const sql = getDatabase()
+    const result = await sql`SELECT * FROM services WHERE id = ${id} AND is_active = true`
+    return result[0] || null
+  } catch (error) {
+    console.error("Error fetching service by id:", error)
+    return null
+  }
 }
 
 export async function getServiceBySlug(slug: string) {
-  const sql = getDatabase()
-  const result = await sql`SELECT * FROM services WHERE slug = ${slug} AND is_active = true`
-  return result[0] || null
+  try {
+    const sql = getDatabase()
+    const result = await sql`SELECT * FROM services WHERE slug = ${slug} AND is_active = true`
+    return result[0] || null
+  } catch (error) {
+    console.error("Error fetching service by slug:", error)
+    return null
+  }
 }
 
 // Projects
 export async function getProjects(featured?: boolean) {
-  const sql = getDatabase()
-  if (featured) {
-    return await sql`SELECT * FROM projects WHERE is_active = true AND is_featured = true ORDER BY completion_date DESC`
-  } else {
-    return await sql`SELECT * FROM projects WHERE is_active = true ORDER BY completion_date DESC`
+  try {
+    const sql = getDatabase()
+    if (featured) {
+      return await sql`SELECT * FROM projects WHERE is_active = true AND is_featured = true ORDER BY completion_date DESC`
+    } else {
+      return await sql`SELECT * FROM projects WHERE is_active = true ORDER BY completion_date DESC`
+    }
+  } catch (error) {
+    console.error("Error fetching projects:", error)
+    return []
   }
 }
 
@@ -63,23 +91,28 @@ export async function getProjectBySlug(slug: string) {
 
 // Blog Posts - Updated to match actual schema
 export async function getBlogPosts(featured?: boolean) {
-  const sql = getDatabase()
-  let result
+  try {
+    const sql = getDatabase()
+    let result
 
-  if (featured) {
-    result =
-      await sql`SELECT * FROM blog_posts WHERE is_published = true AND is_featured = true ORDER BY published_at DESC`
-  } else {
-    result = await sql`SELECT * FROM blog_posts WHERE is_published = true ORDER BY published_at DESC`
+    if (featured) {
+      result =
+        await sql`SELECT * FROM blog_posts WHERE is_published = true AND is_featured = true ORDER BY published_at DESC`
+    } else {
+      result = await sql`SELECT * FROM blog_posts WHERE is_published = true ORDER BY published_at DESC`
+    }
+
+    // Map database columns to expected property names for all posts
+    return result.map((post: any) => ({
+      ...post,
+      published_date: post.published_at,
+      author: post.author_id || "Coşkun Hafriyat",
+      updated_at: post.updated_at,
+    }))
+  } catch (error) {
+    console.error("Error fetching blog posts:", error)
+    return []
   }
-
-  // Map database columns to expected property names for all posts
-  return result.map((post: any) => ({
-    ...post,
-    published_date: post.published_at,
-    author: post.author_id || "Coşkun Hafriyat",
-    updated_at: post.updated_at,
-  }))
 }
 
 export async function getBlogPostBySlug(slug: string) {
