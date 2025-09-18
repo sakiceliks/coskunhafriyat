@@ -114,10 +114,10 @@ export default function Home() {
       try {
         // Gerçek API çağrıları burada yapılabilir
         const [servicesData, projectsData, regionsData, blogPostsData] = await Promise.all([
-         fetch('/api/services').then(res => res.json()),
-         fetch('/api/projects').then(res => res.json()),
-        fetch('/api/regions').then(res => res.json()),
-      fetch('/api/blog-posts').then(res => res.json())
+         fetch('https://coskunhafriyat.com/api/services').then(res => res.json()),
+         fetch('https://coskunhafriyat.com/api/projects').then(res => res.json()),
+        fetch('https://coskunhafriyat.com/api/regions').then(res => res.json()),
+      fetch('https://coskunhafriyat.com/api/blog-posts').then(res => res.json())
        ])
 
         // Şimdilik mock data kullanıyoruz
