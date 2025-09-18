@@ -1,24 +1,35 @@
 import { neon } from "@neondatabase/serverless"
 
 let sql: ReturnType<typeof neon> | null = null
+let isDatabaseAvailable = false
+
+// Check if database is available at module load time
+function checkDatabaseAvailability() {
+  const databaseUrl = process.env.DATABASE_URL
+  isDatabaseAvailable = !!databaseUrl
+  console.log("[v0] DATABASE_URL exists:", isDatabaseAvailable)
+  return isDatabaseAvailable
+}
+
+// Initialize database availability check
+checkDatabaseAvailability()
 
 function getDatabase() {
+  if (!isDatabaseAvailable) {
+    // Return mock database that always returns empty arrays
+    return {
+      async template(strings: TemplateStringsArray, ...values: any[]) {
+        console.log("[v0] Mock database query executed (no DATABASE_URL)")
+        return []
+      }
+    } as any
+  }
+
   if (!sql) {
     const databaseUrl = process.env.DATABASE_URL
-    console.log("[v0] DATABASE_URL exists:", !!databaseUrl)
-
     if (!databaseUrl) {
-      console.warn("[v0] DATABASE_URL is not set, returning mock database")
-      // Mock database object that returns empty arrays
-      sql = {
-        async template(strings: TemplateStringsArray, ...values: any[]) {
-          console.log("[v0] Mock database query executed")
-          return []
-        }
-      } as any
-      return sql
+      throw new Error("DATABASE_URL is not set")
     }
-
     sql = neon(databaseUrl)
     console.log("[v0] Database connection initialized")
   }
@@ -27,6 +38,12 @@ function getDatabase() {
 
 // Services
 export async function getServices(featured?: boolean) {
+  // Early return if no database URL
+  if (!process.env.DATABASE_URL) {
+    console.log("[v0] No DATABASE_URL, returning empty services array")
+    return []
+  }
+
   try {
     const sql = getDatabase()
     if (featured) {
@@ -64,6 +81,12 @@ export async function getServiceBySlug(slug: string) {
 
 // Projects
 export async function getProjects(featured?: boolean) {
+  // Early return if no database URL
+  if (!process.env.DATABASE_URL) {
+    console.log("[v0] No DATABASE_URL, returning empty projects array")
+    return []
+  }
+
   try {
     const sql = getDatabase()
     if (featured) {
@@ -91,6 +114,12 @@ export async function getProjectBySlug(slug: string) {
 
 // Blog Posts - Updated to match actual schema
 export async function getBlogPosts(featured?: boolean) {
+  // Early return if no database URL
+  if (!process.env.DATABASE_URL) {
+    console.log("[v0] No DATABASE_URL, returning empty blog posts array")
+    return []
+  }
+
   try {
     const sql = getDatabase()
     let result
@@ -416,6 +445,12 @@ export async function deleteFaq(id: number) {
 
 // Regions Management
 export async function getRegions(featured?: boolean) {
+  // Early return if no database URL
+  if (!process.env.DATABASE_URL) {
+    console.log("[v0] No DATABASE_URL, returning empty regions array")
+    return []
+  }
+
   try {
     const sql = getDatabase()
     if (featured) {
@@ -429,7 +464,7 @@ export async function getRegions(featured?: boolean) {
     if (error instanceof Error && error.message.includes('relation "regions" does not exist')) {
       return []
     }
-    throw error
+    return []
   }
 }
 
