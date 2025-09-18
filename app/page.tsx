@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { ChevronRight, HardHat, Hammer, Compass } from "lucide-react"
@@ -10,36 +12,133 @@ import { ScaleIn } from "@/components/animations/scale-in"
 import { HoverCard } from "@/components/animations/hover-card"
 import { CountUp } from "@/components/animations/count-up"
 import { ScrollProgress } from "@/components/animations/scroll-progress"
-import { getServices, getProjects, getRegions, getBlogPosts } from "@/lib/database"
 import ServicesSection from "@/components/sections/services-section"
 import RegionsSection from "@/components/sections/regions-section"
 import ProjectsSection from "@/components/sections/projects-section"
 import BlogSection from "@/components/sections/blog-section"
+import { useState, useEffect } from "react"
 
-
-export default async function Home() {
-  // Veri çekme işlemleri - hata durumunda boş array döndür
-  let services: any[] = []
-  let projects: any[] = []
-  let regions: any[] = []
-  let blogPosts: any[] = []
-
-  try {
-    const [servicesData, projectsData, regionsData, blogPostsData] = await Promise.all([
-      getServices().catch(() => []),
-      getProjects().catch(() => []),
-      getRegions().catch(() => []),
-      getBlogPosts().catch(() => [])
-    ])
-    
-    services = Array.isArray(servicesData) ? servicesData : []
-    projects = Array.isArray(projectsData) ? projectsData : []
-    regions = Array.isArray(regionsData) ? regionsData : []
-    blogPosts = Array.isArray(blogPostsData) ? blogPostsData : []
-  } catch (error) {
-    console.error("Veri çekme hatası:", error)
-    // Hata durumunda boş array'ler kullan
+// Mock data - veritabanı bağlantısı olmadığında kullanılacak
+const mockServices = [
+  {
+    id: 1,
+    title: "Hafriyat İşleri",
+    slug: "hafriyat-isleri",
+    short_description: "Profesyonel hafriyat, kazı ve toprak işleri hizmetleri",
+    image_url: "/images/hafriyat.jpg",
+    features: ["Modern ekipman", "Deneyimli operatörler", "Zamanında teslimat"]
+  },
+  {
+    id: 2,
+    title: "İş Makinesi Kiralama",
+    slug: "is-makinesi-kiralama",
+    short_description: "JCB, kepçe, loader ve buldozer kiralama hizmetleri",
+    image_url: "/images/makine-kiralama.jpg",
+    features: ["7/24 hizmet", "Bakımlı makineler", "Uygun fiyatlar"]
+  },
+  {
+    id: 3,
+    title: "Yıkım İşleri",
+    slug: "yikim-isleri",
+    short_description: "Güvenli ve çevre dostu yıkım hizmetleri",
+    image_url: "/images/yikim.jpg",
+    features: ["Güvenli yıkım", "Çevre dostu", "Hızlı temizlik"]
   }
+]
+
+const mockProjects = [
+  {
+    id: 1,
+    title: "Ataşehir Rezidans Projesi",
+    slug: "atasehir-rezidans",
+    short_description: "Modern rezidans kompleksi hafriyat işleri",
+    image_url: "/images/project1.jpg",
+    location: "Ataşehir, İstanbul"
+  },
+  {
+    id: 2,
+    title: "Kadıköy Ticaret Merkezi",
+    slug: "kadikoy-ticaret-merkezi",
+    short_description: "Ticaret merkezi temel kazı işleri",
+    image_url: "/images/project2.jpg",
+    location: "Kadıköy, İstanbul"
+  }
+]
+
+const mockRegions = [
+  {
+    id: 1,
+    name: "Anadolu Yakası",
+    slug: "anadolu-yakasi",
+    description: "Ataşehir, Üsküdar, Kadıköy ve çevresinde hizmet",
+    image_url: "/images/anadolu-yakasi.jpg"
+  },
+  {
+    id: 2,
+    name: "Avrupa Yakası",
+    slug: "avrupa-yakasi",
+    description: "Beşiktaş, Şişli, Beyoğlu ve çevresinde hizmet",
+    image_url: "/images/avrupa-yakasi.jpg"
+  }
+]
+
+const mockBlogPosts = [
+  {
+    id: 1,
+    title: "Hafriyat İşlerinde Dikkat Edilmesi Gerekenler",
+    slug: "hafriyat-islerinde-dikkat-edilmesi-gerekenler",
+    excerpt: "Hafriyat işlerinde güvenlik ve kalite için önemli noktalar",
+    image_url: "/images/blog1.jpg",
+    created_at: "2024-01-15"
+  },
+  {
+    id: 2,
+    title: "İş Makinesi Seçimi Nasıl Yapılır?",
+    slug: "is-makinesi-secimi-nasil-yapilir",
+    excerpt: "Doğru iş makinesi seçimi için rehber",
+    image_url: "/images/blog2.jpg",
+    created_at: "2024-01-10"
+  }
+]
+
+export default function Home() {
+  const [services, setServices] = useState<any[]>([])
+  const [projects, setProjects] = useState<any[]>([])
+  const [regions, setRegions] = useState<any[]>([])
+  const [blogPosts, setBlogPosts] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    // Client-side veri yükleme
+    const loadData = async () => {
+      try {
+        // Gerçek API çağrıları burada yapılabilir
+        const [servicesData, projectsData, regionsData, blogPostsData] = await Promise.all([
+         fetch('https://coskunhafriyat.com/api/admin/services').then(res => res.json()),
+         fetch('https://coskunhafriyat.com/api/admin/projects').then(res => res.json()),
+        fetch('https://coskunhafriyat.com/api/admin/regions').then(res => res.json()),
+      fetch('https://coskunhafriyat.com/api/admin/blog').then(res => res.json())
+       ])
+
+        // Şimdilik mock data kullanıyoruz
+        setServices(servicesData)
+        setProjects(projectsData)
+        setRegions(regionsData)
+        setBlogPosts(blogPostsData)
+        setLoading(false)
+      } catch (error) {
+        console.error("Veri yükleme hatası:", error)
+        // Hata durumunda mock data kullan
+        setServices(mockServices)
+        setProjects(mockProjects)
+        setRegions(mockRegions)
+        setBlogPosts(mockBlogPosts)
+        setLoading(false)
+      }
+    }
+
+    loadData()
+  }, [])
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -121,16 +220,16 @@ export default async function Home() {
       </section>
 
       {/* Services Section */}
-      <ServicesSection services={services} />
+      {!loading && <ServicesSection services={services} />}
 
       {/* Regions Section */}
-      <RegionsSection regions={regions} />
+      {!loading && <RegionsSection regions={regions} />}
 
       {/* Projects Section */}
-      <ProjectsSection projects={projects} />
+      {!loading && <ProjectsSection projects={projects} />}
 
       {/* Blog Section */}
-      <BlogSection blogPosts={blogPosts} />
+      {!loading && <BlogSection blogPosts={blogPosts} />}
 
       {/* Features Section */}
       <section className="py-10 md:py-16 bg-gray-50 dark:bg-gray-800">
