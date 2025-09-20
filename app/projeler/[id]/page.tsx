@@ -216,7 +216,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     <div className="space-y-4 mb-6">
                       <div className="flex items-center">
                         <Phone className="h-5 w-5 text-amber-500 mr-3" />
-                        <span className="text-gray-700">0216 123 45 67</span>
+                        <span className="text-gray-700">0536 216 09 92</span>
                       </div>
                       <div className="flex items-center">
                         <Mail className="h-5 w-5 text-amber-500 mr-3" />
@@ -228,7 +228,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       <Link href="/iletisim">
                         <Button className="bg-amber-500 hover:bg-amber-600 text-black w-full">Teklif Formu</Button>
                       </Link>
-                      <Link href="tel:02161234567">
+                      <Link href="tel:05362160992">
                         <Button
                           variant="outline"
                           className="w-full bg-transparent border-amber-500 text-amber-700 hover:bg-amber-500 hover:text-black"

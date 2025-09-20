@@ -160,7 +160,7 @@ export function Footer() {
               </li>
               <li className="flex items-start justify-center sm:justify-start">
                 <Phone className="h-5 w-5 text-amber-500 mr-3 mt-1 flex-shrink-0" />
-                <span className="text-gray-300 text-sm sm:text-base">0216 123 45 67</span>
+                <span className="text-gray-300 text-sm sm:text-base">0536 216 09 92</span>
               </li>
               <li className="flex items-start justify-center sm:justify-start">
                 <Mail className="h-5 w-5 text-amber-500 mr-3 mt-1 flex-shrink-0" />

@@ -75,7 +75,7 @@ export default async function RegionsPage() {
         </section>
 
         {/* Featured Regions */}
-        <section className="py-12 md:py-20 bg-white">
+        <section className="py-12 md:py-20 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4">
             <FadeIn>
               <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">
@@ -83,7 +83,7 @@ export default async function RegionsPage() {
                   Hizmet Verdiğimiz Bölgeler
                 </div>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6">İstanbul Geneli Hafriyat Hizmetleri</h2>
-                <p className="text-base md:text-lg text-gray-700">
+                <p className="text-base md:text-lg text-gray-700 dark:text-gray-300">
                   Modern ekipmanlarımız ve deneyimli ekibimizle İstanbul'un her bölgesinde güvenilir hafriyat hizmetleri sunuyoruz.
                 </p>
               </div>
@@ -93,9 +93,9 @@ export default async function RegionsPage() {
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
                 {regions.length === 0 ? (
                   <div className="col-span-full text-center py-12">
-                    <div className="bg-gray-50 rounded-lg p-8">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Bölgelerimiz Yakında</h3>
-                      <p className="text-gray-600 mb-4">
+                    <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Bölgelerimiz Yakında</h3>
+                      <p className="text-gray-600 dark:text-gray-400 mb-4">
                         Hizmet verdiğimiz bölgelerin listesi yakında eklenecek.
                       </p>
                       <Link href="/iletisim">
@@ -108,7 +108,7 @@ export default async function RegionsPage() {
                 ) : (
                   regions.map((region: any, index: number) => (
                   <HoverCard key={region.id}>
-                    <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-100">
+                    <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-100 dark:border-gray-700">
                       <div className="relative h-48 md:h-56 overflow-hidden">
                         <Image
                           src={region.image_url || "/images/hero-3.png"}
@@ -127,9 +127,9 @@ export default async function RegionsPage() {
                       <div className="p-6 md:p-8">
                         <div className="flex items-center mb-3">
                           <MapPin className="h-5 w-5 text-amber-500 mr-2" />
-                          <h3 className="text-xl md:text-2xl font-bold text-gray-900">{region.name}</h3>
+                          <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">{region.name}</h3>
                         </div>
-                        <p className="text-gray-700 mb-4 text-sm sm:text-base line-clamp-3">
+                        <p className="text-gray-700 dark:text-gray-300 mb-4 text-sm sm:text-base line-clamp-3">
                           {region.short_description}
                         </p>
 
@@ -145,7 +145,7 @@ export default async function RegionsPage() {
                                 </span>
                               ))}
                               {region.services_offered.length > 3 && (
-                                <span className="inline-block bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs font-medium">
+                                <span className="inline-block bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-3 py-1 rounded-full text-xs font-medium">
                                   +{region.services_offered.length - 3} daha
                                 </span>
                               )}
@@ -155,13 +155,13 @@ export default async function RegionsPage() {
 
                         <div className="space-y-2 mb-6">
                           {region.contact_phone && (
-                            <div className="flex items-center text-sm text-gray-600">
+                            <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                               <Phone className="h-4 w-4 text-amber-500 mr-2" />
                               <span>{region.contact_phone}</span>
                             </div>
                           )}
                           {region.contact_email && (
-                            <div className="flex items-center text-sm text-gray-600">
+                            <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                               <Mail className="h-4 w-4 text-amber-500 mr-2" />
                               <span>{region.contact_email}</span>
                             </div>
@@ -193,7 +193,7 @@ export default async function RegionsPage() {
                   Neden Tüm Bölgelerde Bizi Seçmelisiniz
                 </div>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6">İstanbul Geneli Güvenilir Hizmet</h2>
-                <p className="text-base md:text-lg text-gray-700">
+                <p className="text-base md:text-lg text-gray-700 dark:text-gray-300">
                   Her bölgede aynı kalite ve güvenilirlik standartlarımızla hizmet veriyoruz.
                 </p>
               </div>
@@ -202,12 +202,12 @@ export default async function RegionsPage() {
             <StaggerIn direction="up" staggerDelay={0.1}>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
                 {benefits.map((benefit, index) => (
-                  <div key={index} className="bg-white p-6 md:p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                  <div key={index} className="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                     <div className="bg-amber-100 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center mb-4">
                       <benefit.icon className="h-6 w-6 md:h-7 md:w-7 text-amber-600" />
                     </div>
-                    <h3 className="text-lg md:text-xl font-bold mb-3 text-gray-900">{benefit.title}</h3>
-                    <p className="text-gray-700 text-sm sm:text-base">{benefit.description}</p>
+                    <h3 className="text-lg md:text-xl font-bold mb-3 text-gray-900 dark:text-white">{benefit.title}</h3>
+                    <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">{benefit.description}</p>
                   </div>
                 ))}
               </div>

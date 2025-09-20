@@ -8,6 +8,7 @@ import { Montserrat, Poppins } from "next/font/google"
 import { AnimatePresence, motion } from "framer-motion"
 import { usePathname } from "next/navigation"
 import { ScrollToTop } from "@/components/scroll-to-top"
+import { FloatingContactButton } from "@/components/floating-contact-button"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -52,6 +53,7 @@ export default function ClientLayout({
             </AnimatePresence>
             <Footer />
             <ScrollToTop />
+            <FloatingContactButton />
           </div>
         </ThemeProvider>
       </body>

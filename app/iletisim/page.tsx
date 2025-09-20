@@ -52,7 +52,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg">Telefon Numaramız</h3>
-                    <p className="text-gray-700">(0212) 123-45-67</p>
+                    <p className="text-gray-700">0536 216 09 92</p>
                   </div>
                 </div>
                 <div className="flex items-start">

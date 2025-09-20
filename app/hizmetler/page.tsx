@@ -80,14 +80,14 @@ export default async function ServicesPage() {
         </section>
 
         {/* Services Overview */}
-        <section className="py-12 md:py-20 bg-white">
+        <section className="py-12 md:py-20 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">
               <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-3 md:mb-4">
                 Sunduğumuz Hizmetler
               </div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6">Kapsamlı Hafriyat Çözümleri</h2>
-              <p className="text-base md:text-lg text-gray-700">
+              <p className="text-base md:text-lg text-gray-700 dark:text-gray-300">
                 Konseptten tamamlanmaya kadar, vizyonunuzu hassasiyet ve mükemmellikle hayata geçirmek için uçtan uca
                 hizmetler sunuyoruz.
               </p>
@@ -109,7 +109,7 @@ export default async function ServicesPage() {
                   </div>
                   <div className="p-6 md:p-8">
                     <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">{service.title}</h3>
-                    <p className="text-gray-700 mb-4 text-sm sm:text-base">{service.short_description}</p>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4 text-sm sm:text-base">{service.short_description}</p>
 
                     {service.price_range && (
                       <div className="mb-4">
@@ -123,7 +123,7 @@ export default async function ServicesPage() {
                       <div className="mb-5 md:mb-6">
                         <ul className="space-y-1">
                           {service.features.slice(0, 3).map((feature: string, idx: number) => (
-                            <li key={idx} className="flex items-center text-sm text-gray-600">
+                            <li key={idx} className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                               <CheckCircle className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
                               {feature}
                             </li>
@@ -153,7 +153,7 @@ export default async function ServicesPage() {
                 Çalışma Sürecimiz
               </div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6">Nasıl Çalışıyoruz</h2>
-              <p className="text-base md:text-lg text-gray-700">
+              <p className="text-base md:text-lg text-gray-700 dark:text-gray-300">
                 Akıcı sürecimiz, ilk görüşmeden proje tamamlanmasına kadar sorunsuz bir deneyim sağlar.
               </p>
             </div>
@@ -170,12 +170,12 @@ export default async function ServicesPage() {
                       className={`flex flex-col md:flex-row items-center gap-4 md:gap-8 ${index % 2 === 1 ? "md:flex-row-reverse" : ""}`}
                     >
                       <div className="md:w-1/2 relative w-full">
-                        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-md relative z-10">
+                        <div className="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-2xl shadow-md relative z-10">
                           <div className="bg-amber-100 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mb-3 md:mb-4">
                             <span className="text-amber-700 font-bold text-lg md:text-xl">{index + 1}</span>
                           </div>
                           <h3 className="text-lg md:text-2xl font-bold mb-2 md:mb-4">{step.title}</h3>
-                          <p className="text-gray-700 text-sm sm:text-base">{step.description}</p>
+                          <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">{step.description}</p>
                         </div>
                         {/* Circle on the timeline - hidden on mobile */}
                         <div className="absolute top-1/2 left-0 md:left-auto md:right-0 transform translate-y-[-50%] translate-x-[-50%] md:translate-x-[50%] w-6 h-6 bg-amber-500 rounded-full border-4 border-white z-20 hidden md:block"></div>
@@ -192,7 +192,7 @@ export default async function ServicesPage() {
         </section>
 
         {/* Why Choose Us */}
-        <section className="py-12 md:py-20 bg-white">
+        <section className="py-12 md:py-20 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center max-w-6xl mx-auto">
               <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl order-2 md:order-1">
@@ -209,7 +209,7 @@ export default async function ServicesPage() {
                   Neden Bizi Seçmelisiniz
                 </div>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6">Coşkun Hafriyat Farkı</h2>
-                <p className="text-base md:text-lg text-gray-700 mb-5 md:mb-8">
+                <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 mb-5 md:mb-8">
                   Coşkun Hafriyat'ı seçtiğinizde, mükemmellik, yenilik ve tam memnuniyetinize odaklanan bir ortak
                   seçiyorsunuz.
                 </p>
@@ -219,7 +219,7 @@ export default async function ServicesPage() {
                       <CheckCircle className="h-5 w-5 md:h-6 md:w-6 text-amber-500 mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
                       <div>
                         <h3 className="font-semibold text-base md:text-lg">{benefit.title}</h3>
-                        <p className="text-gray-700 text-sm sm:text-base">{benefit.description}</p>
+                        <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">{benefit.description}</p>
                       </div>
                     </div>
                   ))}

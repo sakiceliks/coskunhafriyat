@@ -187,12 +187,12 @@ function MobileMenu({ navigationItems, services, onClose }: MobileMenuProps) {
             <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">İletişim</h3>
             <div className="space-y-3">
               <Link
-                href="tel:+905312812958"
+                href="tel:+905362160992"
                 className="flex items-center gap-3 p-3 rounded-lg hover:bg-amber-50 transition-colors text-gray-900"
               >
                 <Phone className="h-5 w-5 text-amber-500" />
                 <div>
-                  <div className="font-medium">+90 531 281 29 58</div>
+                  <div className="font-medium">+90 536 216 09 92</div>
                   <div className="text-sm text-gray-500">Hemen ara</div>
                 </div>
               </Link>

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next"
-import { getServices, getProjects, getBlogPosts } from "@/lib/database"
+import { getServices, getProjects, getBlogPosts, getRegions } from "@/lib/database"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://coskunhafriyat.com"
@@ -37,6 +37,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
     {
+      url: `${baseUrl}/bolgelerimiz`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/iletisim`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
@@ -63,6 +69,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     }))
 
+    // Dynamic region pages
+    const regions = await getRegions()
+    const regionPages = regions.map((region: any) => ({
+      url: `${baseUrl}/bolgelerimiz/${region.slug}`,
+      lastModified: new Date(region.updated_at || region.created_at),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }))
+
     // Dynamic blog pages
     const blogPosts = await getBlogPosts()
     const blogPages = blogPosts
@@ -74,7 +89,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.6,
       }))
 
-    return [...staticPages, ...servicePages, ...projectPages, ...blogPages]
+    return [...staticPages, ...servicePages, ...projectPages, ...regionPages, ...blogPages]
   } catch (error) {
     console.error("Error generating sitemap:", error)
     // Return static pages only if database fails

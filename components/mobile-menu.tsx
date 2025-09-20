@@ -71,12 +71,12 @@ export function MobileMenu({ navigationItems, services, onClose }: MobileMenuPro
             <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">İletişim</h3>
             <div className="space-y-3">
               <a
-                href="tel:+905551234567"
+                href="tel:+905362160992"
                 className="flex items-center gap-3 p-3 rounded-lg hover:bg-amber-500/20 transition-colors text-white"
               >
                 <Phone className="h-5 w-5 text-primary" />
                 <div>
-                  <div className="font-medium">+90 (531) 281 29 58</div>
+                  <div className="font-medium">+90 536 216 09 92</div>
                   <div className="text-sm text-gray-400">Hemen ara</div>
                 </div>
               </a>

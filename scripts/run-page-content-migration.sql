@@ -78,7 +78,7 @@ INSERT INTO page_content (page_name, section_name, content_type, content_key, co
 ('contact', 'hero', 'text', 'subtitle', 'Proje ihtiyaçlarınızı görüşmek veya fiyat teklifi almak için ekibimizle iletişime geçin.'),
 ('contact', 'hero', 'image', 'background_image', '/images/contact-hero.png'),
 ('contact', 'info', 'text', 'address', 'İstanbul, Türkiye'),
-('contact', 'info', 'text', 'phone', '(0212) 123-4567'),
+('contact', 'info', 'text', 'phone', '0536 216 09 92'),
 ('contact', 'info', 'text', 'email', 'info@hafriyatci.com'),
 ('contact', 'info', 'text', 'hours_weekday', 'Pazartesi - Cuma: 08:00 - 17:00'),
 ('contact', 'info', 'text', 'hours_weekend', 'Cumartesi: 09:00 - 14:00')
