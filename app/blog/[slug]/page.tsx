@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/database"
+import { CTASection } from "@/components/cta-section"
 
 interface BlogPostPageProps {
   params: {
@@ -134,30 +135,30 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </section>
 
         {/* Article Content */}
-        <article className="py-12 md:py-16 bg-white">
+        <article className="py-12 md:py-16 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               {/* Excerpt */}
-              <div className="text-xl text-gray-700 mb-8 p-6 bg-gray-50 rounded-lg border-l-4 border-amber-500">
+              <div className="text-xl text-gray-700 dark:text-gray-300 mb-8 p-6 bg-gray-50 dark:bg-gray-800 rounded-lg border-l-4 border-amber-500">
                 {post.excerpt}
               </div>
 
               {/* Content */}
               <div className="prose prose-lg max-w-none">
                 {post.content.split("\n").map((paragraph: string, index: number) => (
-                  <p key={index} className="mb-4 text-gray-700 leading-relaxed">
+                  <p key={index} className="mb-4 text-gray-700 dark:text-gray-300 leading-relaxed">
                     {paragraph}
                   </p>
                 ))}
               </div>
 
               {/* Tags */}
-              <div className="mt-12 pt-8 border-t border-gray-200">
+              <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
                 <div className="flex items-center flex-wrap gap-2">
-                  <Tag className="h-4 w-4 text-gray-500 mr-2" />
-                  <span className="text-gray-600 font-medium mr-3">Etiketler:</span>
+                  <Tag className="h-4 w-4 text-gray-500 dark:text-gray-400 mr-2" />
+                  <span className="text-gray-600 dark:text-gray-400 font-medium mr-3">Etiketler:</span>
                   {post.tags?.map((tag: string, index: number) => (
-                    <Badge key={index} variant="outline" className="text-amber-600 border-amber-200">
+                    <Badge key={index} variant="outline" className="text-amber-600 border-amber-200 dark:text-amber-400 dark:border-amber-600">
                       {tag}
                     </Badge>
                   ))}
@@ -169,10 +170,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Related Posts */}
         {relatedPosts.length > 0 && (
-          <section className="py-12 md:py-16 bg-gray-50">
+          <section className="py-12 md:py-16 bg-gray-50 dark:bg-gray-800">
             <div className="container mx-auto px-4">
               <div className="max-w-6xl mx-auto">
-                <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-center">İlgili Yazılar</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-center dark:text-white">İlgili Yazılar</h2>
 
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                   {relatedPosts.map((relatedPost: any) => (
@@ -185,21 +186,28 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         )}
 
         {/* CTA Section */}
-        <section className="py-12 md:py-16 bg-gray-900 text-white">
+        <CTASection
+          title="Hafriyat İhtiyaçlarınız İçin Bizimle İletişime Geçin"
+          description="Profesyonel hafriyat, kazı ve iş makinesi kiralama hizmetlerimiz hakkında detaylı bilgi alın."
+          variant="primary"
+        />
+
+        {/* Additional CTA Section */}
+        <section className="py-12 md:py-16 bg-gray-900 dark:bg-black text-white">
           <div className="container mx-auto px-4 text-center max-w-4xl">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6">
-              Hafriyat İhtiyaçlarınız İçin Bizimle İletişime Geçin
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6 dark:text-white">
+              Uzman Görüşlerimizi Takip Edin
             </h2>
-            <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-xl md:max-w-2xl mx-auto mb-6 md:mb-8">
-              Profesyonel hafriyat, kazı ve iş makinesi kiralama hizmetlerimiz hakkında detaylı bilgi alın.
+            <p className="text-gray-300 dark:text-gray-400 text-sm sm:text-base md:text-lg max-w-xl md:max-w-2xl mx-auto mb-6 md:mb-8">
+              Hafriyat ve inşaat sektöründeki son gelişmeleri ve uzman tavsiyelerini blog sayfamızdan takip edin.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Link href="/iletisim">
+              <Link href="/blog">
                 <Button
                   size="lg"
-                  className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-6 md:px-8 w-full sm:w-auto"
+                  className="bg-amber-500 hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-700 text-black dark:text-white font-semibold px-6 md:px-8 w-full sm:w-auto"
                 >
-                  İletişime Geçin
+                  Tüm Yazıları Gör
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
@@ -207,7 +215,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-black w-full sm:w-auto bg-transparent"
+                  className="border-white text-white hover:bg-white hover:text-black dark:border-gray-300 dark:text-gray-300 dark:hover:bg-gray-300/10 w-full sm:w-auto bg-transparent"
                 >
                   Hizmetlerimizi İnceleyin
                 </Button>
@@ -230,7 +238,7 @@ function RelatedPostCard({ post }: { post: any }) {
   }
 
   return (
-    <Card className="overflow-hidden group h-full">
+    <Card className="overflow-hidden group h-full dark:bg-gray-800 dark:border-gray-700">
       <div className="relative h-48 w-full">
         <Image
           src={post.featured_image || "/placeholder.svg?height=300&width=400"}
@@ -241,18 +249,18 @@ function RelatedPostCard({ post }: { post: any }) {
         />
       </div>
       <CardHeader>
-        <CardTitle className="text-lg line-clamp-2">{post.title}</CardTitle>
-        <CardDescription className="line-clamp-2">{post.excerpt}</CardDescription>
+        <CardTitle className="text-lg line-clamp-2 dark:text-white">{post.title}</CardTitle>
+        <CardDescription className="line-clamp-2 dark:text-gray-300">{post.excerpt}</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="flex items-center text-gray-600 text-sm mb-4">
+        <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm mb-4">
           <Calendar className="h-4 w-4 mr-2" />
           <span>{formatDate(post.published_date)}</span>
         </div>
         <Link href={`/blog/${post.slug}`}>
           <Button
             variant="outline"
-            className="w-full border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white bg-transparent"
+            className="w-full border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white dark:border-amber-400 dark:text-amber-400 dark:hover:bg-amber-400 dark:hover:text-black bg-transparent"
           >
             Oku
             <ArrowRight className="ml-2 h-4 w-4" />

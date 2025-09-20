@@ -6,6 +6,7 @@ import { ProjectJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld"
 
 import { Button } from "@/components/ui/button"
 import { getProjectById, getProjectBySlug } from "@/lib/database"
+import { CTASection } from "@/components/cta-section"
 
 interface ProjectPageProps {
   params: {
@@ -111,11 +112,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </section>
 
         {/* Project Details */}
-        <section className="py-12 md:py-20 bg-white">
+        <section className="py-12 md:py-20 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               {/* Back Button */}
-              <Link href="/projeler" className="inline-flex items-center text-amber-600 hover:text-amber-700 mb-8">
+              <Link href="/projeler" className="inline-flex items-center text-amber-600 hover:text-amber-700 dark:text-amber-400 dark:hover:text-amber-300 mb-8">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Tüm Projelere Dön
               </Link>
@@ -123,13 +124,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <div className="grid md:grid-cols-3 gap-10 md:gap-16">
                 {/* Main Content */}
                 <div className="md:col-span-2">
-                  <h2 className="text-2xl sm:text-3xl font-bold mb-6">Proje Detayları</h2>
-                  <p className="text-gray-700 text-base md:text-lg mb-8 leading-relaxed">{project.description}</p>
+                  <h2 className="text-2xl sm:text-3xl font-bold mb-6 dark:text-white">Proje Detayları</h2>
+                  <p className="text-gray-700 dark:text-gray-300 text-base md:text-lg mb-8 leading-relaxed">{project.description}</p>
 
                   {/* Project Gallery */}
                   {project.gallery_images && project.gallery_images.length > 0 && (
                     <div className="mb-8">
-                      <h3 className="text-xl font-semibold mb-4">Proje Galerisi</h3>
+                      <h3 className="text-xl font-semibold mb-4 dark:text-white">Proje Galerisi</h3>
                       <div className="grid sm:grid-cols-2 gap-4">
                         {project.gallery_images.map((image: string, index: number) => (
                           <div key={index} className="relative h-48 sm:h-56 rounded-lg overflow-hidden">
@@ -150,15 +151,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 {/* Sidebar */}
                 <div className="space-y-6">
                   {/* Project Info Card */}
-                  <div className="bg-gray-50 rounded-2xl p-6">
-                    <h3 className="text-xl font-semibold mb-4">Proje Bilgileri</h3>
+                  <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+                    <h3 className="text-xl font-semibold mb-4 dark:text-white">Proje Bilgileri</h3>
                     <div className="space-y-4">
                       {project.project_type && (
                         <div className="flex items-center">
                           <CheckCircle className="h-5 w-5 text-amber-500 mr-3 flex-shrink-0" />
                           <div>
-                            <span className="text-sm text-gray-600">Proje Türü:</span>
-                            <p className="font-medium">{project.project_type}</p>
+                            <span className="text-sm text-gray-600 dark:text-gray-400">Proje Türü:</span>
+                            <p className="font-medium dark:text-white">{project.project_type}</p>
                           </div>
                         </div>
                       )}
@@ -167,8 +168,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         <div className="flex items-center">
                           <MapPin className="h-5 w-5 text-amber-500 mr-3 flex-shrink-0" />
                           <div>
-                            <span className="text-sm text-gray-600">Konum:</span>
-                            <p className="font-medium">{project.location}</p>
+                            <span className="text-sm text-gray-600 dark:text-gray-400">Konum:</span>
+                            <p className="font-medium dark:text-white">{project.location}</p>
                           </div>
                         </div>
                       )}
@@ -177,8 +178,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         <div className="flex items-center">
                           <Calendar className="h-5 w-5 text-amber-500 mr-3 flex-shrink-0" />
                           <div>
-                            <span className="text-sm text-gray-600">Tamamlanma Tarihi:</span>
-                            <p className="font-medium">{formatDate(project.completion_date)}</p>
+                            <span className="text-sm text-gray-600 dark:text-gray-400">Tamamlanma Tarihi:</span>
+                            <p className="font-medium dark:text-white">{formatDate(project.completion_date)}</p>
                           </div>
                         </div>
                       )}
@@ -187,8 +188,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         <div className="flex items-center">
                           <Ruler className="h-5 w-5 text-amber-500 mr-3 flex-shrink-0" />
                           <div>
-                            <span className="text-sm text-gray-600">Proje Büyüklüğü:</span>
-                            <p className="font-medium">{project.project_size}</p>
+                            <span className="text-sm text-gray-600 dark:text-gray-400">Proje Büyüklüğü:</span>
+                            <p className="font-medium dark:text-white">{project.project_size}</p>
                           </div>
                         </div>
                       )}
@@ -197,8 +198,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         <div className="flex items-center">
                           <User className="h-5 w-5 text-amber-500 mr-3 flex-shrink-0" />
                           <div>
-                            <span className="text-sm text-gray-600">Müşteri:</span>
-                            <p className="font-medium">{project.client_name}</p>
+                            <span className="text-sm text-gray-600 dark:text-gray-400">Müşteri:</span>
+                            <p className="font-medium dark:text-white">{project.client_name}</p>
                           </div>
                         </div>
                       )}
@@ -206,9 +207,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   </div>
 
                   {/* Contact Card */}
-                  <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6">
-                    <h3 className="text-xl font-semibold mb-4">Benzer Bir Proje Mi İstiyorsunuz?</h3>
-                    <p className="text-gray-700 mb-6">
+                  <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-6">
+                    <h3 className="text-xl font-semibold mb-4 dark:text-white">Benzer Bir Proje Mi İstiyorsunuz?</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-6">
                       Bu projeye benzer bir çalışma için detaylı bilgi almak ve ücretsiz teklif için bizimle iletişime
                       geçin.
                     </p>
@@ -216,22 +217,22 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     <div className="space-y-4 mb-6">
                       <div className="flex items-center">
                         <Phone className="h-5 w-5 text-amber-500 mr-3" />
-                        <span className="text-gray-700">0536 216 09 92</span>
+                        <span className="text-gray-700 dark:text-gray-300">0536 216 09 92</span>
                       </div>
                       <div className="flex items-center">
                         <Mail className="h-5 w-5 text-amber-500 mr-3" />
-                        <span className="text-gray-700">info@coskunhafriyat.com</span>
+                        <span className="text-gray-700 dark:text-gray-300">info@coskunhafriyat.com</span>
                       </div>
                     </div>
 
                     <div className="space-y-3">
                       <Link href="/iletisim">
-                        <Button className="bg-amber-500 hover:bg-amber-600 text-black w-full">Teklif Formu</Button>
+                        <Button className="bg-amber-500 hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-700 text-black dark:text-white w-full">Teklif Formu</Button>
                       </Link>
                       <Link href="tel:05362160992">
                         <Button
                           variant="outline"
-                          className="w-full bg-transparent border-amber-500 text-amber-700 hover:bg-amber-500 hover:text-black"
+                          className="w-full bg-transparent border-amber-500 text-amber-700 hover:bg-amber-500 hover:text-black dark:border-amber-400 dark:text-amber-400 dark:hover:bg-amber-400 dark:hover:text-black"
                         >
                           Hemen Ara
                         </Button>
@@ -243,6 +244,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
           </div>
         </section>
+
+        {/* CTA Section */}
+        <CTASection
+          title="Benzer Bir Proje Mi Planlıyorsunuz?"
+          description="Uzman ekibimizle projelerinizi güvenle hayata geçirin. Ücretsiz keşif ve detaylı teklif için hemen iletişime geçin."
+          variant="primary"
+        />
       </div>
     </>
   )

@@ -8,6 +8,7 @@ import { getRegionBySlug, getRegionById } from "@/lib/database"
 import { notFound } from "next/navigation"
 import { FadeIn } from "@/components/animations/fade-in"
 import { StaggerIn } from "@/components/animations/stagger-in"
+import { CTASection } from "@/components/cta-section"
 
 interface RegionPageProps {
   params: {
@@ -121,15 +122,15 @@ export default async function RegionPage({ params }: RegionPageProps) {
         </section>
 
         {/* Region Details */}
-        <section className="py-12 md:py-20 bg-white">
+        <section className="py-12 md:py-20 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-start">
                 <div>
                   <FadeIn>
-                    <h2 className="text-2xl sm:text-3xl font-bold mb-6">{region.name} Bölgesi Hizmetlerimiz</h2>
+                    <h2 className="text-2xl sm:text-3xl font-bold mb-6 dark:text-white">{region.name} Bölgesi Hizmetlerimiz</h2>
                     <div className="prose prose-lg max-w-none">
-                      <p className="text-gray-700 leading-relaxed mb-6">
+                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                         {region.description || region.short_description}
                       </p>
                     </div>
@@ -138,12 +139,12 @@ export default async function RegionPage({ params }: RegionPageProps) {
                   {region.services_offered && region.services_offered.length > 0 && (
                     <FadeIn delay={0.2}>
                       <div className="mt-8">
-                        <h3 className="text-xl sm:text-2xl font-bold mb-6">Sunduğumuz Hizmetler</h3>
+                        <h3 className="text-xl sm:text-2xl font-bold mb-6 dark:text-white">Sunduğumuz Hizmetler</h3>
                         <div className="grid sm:grid-cols-2 gap-3">
                           {region.services_offered.map((service: string, index: number) => (
                             <div key={index} className="flex items-center">
                               <CheckCircle className="h-5 w-5 text-amber-500 mr-3 flex-shrink-0" />
-                              <span className="text-gray-700">{service}</span>
+                              <span className="text-gray-700 dark:text-gray-300">{service}</span>
                             </div>
                           ))}
                         </div>
@@ -154,15 +155,15 @@ export default async function RegionPage({ params }: RegionPageProps) {
 
                 <div className="space-y-6">
                   <FadeIn delay={0.4}>
-                    <div className="bg-gray-50 p-6 rounded-xl">
-                      <h3 className="text-xl font-bold mb-4">İletişim Bilgileri</h3>
+                    <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
+                      <h3 className="text-xl font-bold mb-4 dark:text-white">İletişim Bilgileri</h3>
                       <div className="space-y-4">
                         {region.contact_phone && (
                           <div className="flex items-center">
                             <Phone className="h-5 w-5 text-amber-500 mr-3" />
                             <div>
-                              <div className="font-medium">{region.contact_phone}</div>
-                              <div className="text-sm text-gray-600">Telefon</div>
+                              <div className="font-medium dark:text-white">{region.contact_phone}</div>
+                              <div className="text-sm text-gray-600 dark:text-gray-400">Telefon</div>
                             </div>
                           </div>
                         )}
@@ -170,16 +171,16 @@ export default async function RegionPage({ params }: RegionPageProps) {
                           <div className="flex items-center">
                             <Mail className="h-5 w-5 text-amber-500 mr-3" />
                             <div>
-                              <div className="font-medium">{region.contact_email}</div>
-                              <div className="text-sm text-gray-600">E-posta</div>
+                              <div className="font-medium dark:text-white">{region.contact_email}</div>
+                              <div className="text-sm text-gray-600 dark:text-gray-400">E-posta</div>
                             </div>
                           </div>
                         )}
                         <div className="flex items-center">
                           <MapPin className="h-5 w-5 text-amber-500 mr-3" />
                           <div>
-                            <div className="font-medium">{region.location}</div>
-                            <div className="text-sm text-gray-600">Konum</div>
+                            <div className="font-medium dark:text-white">{region.location}</div>
+                            <div className="text-sm text-gray-600 dark:text-gray-400">Konum</div>
                           </div>
                         </div>
                       </div>
@@ -187,24 +188,24 @@ export default async function RegionPage({ params }: RegionPageProps) {
                   </FadeIn>
 
                   <FadeIn delay={0.6}>
-                    <div className="bg-amber-50 p-6 rounded-xl">
-                      <h3 className="text-xl font-bold mb-4 text-amber-800">Neden Bizi Seçmelisiniz?</h3>
+                    <div className="bg-amber-50 dark:bg-amber-900/20 p-6 rounded-xl">
+                      <h3 className="text-xl font-bold mb-4 text-amber-800 dark:text-amber-300">Neden Bizi Seçmelisiniz?</h3>
                       <div className="space-y-3">
                         <div className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
-                          <span className="text-amber-800 text-sm">Bölgede uzman ekibimiz</span>
+                          <span className="text-amber-800 dark:text-amber-300 text-sm">Bölgede uzman ekibimiz</span>
                         </div>
                         <div className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
-                          <span className="text-amber-800 text-sm">Modern ekipmanlar</span>
+                          <span className="text-amber-800 dark:text-amber-300 text-sm">Modern ekipmanlar</span>
                         </div>
                         <div className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
-                          <span className="text-amber-800 text-sm">Hızlı ve güvenli hizmet</span>
+                          <span className="text-amber-800 dark:text-amber-300 text-sm">Hızlı ve güvenli hizmet</span>
                         </div>
                         <div className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
-                          <span className="text-amber-800 text-sm">Rekabetçi fiyatlar</span>
+                          <span className="text-amber-800 dark:text-amber-300 text-sm">Rekabetçi fiyatlar</span>
                         </div>
                       </div>
                     </div>
@@ -217,14 +218,14 @@ export default async function RegionPage({ params }: RegionPageProps) {
 
         {/* Gallery Section */}
         {region.gallery_images && region.gallery_images.length > 0 && (
-          <section className="py-12 md:py-20 bg-gray-50">
+          <section className="py-12 md:py-20 bg-gray-50 dark:bg-gray-800">
             <div className="container mx-auto px-4">
               <FadeIn>
                 <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6 dark:text-white">
                     {region.name} Bölgesi Çalışmalarımız
                   </h2>
-                  <p className="text-base md:text-lg text-gray-700">
+                  <p className="text-base md:text-lg text-gray-700 dark:text-gray-300">
                     Bu bölgede gerçekleştirdiğimiz projelerden örnekler
                   </p>
                 </div>
@@ -250,19 +251,26 @@ export default async function RegionPage({ params }: RegionPageProps) {
         )}
 
         {/* CTA Section */}
-        <section className="py-12 md:py-16 bg-gray-900 text-white">
+        <CTASection
+          title={`${region.name} Bölgesinde Hafriyat Hizmeti Almak İster misiniz?`}
+          description={`${region.name} bölgesinde ücretsiz keşif ve detaylı teklif almak için hemen bizimle iletişime geçin.`}
+          variant="primary"
+        />
+
+        {/* Additional CTA Section */}
+        <section className="py-12 md:py-16 bg-gray-900 dark:bg-black text-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <FadeIn>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
-                  {region.name} Bölgesinde Hafriyat Hizmeti Almak İster misiniz?
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 dark:text-white">
+                  Profesyonel Hafriyat Hizmetleri
                 </h2>
-                <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-                  {region.name} bölgesinde ücretsiz keşif ve detaylı teklif almak için hemen bizimle iletişime geçin.
+                <p className="text-lg text-gray-300 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+                  Uzman ekibimizle güvenilir ve kaliteli hizmet alın.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link href="/iletisim">
-                    <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-8">
+                    <Button size="lg" className="bg-amber-500 hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-700 text-black dark:text-white font-semibold px-8">
                       <Phone className="mr-2 h-5 w-5" />
                       Hemen Ara
                     </Button>
@@ -271,7 +279,7 @@ export default async function RegionPage({ params }: RegionPageProps) {
                     <Button
                       size="lg"
                       variant="outline"
-                      className="border-white text-white hover:bg-white/10 hover:text-white bg-transparent"
+                      className="border-white text-white hover:bg-white/10 hover:text-white dark:border-gray-300 dark:text-gray-300 dark:hover:bg-gray-300/10 bg-transparent"
                     >
                       <Mail className="mr-2 h-5 w-5" />
                       Teklif İste

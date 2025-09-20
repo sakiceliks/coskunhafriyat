@@ -6,6 +6,7 @@ import { ServiceJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld"
 import { Button } from "@/components/ui/button"
 import { getServiceBySlug, getServiceById } from "@/lib/database"
 import { notFound } from "next/navigation"
+import { CTASection } from "@/components/cta-section"
 
 interface ServicePageProps {
   params: {
@@ -105,25 +106,25 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </section>
 
         {/* Service Details */}
-        <section className="py-12 md:py-20 bg-white">
+        <section className="py-12 md:py-20 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
                 <div>
-                  <h2 className="text-2xl sm:text-3xl font-bold mb-6">Hizmet Detayları</h2>
+                  <h2 className="text-2xl sm:text-3xl font-bold mb-6 dark:text-white">Hizmet Detayları</h2>
                   <div className="prose prose-lg max-w-none">
-                    <p className="text-gray-700 leading-relaxed">{service.description || service.short_description}</p>
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{service.description || service.short_description}</p>
                   </div>
                 </div>
 
                 {service.features && service.features.length > 0 && (
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-bold mb-6">Hizmet Özellikleri</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold mb-6 dark:text-white">Hizmet Özellikleri</h3>
                     <ul className="space-y-3">
                       {service.features.map((feature: string, index: number) => (
                         <li key={index} className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700">{feature}</span>
+                          <span className="text-gray-700 dark:text-gray-300">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -135,18 +136,25 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 md:py-16 bg-gray-50">
+        <CTASection
+          title={`${service.title} Hizmeti İçin Teklif Alın`}
+          description="Uzman ekibimizden ücretsiz keşif ve detaylı teklif almak için hemen iletişime geçin."
+          variant="minimal"
+        />
+
+        {/* Additional CTA Section */}
+        <section className="py-12 md:py-16 bg-gray-50 dark:bg-gray-800">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
-                {service.title} Hizmeti İçin Teklif Alın
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 dark:text-white">
+                Profesyonel Hizmet Garantisi
               </h2>
-              <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-                Uzman ekibimizden ücretsiz keşif ve detaylı teklif almak için hemen iletişime geçin.
+              <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+                Kaliteli hizmet ve müşteri memnuniyeti odaklı yaklaşımımızla projelerinizi güvenle tamamlayın.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/iletisim">
-                  <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-8">
+                  <Button size="lg" className="bg-amber-500 hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-700 text-black dark:text-white font-semibold px-8">
                     <Phone className="mr-2 h-5 w-5" />
                     Hemen Ara
                   </Button>
@@ -155,7 +163,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white bg-transparent"
+                    className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white dark:border-amber-400 dark:text-amber-400 dark:hover:bg-amber-400 dark:hover:text-black bg-transparent"
                   >
                     <Mail className="mr-2 h-5 w-5" />
                     Teklif İste
