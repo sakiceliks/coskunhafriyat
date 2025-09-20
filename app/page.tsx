@@ -156,7 +156,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/images/hero-1.png"
+            src="https://cm8xsbawnj19nezd.public.blob.vercel-storage.com/1758398870346-Yeni%20Proje.jpg"
             alt="İnşaat sahası arka planı"
             fill
             priority
