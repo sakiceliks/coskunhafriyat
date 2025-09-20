@@ -82,7 +82,7 @@ export function FloatingContactButton() {
           {isOpen ? (
             <X className="h-6 w-6 text-white dark:text-white" />
           ) : (
-            <Plus className="h-6 w-6 text-white dark:text-white" />
+            <MessageCircle className="h-6 w-6 text-white dark:text-white" />
           )}
         </motion.div>
       </motion.button>
