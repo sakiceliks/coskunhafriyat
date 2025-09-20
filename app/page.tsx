@@ -226,6 +226,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Regions Section - Right after Hero */}
+      {!loading && <RegionsSection regions={regions} />}
+
       {/* Services Section */}
       {!loading && <ServicesSection services={services} />}
 
@@ -235,9 +238,6 @@ export default function Home() {
         description="Profesyonel hafriyat, kazı, yıkım ve iş makinesi kiralama hizmetlerimizle projelerinizi güvenle tamamlayın."
         variant="secondary"
       />
-
-      {/* Regions Section */}
-      {!loading && <RegionsSection regions={regions} />}
 
       {/* CTA Section 2 */}
       <CTASection
