@@ -228,7 +228,11 @@ export default function Home() {
 
       {/* Regions Section - Right after Hero */}
       {!loading && <RegionsSection regions={regions} />}
-
+      <CTASection
+        title="Bölgenizde Hizmet Alın"
+        description="İstanbul'un tüm bölgelerinde aynı kalite ve güvenilirlikle hizmet veriyoruz. Hemen iletişime geçin!"
+        variant="minimal"
+      />
       {/* Services Section */}
       {!loading && <ServicesSection services={services} />}
 
@@ -240,11 +244,7 @@ export default function Home() {
       />
 
       {/* CTA Section 2 */}
-      <CTASection
-        title="Bölgenizde Hizmet Alın"
-        description="İstanbul'un tüm bölgelerinde aynı kalite ve güvenilirlikle hizmet veriyoruz. Hemen iletişime geçin!"
-        variant="minimal"
-      />
+     
 
       {/* Projects Section */}
       {!loading && <ProjectsSection projects={projects} />}
