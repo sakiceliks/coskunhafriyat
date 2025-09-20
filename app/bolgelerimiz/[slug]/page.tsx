@@ -4,7 +4,7 @@ import { ArrowLeft, CheckCircle, Phone, Mail, MapPin, Star, Clock, Users } from 
 import { ServiceJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld"
 
 import { Button } from "@/components/ui/button"
-import { getRegionBySlug, getRegionById } from "@/lib/database"
+import { getRegionBySlug, getRegionById, getServicesByRegion } from "@/lib/database"
 import { notFound } from "next/navigation"
 import { FadeIn } from "@/components/animations/fade-in"
 import { StaggerIn } from "@/components/animations/stagger-in"
@@ -63,6 +63,9 @@ export default async function RegionPage({ params }: RegionPageProps) {
   if (!region) {
     notFound()
   }
+
+  // Get services for this region
+  const regionServices = await getServicesByRegion(region.name)
 
   const breadcrumbItems = [
     { name: "Ana Sayfa", url: "/" },
@@ -215,6 +218,97 @@ export default async function RegionPage({ params }: RegionPageProps) {
             </div>
           </div>
         </section>
+
+        {/* Services Section */}
+        {regionServices.length > 0 && (
+          <section className="py-12 md:py-20 bg-gray-50 dark:bg-gray-800">
+            <div className="container mx-auto px-4">
+              <FadeIn>
+                <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6 dark:text-white">
+                    {region.name} Bölgesi Hizmetlerimiz
+                  </h2>
+                  <p className="text-base md:text-lg text-gray-700 dark:text-gray-300">
+                    {region.name} bölgesinde sunduğumuz profesyonel hafriyat hizmetleri
+                  </p>
+                </div>
+              </FadeIn>
+
+              <StaggerIn direction="up" staggerDelay={0.1}>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                  {regionServices.map((service: any, index: number) => (
+                    <div key={service.id} className="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-100 dark:border-gray-700">
+                      <div className="relative h-48 w-full">
+                        <Image
+                          src={service.image_url || "/placeholder.svg?height=300&width=400"}
+                          alt={`${region.name} ${service.title}`}
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-110"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                        <div className="absolute bottom-4 left-4 right-4">
+                          <h3 className="text-white font-bold text-lg mb-1">
+                            {region.name} {service.title}
+                          </h3>
+                          <p className="text-white/90 text-sm line-clamp-2">
+                            {service.short_description}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="p-6">
+                        <div className="flex items-center justify-between mb-4">
+                          <span className="text-amber-600 dark:text-amber-400 font-semibold text-sm">
+                            {service.price_range || "Fiyat için iletişime geçin"}
+                          </span>
+                          {service.is_featured && (
+                            <span className="bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 px-2 py-1 rounded-full text-xs font-medium">
+                              Öne Çıkan
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+                          {service.description || service.short_description}
+                        </p>
+                        <div className="flex items-center justify-between">
+                          <Link href={`/hizmetler/${service.slug}`}>
+                            <Button
+                              size="sm"
+                              className="bg-amber-500 hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-700 text-black dark:text-white font-semibold"
+                            >
+                              Detayları Gör
+                            </Button>
+                          </Link>
+                          <Link href="/iletisim">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white dark:border-amber-400 dark:text-amber-400 dark:hover:bg-amber-400 dark:hover:text-black"
+                            >
+                              Teklif Al
+                            </Button>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </StaggerIn>
+
+              <div className="text-center mt-10">
+                <Link href="/hizmetler">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white dark:border-amber-400 dark:text-amber-400 dark:hover:bg-amber-400 dark:hover:text-black font-semibold px-8"
+                  >
+                    Tüm Hizmetleri Gör
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Gallery Section */}
         {region.gallery_images && region.gallery_images.length > 0 && (

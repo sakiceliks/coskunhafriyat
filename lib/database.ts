@@ -79,6 +79,41 @@ export async function getServiceBySlug(slug: string) {
   }
 }
 
+export async function getServicesByRegion(regionName: string) {
+  // Early return if no database URL
+  if (!process.env.DATABASE_URL) {
+    console.log("[v0] No DATABASE_URL, returning empty services array for region")
+    return []
+  }
+
+  try {
+    const sql = getDatabase()
+    // Get all active services and filter by region name in title or description
+    const result = await sql`SELECT * FROM services WHERE is_active = true ORDER BY created_at DESC`
+    
+    // Filter services that might be relevant to the region
+    // This is a simple implementation - in a real app you might have a proper region-service relationship table
+    const regionServices = result.filter((service: any) => {
+      const title = service.title?.toLowerCase() || ''
+      const description = service.description?.toLowerCase() || ''
+      const shortDescription = service.short_description?.toLowerCase() || ''
+      const regionNameLower = regionName.toLowerCase()
+      
+      return title.includes(regionNameLower) || 
+             description.includes(regionNameLower) || 
+             shortDescription.includes(regionNameLower) ||
+             title.includes('hafriyat') ||
+             title.includes('kazı') ||
+             title.includes('yıkım')
+    })
+    
+    return regionServices.slice(0, 6) // Limit to 6 services
+  } catch (error) {
+    console.error("Error fetching services by region:", error)
+    return []
+  }
+}
+
 // Projects
 export async function getProjects(featured?: boolean) {
   // Early return if no database URL
