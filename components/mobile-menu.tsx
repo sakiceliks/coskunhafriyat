@@ -13,16 +13,16 @@ interface MobileMenuProps {
 
 export function MobileMenu({ navigationItems, services, onClose }: MobileMenuProps) {
   return (
-    <div className="flex flex-col h-full bg-[#252A34]">
+    <div className="flex flex-col h-full bg-[#252A34] dark:bg-gray-900">
       {/* Header */}
-      <div className="flex items-center justify-between p-6 border-b border-gray-600">
+      <div className="flex items-center justify-between p-6 border-b border-gray-600 dark:border-gray-700">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <span className="text-primary-foreground font-bold">CH</span>
+          <div className="w-8 h-8 bg-primary dark:bg-amber-600 rounded-lg flex items-center justify-center">
+            <span className="text-primary-foreground dark:text-white font-bold">CH</span>
           </div>
 <Image src="/logo.png" alt="Logo" width={200} height={200} />           
         </div>
-        <Button variant="ghost" size="icon" onClick={onClose}>
+        <Button variant="ghost" size="icon" onClick={onClose} className="text-white dark:text-white hover:bg-amber-500/20 dark:hover:bg-amber-500/20">
           <X className="h-5 w-5" />
         </Button>
       </div>
@@ -32,69 +32,69 @@ export function MobileMenu({ navigationItems, services, onClose }: MobileMenuPro
         <div className="p-6 space-y-6">
           {/* Main Navigation */}
           <div className="space-y-1">
-            <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Menü</h3>
+            <h3 className="text-sm font-semibold text-gray-400 dark:text-gray-400 uppercase tracking-wider mb-3">Menü</h3>
             {navigationItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
                 onClick={onClose}
-                className="flex items-center justify-between p-3 rounded-lg hover:bg-amber-500/20 transition-colors text-white"
+                className="flex items-center justify-between p-3 rounded-lg hover:bg-amber-500/20 dark:hover:bg-amber-500/20 transition-colors text-white dark:text-white"
               >
                 <span className="font-medium">{item.name}</span>
-                <ChevronRight className="h-4 w-4 text-gray-300" />
+                <ChevronRight className="h-4 w-4 text-gray-300 dark:text-gray-400" />
               </a>
             ))}
           </div>
 
-          <Separator className="bg-gray-600" />
+          <Separator className="bg-gray-600 dark:bg-gray-700" />
 
           {/* Services */}
           <div className="space-y-1">
-            <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Hizmetlerimiz</h3>
+            <h3 className="text-sm font-semibold text-gray-400 dark:text-gray-400 uppercase tracking-wider mb-3">Hizmetlerimiz</h3>
             {services.map((service) => (
               <a
                 key={service.title}
                 href={service.slug}
                 onClick={onClose}
-                className="flex items-center justify-between p-3 rounded-lg hover:bg-amber-500/20 transition-colors text-gray-200"
+                className="flex items-center justify-between p-3 rounded-lg hover:bg-amber-500/20 dark:hover:bg-amber-500/20 transition-colors text-gray-200 dark:text-gray-300"
               >
                 <span className="text-sm">{service.title}</span>
-                <ChevronRight className="h-4 w-4 text-gray-300" />
+                <ChevronRight className="h-4 w-4 text-gray-300 dark:text-gray-400" />
               </a>
             ))}
           </div>
 
-          <Separator className="bg-gray-600" />
+          <Separator className="bg-gray-600 dark:bg-gray-700" />
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">İletişim</h3>
+            <h3 className="text-sm font-semibold text-gray-400 dark:text-gray-400 uppercase tracking-wider">İletişim</h3>
             <div className="space-y-3">
               <a
                 href="tel:+905362160992"
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-amber-500/20 transition-colors text-white"
+                className="flex items-center gap-3 p-3 rounded-lg hover:bg-amber-500/20 dark:hover:bg-amber-500/20 transition-colors text-white dark:text-white"
               >
-                <Phone className="h-5 w-5 text-primary" />
+                <Phone className="h-5 w-5 text-primary dark:text-amber-400" />
                 <div>
                   <div className="font-medium">+90 536 216 09 92</div>
-                  <div className="text-sm text-gray-400">Hemen ara</div>
+                  <div className="text-sm text-gray-400 dark:text-gray-400">Hemen ara</div>
                 </div>
               </a>
               <a
                 href="mailto:info@zeminustasi.com.yt"
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-amber-500/20 transition-colors text-white"
+                className="flex items-center gap-3 p-3 rounded-lg hover:bg-amber-500/20 dark:hover:bg-amber-500/20 transition-colors text-white dark:text-white"
               >
-                <Mail className="h-5 w-5 text-primary" />
+                <Mail className="h-5 w-5 text-primary dark:text-amber-400" />
                 <div>
                   <div className="font-medium">info@coskunhafriyat.com.tr</div>
-                  <div className="text-sm text-gray-400">E-posta gönder</div>
+                  <div className="text-sm text-gray-400 dark:text-gray-400">E-posta gönder</div>
                 </div>
               </a>
               <div className="flex items-center gap-3 p-3">
-                <MapPin className="h-5 w-5 text-primary" />
+                <MapPin className="h-5 w-5 text-primary dark:text-amber-400" />
                 <div>
                   <div className="font-medium">İstanbul, Türkiye</div>
-                  <div className="text-sm text-gray-400">Tüm bölgelere hizmet</div>
+                  <div className="text-sm text-gray-400 dark:text-gray-400">Tüm bölgelere hizmet</div>
                 </div>
               </div>
             </div>
@@ -103,14 +103,14 @@ export function MobileMenu({ navigationItems, services, onClose }: MobileMenuPro
       </div>
 
       {/* Footer */}
-      <div className="p-6 border-t border-gray-600 bg-gray-800">
+      <div className="p-6 border-t border-gray-600 dark:border-gray-700 bg-gray-800 dark:bg-gray-800">
         <div className="space-y-4">
           <div className="flex gap-2">
-            <Button className="flex-1" onClick={onClose}>
+            <Button className="flex-1 bg-amber-500 dark:bg-amber-600 hover:bg-amber-600 dark:hover:bg-amber-700 text-black dark:text-white" onClick={onClose}>
               <Phone className="h-4 w-4 mr-2" />
               Ücretsiz Keşif
             </Button>
-            <Button variant="outline" className="flex-1 border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-black bg-transparent" onClick={onClose}>
+            <Button variant="outline" className="flex-1 border-amber-500 dark:border-amber-400 text-amber-500 dark:text-amber-400 hover:bg-amber-500 dark:hover:bg-amber-500 hover:text-black dark:hover:text-white bg-transparent dark:bg-transparent" onClick={onClose}>
               Teklif Al
             </Button>
           </div>
