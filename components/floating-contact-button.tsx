@@ -71,7 +71,7 @@ export function FloatingContactButton() {
         className={`w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 ${
           isOpen 
             ? "bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600" 
-            : "bg-amber-500 hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-700"
+            : "bg-green-500 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700"
         }`}
         aria-label={isOpen ? "Kapat" : "İletişim seçenekleri"}
       >
