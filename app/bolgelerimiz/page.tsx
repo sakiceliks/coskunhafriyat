@@ -106,10 +106,10 @@ export default async function RegionsPage() {
               </div>
             </FadeIn>
 
-            <StaggerIn direction="up" staggerDelay={0.1}>
-              <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 max-w-7xl mx-auto">
+                     <StaggerIn direction="up" staggerDelay={0.1}>
+                       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 max-w-7xl mx-auto">
                 {regions.length === 0 ? (
-                  <div className="w-full text-center py-12">
+                  <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-5 text-center py-12">
                     <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Bölgelerimiz Yakında</h3>
                       <p className="text-gray-600 dark:text-gray-400 mb-4">

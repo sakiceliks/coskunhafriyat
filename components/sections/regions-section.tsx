@@ -43,29 +43,29 @@ export default function RegionsSection({ regions }: RegionsSectionProps) {
 
         <StaggerIn direction="up" staggerDelay={0.1}>
           <div className="relative">
-            {/* Responsive Grid with Wrap */}
-            <div className="flex flex-wrap items-center justify-center gap-4">
+            {/* Responsive Grid - 2 columns on mobile, more on larger screens */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
               {regions.length > 0 ? regions.map((region: Region) => (
-                <Link key={region.id} href={`/bolgelerimiz/${region.slug}`} className="flex-shrink-0">
+                <Link key={region.id} href={`/bolgelerimiz/${region.slug}`}>
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-white dark:bg-gray-700 rounded-xl p-6 w-48 h-32 flex flex-col items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
+                    className="bg-white dark:bg-gray-700 rounded-xl p-4 h-28 flex flex-col items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
                   >
                     {/* Map Pin Icon */}
-                    <div className="relative mb-3">
-                      <MapPin className="h-8 w-8 text-red-500 group-hover:text-red-600 transition-colors duration-300" />
-                      <div className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full shadow-sm"></div>
+                    <div className="relative mb-2">
+                      <MapPin className="h-6 w-6 text-red-500 group-hover:text-red-600 transition-colors duration-300" />
+                      <div className="absolute -top-1 -right-1 w-2 h-2 bg-white rounded-full shadow-sm"></div>
                     </div>
                     
                     {/* Region Name */}
-                    <h3 className="text-gray-900 dark:text-white font-bold text-center text-sm group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-300">
+                    <h3 className="text-gray-900 dark:text-white font-bold text-center text-xs group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-300 leading-tight">
                       {region.name}
                     </h3>
                   </motion.div>
                 </Link>
               )) : (
-                <div className="flex items-center justify-center w-full py-12">
+                <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-6 flex items-center justify-center py-12">
                   <div className="bg-gray-700 dark:bg-gray-800 rounded-2xl p-8 max-w-md mx-auto">
                     <MapPin className="h-12 w-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
                     <h3 className="text-lg font-semibold text-white dark:text-white mb-2">Bölgelerimiz Yakında</h3>
@@ -74,11 +74,6 @@ export default function RegionsSection({ regions }: RegionsSectionProps) {
                 </div>
               )}
             </div>
-            
-            {/* Scroll Indicator */}
-            {regions.length > 6 && (
-              <div className="absolute top-1/2 -translate-y-1/2 right-0 w-8 h-16 bg-gradient-to-l from-gray-800 to-transparent pointer-events-none"></div>
-            )}
           </div>
         </StaggerIn>
 
