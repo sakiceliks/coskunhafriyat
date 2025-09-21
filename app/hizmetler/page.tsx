@@ -83,10 +83,10 @@ export default async function ServicesPage() {
         <section className="py-12 md:py-20 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">
-              <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-3 md:mb-4">
+              <div className="inline-block px-4 py-2 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full text-sm font-medium mb-3 md:mb-4">
                 Sunduğumuz Hizmetler
               </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6">Kapsamlı Hafriyat Çözümleri</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6 text-gray-900 dark:text-white">Kapsamlı Hafriyat Çözümleri</h2>
               <p className="text-base md:text-lg text-gray-700 dark:text-gray-300">
                 Konseptten tamamlanmaya kadar, vizyonunuzu hassasiyet ve mükemmellikle hayata geçirmek için uçtan uca
                 hizmetler sunuyoruz.
@@ -96,7 +96,7 @@ export default async function ServicesPage() {
               {services.map((service: any, index: number) => (
                 <div
                   key={service.id}
-                  className="bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group"
+                  className="bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-200 dark:border-gray-700"
                 >
                   <div className="relative h-48 md:h-56 overflow-hidden">
                     <Image
@@ -108,12 +108,12 @@ export default async function ServicesPage() {
                     />
                   </div>
                   <div className="p-6 md:p-8">
-                    <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">{service.title}</h3>
+                    <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-gray-900 dark:text-white">{service.title}</h3>
                     <p className="text-gray-700 dark:text-gray-300 mb-4 text-sm sm:text-base">{service.short_description}</p>
 
                     {service.price_range && (
                       <div className="mb-4">
-                        <span className="inline-block bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-sm font-medium">
+                        <span className="inline-block bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 px-3 py-1 rounded-full text-sm font-medium">
                           {service.price_range}
                         </span>
                       </div>
@@ -133,7 +133,7 @@ export default async function ServicesPage() {
                     )}
 
                     <Link href={`/hizmetler/${service.slug}`}>
-                      <Button className="bg-amber-500 hover:bg-amber-600 text-black w-full">
+                      <Button className="bg-amber-500 hover:bg-amber-600 text-black dark:text-black w-full">
                         Detayları Görün
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -149,11 +149,11 @@ export default async function ServicesPage() {
         <section className="py-12 md:py-20 bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">
-              <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-3 md:mb-4">
+              <div className="inline-block px-4 py-2 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full text-sm font-medium mb-3 md:mb-4">
                 Çalışma Sürecimiz
               </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6">Nasıl Çalışıyoruz</h2>
-              <p className="text-base md:text-lg text-gray-700 dark:text-gray-300">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6 text-white">Nasıl Çalışıyoruz</h2>
+              <p className="text-base md:text-lg text-gray-300">
                 Akıcı sürecimiz, ilk görüşmeden proje tamamlanmasına kadar sorunsuz bir deneyim sağlar.
               </p>
             </div>
@@ -170,15 +170,15 @@ export default async function ServicesPage() {
                       className={`flex flex-col md:flex-row items-center gap-4 md:gap-8 ${index % 2 === 1 ? "md:flex-row-reverse" : ""}`}
                     >
                       <div className="md:w-1/2 relative w-full">
-                        <div className="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-2xl shadow-md relative z-10">
-                          <div className="bg-amber-100 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mb-3 md:mb-4">
-                            <span className="text-amber-700 font-bold text-lg md:text-xl">{index + 1}</span>
+                        <div className="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-2xl shadow-md relative z-10 border border-gray-200 dark:border-gray-700">
+                          <div className="bg-amber-100 dark:bg-amber-900 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mb-3 md:mb-4">
+                            <span className="text-amber-700 dark:text-amber-300 font-bold text-lg md:text-xl">{index + 1}</span>
                           </div>
-                          <h3 className="text-lg md:text-2xl font-bold mb-2 md:mb-4">{step.title}</h3>
+                          <h3 className="text-lg md:text-2xl font-bold mb-2 md:mb-4 text-gray-900 dark:text-white">{step.title}</h3>
                           <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">{step.description}</p>
                         </div>
                         {/* Circle on the timeline - hidden on mobile */}
-                        <div className="absolute top-1/2 left-0 md:left-auto md:right-0 transform translate-y-[-50%] translate-x-[-50%] md:translate-x-[50%] w-6 h-6 bg-amber-500 rounded-full border-4 border-white z-20 hidden md:block"></div>
+                        <div className="absolute top-1/2 left-0 md:left-auto md:right-0 transform translate-y-[-50%] translate-x-[-50%] md:translate-x-[50%] w-6 h-6 bg-amber-500 rounded-full border-4 border-white dark:border-gray-800 z-20 hidden md:block"></div>
                       </div>
                       <div className="md:w-1/2 hidden md:block">
                         {/* This div is just for spacing in the timeline */}
@@ -205,10 +205,10 @@ export default async function ServicesPage() {
                 />
               </div>
               <div className="order-1 md:order-2">
-                <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-3 md:mb-4">
+                <div className="inline-block px-4 py-2 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full text-sm font-medium mb-3 md:mb-4">
                   Neden Bizi Seçmelisiniz
                 </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6">Coşkun Hafriyat Farkı</h2>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6 text-gray-900 dark:text-white">Coşkun Hafriyat Farkı</h2>
                 <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 mb-5 md:mb-8">
                   Coşkun Hafriyat'ı seçtiğinizde, mükemmellik, yenilik ve tam memnuniyetinize odaklanan bir ortak
                   seçiyorsunuz.
@@ -218,7 +218,7 @@ export default async function ServicesPage() {
                     <div key={index} className="flex items-start">
                       <CheckCircle className="h-5 w-5 md:h-6 md:w-6 text-amber-500 mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
                       <div>
-                        <h3 className="font-semibold text-base md:text-lg">{benefit.title}</h3>
+                        <h3 className="font-semibold text-base md:text-lg text-gray-900 dark:text-white">{benefit.title}</h3>
                         <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">{benefit.description}</p>
                       </div>
                     </div>
