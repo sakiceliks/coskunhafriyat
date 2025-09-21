@@ -167,14 +167,19 @@ export async function createHeroSlide(data: {
 
   try {
     const sql = getDatabase()
+    console.log("Attempting to create hero slide with data:", data)
+    
     const result = await sql`
       INSERT INTO hero_carousel (title, subtitle, description, image_url, button_text, button_link, button_text_2, button_link_2, display_order)
       VALUES (${data.title}, ${data.subtitle || null}, ${data.description || null}, ${data.image_url}, ${data.button_text || null}, ${data.button_link || null}, ${data.button_text_2 || null}, ${data.button_link_2 || null}, ${data.display_order || 0})
       RETURNING *
     `
+    
+    console.log("Database insert result:", result)
     return result[0] || null
   } catch (error) {
     console.error("Error creating hero slide:", error)
+    console.error("Error details:", error instanceof Error ? error.message : "Unknown error")
     return null
   }
 }
