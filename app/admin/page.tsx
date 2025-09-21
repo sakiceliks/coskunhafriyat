@@ -16,6 +16,7 @@ import { ServicesManager } from "@/components/admin/services-manager"
 import { ProjectsManager } from "@/components/admin/projects-manager"
 import { BlogManager } from "@/components/admin/blog-manager"
 import { PageContentManager } from "@/components/admin/page-content-manager"
+import { AboutPageManager } from "@/components/admin/about-page-manager"
 import { RegionsManager } from "@/components/admin/regions-manager"
 import { HeroCarouselManager } from "@/components/admin/hero-carousel-manager"
 import { BarChart3, Briefcase, PenTool, FileText, MapPin, Image } from "lucide-react"
@@ -112,12 +113,13 @@ export default async function AdminPage() {
 
         {/* Management Tabs */}
         <Tabs defaultValue="hero" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-6">
+          <TabsList className="grid w-full grid-cols-7">
             <TabsTrigger value="hero">Hero Carousel</TabsTrigger>
             <TabsTrigger value="services">Hizmetler</TabsTrigger>
             <TabsTrigger value="projects">Projeler</TabsTrigger>
             <TabsTrigger value="blog">Blog</TabsTrigger>
             <TabsTrigger value="regions">Bölgelerimiz</TabsTrigger>
+            <TabsTrigger value="about">Hakkımızda</TabsTrigger>
             <TabsTrigger value="pages">Sayfa İçerikleri</TabsTrigger>
           </TabsList>
 
@@ -139,6 +141,10 @@ export default async function AdminPage() {
 
           <TabsContent value="regions" className="space-y-6">
             <RegionsManager regions={regions} />
+          </TabsContent>
+
+          <TabsContent value="about" className="space-y-6">
+            <AboutPageManager pageContent={allPageContent} />
           </TabsContent>
 
           <TabsContent value="pages" className="space-y-6">

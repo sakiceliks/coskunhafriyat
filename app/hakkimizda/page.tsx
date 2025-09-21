@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ArrowRight, CheckCircle, Award, Clock, Target, Eye, Lightbulb, Compass, Wrench } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+import { getPageContent } from "@/lib/database"
 
 export const metadata = {
   title: "Hakkımızda | Coşkun Hafriyat",
@@ -10,17 +11,48 @@ export const metadata = {
     "Coşkun Hafriyat'nın tarihçesi, değerleri ve uzman ekibimiz hakkında bilgi edinin. Mükemmeliyeti inşa etmeye adanmış bir firmayız.",
 }
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  // Page content'i veritabanından çek
+  const pageContent = await getPageContent("about")
+  
+  // Content'i key-value çiftleri olarak organize et
+  const content: { [key: string]: string } = {}
+  pageContent.forEach((item: any) => {
+    content[item.content_key] = item.content_value
+  })
+
+  // Default değerler (veritabanında yoksa kullanılacak)
+  const defaultContent = {
+    hero_title: "Coşkun Hafriyat Hakkında",
+    hero_subtitle: "İnovasyon, kaliteli hizmet ve müşterilerimize sarsılmaz bağlılık ile mükemmeliyeti inşa ediyoruz.",
+    hero_image: "/images/hakkimizda-team.png",
+    story_title: "Hikayemiz",
+    story_subtitle: "Mükemmellik Mirası İnşa Ediyoruz",
+    story_content_1: "2000 yılında kurulan Coşkun Hafriyat, iş makinesi kiralama sektörünü yenilikçilik ve kaliteli hizmet anlayışıyla dönüştürme vizyonuyla küçük bir aile şirketi olarak başladı.",
+    story_content_2: "Son yirmi yılda, konut, ticari ve endüstriyel sektörlerde 500'den fazla projeyi tamamlayarak lider bir kiralama firması haline geldik. Başarımız, mükemmelliğe, dürüstlüğe ve müşteri memnuniyetine olan bağlılığımız üzerine kurulmuştur.",
+    story_content_3: "Bugün, Coşkun Hafriyat olarak, müşterilerimiz için olağanüstü sonuçlar sunmak amacıyla yeni teknolojileri ve sürdürülebilir uygulamaları benimseyerek sektörün sınırlarını zorlamaya devam ediyoruz.",
+    values_title: "Değerlerimiz",
+    values_subtitle: "İşimizi Yönlendiren İlkeler",
+    mission_title: "Misyonumuz",
+    mission_content: "İnovasyon, dürüstlük ve kaliteli hizmet ile müşteri beklentilerini aşan olağanüstü iş makinesi kiralama hizmetleri sunmak.",
+    vision_title: "Vizyonumuz", 
+    vision_content: "İş makinesi kiralama sektöründe en güvenilir ve yenilikçi şirket olmak, makine kalitesi, güvenliği ve müşteri memnuniyetinde yeni standartlar belirlemek.",
+    approach_title: "Yaklaşımımız",
+    approach_content: "Başarılı bir projenin temelinde işbirliği, yenilik ve detaylara gösterilen özen olduğuna inanıyoruz. Kaliteli hizmet anlayışını, son teknolojiye sahip makinelerimizle birleştirerek zamana meydan okuyan sonuçlar sunuyoruz."
+  }
+
+  // Veritabanından gelen değerleri kullan, yoksa default değerleri kullan
+  const getContent = (key: string) => content[key] || defaultContent[key as keyof typeof defaultContent] || ""
   return (
     <div className="flex min-h-screen flex-col">
       {/* Hero Section */}
       <section className="relative h-[400px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-black/60 z-10" />
-        <Image src="/images/hakkimizda-team.png" alt="Uzman ekibimiz" fill className="object-cover" priority />
+        <Image src={getContent("hero_image")} alt="Uzman ekibimiz" fill className="object-cover" priority />
         <div className="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Coşkun Hafriyat Hakkında</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{getContent("hero_title")}</h1>
           <p className="text-xl text-white/90 max-w-2xl">
-            İnovasyon, kaliteli hizmet ve müşterilerimize sarsılmaz bağlılık ile mükemmeliyeti inşa ediyoruz.
+            {getContent("hero_subtitle")}
           </p>
         </div>
       </section>
@@ -130,17 +162,17 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             <div>
               <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300 rounded-full text-sm font-medium mb-4">
-                Hikayemiz
+                {getContent("story_title")}
               </div>
-              <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">Mükemmellik Mirası İnşa Ediyoruz</h2>
+              <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">{getContent("story_subtitle")}</h2>
               <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg">
-                2000 yılında kurulan Coşkun Hafriyat, iş makinesi kiralama sektörünü yenilikçilik ve kaliteli hizmet anlayışıyla dönüştürme vizyonuyla küçük bir aile şirketi olarak başladı.
+                {getContent("story_content_1")}
               </p>
               <p className="text-gray-700 dark:text-gray-300 mb-6">
-                Son yirmi yılda, konut, ticari ve endüstriyel sektörlerde 500'den fazla projeyi tamamlayarak lider bir kiralama firması haline geldik. Başarımız, mükemmelliğe, dürüstlüğe ve müşteri memnuniyetine olan bağlılığımız üzerine kurulmuştur.
+                {getContent("story_content_2")}
               </p>
               <p className="text-gray-700 dark:text-gray-300 mb-6">
-                Bugün, Coşkun Hafriyat olarak, müşterilerimiz için olağanüstü sonuçlar sunmak amacıyla yeni teknolojileri ve sürdürülebilir uygulamaları benimseyerek sektörün sınırlarını zorlamaya devam ediyoruz.
+                {getContent("story_content_3")}
               </p>
               <Link href="/iletisim">
                 <Button className="bg-amber-500 hover:bg-amber-600 text-black font-semibold">
@@ -161,11 +193,11 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300 rounded-full text-sm font-medium mb-4">
-              Değerlerimiz
+              {getContent("values_title")}
             </div>
-            <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">Bizi Yönlendiren Şey</h2>
+            <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">{getContent("values_subtitle")}</h2>
             <p className="text-gray-700 dark:text-gray-300 text-lg">
-              Temel değerlerimiz, müşterilerimizle nasıl etkileşimde bulunduğumuzdan her projeye nasıl yaklaştığımıza kadar yaptığımız her şeye rehberlik eder.
+              {getContent("values_description")}
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
