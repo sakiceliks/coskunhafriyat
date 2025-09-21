@@ -83,14 +83,14 @@ export default async function ProjectsPage() {
         </section>
 
         {/* Projects Gallery */}
-        <section className="py-12 md:py-20 bg-white">
+        <section className="py-12 md:py-20 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">
-              <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-3 md:mb-4">
+              <div className="inline-block px-4 py-2 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full text-sm font-medium mb-3 md:mb-4">
                 Proje Portföyümüz
               </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6">Öne Çıkan Projeler</h2>
-              <p className="text-base md:text-lg text-gray-700">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6 text-gray-900 dark:text-white">Öne Çıkan Projeler</h2>
+              <p className="text-base md:text-lg text-gray-700 dark:text-gray-300">
                 Çeşitli sektörlerde tamamladığımız projelerimizden oluşan geniş portföyümüze göz atın.
               </p>
             </div>
@@ -274,7 +274,7 @@ function ProjectCard({ project }: { project: any }) {
   }
 
   return (
-    <Card className="overflow-hidden group h-full">
+    <Card className="overflow-hidden group h-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
       <div className="relative h-48 sm:h-56 md:h-64 w-full">
         <Image
           src={project.image_url || "/placeholder.svg?height=400&width=600"}
@@ -297,13 +297,13 @@ function ProjectCard({ project }: { project: any }) {
         </div>
       </div>
       <CardHeader className="p-4 md:p-6">
-        <CardTitle className="text-lg md:text-xl">{project.title}</CardTitle>
-        <CardDescription className="text-amber-600">{project.project_type}</CardDescription>
+        <CardTitle className="text-lg md:text-xl text-gray-900 dark:text-white">{project.title}</CardTitle>
+        <CardDescription className="text-amber-600 dark:text-amber-400">{project.project_type}</CardDescription>
       </CardHeader>
       <CardContent className="p-4 pt-0 md:p-6 md:pt-0">
-        <p className="text-gray-700 text-sm sm:text-base mb-4">{project.short_description}</p>
+        <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base mb-4">{project.short_description}</p>
 
-        <div className="space-y-2 text-sm text-gray-600">
+        <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
           {project.location && (
             <div className="flex items-center">
               <MapPin className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
@@ -334,7 +334,7 @@ function ProjectCard({ project }: { project: any }) {
         <Link href={`/projeler/${project.slug || project.id}`}>
           <Button
             variant="outline"
-            className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white text-sm sm:text-base w-full bg-transparent"
+            className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white dark:text-amber-400 dark:border-amber-400 dark:hover:bg-amber-400 text-sm sm:text-base w-full bg-transparent"
           >
             Detayları Görün
             <ArrowRight className="ml-2 h-4 w-4" />
