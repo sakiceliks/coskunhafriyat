@@ -146,7 +146,7 @@ export default async function ServicesPage() {
         </section>
 
         {/* Process Section */}
-        <section className="py-12 md:py-20 bg-gray-50">
+        <section className="py-12 md:py-20 bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">
               <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-3 md:mb-4">
