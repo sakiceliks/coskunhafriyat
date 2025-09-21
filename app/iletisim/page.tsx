@@ -35,48 +35,48 @@ export default function ContactPage() {
       {/* Contact Information */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-16 max-w-6xl mx-auto">
-            <div>
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 max-w-6xl mx-auto">
+            <div className="text-center md:text-left">
               <div className="inline-block px-4 py-2 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full text-sm font-medium mb-4">
                 İletişime Geçin
               </div>
-              <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">Sizden Haber Almaktan Mutluluk Duyarız</h2>
-              <p className="text-gray-700 dark:text-gray-300 mb-10 text-lg">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">Sizden Haber Almaktan Mutluluk Duyarız</h2>
+              <p className="text-gray-700 dark:text-gray-300 mb-10 text-base md:text-lg">
                 Hizmetlerimizle ilgili bir sorunuz mu var, fiyat teklifi mi almak istiyorsunuz, yoksa projenize başlamaya hazır mısınız? Yardımcı olmak için buradayız.
               </p>
-              <div className="space-y-8">
-                <div className="flex items-start">
-                  <div className="bg-amber-100 dark:bg-amber-900 p-3 rounded-full mr-4">
+              <div className="space-y-6 md:space-y-8">
+                <div className="flex items-start justify-center md:justify-start">
+                  <div className="bg-amber-100 dark:bg-amber-900 p-3 rounded-full mr-4 flex-shrink-0">
                     <MapPin className="h-6 w-6 text-amber-600 dark:text-amber-400" />
                   </div>
-                  <div>
+                  <div className="text-center md:text-left">
                     <h3 className="font-semibold text-lg text-gray-900 dark:text-white">Ofis Adresimiz</h3>
                     <p className="text-gray-700 dark:text-gray-300">Tepeören Mahallesi, Sanayi Caddesi No:123, Tuzla/İstanbul</p>
                   </div>
                 </div>
-                <div className="flex items-start">
-                  <div className="bg-amber-100 dark:bg-amber-900 p-3 rounded-full mr-4">
+                <div className="flex items-start justify-center md:justify-start">
+                  <div className="bg-amber-100 dark:bg-amber-900 p-3 rounded-full mr-4 flex-shrink-0">
                     <Phone className="h-6 w-6 text-amber-600 dark:text-amber-400" />
                   </div>
-                  <div>
+                  <div className="text-center md:text-left">
                     <h3 className="font-semibold text-lg text-gray-900 dark:text-white">Telefon Numaramız</h3>
                     <p className="text-gray-700 dark:text-gray-300">0536 216 09 92</p>
                   </div>
                 </div>
-                <div className="flex items-start">
-                  <div className="bg-amber-100 dark:bg-amber-900 p-3 rounded-full mr-4">
+                <div className="flex items-start justify-center md:justify-start">
+                  <div className="bg-amber-100 dark:bg-amber-900 p-3 rounded-full mr-4 flex-shrink-0">
                     <Mail className="h-6 w-6 text-amber-600 dark:text-amber-400" />
                   </div>
-                  <div>
+                  <div className="text-center md:text-left">
                     <h3 className="font-semibold text-lg text-gray-900 dark:text-white">E-Posta Adresimiz</h3>
                     <p className="text-gray-700 dark:text-gray-300">info@coskunhafriyat.com</p>
                   </div>
                 </div>
-                <div className="flex items-start">
-                  <div className="bg-amber-100 dark:bg-amber-900 p-3 rounded-full mr-4">
+                <div className="flex items-start justify-center md:justify-start">
+                  <div className="bg-amber-100 dark:bg-amber-900 p-3 rounded-full mr-4 flex-shrink-0">
                     <Clock className="h-6 w-6 text-amber-600 dark:text-amber-400" />
                   </div>
-                  <div>
+                  <div className="text-center md:text-left">
                     <h3 className="font-semibold text-lg text-gray-900 dark:text-white">Çalışma Saatlerimiz</h3>
                     <p className="text-gray-700 dark:text-gray-300">Pazartesi - Cuma: 08:00 - 17:00</p>
                     <p className="text-gray-700 dark:text-gray-300">Cumartesi: 09:00 - 14:00</p>
@@ -84,15 +84,15 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
-            <div>
+            <div className="w-full">
               <div id="quote-form" className="scroll-mt-24">
-                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Ücretsiz Fiyat Teklifi Alın</h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-6">
+                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white text-center md:text-left">Ücretsiz Fiyat Teklifi Alın</h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-6 text-center md:text-left">
                   İş makinesi kiralama projeniz için detaylı ve taahhütsüz bir fiyat teklifi almak için formu doldurun. Ekibimiz ihtiyaçlarınızı analiz edecek ve kapsamlı bir teklif sunacaktır.
                 </p>
-                <form className="bg-gray-50 dark:bg-gray-800 p-10 rounded-2xl shadow-sm">
-                  <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Bize Bir Mesaj Gönderin</h3>
-                  <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <form className="bg-gray-50 dark:bg-gray-800 p-6 md:p-10 rounded-2xl shadow-sm w-full">
+                  <h3 className="text-xl md:text-2xl font-bold mb-6 text-gray-900 dark:text-white text-center md:text-left">Bize Bir Mesaj Gönderin</h3>
+                  <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Adınız Soyadınız

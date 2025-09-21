@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Calendar, User, ArrowRight } from "lucide-react"
-import { OrganizationJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld"
+import { OrganizationJsonLd, BreadcrumbJsonLd, BlogJsonLd } from "@/components/seo/json-ld"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -9,36 +9,40 @@ import { Badge } from "@/components/ui/badge"
 import { CTASection } from "@/components/cta-section"
 import { getBlogPosts } from "@/lib/database"
 
-export const metadata = {
-  title: "Blog | Coşkun Hafriyat - Hafriyat ve İnşaat Sektörü Uzman Görüşleri",
-  description:
-    "Hafriyat, kazı, yıkım ve iş makinesi kiralama konularında uzman görüşleri, ipuçları ve sektör haberleri. ✓ Güncel içerik ✓ Uzman tavsiyeleri ✓ Sektör analizi",
-  keywords: "hafriyat blog, kazı ipuçları, yıkım teknikleri, iş makinesi, inşaat sektörü, uzman görüşleri",
-  openGraph: {
-    title: "Blog | Coşkun Hafriyat",
-    description: "Hafriyat, kazı, yıkım ve iş makinesi kiralama konularında uzman görüşleri ve sektör haberleri",
-    url: "https://coskunhafriyat.com/blog",
-    siteName: "Coşkun Hafriyat",
-    images: [
-      {
-        url: "https://coskunhafriyat.com/blog-og.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Coşkun Hafriyat Blog",
-      },
-    ],
-    locale: "tr_TR",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Blog | Coşkun Hafriyat",
-    description: "Hafriyat, kazı, yıkım ve iş makinesi kiralama konularında uzman görüşleri",
-    images: ["https://coskunhafriyat.com/blog-og.jpg"],
-  },
-  alternates: {
-    canonical: "https://coskunhafriyat.com/blog",
-  },
+export async function generateMetadata() {
+  const blogPosts = await getBlogPosts().catch(() => [])
+  
+  return {
+    title: "Blog | Coşkun Hafriyat - Hafriyat ve İnşaat Sektörü Uzman Görüşleri",
+    description:
+      "Hafriyat, kazı, yıkım ve iş makinesi kiralama konularında uzman görüşleri, ipuçları ve sektör haberleri. ✓ Güncel içerik ✓ Uzman tavsiyeleri ✓ Sektör analizi",
+    keywords: "hafriyat blog, kazı ipuçları, yıkım teknikleri, iş makinesi, inşaat sektörü, uzman görüşleri",
+    openGraph: {
+      title: "Blog | Coşkun Hafriyat",
+      description: "Hafriyat, kazı, yıkım ve iş makinesi kiralama konularında uzman görüşleri ve sektör haberleri",
+      url: "https://coskunhafriyat.com/blog",
+      siteName: "Coşkun Hafriyat",
+      images: [
+        {
+          url: "https://coskunhafriyat.com/blog-og.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Coşkun Hafriyat Blog",
+        },
+      ],
+      locale: "tr_TR",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Blog | Coşkun Hafriyat",
+      description: "Hafriyat, kazı, yıkım ve iş makinesi kiralama konularında uzman görüşleri",
+      images: ["https://coskunhafriyat.com/blog-og.jpg"],
+    },
+    alternates: {
+      canonical: "https://coskunhafriyat.com/blog",
+    },
+  }
 }
 
 export default async function BlogPage() {
@@ -56,6 +60,7 @@ export default async function BlogPage() {
     <>
       <OrganizationJsonLd />
       <BreadcrumbJsonLd items={breadcrumbItems} />
+      <BlogJsonLd posts={blogPosts} />
 
       <div className="flex min-h-screen flex-col">
         {/* Hero Section */}

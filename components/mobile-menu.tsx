@@ -86,7 +86,7 @@ export function MobileMenu({ navigationItems, services, onClose }: MobileMenuPro
               >
                 <Mail className="h-5 w-5 text-primary dark:text-amber-400" />
                 <div>
-                  <div className="font-medium">info@coskunhafriyat.com.tr</div>
+                  <div className="font-medium">info@coskunhafriyat.com</div>
                   <div className="text-sm text-gray-400 dark:text-gray-400">E-posta gönder</div>
                 </div>
               </a>

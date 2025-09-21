@@ -89,7 +89,7 @@ export function OrganizationJsonLd() {
 }
 
 // Service Schema
-export function ServiceJsonLd({ service }: { service: any }) {
+export function SingleServiceJsonLd({ service }: { service: any }) {
   const serviceData = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -201,6 +201,46 @@ export function ProjectJsonLd({ project }: { project: any }) {
   return <JsonLd data={projectData} />
 }
 
+// Projects Collection Schema
+export function ProjectsJsonLd({ projects }: { projects: any[] }) {
+  const projectsData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Coşkun Hafriyat Projeleri",
+    description: "Coşkun Hafriyat'ın tamamladığı hafriyat, kazı ve yıkım projeleri",
+    url: "https://coskunhafriyat.com/projeler",
+    numberOfItems: projects.length,
+    itemListElement: projects.map((project, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "CreativeWork",
+        name: project.title,
+        description: project.short_description,
+        url: `https://coskunhafriyat.com/projeler/${project.slug || project.id}`,
+        creator: {
+          "@type": "Organization",
+          name: "Coşkun Hafriyat",
+        },
+        ...(project.completion_date && {
+          dateCreated: project.completion_date,
+        }),
+        ...(project.location && {
+          location: {
+            "@type": "Place",
+            name: project.location,
+          },
+        }),
+        ...(project.image_url && {
+          image: project.image_url,
+        }),
+      },
+    })),
+  }
+
+  return <JsonLd data={projectsData} />
+}
+
 // Breadcrumb Schema
 export function BreadcrumbJsonLd({ items }: { items: Array<{ name: string; url: string }> }) {
   const breadcrumbData = {
@@ -215,4 +255,103 @@ export function BreadcrumbJsonLd({ items }: { items: Array<{ name: string; url: 
   }
 
   return <JsonLd data={breadcrumbData} />
+}
+
+// Blog Schema
+export function BlogJsonLd({ posts }: { posts: any[] }) {
+  const blogData = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "Coşkun Hafriyat Blog",
+    description: "Hafriyat, kazı, yıkım ve iş makinesi kiralama konularında uzman görüşleri ve sektör haberleri",
+    url: "https://coskunhafriyat.com/blog",
+    publisher: {
+      "@type": "Organization",
+      name: "Coşkun Hafriyat",
+      url: "https://coskunhafriyat.com",
+    },
+    blogPost: posts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.short_description,
+      url: `https://coskunhafriyat.com/blog/${post.slug}`,
+      datePublished: post.published_date || post.created_at,
+      author: {
+        "@type": "Person",
+        name: post.author || "Coşkun Hafriyat",
+      },
+      image: post.featured_image || "https://coskunhafriyat.com/blog-og.jpg",
+    })),
+  }
+
+  return <JsonLd data={blogData} />
+}
+
+// Service Schema
+export function ServiceJsonLd({ services }: { services: any[] }) {
+  const serviceData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Hafriyat ve Kazı Hizmetleri",
+    description: "İstanbul'da profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri",
+    provider: {
+      "@type": "LocalBusiness",
+      name: "Coşkun Hafriyat",
+      url: "https://coskunhafriyat.com",
+    },
+    serviceType: services.map((service) => service.title),
+    areaServed: {
+      "@type": "City",
+      name: "İstanbul",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Hafriyat Hizmetleri",
+      itemListElement: services.map((service, index) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: service.title,
+          description: service.short_description,
+        },
+        position: index + 1,
+      })),
+    },
+  }
+
+  return <JsonLd data={serviceData} />
+}
+
+// Region Schema
+export function RegionJsonLd({ regions }: { regions: any[] }) {
+  const regionData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "İstanbul Geneli Hafriyat Hizmetleri",
+    description: "İstanbul'un tüm bölgelerinde profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri",
+    provider: {
+      "@type": "LocalBusiness",
+      name: "Coşkun Hafriyat",
+      url: "https://coskunhafriyat.com",
+    },
+    areaServed: regions.map((region) => ({
+      "@type": "City",
+      name: region.name,
+    })),
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Bölgesel Hafriyat Hizmetleri",
+      itemListElement: regions.map((region, index) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: `${region.name} Hafriyat Hizmetleri`,
+          description: region.short_description,
+        },
+        position: index + 1,
+      })),
+    },
+  }
+
+  return <JsonLd data={regionData} />
 }

@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, CheckCircle, MapPin, Phone, Mail, Star } from "lucide-react"
-import { OrganizationJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld"
+import { OrganizationJsonLd, BreadcrumbJsonLd, RegionJsonLd } from "@/components/seo/json-ld"
 
 import { Button } from "@/components/ui/button"
 import { getRegions } from "@/lib/database"
@@ -9,36 +9,40 @@ import { FadeIn } from "@/components/animations/fade-in"
 import { StaggerIn } from "@/components/animations/stagger-in"
 import { HoverCard } from "@/components/animations/hover-card"
 
-export const metadata = {
-  title: "Bölgelerimiz | Coşkun Hafriyat - İstanbul Geneli Hafriyat Hizmetleri",
-  description:
-    "İstanbul'un tüm bölgelerinde profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri. Kadıköy, Beşiktaş, Şişli, Beyoğlu, Fatih, Üsküdar ve daha fazlası. Ücretsiz keşif için hemen arayın!",
-  keywords: "bölgelerimiz, hafriyat, kazı, yıkım, İstanbul, Kadıköy, Beşiktaş, Şişli, Beyoğlu, Fatih, Üsküdar",
-  openGraph: {
-    title: "Bölgelerimiz | Coşkun Hafriyat",
-    description: "İstanbul'un tüm bölgelerinde profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri",
-    url: "https://coskunhafriyat.com/bolgelerimiz",
-    siteName: "Coşkun Hafriyat",
-    images: [
-      {
-        url: "https://coskunhafriyat.com/regions-og.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Coşkun Hafriyat Bölgelerimiz",
-      },
-    ],
-    locale: "tr_TR",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Bölgelerimiz | Coşkun Hafriyat",
-    description: "İstanbul'un tüm bölgelerinde profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri",
-    images: ["https://coskunhafriyat.com/regions-og.jpg"],
-  },
-  alternates: {
-    canonical: "https://coskunhafriyat.com/bolgelerimiz",
-  },
+export async function generateMetadata() {
+  const regions = await getRegions().catch(() => [])
+  
+  return {
+    title: "Bölgelerimiz | Coşkun Hafriyat - İstanbul Geneli Hafriyat Hizmetleri",
+    description:
+      "İstanbul'un tüm bölgelerinde profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri. Kadıköy, Beşiktaş, Şişli, Beyoğlu, Fatih, Üsküdar ve daha fazlası. Ücretsiz keşif için hemen arayın!",
+    keywords: "bölgelerimiz, hafriyat, kazı, yıkım, İstanbul, Kadıköy, Beşiktaş, Şişli, Beyoğlu, Fatih, Üsküdar",
+    openGraph: {
+      title: "Bölgelerimiz | Coşkun Hafriyat",
+      description: "İstanbul'un tüm bölgelerinde profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri",
+      url: "https://coskunhafriyat.com/bolgelerimiz",
+      siteName: "Coşkun Hafriyat",
+      images: [
+        {
+          url: "https://coskunhafriyat.com/regions-og.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Coşkun Hafriyat Bölgelerimiz",
+        },
+      ],
+      locale: "tr_TR",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Bölgelerimiz | Coşkun Hafriyat",
+      description: "İstanbul'un tüm bölgelerinde profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri",
+      images: ["https://coskunhafriyat.com/regions-og.jpg"],
+    },
+    alternates: {
+      canonical: "https://coskunhafriyat.com/bolgelerimiz",
+    },
+  }
 }
 
 export default async function RegionsPage() {
@@ -53,6 +57,7 @@ export default async function RegionsPage() {
     <>
       <OrganizationJsonLd />
       <BreadcrumbJsonLd items={breadcrumbItems} />
+      <RegionJsonLd regions={regions} />
 
       <div className="flex min-h-screen flex-col">
         {/* Hero Section */}
@@ -110,13 +115,13 @@ export default async function RegionsPage() {
                   <HoverCard key={region.id}>
                     <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-100 dark:border-gray-700">
                       <div className="relative h-48 md:h-56 overflow-hidden">
-                        <Image
+                       {/*  <Image
                           src={region.image_url || "/images/hero-3.png"}
                           alt={region.name}
                           fill
                           className="object-cover transition-transform duration-500 group-hover:scale-110"
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        />
+                        /> */}
                         {region.is_featured && (
                           <div className="absolute top-4 left-4 bg-amber-500 text-black px-3 py-1 rounded-full text-sm font-semibold flex items-center">
                             <Star className="h-4 w-4 mr-1" />

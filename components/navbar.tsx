@@ -197,12 +197,12 @@ function MobileMenu({ navigationItems, services, onClose }: MobileMenuProps) {
                 </div>
               </Link>
               <Link
-                href="mailto:info@coskunhafriyat.com.tr"
+                href="mailto:info@coskunhafriyat.com"
                 className="flex items-center gap-3 p-3 rounded-lg hover:bg-amber-50 dark:hover:bg-amber-500/20 transition-colors text-gray-900 dark:text-white"
               >
                 <Mail className="h-5 w-5 text-amber-500 dark:text-amber-400" />
                 <div>
-                  <div className="font-medium">info@coskunhafriyat.com.tr</div>
+                  <div className="font-medium">info@coskunhafriyat.com</div>
                   <div className="text-sm text-gray-500 dark:text-gray-400">E-posta gönder</div>
                 </div>
               </Link>

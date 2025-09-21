@@ -1,41 +1,45 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, CheckCircle } from "lucide-react"
-import { OrganizationJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld"
+import { OrganizationJsonLd, BreadcrumbJsonLd, ServiceJsonLd } from "@/components/seo/json-ld"
 
 import { Button } from "@/components/ui/button"
 import { getServices } from "@/lib/database"
 
-export const metadata = {
-  title: "Hizmetlerimiz | Coşkun Hafriyat - Profesyonel Hafriyat, Kazı ve Yıkım Hizmetleri",
-  description:
-    "İstanbul'da profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri. ✓ Deneyimli ekip ✓ Modern ekipman ✓ Uygun fiyat ✓ 7/24 hizmet. Ücretsiz keşif için hemen arayın!",
-  keywords: "hafriyat, kazı, yıkım, nakliye, İstanbul, profesyonel, uygun fiyat",
-  openGraph: {
-    title: "Hizmetlerimiz | Coşkun Hafriyat",
-    description: "İstanbul'da profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri",
-    url: "https://coskunhafriyat.com/hizmetler",
-    siteName: "Coşkun Hafriyat",
-    images: [
-      {
-        url: "https://coskunhafriyat.com/hizmetler-og.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Coşkun Hafriyat Hizmetleri",
-      },
-    ],
-    locale: "tr_TR",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Hizmetlerimiz | Coşkun Hafriyat",
-    description: "İstanbul'da profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri",
-    images: ["https://coskunhafriyat.com/hizmetler-og.jpg"],
-  },
-  alternates: {
-    canonical: "https://coskunhafriyat.com/hizmetler",
-  },
+export async function generateMetadata() {
+  const services = await getServices().catch(() => [])
+  
+  return {
+    title: "Hizmetlerimiz | Coşkun Hafriyat - Profesyonel Hafriyat, Kazı ve Yıkım Hizmetleri",
+    description:
+      "İstanbul'da profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri. ✓ Deneyimli ekip ✓ Modern ekipman ✓ Uygun fiyat ✓ 7/24 hizmet. Ücretsiz keşif için hemen arayın!",
+    keywords: "hafriyat, kazı, yıkım, nakliye, İstanbul, profesyonel, uygun fiyat",
+    openGraph: {
+      title: "Hizmetlerimiz | Coşkun Hafriyat",
+      description: "İstanbul'da profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri",
+      url: "https://coskunhafriyat.com/hizmetler",
+      siteName: "Coşkun Hafriyat",
+      images: [
+        {
+          url: "https://coskunhafriyat.com/hizmetler-og.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Coşkun Hafriyat Hizmetleri",
+        },
+      ],
+      locale: "tr_TR",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Hizmetlerimiz | Coşkun Hafriyat",
+      description: "İstanbul'da profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri",
+      images: ["https://coskunhafriyat.com/hizmetler-og.jpg"],
+    },
+    alternates: {
+      canonical: "https://coskunhafriyat.com/hizmetler",
+    },
+  }
 }
 
 export default async function ServicesPage() {
@@ -72,6 +76,7 @@ export default async function ServicesPage() {
     <>
       <OrganizationJsonLd />
       <BreadcrumbJsonLd items={breadcrumbItems} />
+      <ServiceJsonLd services={services} />
 
       <div className="flex min-h-screen flex-col">
         {/* Hero Section */}

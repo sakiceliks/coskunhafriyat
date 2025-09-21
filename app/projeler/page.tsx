@@ -1,44 +1,48 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, MapPin, Calendar, User, Ruler } from "lucide-react"
-import { OrganizationJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld"
+import { OrganizationJsonLd, BreadcrumbJsonLd, ProjectsJsonLd } from "@/components/seo/json-ld"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { getProjects } from "@/lib/database"
 
-export const metadata = {
-  title: "Projelerimiz | Coşkun Hafriyat - Başarılı Hafriyat ve Kazı Projeleri",
-  description:
-    "Coşkun Hafriyat'ın tamamladığı hafriyat, kazı ve yıkım projelerini keşfedin. ✓ Konut ✓ Ticari ✓ Sanayi ✓ Villa projeleri. İstanbul genelinde başarılı proje portföyümüz.",
-  keywords:
-    "hafriyat projeleri, kazı projeleri, yıkım projeleri, konut hafriyat, ticari kazı, sanayi hafriyat, villa kazı",
-  openGraph: {
-    title: "Projelerimiz | Coşkun Hafriyat",
-    description: "Coşkun Hafriyat'ın tamamladığı hafriyat, kazı ve yıkım projelerini keşfedin",
-    url: "https://coskunhafriyat.com/projeler",
-    siteName: "Coşkun Hafriyat",
-    images: [
-      {
-        url: "https://coskunhafriyat.com/projeler-og.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Coşkun Hafriyat Projeleri",
-      },
-    ],
-    locale: "tr_TR",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Projelerimiz | Coşkun Hafriyat",
-    description: "Coşkun Hafriyat'ın tamamladığı hafriyat, kazı ve yıkım projelerini keşfedin",
-    images: ["https://coskunhafriyat.com/projeler-og.jpg"],
-  },
-  alternates: {
-    canonical: "https://coskunhafriyat.com/projeler",
-  },
+export async function generateMetadata() {
+  const projects = await getProjects().catch(() => [])
+  
+  return {
+    title: "Projelerimiz | Coşkun Hafriyat - Başarılı Hafriyat ve Kazı Projeleri",
+    description:
+      "Coşkun Hafriyat'ın tamamladığı hafriyat, kazı ve yıkım projelerini keşfedin. ✓ Konut ✓ Ticari ✓ Sanayi ✓ Villa projeleri. İstanbul genelinde başarılı proje portföyümüz.",
+    keywords:
+      "hafriyat projeleri, kazı projeleri, yıkım projeleri, konut hafriyat, ticari kazı, sanayi hafriyat, villa kazı",
+    openGraph: {
+      title: "Projelerimiz | Coşkun Hafriyat",
+      description: "Coşkun Hafriyat'ın tamamladığı hafriyat, kazı ve yıkım projelerini keşfedin",
+      url: "https://coskunhafriyat.com/projeler",
+      siteName: "Coşkun Hafriyat",
+      images: [
+        {
+          url: "https://coskunhafriyat.com/projeler-og.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Coşkun Hafriyat Projeleri",
+        },
+      ],
+      locale: "tr_TR",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Projelerimiz | Coşkun Hafriyat",
+      description: "Coşkun Hafriyat'ın tamamladığı hafriyat, kazı ve yıkım projelerini keşfedin",
+      images: ["https://coskunhafriyat.com/projeler-og.jpg"],
+    },
+    alternates: {
+      canonical: "https://coskunhafriyat.com/projeler",
+    },
+  }
 }
 
 export default async function ProjectsPage() {
@@ -61,6 +65,7 @@ export default async function ProjectsPage() {
     <>
       <OrganizationJsonLd />
       <BreadcrumbJsonLd items={breadcrumbItems} />
+      <ProjectsJsonLd projects={projects} />
 
       <div className="flex min-h-screen flex-col">
         {/* Hero Section */}
@@ -162,61 +167,61 @@ export default async function ProjectsPage() {
         </section>
 
         {/* Process Section */}
-        <section className="py-12 md:py-20 bg-gray-50">
+        <section className="py-12 md:py-20 bg-gray-50 dark:bg-gray-800">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center max-w-6xl mx-auto">
               <div>
-                <div className="inline-block px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-3 md:mb-4">
+                <div className="inline-block px-4 py-2 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full text-sm font-medium mb-3 md:mb-4">
                   Yaklaşımımız
                 </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white">
                   Mükemmelliği Nasıl Sunuyoruz
                 </h2>
-                <p className="text-base md:text-lg text-gray-700 mb-6">
+                <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 mb-6">
                   Üstlendiğimiz her proje, kalite, zamanında teslimat ve müşteri memnuniyetini sağlamak için titiz bir
                   süreci takip eder.
                 </p>
                 <div className="space-y-4 md:space-y-6">
                   <div className="flex items-start">
-                    <div className="bg-amber-100 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center mr-3 md:mr-4 flex-shrink-0">
-                      <span className="text-amber-700 font-bold text-sm md:text-base">1</span>
+                    <div className="bg-amber-100 dark:bg-amber-900 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center mr-3 md:mr-4 flex-shrink-0">
+                      <span className="text-amber-700 dark:text-amber-300 font-bold text-sm md:text-base">1</span>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-base md:text-lg">Kapsamlı Planlama</h3>
-                      <p className="text-gray-700 text-sm md:text-base">
+                      <h3 className="font-semibold text-base md:text-lg text-gray-900 dark:text-white">Kapsamlı Planlama</h3>
+                      <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base">
                         Net hedefler, zaman çizelgeleri ve bütçeler oluşturmak için kapsamlı planlama ile başlıyoruz.
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="bg-amber-100 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center mr-3 md:mr-4 flex-shrink-0">
-                      <span className="text-amber-700 font-bold text-sm md:text-base">2</span>
+                    <div className="bg-amber-100 dark:bg-amber-900 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center mr-3 md:mr-4 flex-shrink-0">
+                      <span className="text-amber-700 dark:text-amber-300 font-bold text-sm md:text-base">2</span>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-base md:text-lg">Kaliteli Ekipman</h3>
-                      <p className="text-gray-700 text-sm md:text-base">
+                      <h3 className="font-semibold text-base md:text-lg text-gray-900 dark:text-white">Kaliteli Ekipman</h3>
+                      <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base">
                         Dayanıklılık ve uzun ömür sağlamak için sadece en kaliteli ekipmanları kullanıyoruz.
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="bg-amber-100 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center mr-3 md:mr-4 flex-shrink-0">
-                      <span className="text-amber-700 font-bold text-sm md:text-base">3</span>
+                    <div className="bg-amber-100 dark:bg-amber-900 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center mr-3 md:mr-4 flex-shrink-0">
+                      <span className="text-amber-700 dark:text-amber-300 font-bold text-sm md:text-base">3</span>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-base md:text-lg">Uzman Uygulama</h3>
-                      <p className="text-gray-700 text-sm md:text-base">
+                      <h3 className="font-semibold text-base md:text-lg text-gray-900 dark:text-white">Uzman Uygulama</h3>
+                      <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base">
                         Deneyimli ekibimiz her aşamayı hassasiyet ve detaylara özen göstererek gerçekleştirir.
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="bg-amber-100 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center mr-3 md:mr-4 flex-shrink-0">
-                      <span className="text-amber-700 font-bold text-sm md:text-base">4</span>
+                    <div className="bg-amber-100 dark:bg-amber-900 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center mr-3 md:mr-4 flex-shrink-0">
+                      <span className="text-amber-700 dark:text-amber-300 font-bold text-sm md:text-base">4</span>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-base md:text-lg">Titiz Kalite Kontrolü</h3>
-                      <p className="text-gray-700 text-sm md:text-base">
+                      <h3 className="font-semibold text-base md:text-lg text-gray-900 dark:text-white">Titiz Kalite Kontrolü</h3>
+                      <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base">
                         Yüksek standartlarımızı korumak için her aşamada kapsamlı denetimler yapıyoruz.
                       </p>
                     </div>
