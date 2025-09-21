@@ -269,9 +269,9 @@ export default async function RegionPage({ params }: RegionPageProps) {
                       </div>
                       <div className="p-6">
                         <div className="flex items-center justify-between mb-4">
-                          <span className="text-amber-600 dark:text-amber-400 font-semibold text-sm">
+                         {/*  <span className="text-amber-600 dark:text-amber-400 font-semibold text-sm">
                             {service.price_range || "Fiyat için iletişime geçin"}
-                          </span>
+                          </span> */}
                           {service.is_featured && (
                             <span className="bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 px-2 py-1 rounded-full text-xs font-medium">
                               Öne Çıkan
