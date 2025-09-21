@@ -42,87 +42,42 @@ export default function RegionsSection({ regions }: RegionsSectionProps) {
         </FadeIn>
 
         <StaggerIn direction="up" staggerDelay={0.1}>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
-            {regions.length > 0 ? regions.slice(0, 6).map((region: Region) => (
-              <HoverCard key={region.id}>
-                <div className="bg-gray-700 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-600 dark:border-gray-700">
-                  <div className="relative h-48 md:h-56 overflow-hidden">
-                    <Image
-                      src={region.image_url || "/images/hero-3.png"}
-                      alt={region.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    {region.is_featured && (
-                      <div className="absolute top-4 left-4 bg-amber-500 text-black px-3 py-1 rounded-full text-sm font-semibold flex items-center">
-                        <Star className="h-4 w-4 mr-1" />
-                        Öne Çıkan
-                      </div>
-                    )}
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="text-white font-bold text-lg mb-1">
-                        {region.name} Hafriyat Hizmetleri
-                      </h3>
-                      <p className="text-white/90 text-sm line-clamp-2">
-                        {region.short_description}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="p-6 md:p-8">
-                    <div className="flex items-center mb-4">
-                      <MapPin className="h-5 w-5 text-amber-500 dark:text-amber-400 mr-2" />
-                      <h4 className="text-lg font-semibold text-white dark:text-white">{region.name} Bölgesi</h4>
+          <div className="relative">
+            {/* Horizontal Scrollable Container */}
+            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+              {regions.length > 0 ? regions.map((region: Region) => (
+                <Link key={region.id} href={`/bolgelerimiz/${region.slug}`} className="flex-shrink-0">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-white dark:bg-gray-700 rounded-xl p-6 w-48 h-32 flex flex-col items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
+                  >
+                    {/* Map Pin Icon */}
+                    <div className="relative mb-3">
+                      <MapPin className="h-8 w-8 text-red-500 group-hover:text-red-600 transition-colors duration-300" />
+                      <div className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full shadow-sm"></div>
                     </div>
                     
-                    {/* Services List */}
-                    <div className="space-y-2 mb-6">
-                      <div className="flex items-center">
-                        <CheckCircle className="h-4 w-4 text-amber-500 dark:text-amber-400 mr-2 flex-shrink-0" />
-                        <span className="text-gray-300 dark:text-gray-300 text-sm">{region.name} Hafriyat</span>
-                      </div>
-                      <div className="flex items-center">
-                        <CheckCircle className="h-4 w-4 text-amber-500 dark:text-amber-400 mr-2 flex-shrink-0" />
-                        <span className="text-gray-300 dark:text-gray-300 text-sm">{region.name} Kazı İşleri</span>
-                      </div>
-                      <div className="flex items-center">
-                        <CheckCircle className="h-4 w-4 text-amber-500 dark:text-amber-400 mr-2 flex-shrink-0" />
-                        <span className="text-gray-300 dark:text-gray-300 text-sm">{region.name} Yıkım Hizmetleri</span>
-                      </div>
-                      <div className="flex items-center">
-                        <CheckCircle className="h-4 w-4 text-amber-500 dark:text-amber-400 mr-2 flex-shrink-0" />
-                        <span className="text-gray-300 dark:text-gray-300 text-sm">İş Makinesi Kiralama</span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between">
-                      <Link href={`/bolgelerimiz/${region.slug}`}>
-                        <Button className="bg-amber-500 hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-700 text-black dark:text-white font-semibold">
-                          Detayları Gör
-                        </Button>
-                      </Link>
-                      <Link href="/iletisim">
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white dark:border-amber-400 dark:text-amber-400 dark:hover:bg-amber-400 dark:hover:text-black"
-                        >
-                          Teklif Al
-                        </Button>
-                      </Link>
-                    </div>
+                    {/* Region Name */}
+                    <h3 className="text-gray-900 dark:text-white font-bold text-center text-sm group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-300">
+                      {region.name}
+                    </h3>
+                  </motion.div>
+                </Link>
+              )) : (
+                <div className="flex items-center justify-center w-full py-12">
+                  <div className="bg-gray-700 dark:bg-gray-800 rounded-2xl p-8 max-w-md mx-auto">
+                    <MapPin className="h-12 w-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold text-white dark:text-white mb-2">Bölgelerimiz Yakında</h3>
+                    <p className="text-gray-300 dark:text-gray-400 text-sm">Hizmet verdiğimiz bölgeler şu anda güncelleniyor. Lütfen daha sonra tekrar kontrol edin.</p>
                   </div>
                 </div>
-              </HoverCard>
-            )) : (
-              <div className="col-span-full text-center py-12">
-                <div className="bg-gray-700 dark:bg-gray-800 rounded-2xl p-8 max-w-md mx-auto">
-                  <MapPin className="h-12 w-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-white dark:text-white mb-2">Bölgelerimiz Yakında</h3>
-                  <p className="text-gray-300 dark:text-gray-400 text-sm">Hizmet verdiğimiz bölgeler şu anda güncelleniyor. Lütfen daha sonra tekrar kontrol edin.</p>
-                </div>
-              </div>
+              )}
+            </div>
+            
+            {/* Scroll Indicator */}
+            {regions.length > 6 && (
+              <div className="absolute top-1/2 -translate-y-1/2 right-0 w-8 h-16 bg-gradient-to-l from-gray-800 to-transparent pointer-events-none"></div>
             )}
           </div>
         </StaggerIn>
