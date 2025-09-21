@@ -31,6 +31,7 @@ export default async function AboutPage() {
     story_content_1: "2000 yılında kurulan Coşkun Hafriyat, iş makinesi kiralama sektörünü yenilikçilik ve kaliteli hizmet anlayışıyla dönüştürme vizyonuyla küçük bir aile şirketi olarak başladı.",
     story_content_2: "Son yirmi yılda, konut, ticari ve endüstriyel sektörlerde 500'den fazla projeyi tamamlayarak lider bir kiralama firması haline geldik. Başarımız, mükemmelliğe, dürüstlüğe ve müşteri memnuniyetine olan bağlılığımız üzerine kurulmuştur.",
     story_content_3: "Bugün, Coşkun Hafriyat olarak, müşterilerimiz için olağanüstü sonuçlar sunmak amacıyla yeni teknolojileri ve sürdürülebilir uygulamaları benimseyerek sektörün sınırlarını zorlamaya devam ediyoruz.",
+    story_image: "/images/hakkimizda-story.png",
     values_title: "Değerlerimiz",
     values_subtitle: "İşimizi Yönlendiren İlkeler",
     mission_title: "Misyonumuz",
@@ -182,7 +183,7 @@ export default async function AboutPage() {
               </Link>
             </div>
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl">
-              <Image src="/images/hakkimizda-story.png" alt="Şirket geçmişi" fill className="object-cover" />
+              <Image src={getContent("story_image")} alt="Şirket geçmişi" fill className="object-cover" />
             </div>
           </div>
         </div>

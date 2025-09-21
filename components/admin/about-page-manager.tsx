@@ -35,6 +35,7 @@ export function AboutPageManager({ pageContent }: AboutPageManagerProps) {
     story_content_1: "2000 yılında kurulan Coşkun Hafriyat, iş makinesi kiralama sektörünü yenilikçilik ve kaliteli hizmet anlayışıyla dönüştürme vizyonuyla küçük bir aile şirketi olarak başladı.",
     story_content_2: "Son yirmi yılda, konut, ticari ve endüstriyel sektörlerde 500'den fazla projeyi tamamlayarak lider bir kiralama firması haline geldik. Başarımız, mükemmelliğe, dürüstlüğe ve müşteri memnuniyetine olan bağlılığımız üzerine kurulmuştur.",
     story_content_3: "Bugün, Coşkun Hafriyat olarak, müşterilerimiz için olağanüstü sonuçlar sunmak amacıyla yeni teknolojileri ve sürdürülebilir uygulamaları benimseyerek sektörün sınırlarını zorlamaya devam ediyoruz.",
+    story_image: "/images/hakkimizda-story.png",
     values_title: "Değerlerimiz",
     values_subtitle: "Bizi Yönlendiren Şey",
     values_description: "Temel değerlerimiz, müşterilerimizle nasıl etkileşimde bulunduğumuzdan her projeye nasıl yaklaştığımıza kadar yaptığımız her şeye rehberlik eder.",
@@ -166,6 +167,14 @@ export function AboutPageManager({ pageContent }: AboutPageManagerProps) {
                   value={getContent("story_content_3")}
                   onChange={(e) => handleContentChange("story_content_3", e.target.value)}
                   rows={3}
+                />
+              </div>
+              <div>
+                <Label>Hikaye Görseli</Label>
+                <ImageUpload
+                  value={getContent("story_image")}
+                  onChange={(value) => handleContentChange("story_image", value)}
+                  onRemove={() => handleContentChange("story_image", "")}
                 />
               </div>
             </div>
