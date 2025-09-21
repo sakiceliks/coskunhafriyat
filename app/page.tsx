@@ -123,11 +123,11 @@ export default function Home() {
       try {
         // Local API çağrıları
         const [servicesData, projectsData, regionsData, blogPostsData, heroSlidesData] = await Promise.all([
-         fetch('/api/admin/services').then(res => res.json()),
-         fetch('/api/admin/projects').then(res => res.json()),
-        fetch('/api/admin/regions').then(res => res.json()),
-      fetch('/api/admin/blog').then(res => res.json()),
-      fetch('/api/admin/hero-carousel').then(res => res.json())
+         fetch('https://coskunhafriyat.com/api/admin/services').then(res => res.json()),
+         fetch('https://coskunhafriyat.com/api/admin/projects').then(res => res.json()),
+        fetch('https://coskunhafriyat.com/api/admin/regions').then(res => res.json()),
+      fetch('https://coskunhafriyat.com/api/admin/blog').then(res => res.json()),
+      fetch('https://coskunhafriyat.com/api/admin/hero-carousel').then(res => res.json())
        ])
 
         // API'den gelen verileri kullan
