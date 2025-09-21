@@ -44,7 +44,7 @@ export default function RegionsSection({ regions }: RegionsSectionProps) {
         <StaggerIn direction="up" staggerDelay={0.1}>
           <div className="relative">
             {/* Horizontal Scrollable Container */}
-            <div className="sm:flex grid grid gap-4 overflow-x-auto pb-4 scrollbar-hide">
+            <div className="sm:flex grid grid-cols-2 items-center justify-center lg:grid-cols-3 gap-4 overflow-x-auto pb-4 scrollbar-hide">
               {regions.length > 0 ? regions.map((region: Region) => (
                 <Link key={region.id} href={`/bolgelerimiz/${region.slug}`} className="flex-shrink-0">
                   <motion.div
