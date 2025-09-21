@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, CheckCircle, Phone, Mail, MapPin, Star, Clock, Users } from "lucide-react"
-import { ServiceJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld"
+import { SingleServiceJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld"
 
 import { Button } from "@/components/ui/button"
 import { getRegionBySlug, getRegionById, getServicesByRegion } from "@/lib/database"
@@ -65,7 +65,18 @@ export default async function RegionPage({ params }: RegionPageProps) {
   }
 
   // Get services for this region
-  const regionServices = await getServicesByRegion(region.name)
+  let regionServices: any[] = []
+  try {
+    regionServices = await getServicesByRegion(region.name)
+  } catch (error) {
+    console.error("Bölge hizmetleri yüklenirken hata:", error)
+    regionServices = []
+  }
+
+  // Güvenlik kontrolü
+  if (!Array.isArray(regionServices)) {
+    regionServices = []
+  }
 
   const breadcrumbItems = [
     { name: "Ana Sayfa", url: "/" },
@@ -75,7 +86,7 @@ export default async function RegionPage({ params }: RegionPageProps) {
 
   return (
     <>
-      <ServiceJsonLd service={region} />
+      <SingleServiceJsonLd service={region} />
       <BreadcrumbJsonLd items={breadcrumbItems} />
 
       <div className="flex min-h-screen flex-col">
@@ -139,7 +150,7 @@ export default async function RegionPage({ params }: RegionPageProps) {
                     </div>
                   </FadeIn>
 
-                  {region.services_offered && region.services_offered.length > 0 && (
+                  {region.services_offered && Array.isArray(region.services_offered) && region.services_offered.length > 0 && (
                     <FadeIn delay={0.2}>
                       <div className="mt-8">
                         <h3 className="text-xl sm:text-2xl font-bold mb-6 dark:text-white">Sunduğumuz Hizmetler</h3>
@@ -311,7 +322,7 @@ export default async function RegionPage({ params }: RegionPageProps) {
         )}
 
         {/* Gallery Section */}
-        {region.gallery_images && region.gallery_images.length > 0 && (
+        {region.gallery_images && Array.isArray(region.gallery_images) && region.gallery_images.length > 0 && (
           <section className="py-12 md:py-20 bg-gray-50 dark:bg-gray-800">
             <div className="container mx-auto px-4">
               <FadeIn>

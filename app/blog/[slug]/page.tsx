@@ -71,9 +71,23 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   // Get related posts (same tags, excluding current post)
-  const allPosts = await getBlogPosts()
+  let allPosts: any[] = []
+  try {
+    allPosts = await getBlogPosts()
+  } catch (error) {
+    console.error("Blog yazıları yüklenirken hata:", error)
+    allPosts = []
+  }
+
+  // Güvenlik kontrolü
+  if (!Array.isArray(allPosts)) {
+    allPosts = []
+  }
+
   const relatedPosts = allPosts
-    .filter((p: any) => p.id !== post.id && p.tags?.some((tag: string) => post.tags?.includes(tag)))
+    .filter((p: any) => p.id !== post.id && 
+      Array.isArray(p.tags) && Array.isArray(post.tags) && 
+      p.tags.some((tag: string) => post.tags.includes(tag)))
     .slice(0, 3)
 
   const formatDate = (dateString: string) => {
@@ -114,13 +128,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 Blog'a Dön
               </Link>
 
-              <div className="flex flex-wrap gap-2 mb-4">
-                {post.tags?.map((tag: string, index: number) => (
-                  <Badge key={index} variant="secondary" className="bg-white/20 text-white border-white/30">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
+              {post.tags && Array.isArray(post.tags) && post.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {post.tags.map((tag: string, index: number) => (
+                    <Badge key={index} variant="secondary" className="bg-white/20 text-white border-white/30">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              )}
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">{post.title}</h1>
 
@@ -153,17 +169,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
 
               {/* Tags */}
-              <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-                <div className="flex items-center flex-wrap gap-2">
-                  <Tag className="h-4 w-4 text-gray-500 dark:text-gray-400 mr-2" />
-                  <span className="text-gray-600 dark:text-gray-400 font-medium mr-3">Etiketler:</span>
-                  {post.tags?.map((tag: string, index: number) => (
-                    <Badge key={index} variant="outline" className="text-amber-600 border-amber-200 dark:text-amber-400 dark:border-amber-600">
-                      {tag}
-                    </Badge>
-                  ))}
+              {post.tags && Array.isArray(post.tags) && post.tags.length > 0 && (
+                <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center flex-wrap gap-2">
+                    <Tag className="h-4 w-4 text-gray-500 dark:text-gray-400 mr-2" />
+                    <span className="text-gray-600 dark:text-gray-400 font-medium mr-3">Etiketler:</span>
+                    {post.tags.map((tag: string, index: number) => (
+                      <Badge key={index} variant="outline" className="text-amber-600 border-amber-200 dark:text-amber-400 dark:border-amber-600">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </article>

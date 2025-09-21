@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, CheckCircle, Phone, Mail } from "lucide-react"
-import { ServiceJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld"
+import { SingleServiceJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld"
 
 import { Button } from "@/components/ui/button"
 import { getServiceBySlug, getServiceById } from "@/lib/database"
@@ -70,7 +70,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
   return (
     <>
-      <ServiceJsonLd service={service} />
+      <SingleServiceJsonLd service={service} />
       <BreadcrumbJsonLd items={breadcrumbItems} />
 
       <div className="flex min-h-screen flex-col">
@@ -117,7 +117,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   </div>
                 </div>
 
-                {service.features && service.features.length > 0 && (
+                {service.features && Array.isArray(service.features) && service.features.length > 0 && (
                   <div>
                     <h3 className="text-xl sm:text-2xl font-bold mb-6 dark:text-white">Hizmet Özellikleri</h3>
                     <ul className="space-y-3">
