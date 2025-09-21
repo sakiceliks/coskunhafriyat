@@ -97,9 +97,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <p className="text-lg sm:text-xl text-white/90 max-w-2xl">{service.short_description}</p>
             {service.price_range && (
               <div className="mt-6">
-                <span className="inline-block bg-amber-500 text-black px-4 py-2 rounded-full font-semibold">
+               {/*  <span className="inline-block bg-amber-500 text-black px-4 py-2 rounded-full font-semibold">
                   {service.price_range}
-                </span>
+                </span> */}
               </div>
             )}
           </div>
