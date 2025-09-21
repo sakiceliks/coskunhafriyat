@@ -127,9 +127,9 @@ export default async function ServicesPage() {
 
                     {service.price_range && (
                       <div className="mb-4">
-                        <span className="inline-block bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 px-3 py-1 rounded-full text-sm font-medium">
+                       {/*  <span className="inline-block bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 px-3 py-1 rounded-full text-sm font-medium">
                           {service.price_range}
-                        </span>
+                        </span> */}
                       </div>
                     )}
 
