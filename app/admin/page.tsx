@@ -9,13 +9,15 @@ import {
   getCompanyStats,
   getFaqs,
   getRegions,
+  getHeroCarousel,
 } from "@/lib/database"
 import { ServicesManager } from "@/components/admin/services-manager"
 import { ProjectsManager } from "@/components/admin/projects-manager"
 import { BlogManager } from "@/components/admin/blog-manager"
 import { PageContentManager } from "@/components/admin/page-content-manager"
 import { RegionsManager } from "@/components/admin/regions-manager"
-import { BarChart3, Briefcase, PenTool, FileText, MapPin } from "lucide-react"
+import { HeroCarouselManager } from "@/components/admin/hero-carousel-manager"
+import { BarChart3, Briefcase, PenTool, FileText, MapPin, Image } from "lucide-react"
 
 export const metadata = {
   title: "Yönetim Paneli | Coşkun Hafriyat",
@@ -27,7 +29,7 @@ export default async function AdminPage() {
   // For demo purposes, we'll skip auth
 
   try {
-    const [services, projects, blogPosts, pageContent, teamMembers, companyStats, faqs, regions] = await Promise.all([
+    const [services, projects, blogPosts, pageContent, teamMembers, companyStats, faqs, regions, heroCarousel] = await Promise.all([
       getServices(),
       getProjects(),
       getBlogPosts(),
@@ -36,6 +38,7 @@ export default async function AdminPage() {
       getCompanyStats(),
       getFaqs(),
       getRegions().catch(() => []), // Regions tablosu yoksa boş array döndür
+      getHeroCarousel().catch(() => []), // Hero carousel tablosu yoksa boş array döndür
     ])
 
     const allPageContent = await Promise.all([
@@ -107,14 +110,19 @@ export default async function AdminPage() {
         </div>
 
         {/* Management Tabs */}
-        <Tabs defaultValue="services" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5">
+        <Tabs defaultValue="hero" className="space-y-6">
+          <TabsList className="grid w-full grid-cols-6">
+            <TabsTrigger value="hero">Hero Carousel</TabsTrigger>
             <TabsTrigger value="services">Hizmetler</TabsTrigger>
             <TabsTrigger value="projects">Projeler</TabsTrigger>
             <TabsTrigger value="blog">Blog</TabsTrigger>
             <TabsTrigger value="regions">Bölgelerimiz</TabsTrigger>
             <TabsTrigger value="pages">Sayfa İçerikleri</TabsTrigger>
           </TabsList>
+
+          <TabsContent value="hero" className="space-y-6">
+            <HeroCarouselManager initialSlides={heroCarousel} />
+          </TabsContent>
 
           <TabsContent value="services" className="space-y-6">
             <ServicesManager services={services} />

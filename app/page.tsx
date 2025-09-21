@@ -17,6 +17,7 @@ import RegionsSection from "@/components/sections/regions-section"
 import ProjectsSection from "@/components/sections/projects-section"
 import BlogSection from "@/components/sections/blog-section"
 import { CTASection } from "@/components/cta-section"
+import { HeroCarousel } from "@/components/hero-carousel"
 import { useState, useEffect } from "react"
 
 // Mock data - veritabanı bağlantısı olmadığında kullanılacak
@@ -113,6 +114,7 @@ export default function Home() {
   const [projects, setProjects] = useState<any[]>([])
   const [regions, setRegions] = useState<any[]>([])
   const [blogPosts, setBlogPosts] = useState<any[]>([])
+  const [heroSlides, setHeroSlides] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -120,11 +122,12 @@ export default function Home() {
     const loadData = async () => {
       try {
         // Local API çağrıları
-        const [servicesData, projectsData, regionsData, blogPostsData] = await Promise.all([
+        const [servicesData, projectsData, regionsData, blogPostsData, heroSlidesData] = await Promise.all([
          fetch('/api/admin/services').then(res => res.json()),
          fetch('/api/admin/projects').then(res => res.json()),
         fetch('/api/admin/regions').then(res => res.json()),
-      fetch('/api/admin/blog').then(res => res.json())
+      fetch('/api/admin/blog').then(res => res.json()),
+      fetch('/api/admin/hero-carousel').then(res => res.json())
        ])
 
         // API'den gelen verileri kullan
@@ -132,6 +135,7 @@ export default function Home() {
         setProjects(projectsData)
         setRegions(regionsData)
         setBlogPosts(blogPostsData)
+        setHeroSlides(heroSlidesData)
         setLoading(false)
       } catch (error) {
         console.error("Veri yükleme hatası:", error)
@@ -151,80 +155,8 @@ export default function Home() {
     <div className="flex min-h-screen flex-col">
       <ScrollProgress />
 
-      {/* Hero Section with Static Background Image */}
-      <section className="relative w-full overflow-hidden h-[600px] md:h-[700px] lg:h-[800px]">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="https://cm8xsbawnj19nezd.public.blob.vercel-storage.com/1758398870346-Yeni%20Proje.jpg"
-            alt="İnşaat sahası arka planı"
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
-            quality={90}
-          />
-        </div>
-
-        {/* Dark Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/50 z-10" />
-
-        {/* Hero Content */}
-        <div className="absolute inset-0 z-30 flex items-center justify-center">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="max-w-3xl mx-auto text-center"
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-block px-4 py-2 bg-amber-500/90 text-white rounded-full text-sm font-medium mb-4"
-              >
-                Profesyonel Hafriyat ve İş Makinesi Kiralama
-              </motion.div>
-
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 drop-shadow-md">
-                İstanbul'un <span className="text-amber-400">Güvenilir</span> Hafriyat Çözümü
-              </h1>
-
-              <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 md:mb-10 max-w-xl md:max-w-2xl mx-auto drop-shadow-md">
-                JCB, kepçe, loader ve buldozer kiralama hizmetleri ile İstanbul genelinde hafriyat, kazı, yıkım ve
-                nakliye işlerinizde yanınızdayız.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                <Link href="/hizmetler" className="w-full sm:w-auto">
-                  <AnimatedButton
-                    size="lg"
-                    className="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 sm:px-8 w-full sm:w-auto"
-                    hoverEffect="lift"
-                    iconAnimation={true}
-                  >
-                    Hizmetlerimizi Keşfedin
-                    <ChevronRight className="ml-2 h-4 w-4" />
-                  </AnimatedButton>
-                </Link>
-                <Link href="/projeler" className="w-full sm:w-auto">
-                  <HoverButton
-                    size="lg"
-                    variant="outline"
-                    className="text-white border-white bg-black/30 hover:bg-black/40 hover:text-white font-semibold px-6 sm:px-8 w-full sm:w-auto backdrop-blur-sm"
-                    hoverEffect="glow"
-                    rippleColor="rgba(255, 255, 255, 0.3)"
-                  >
-                    Projelerimizi İnceleyin
-                    <ChevronRight className="ml-2 h-4 w-4" />
-                  </HoverButton>
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Carousel */}
+      <HeroCarousel slides={heroSlides} />
 
       {/* Regions Section - Right after Hero */}
       {!loading && <RegionsSection regions={regions} />}

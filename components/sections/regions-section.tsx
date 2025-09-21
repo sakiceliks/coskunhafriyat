@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, MapPin, Star } from "lucide-react"
+import { ArrowRight, MapPin, Star, CheckCircle } from "lucide-react"
 import { motion } from "framer-motion"
 import { AnimatedButton } from "@/components/ui/animated-button"
 import { Button } from "@/components/ui/button"
@@ -45,7 +45,7 @@ export default function RegionsSection({ regions }: RegionsSectionProps) {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
             {regions.length > 0 ? regions.slice(0, 6).map((region: Region) => (
               <HoverCard key={region.id}>
-                <div className="bg-gray-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-600">
+                <div className="bg-gray-700 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-600 dark:border-gray-700">
                   <div className="relative h-48 md:h-56 overflow-hidden">
                     <Image
                       src={region.image_url || "/images/hero-3.png"}
@@ -54,36 +54,73 @@ export default function RegionsSection({ regions }: RegionsSectionProps) {
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     {region.is_featured && (
                       <div className="absolute top-4 left-4 bg-amber-500 text-black px-3 py-1 rounded-full text-sm font-semibold flex items-center">
                         <Star className="h-4 w-4 mr-1" />
                         Öne Çıkan
                       </div>
                     )}
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="text-white font-bold text-lg mb-1">
+                        {region.name} Hafriyat Hizmetleri
+                      </h3>
+                      <p className="text-white/90 text-sm line-clamp-2">
+                        {region.short_description}
+                      </p>
+                    </div>
                   </div>
                   <div className="p-6 md:p-8">
-                    <div className="flex items-center mb-3">
-                      <MapPin className="h-5 w-5 text-amber-500 mr-2" />
-                      <h3 className="text-xl md:text-2xl font-bold text-white">{region.name}</h3>
+                    <div className="flex items-center mb-4">
+                      <MapPin className="h-5 w-5 text-amber-500 dark:text-amber-400 mr-2" />
+                      <h4 className="text-lg font-semibold text-white dark:text-white">{region.name} Bölgesi</h4>
                     </div>
-                    <p className="text-gray-300 mb-4 text-sm sm:text-base line-clamp-3">
-                      {region.short_description}
-                    </p>
-                    <Link href={`/bolgelerimiz/${region.slug}`}>
-                      <Button className="bg-amber-500 hover:bg-amber-600 text-black w-full">
-                        Detayları Görün
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </Link>
+                    
+                    {/* Services List */}
+                    <div className="space-y-2 mb-6">
+                      <div className="flex items-center">
+                        <CheckCircle className="h-4 w-4 text-amber-500 dark:text-amber-400 mr-2 flex-shrink-0" />
+                        <span className="text-gray-300 dark:text-gray-300 text-sm">{region.name} Hafriyat</span>
+                      </div>
+                      <div className="flex items-center">
+                        <CheckCircle className="h-4 w-4 text-amber-500 dark:text-amber-400 mr-2 flex-shrink-0" />
+                        <span className="text-gray-300 dark:text-gray-300 text-sm">{region.name} Kazı İşleri</span>
+                      </div>
+                      <div className="flex items-center">
+                        <CheckCircle className="h-4 w-4 text-amber-500 dark:text-amber-400 mr-2 flex-shrink-0" />
+                        <span className="text-gray-300 dark:text-gray-300 text-sm">{region.name} Yıkım Hizmetleri</span>
+                      </div>
+                      <div className="flex items-center">
+                        <CheckCircle className="h-4 w-4 text-amber-500 dark:text-amber-400 mr-2 flex-shrink-0" />
+                        <span className="text-gray-300 dark:text-gray-300 text-sm">İş Makinesi Kiralama</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <Link href={`/bolgelerimiz/${region.slug}`}>
+                        <Button className="bg-amber-500 hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-700 text-black dark:text-white font-semibold">
+                          Detayları Gör
+                        </Button>
+                      </Link>
+                      <Link href="/iletisim">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white dark:border-amber-400 dark:text-amber-400 dark:hover:bg-amber-400 dark:hover:text-black"
+                        >
+                          Teklif Al
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </HoverCard>
             )) : (
               <div className="col-span-full text-center py-12">
-                <div className="bg-gray-700 rounded-2xl p-8 max-w-md mx-auto">
-                  <MapPin className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-white mb-2">Bölgelerimiz Yakında</h3>
-                  <p className="text-gray-300 text-sm">Hizmet verdiğimiz bölgeler şu anda güncelleniyor. Lütfen daha sonra tekrar kontrol edin.</p>
+                <div className="bg-gray-700 dark:bg-gray-800 rounded-2xl p-8 max-w-md mx-auto">
+                  <MapPin className="h-12 w-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
+                  <h3 className="text-lg font-semibold text-white dark:text-white mb-2">Bölgelerimiz Yakında</h3>
+                  <p className="text-gray-300 dark:text-gray-400 text-sm">Hizmet verdiğimiz bölgeler şu anda güncelleniyor. Lütfen daha sonra tekrar kontrol edin.</p>
                 </div>
               </div>
             )}

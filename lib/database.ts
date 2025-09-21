@@ -114,6 +114,131 @@ export async function getServicesByRegion(regionName: string) {
   }
 }
 
+// Hero Carousel
+export async function getHeroCarousel() {
+  // Early return if no database URL
+  if (!process.env.DATABASE_URL) {
+    console.log("[v0] No DATABASE_URL, returning empty hero carousel array")
+    return []
+  }
+
+  try {
+    const sql = getDatabase()
+    return await sql`SELECT * FROM hero_carousel WHERE is_active = true ORDER BY display_order ASC, created_at ASC`
+  } catch (error) {
+    console.error("Error fetching hero carousel:", error)
+    return []
+  }
+}
+
+export async function getHeroSlideById(id: number) {
+  // Early return if no database URL
+  if (!process.env.DATABASE_URL) {
+    console.log("[v0] No DATABASE_URL, returning null for hero slide by id")
+    return null
+  }
+
+  try {
+    const sql = getDatabase()
+    const result = await sql`SELECT * FROM hero_carousel WHERE id = ${id} LIMIT 1`
+    return result[0] || null
+  } catch (error) {
+    console.error("Error fetching hero slide by id:", error)
+    return null
+  }
+}
+
+export async function createHeroSlide(data: {
+  title: string
+  subtitle?: string
+  description?: string
+  image_url: string
+  button_text?: string
+  button_link?: string
+  button_text_2?: string
+  button_link_2?: string
+  display_order?: number
+}) {
+  // Early return if no database URL
+  if (!process.env.DATABASE_URL) {
+    console.log("[v0] No DATABASE_URL, cannot create hero slide")
+    return null
+  }
+
+  try {
+    const sql = getDatabase()
+    const result = await sql`
+      INSERT INTO hero_carousel (title, subtitle, description, image_url, button_text, button_link, button_text_2, button_link_2, display_order)
+      VALUES (${data.title}, ${data.subtitle || null}, ${data.description || null}, ${data.image_url}, ${data.button_text || null}, ${data.button_link || null}, ${data.button_text_2 || null}, ${data.button_link_2 || null}, ${data.display_order || 0})
+      RETURNING *
+    `
+    return result[0] || null
+  } catch (error) {
+    console.error("Error creating hero slide:", error)
+    return null
+  }
+}
+
+export async function updateHeroSlide(id: number, data: {
+  title?: string
+  subtitle?: string
+  description?: string
+  image_url?: string
+  button_text?: string
+  button_link?: string
+  button_text_2?: string
+  button_link_2?: string
+  display_order?: number
+  is_active?: boolean
+}) {
+  // Early return if no database URL
+  if (!process.env.DATABASE_URL) {
+    console.log("[v0] No DATABASE_URL, cannot update hero slide")
+    return null
+  }
+
+  try {
+    const sql = getDatabase()
+    const result = await sql`
+      UPDATE hero_carousel 
+      SET title = COALESCE(${data.title}, title),
+          subtitle = COALESCE(${data.subtitle}, subtitle),
+          description = COALESCE(${data.description}, description),
+          image_url = COALESCE(${data.image_url}, image_url),
+          button_text = COALESCE(${data.button_text}, button_text),
+          button_link = COALESCE(${data.button_link}, button_link),
+          button_text_2 = COALESCE(${data.button_text_2}, button_text_2),
+          button_link_2 = COALESCE(${data.button_link_2}, button_link_2),
+          display_order = COALESCE(${data.display_order}, display_order),
+          is_active = COALESCE(${data.is_active}, is_active),
+          updated_at = CURRENT_TIMESTAMP
+      WHERE id = ${id}
+      RETURNING *
+    `
+    return result[0] || null
+  } catch (error) {
+    console.error("Error updating hero slide:", error)
+    return null
+  }
+}
+
+export async function deleteHeroSlide(id: number) {
+  // Early return if no database URL
+  if (!process.env.DATABASE_URL) {
+    console.log("[v0] No DATABASE_URL, cannot delete hero slide")
+    return false
+  }
+
+  try {
+    const sql = getDatabase()
+    await sql`DELETE FROM hero_carousel WHERE id = ${id}`
+    return true
+  } catch (error) {
+    console.error("Error deleting hero slide:", error)
+    return false
+  }
+}
+
 // Projects
 export async function getProjects(featured?: boolean) {
   // Early return if no database URL
