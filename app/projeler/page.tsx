@@ -46,7 +46,19 @@ export async function generateMetadata() {
 }
 
 export default async function ProjectsPage() {
-  const projects = await getProjects()
+  let projects: any[] = []
+  
+  try {
+    projects = await getProjects()
+  } catch (error) {
+    console.error("Projeler yüklenirken hata:", error)
+    projects = []
+  }
+
+  // Güvenlik kontrolü
+  if (!Array.isArray(projects)) {
+    projects = []
+  }
 
   const projectsByType = {
     all: projects,

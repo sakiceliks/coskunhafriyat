@@ -46,7 +46,19 @@ export async function generateMetadata() {
 }
 
 export default async function BlogPage() {
-  const blogPosts = await getBlogPosts()
+  let blogPosts: any[] = []
+  
+  try {
+    blogPosts = await getBlogPosts()
+  } catch (error) {
+    console.error("Blog yazıları yüklenirken hata:", error)
+    blogPosts = []
+  }
+
+  // Güvenlik kontrolü
+  if (!Array.isArray(blogPosts)) {
+    blogPosts = []
+  }
 
   const featuredPosts = blogPosts.filter((post: any) => post.is_featured).slice(0, 2)
   const regularPosts = blogPosts.filter((post: any) => !post.is_featured)

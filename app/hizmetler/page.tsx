@@ -43,28 +43,31 @@ export async function generateMetadata() {
 }
 
 export default async function ServicesPage() {
-  let services = []
+  let services: any[] = []
   
   try {
-    // API endpoint'ini kullan
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/admin/services`, {
-      cache: 'no-store' // Her zaman fresh data al
-    })
-    if (response.ok) {
-      services = await response.json()
-    } else {
-      // Fallback olarak getServices kullan
-      services = await getServices()
-    }
+    // Önce getServices fonksiyonunu dene
+    services = await getServices()
   } catch (error) {
     console.error("Hizmetler yüklenirken hata:", error)
     try {
-      // Son çare olarak getServices kullan
-      services = await getServices()
-    } catch (fallbackError) {
-      console.error("Fallback hizmetler yüklenirken hata:", fallbackError)
+      // API endpoint'ini dene
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/admin/services`, {
+        cache: 'no-store'
+      })
+      if (response.ok) {
+        const data = await response.json()
+        services = Array.isArray(data) ? data : []
+      }
+    } catch (apiError) {
+      console.error("API'den hizmetler yüklenirken hata:", apiError)
       services = []
     }
+  }
+
+  // Güvenlik kontrolü
+  if (!Array.isArray(services)) {
+    services = []
   }
 
   const breadcrumbItems = [

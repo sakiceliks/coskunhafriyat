@@ -46,7 +46,19 @@ export async function generateMetadata() {
 }
 
 export default async function RegionsPage() {
-  const regions = await getRegions().catch(() => [])
+  let regions: any[] = []
+  
+  try {
+    regions = await getRegions()
+  } catch (error) {
+    console.error("Bölgeler yüklenirken hata:", error)
+    regions = []
+  }
+
+  // Güvenlik kontrolü
+  if (!Array.isArray(regions)) {
+    regions = []
+  }
 
   const breadcrumbItems = [
     { name: "Ana Sayfa", url: "/" },
