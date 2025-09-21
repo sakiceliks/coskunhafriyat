@@ -69,7 +69,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg text-gray-900 dark:text-white">E-Posta Adresimiz</h3>
-                    <p className="text-gray-700 dark:text-gray-300">info@guclukepce.com</p>
+                    <p className="text-gray-700 dark:text-gray-300">info@coskunhafriyat.com</p>
                   </div>
                 </div>
                 <div className="flex items-start">
