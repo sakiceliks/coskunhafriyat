@@ -112,8 +112,8 @@ export function AboutPageManager({ pageContent }: AboutPageManagerProps) {
                 />
               </div>
               <div>
-                <Label>Hero Görsel</Label>
                 <ImageUpload
+                  label="Hero Görsel"
                   value={getContent("hero_image")}
                   onChange={(value) => handleContentChange("hero_image", value)}
                   onRemove={() => handleContentChange("hero_image", "")}
@@ -170,8 +170,8 @@ export function AboutPageManager({ pageContent }: AboutPageManagerProps) {
                 />
               </div>
               <div>
-                <Label>Hikaye Görseli</Label>
                 <ImageUpload
+                  label="Hikaye Görseli"
                   value={getContent("story_image")}
                   onChange={(value) => handleContentChange("story_image", value)}
                   onRemove={() => handleContentChange("story_image", "")}
