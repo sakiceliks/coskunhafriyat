@@ -31,7 +31,7 @@ export default async function AboutPage() {
     story_content_1: "2000 yılında kurulan Coşkun Hafriyat, iş makinesi kiralama sektörünü yenilikçilik ve kaliteli hizmet anlayışıyla dönüştürme vizyonuyla küçük bir aile şirketi olarak başladı.",
     story_content_2: "Son yirmi yılda, konut, ticari ve endüstriyel sektörlerde 500'den fazla projeyi tamamlayarak lider bir kiralama firması haline geldik. Başarımız, mükemmelliğe, dürüstlüğe ve müşteri memnuniyetine olan bağlılığımız üzerine kurulmuştur.",
     story_content_3: "Bugün, Coşkun Hafriyat olarak, müşterilerimiz için olağanüstü sonuçlar sunmak amacıyla yeni teknolojileri ve sürdürülebilir uygulamaları benimseyerek sektörün sınırlarını zorlamaya devam ediyoruz.",
-    story_image: "/images/hakkimizda-story.png",
+    story_image: "https://cm8xsbawnj19nezd.public.blob.vercel-storage.com/1758433013298-23a887d9-dbd8-4f60-9f69-feb1abcdac80.jpeg",
     values_title: "Değerlerimiz",
     values_subtitle: "İşimizi Yönlendiren İlkeler",
     mission_title: "Misyonumuz",
