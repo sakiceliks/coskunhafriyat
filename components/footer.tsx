@@ -113,30 +113,30 @@ export function Footer() {
                   Projeler
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href="/testimonials"
                   className="text-gray-300 dark:text-gray-400 text-sm sm:text-base hover:text-amber-500 dark:hover:text-amber-400 transition-colors inline-block"
                 >
                   Müşteri Yorumları
                 </Link>
-              </li>
-              <li>
+              </li> */}
+             {/*  <li>
                 <Link
                   href="/areas"
                   className="text-gray-300 dark:text-gray-400 text-sm sm:text-base hover:text-amber-500 dark:hover:text-amber-400 transition-colors inline-block"
                 >
                   Hizmet Bölgeleri
                 </Link>
-              </li>
-              <li>
+              </li> */}
+             {/*  <li>
                 <Link
                   href="/faq"
                   className="text-gray-300 dark:text-gray-400 text-sm sm:text-base hover:text-amber-500 dark:hover:text-amber-400 transition-colors inline-block"
                 >
                   Sık Sorulan Sorular
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
                   href="/iletisim"
@@ -168,7 +168,7 @@ export function Footer() {
               </li>
             </ul>
             <div className="mt-6">
-              <Link href="/iletisim#quote-form">
+              <Link href="/iletisim">
                 <Button className="bg-amber-500 dark:bg-amber-600 hover:bg-amber-600 dark:hover:bg-amber-700 text-black dark:text-white font-medium w-full transition-all duration-300">
                   Ücretsiz Teklif Alın
                 </Button>
