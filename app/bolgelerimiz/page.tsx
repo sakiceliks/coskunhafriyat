@@ -114,14 +114,11 @@ export default async function RegionsPage() {
                   regions.map((region: any, index: number) => (
                   <HoverCard key={region.id}>
                     <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-100 dark:border-gray-700">
-                      <div className="relative h-48 md:h-56 overflow-hidden">
-                       {/*  <Image
-                          src={region.image_url || "/images/hero-3.png"}
-                          alt={region.name}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-110"
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        /> */}
+                      <div className="relative h-32 md:h-40 bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-900 dark:to-amber-800 flex items-center justify-center">
+                        <div className="text-center">
+                          <MapPin className="h-12 w-12 md:h-16 md:w-16 text-amber-500 dark:text-amber-400 mx-auto mb-2 group-hover:scale-110 transition-transform duration-300" />
+                          <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white">{region.name}</h3>
+                        </div>
                         {region.is_featured && (
                           <div className="absolute top-4 left-4 bg-amber-500 text-black px-3 py-1 rounded-full text-sm font-semibold flex items-center">
                             <Star className="h-4 w-4 mr-1" />
@@ -130,10 +127,6 @@ export default async function RegionsPage() {
                         )}
                       </div>
                       <div className="p-6 md:p-8">
-                        <div className="flex items-center mb-3">
-                          <MapPin className="h-5 w-5 text-amber-500 mr-2" />
-                          <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">{region.name}</h3>
-                        </div>
                         <p className="text-gray-700 dark:text-gray-300 mb-4 text-sm sm:text-base line-clamp-3">
                           {region.short_description}
                         </p>
