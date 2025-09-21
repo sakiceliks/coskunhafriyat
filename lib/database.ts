@@ -333,6 +333,32 @@ export async function getBlogPostsByCategory(category: string) {
   return await sql`SELECT * FROM blog_posts WHERE category = ${category} AND is_published = true ORDER BY published_at DESC`
 }
 
+// Admin function - get all blog posts (including drafts)
+export async function getAllBlogPosts() {
+  // Early return if no database URL
+  if (!process.env.DATABASE_URL) {
+    console.log("[v0] No DATABASE_URL, returning empty blog posts array")
+    return []
+  }
+
+  try {
+    const sql = getDatabase()
+    const result = await sql`SELECT * FROM blog_posts ORDER BY created_at DESC`
+
+    // Map database columns to expected property names for all posts
+    return result.map((post: any) => ({
+      ...post,
+      published_date: post.published_at,
+      author: post.author_id || "Coşkun Hafriyat",
+      updated_at: post.updated_at,
+      status: post.is_published ? "published" : "draft",
+    }))
+  } catch (error) {
+    console.error("Error fetching all blog posts:", error)
+    return []
+  }
+}
+
 // Admin functions
 export async function createService(data: any) {
   const sql = getDatabase()

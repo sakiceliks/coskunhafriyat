@@ -4,6 +4,7 @@ import {
   getServices,
   getProjects,
   getBlogPosts,
+  getAllBlogPosts,
   getPageContent,
   getTeamMembers,
   getCompanyStats,
@@ -32,7 +33,7 @@ export default async function AdminPage() {
     const [services, projects, blogPosts, pageContent, teamMembers, companyStats, faqs, regions, heroCarousel] = await Promise.all([
       getServices(),
       getProjects(),
-      getBlogPosts(),
+      getAllBlogPosts(), // Admin için tüm blog post'ları (draft dahil)
       getPageContent("homepage"), // Get all page content
       getTeamMembers(),
       getCompanyStats(),

@@ -27,11 +27,11 @@ interface BlogPost {
   excerpt: string
   content: string
   author: string
-  published_date: string
-  featured_image: string
-  tags: string[]
-  status: string
-  created_at: string
+  published_date?: string
+  featured_image?: string
+  tags?: string[]
+  status?: string
+  created_at?: string
 }
 
 interface BlogManagerProps {
@@ -52,7 +52,7 @@ export function BlogManager({ blogPosts }: BlogManagerProps) {
       author: formData.get("author") as string,
       published_date: formData.get("published_date") as string,
       featured_image: formData.get("featured_image") as string,
-      tags: (formData.get("tags") as string)
+      tags: (formData.get("tags") as string || "")
         .split(",")
         .map((tag) => tag.trim())
         .filter(Boolean),
@@ -91,7 +91,7 @@ export function BlogManager({ blogPosts }: BlogManagerProps) {
       author: formData.get("author") as string,
       published_date: formData.get("published_date") as string,
       featured_image: formData.get("featured_image") as string,
-      tags: (formData.get("tags") as string)
+      tags: (formData.get("tags") as string || "")
         .split(",")
         .map((tag) => tag.trim())
         .filter(Boolean),
@@ -246,6 +246,22 @@ function BlogPostForm({ post, onSubmit }: { post?: BlogPost; onSubmit: (formData
     onSubmit(formData)
   }
 
+  // Güvenli tarih formatı
+  const getSafeDate = (dateString?: string) => {
+    if (!dateString) return new Date().toISOString().split("T")[0]
+    try {
+      return new Date(dateString).toISOString().split("T")[0]
+    } catch {
+      return new Date().toISOString().split("T")[0]
+    }
+  }
+
+  // Güvenli tags formatı
+  const getSafeTags = (tags?: string[]) => {
+    if (!tags || !Array.isArray(tags)) return ""
+    return tags.join(", ")
+  }
+
   return (
     <form action={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
@@ -280,7 +296,7 @@ function BlogPostForm({ post, onSubmit }: { post?: BlogPost; onSubmit: (formData
             id="published_date"
             name="published_date"
             type="date"
-            defaultValue={post?.published_date?.split("T")[0] || new Date().toISOString().split("T")[0]}
+            defaultValue={getSafeDate(post?.published_date)}
             required
           />
         </div>
@@ -298,7 +314,7 @@ function BlogPostForm({ post, onSubmit }: { post?: BlogPost; onSubmit: (formData
       <div className="grid grid-cols-2 gap-4">
         <div>
           <Label htmlFor="tags">Etiketler (virgülle ayırın)</Label>
-          <Input id="tags" name="tags" defaultValue={post?.tags?.join(", ")} />
+          <Input id="tags" name="tags" defaultValue={getSafeTags(post?.tags)} />
         </div>
         <div>
           <Label htmlFor="status">Durum</Label>
