@@ -19,7 +19,7 @@ export function FloatingContactButton() {
     {
       icon: MessageCircle,
       label: "WhatsApp",
-      href: "https://wa.me/905362160992",
+      href: "https://wa.me/905333239371",
       color: "bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800",
     },
     {
