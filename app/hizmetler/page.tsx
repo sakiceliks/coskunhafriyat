@@ -42,11 +42,25 @@ export default async function ServicesPage() {
   let services = []
   
   try {
-    services = await getServices()
+    // API endpoint'ini kullan
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/admin/services`, {
+      cache: 'no-store' // Her zaman fresh data al
+    })
+    if (response.ok) {
+      services = await response.json()
+    } else {
+      // Fallback olarak getServices kullan
+      services = await getServices()
+    }
   } catch (error) {
     console.error("Hizmetler yüklenirken hata:", error)
-    // Hata durumunda boş array kullan
-    services = []
+    try {
+      // Son çare olarak getServices kullan
+      services = await getServices()
+    } catch (fallbackError) {
+      console.error("Fallback hizmetler yüklenirken hata:", fallbackError)
+      services = []
+    }
   }
 
   const breadcrumbItems = [

@@ -121,13 +121,13 @@ export default function Home() {
     // Client-side veri yükleme
     const loadData = async () => {
       try {
-        // Local API çağrıları
+        // Local API çağrıları - cache: no-store ile fresh data al
         const [servicesData, projectsData, regionsData, blogPostsData, heroSlidesData] = await Promise.all([
-         fetch('https://coskunhafriyat.com/api/admin/services').then(res => res.json()),
-         fetch('https://coskunhafriyat.com/api/admin/projects').then(res => res.json()),
-        fetch('https://coskunhafriyat.com/api/admin/regions').then(res => res.json()),
-      fetch('https://coskunhafriyat.com/api/admin/blog').then(res => res.json()),
-      fetch('https://coskunhafriyat.com/api/admin/hero-carousel').then(res => res.json())
+         fetch('https://coskunhafriyat.com/api/admin/services', { cache: 'no-store' }).then(res => res.json()),
+         fetch('https://coskunhafriyat.com/api/admin/projects', { cache: 'no-store' }).then(res => res.json()),
+        fetch('https://coskunhafriyat.com/api/admin/regions', { cache: 'no-store' }).then(res => res.json()),
+      fetch('https://coskunhafriyat.com/api/admin/blog', { cache: 'no-store' }).then(res => res.json()),
+      fetch('https://coskunhafriyat.com/api/admin/hero-carousel', { cache: 'no-store' }).then(res => res.json())
        ])
 
         // API'den gelen verileri kullan
