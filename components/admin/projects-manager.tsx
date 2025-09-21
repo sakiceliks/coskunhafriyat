@@ -62,7 +62,7 @@ export function ProjectsManager({ projects }: ProjectsManagerProps) {
     }
 
     try {
-      const response = await fetch("/api/admin/projeler", {
+      const response = await fetch("https://coskunhafriyat.com/api/admin/projeler", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

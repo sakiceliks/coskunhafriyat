@@ -60,7 +60,7 @@ export function BlogManager({ blogPosts }: BlogManagerProps) {
     }
 
     try {
-      const response = await fetch("/api/admin/blog", {
+      const response = await fetch("https://coskunhafriyat.com/api/admin/blog", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

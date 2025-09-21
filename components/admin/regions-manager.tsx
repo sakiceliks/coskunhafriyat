@@ -97,7 +97,7 @@ export function RegionsManager({ regions: initialRegions }: RegionsManagerProps)
     try {
       const url = editingRegion
         ? `/api/admin/regions/${editingRegion.id}`
-        : "/api/admin/regions"
+        : "https://coskunhafriyat.com/api/admin/regions"
       const method = editingRegion ? "PUT" : "POST"
 
       const response = await fetch(url, {

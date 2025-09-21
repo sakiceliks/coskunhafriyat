@@ -53,7 +53,7 @@ export function ServicesManager({ services }: ServicesManagerProps) {
     }
 
     try {
-      const response = await fetch("/api/admin/services", {
+      const response = await fetch("https://coskunhafriyat.com/api/admin/services", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

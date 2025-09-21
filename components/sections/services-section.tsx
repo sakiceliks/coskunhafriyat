@@ -64,9 +64,9 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
 
                     {service.price_range && (
                       <div className="mb-4">
-                        <span className="inline-block bg-amber-500/20 text-amber-500 px-3 py-1 rounded-full text-sm font-medium">
+                      {/*   <span className="inline-block bg-amber-500/20 text-amber-500 px-3 py-1 rounded-full text-sm font-medium">
                           {service.price_range}
-                        </span>
+                        </span> */}
                       </div>
                     )}
 

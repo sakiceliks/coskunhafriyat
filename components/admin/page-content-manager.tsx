@@ -94,7 +94,7 @@ export function PageContentManager({ pageContent, teamMembers, companyStats, faq
     const newValue = editingContent[content.id] || content.content_value
 
     try {
-      const response = await fetch("/api/admin/page-content", {
+      const response = await fetch("https://coskunhafriyat.com/api/admin/page-content", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -140,7 +140,7 @@ export function PageContentManager({ pageContent, teamMembers, companyStats, faq
     }
 
     try {
-      const response = await fetch("/api/admin/company-stats", {
+      const response = await fetch("https://coskunhafriyat.com/api/admin/company-stats", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -172,7 +172,7 @@ export function PageContentManager({ pageContent, teamMembers, companyStats, faq
     }
 
     try {
-      const url = editingTeamMember ? `/api/admin/team-members/${editingTeamMember.id}` : "/api/admin/team-members"
+      const url = editingTeamMember ? `/api/admin/team-members/${editingTeamMember.id}` : "https://coskunhafriyat.com/api/admin/team-members"
 
       const response = await fetch(url, {
         method: editingTeamMember ? "PUT" : "POST",
@@ -203,7 +203,7 @@ export function PageContentManager({ pageContent, teamMembers, companyStats, faq
     }
 
     try {
-      const url = editingFaq ? `/api/admin/faqs/${editingFaq.id}` : "/api/admin/faqs"
+      const url = editingFaq ? `/api/admin/faqs/${editingFaq.id}` : "https://coskunhafriyat.com/api/admin/faqs"
 
       const response = await fetch(url, {
         method: editingFaq ? "PUT" : "POST",

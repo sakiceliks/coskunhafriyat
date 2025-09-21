@@ -65,7 +65,7 @@ export function AboutPageManager({ pageContent }: AboutPageManagerProps) {
       }))
 
       for (const update of updates) {
-        await fetch("/api/admin/page-content", {
+        await fetch("https://coskunhafriyat.com/api/admin/page-content", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(update)

@@ -93,7 +93,7 @@ export function HeroCarouselManager({ initialSlides }: HeroCarouselManagerProps)
     try {
       const url = editingSlide 
         ? `/api/admin/hero-carousel/${editingSlide.id}`
-        : "/api/admin/hero-carousel"
+        : "https://coskunhafriyat.com/api/admin/hero-carousel"
       
       const method = editingSlide ? "PUT" : "POST"
       
