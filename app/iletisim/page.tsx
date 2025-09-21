@@ -51,7 +51,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg text-gray-900 dark:text-white">Ofis Adresimiz</h3>
-                    <p className="text-gray-700 dark:text-gray-300">123 Coşkun Hafriyat Sk, Sanayi Sitesi, İstanbul, 34000</p>
+                    <p className="text-gray-700 dark:text-gray-300">Tepeören Mahallesi, Sanayi Caddesi No:123, Tuzla/İstanbul</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -171,11 +171,18 @@ export default function ContactPage() {
       <section className="py-10 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="bg-gray-300 dark:bg-gray-600 h-[400px] rounded-2xl overflow-hidden relative">
-              {/* This would be replaced with an actual map component in production */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-gray-600 dark:text-gray-300 text-lg font-medium">Etkileşimli Harita Buraya Gelecektir</p>
-              </div>
+            <div className="h-[400px] rounded-2xl overflow-hidden relative">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.123456789!2d29.123456789!3d40.123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDA3JzI0LjQiTiAyOcKwMDcnMjQuNCJF!5e0!3m2!1str!2str!4v1234567890123!5m2!1str!2str"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-2xl"
+                title="Coşkun Hafriyat - Tepeören Mahallesi, Sanayi Caddesi No:123, Tuzla/İstanbul"
+              ></iframe>
             </div>
           </div>
         </div>

@@ -18,7 +18,7 @@ export function Footer() {
               İstanbul genelinde hafriyat, kazı, yıkım ve nakliye hizmetleri ile güvenilir ortağınız. 2010'dan beri
               kalite ve mükemmellik sunuyoruz.
             </p>
-            <div className="flex space-x-4 justify-center sm:justify-start">
+{/*             <div className="flex space-x-4 justify-center sm:justify-start">
               <Link href="#" className="text-gray-300 dark:text-gray-400 hover:text-amber-500 dark:hover:text-amber-400 transition-colors">
                 <Facebook className="h-5 w-5" />
                 <span className="sr-only">Facebook</span>
@@ -35,7 +35,7 @@ export function Footer() {
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
-            </div>
+            </div> */}
           </div>
 
           {/* Services */}

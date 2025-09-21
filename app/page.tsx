@@ -169,11 +169,6 @@ export default function Home() {
       {!loading && <ServicesSection services={services} />}
 
       {/* CTA Section 1 */}
-      <CTASection
-        title="Hizmetlerimizle Tanışın"
-        description="Profesyonel hafriyat, kazı, yıkım ve iş makinesi kiralama hizmetlerimizle projelerinizi güvenle tamamlayın."
-        variant="secondary"
-      />
 
       {/* CTA Section 2 */}
      
@@ -182,11 +177,7 @@ export default function Home() {
       {!loading && <ProjectsSection projects={projects} />}
 
       {/* CTA Section 3 */}
-      <CTASection
-        title="Projelerimizi İnceleyin"
-        description="Tamamladığımız başarılı projeleri inceleyin ve sizin için de aynı kaliteyi sunabileceğimizi görün."
-        variant="primary"
-      />
+
 
       {/* Blog Section */}
       {!loading && <BlogSection blogPosts={blogPosts} />}
