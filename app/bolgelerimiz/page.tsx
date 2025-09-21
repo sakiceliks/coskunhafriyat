@@ -76,7 +76,7 @@ export default async function RegionsPage() {
         <section className="relative h-[300px] sm:h-[400px] w-full overflow-hidden">
           <div className="absolute inset-0 bg-black/60 z-10" />
           <Image
-            src="/images/hero-2.png"
+            src="https://cm8xsbawnj19nezd.public.blob.vercel-storage.com/1758446513058-WhatsApp%20Image%202025-09-21%20at%2012.15.49.jpeg"
             alt="İstanbul bölgeleri hafriyat hizmetleri"
             fill
             className="object-cover"
