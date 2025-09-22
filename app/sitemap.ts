@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next"
 import { getServices, getProjects, getBlogPosts, getRegions } from "@/lib/database"
+import { createSlug } from "@/lib/slug-utils"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://coskunhafriyat.com"
@@ -48,6 +49,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly" as const,
       priority: 0.6,
     },
+    {
+      url: `${baseUrl}/hizmetler/residential`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
   ]
 
   try {
@@ -78,6 +85,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     }))
 
+    // Dynamic region-service pages (hizmetler/bolge/[region]/[service])
+    const regionServicePages: any[] = []
+    regions.forEach((region: any) => {
+      if (region.services_offered && Array.isArray(region.services_offered)) {
+        region.services_offered.forEach((serviceName: string) => {
+          const serviceSlug = createSlug(serviceName)
+          
+          regionServicePages.push({
+            url: `${baseUrl}/hizmetler/bolge/${region.slug}/${serviceSlug}`,
+            lastModified: new Date(region.updated_at || region.created_at),
+            changeFrequency: "monthly" as const,
+            priority: 0.7,
+          })
+        })
+      }
+    })
+
     // Dynamic blog pages
     const blogPosts = await getBlogPosts()
     const blogPages = blogPosts
@@ -89,7 +113,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.6,
       }))
 
-    return [...staticPages, ...servicePages, ...projectPages, ...regionPages, ...blogPages]
+    return [...staticPages, ...servicePages, ...projectPages, ...regionPages, ...regionServicePages, ...blogPages]
   } catch (error) {
     console.error("Error generating sitemap:", error)
     // Return static pages only if database fails

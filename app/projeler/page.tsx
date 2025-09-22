@@ -242,7 +242,7 @@ export default async function ProjectsPage() {
               </div>
               <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl mt-8 md:mt-0">
                 <Image
-                  src={projectHero}
+                  src="https://cm8xsbawnj19nezd.public.blob.vercel-storage.com/1758578239408-Gemini_Generated_Image_7ymrba7ymrba7ymr.png"
                   alt="Hafriyat süreci"
                   fill
                   className="object-cover"
