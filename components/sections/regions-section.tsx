@@ -43,13 +43,13 @@ export default function RegionsSection({ regions }: RegionsSectionProps) {
 
         <StaggerIn direction="up" staggerDelay={0.1}>
         <div className="relative">
-  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2 sm:gap-3 md:gap-4 max-w-6xl mx-auto">
+  <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 max-w-6xl mx-auto">
     {regions.length > 0 ? regions.map((region: Region) => (
       <Link key={region.id} href={`/bolgelerimiz/${region.slug}`}>
         <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-white dark:bg-gray-700 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 h-20 sm:h-24 md:h-28 flex flex-col items-center justify-center shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group"
+          className="bg-white dark:bg-gray-700 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 h-20 sm:h-24 md:h-28 w-24 sm:w-28 md:w-32 flex flex-col items-center justify-center shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group flex-shrink-0"
         >
           {/* Icon */}
           <div className="relative mb-1 sm:mb-2">
@@ -64,7 +64,7 @@ export default function RegionsSection({ regions }: RegionsSectionProps) {
         </motion.div>
       </Link>
     )) : (
-      <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-6 xl:col-span-8 flex items-center justify-center py-12">
+      <div className="w-full flex items-center justify-center py-12">
         <div className="bg-gray-700 dark:bg-gray-800 rounded-2xl p-8 max-w-md mx-auto">
           <MapPin className="h-12 w-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
           <h3 className="text-lg font-semibold text-white mb-2">Bölgelerimiz Yakında</h3>
