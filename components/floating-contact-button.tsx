@@ -25,7 +25,7 @@ export function FloatingContactButton() {
     {
       icon: Mail,
       label: "E-posta",
-      href: "mailto:info@coskunhafriyat.com",
+      href: "mailto:emin@coskunhafriyat.com",
       color: "bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700",
     },
   ]

@@ -221,7 +221,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       </div>
                       <div className="flex items-center">
                         <Mail className="h-5 w-5 text-amber-500 mr-3" />
-                        <span className="text-gray-700 dark:text-gray-300">info@coskunhafriyat.com</span>
+                        <span className="text-gray-700 dark:text-gray-300">emin@coskunhafriyat.com</span>
                       </div>
                     </div>
 

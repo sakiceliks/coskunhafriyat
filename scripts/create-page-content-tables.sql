@@ -77,7 +77,7 @@ INSERT INTO page_content (page_name, section_name, content_type, content_key, co
 ('contact', 'hero', 'image', 'background_image', '/images/contact-hero.png'),
 ('contact', 'info', 'text', 'address', '123 BuildMaster Ave, Construction City, BC 12345'),
 ('contact', 'info', 'text', 'phone', '0533 323 93 71'),
-('contact', 'info', 'text', 'email', 'info@buildmaster.com'),
+('contact', 'info', 'text', 'email', 'emin@buildmaster.com'),
 ('contact', 'info', 'text', 'hours_weekday', 'Monday - Friday: 8:00 AM - 5:00 PM'),
 ('contact', 'info', 'text', 'hours_weekend', 'Saturday: 9:00 AM - 2:00 PM');
 

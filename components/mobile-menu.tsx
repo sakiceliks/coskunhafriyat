@@ -86,12 +86,12 @@ export function MobileMenu({ navigationItems, services, onClose }: MobileMenuPro
                 </div>
               </a>
               <a
-                href="mailto:info@zeminustasi.com.yt"
+                href="mailto:emin@zeminustasi.com.yt"
                 className="flex items-center gap-3 p-3 rounded-lg hover:bg-amber-500/20 dark:hover:bg-amber-500/20 transition-colors text-white dark:text-white"
               >
                 <Mail className="h-5 w-5 text-primary dark:text-amber-400" />
                 <div>
-                  <div className="font-medium">info@coskunhafriyat.com</div>
+                  <div className="font-medium">emin@coskunhafriyat.com</div>
                   <div className="text-sm text-gray-400 dark:text-gray-400">E-posta gönder</div>
                 </div>
               </a>

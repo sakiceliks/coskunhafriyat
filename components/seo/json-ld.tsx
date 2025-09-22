@@ -22,7 +22,7 @@ export function OrganizationJsonLd() {
     description: "İstanbul'da profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri",
     url: "https://coskunhafriyat.com",
     telephone: "+90-533-323-93-71",
-    email: "info@coskunhafriyat.com",
+    email: "emin@coskunhafriyat.com",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Örnek Mahallesi, Örnek Sokak No:1",

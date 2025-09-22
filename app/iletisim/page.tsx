@@ -51,7 +51,7 @@ export default function ContactPage() {
                   </div>
                   <div className="text-center md:text-left">
                     <h3 className="font-semibold text-lg text-gray-900 dark:text-white">Tepeören Şubemiz</h3>
-                    <p className="text-gray-700 dark:text-gray-300">Tepeören Mahallesi, Sanayi Caddesi No:123, Tuzla/İstanbul</p>
+                    <p className="text-gray-700 dark:text-gray-300">Tepeören, Eski Ankara Asfaltı Cad., 34959 Tuzla/İstanbul</p>
                   </div>
                 </div>
                 <div className="flex items-start justify-center md:justify-start">
@@ -60,7 +60,7 @@ export default function ContactPage() {
                   </div>
                   <div className="text-center md:text-left">
                     <h3 className="font-semibold text-lg text-gray-900 dark:text-white">Mudarlı Şubemiz</h3>
-                    <p className="text-gray-700 dark:text-gray-300">Mudarlı Mahallesi, İş Merkezi, Tuzla/İstanbul</p>
+                    <p className="text-gray-700 dark:text-gray-300">Mudarlı, 41400 Gebze/Kocaeli</p>
                   </div>
                 </div>
                 <div className="flex items-start justify-center md:justify-start">
@@ -78,7 +78,7 @@ export default function ContactPage() {
                   </div>
                   <div className="text-center md:text-left">
                     <h3 className="font-semibold text-lg text-gray-900 dark:text-white">E-Posta Adresimiz</h3>
-                    <p className="text-gray-700 dark:text-gray-300">info@coskunhafriyat.com</p>
+                    <p className="text-gray-700 dark:text-gray-300">emin@coskunhafriyat.com</p>
                   </div>
                 </div>
                 <div className="flex items-start justify-center md:justify-start">
@@ -119,20 +119,27 @@ export default function ContactPage() {
               <div className="space-y-4">
                 <div className="text-center">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Tepeören Şubesi</h3>
-                  <p className="text-gray-700 dark:text-gray-300">Tepeören Mahallesi, Sanayi Caddesi No:123, Tuzla/İstanbul</p>
+                  <p className="text-gray-700 dark:text-gray-300">Tepeören, Eski Ankara Asfaltı Cad., 34959 Tuzla/İstanbul</p>
                 </div>
-                <div className="h-[350px] rounded-2xl overflow-hidden relative shadow-lg">
-                  <iframe
-                    src="https://maps.app.goo.gl/U3S89TTaNzMFsS24A"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="rounded-2xl"
-                    title="Coşkun Hafriyat - Tepeören Şubesi"
-                  ></iframe>
+                <div className="h-[350px] rounded-2xl overflow-hidden relative shadow-lg bg-gray-100 dark:bg-gray-700">
+                  <a 
+                    href="https://maps.app.goo.gl/U3S89TTaNzMFsS24A" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block w-full h-full relative group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-amber-600/20 flex items-center justify-center">
+                      <div className="text-center p-6">
+                        <MapPin className="h-16 w-16 text-amber-500 mx-auto mb-4" />
+                        <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Tepeören Şubesi</h4>
+                        <p className="text-gray-700 dark:text-gray-300 mb-4">Haritayı görüntülemek için tıklayın</p>
+                        <div className="inline-flex items-center px-4 py-2 bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-lg transition-colors">
+                          <MapPin className="h-4 w-4 mr-2" />
+                          Google Maps'te Aç
+                        </div>
+                      </div>
+                    </div>
+                  </a>
                 </div>
                 <div className="text-center">
                   <a 
@@ -151,20 +158,27 @@ export default function ContactPage() {
               <div className="space-y-4">
                 <div className="text-center">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Mudarlı Şubesi</h3>
-                  <p className="text-gray-700 dark:text-gray-300">Mudarlı Mahallesi, İş Merkezi, Tuzla/İstanbul</p>
+                  <p className="text-gray-700 dark:text-gray-300">Mudarlı, 41400 Gebze/Kocaeli</p>
                 </div>
-                <div className="h-[350px] rounded-2xl overflow-hidden relative shadow-lg">
-                  <iframe
-                    src="https://maps.app.goo.gl/fWrmx1XZDpQFtbLQA"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="rounded-2xl"
-                    title="Coşkun Hafriyat - Mudarlı Şubesi"
-                  ></iframe>
+                <div className="h-[350px] rounded-2xl overflow-hidden relative shadow-lg bg-gray-100 dark:bg-gray-700">
+                  <a 
+                    href="https://maps.app.goo.gl/fWrmx1XZDpQFtbLQA" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block w-full h-full relative group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-amber-600/20 flex items-center justify-center">
+                      <div className="text-center p-6">
+                        <MapPin className="h-16 w-16 text-amber-500 mx-auto mb-4" />
+                        <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Mudarlı Şubesi</h4>
+                        <p className="text-gray-700 dark:text-gray-300 mb-4">Haritayı görüntülemek için tıklayın</p>
+                        <div className="inline-flex items-center px-4 py-2 bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-lg transition-colors">
+                          <MapPin className="h-4 w-4 mr-2" />
+                          Google Maps'te Aç
+                        </div>
+                      </div>
+                    </div>
+                  </a>
                 </div>
                 <div className="text-center">
                   <a 

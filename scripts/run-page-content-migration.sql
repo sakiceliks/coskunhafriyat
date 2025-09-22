@@ -79,7 +79,7 @@ INSERT INTO page_content (page_name, section_name, content_type, content_key, co
 ('contact', 'hero', 'image', 'background_image', '/images/contact-hero.png'),
 ('contact', 'info', 'text', 'address', 'İstanbul, Türkiye'),
 ('contact', 'info', 'text', 'phone', '0533 323 93 71'),
-('contact', 'info', 'text', 'email', 'info@hafriyatci.com'),
+('contact', 'info', 'text', 'email', 'emin@hafriyatci.com'),
 ('contact', 'info', 'text', 'hours_weekday', 'Pazartesi - Cuma: 08:00 - 17:00'),
 ('contact', 'info', 'text', 'hours_weekend', 'Cumartesi: 09:00 - 14:00')
 ON CONFLICT (page_name, section_name, content_key) DO NOTHING;

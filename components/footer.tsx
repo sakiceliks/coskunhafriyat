@@ -171,7 +171,7 @@ export function Footer() {
               </li>
               <li className="flex items-start justify-center sm:justify-start">
                 <Mail className="h-5 w-5 text-amber-500 dark:text-amber-400 mr-3 mt-1 flex-shrink-0" />
-                <span className="text-gray-300 dark:text-gray-400 text-sm sm:text-base">info@coskunhafriyat.com</span>
+                <span className="text-gray-300 dark:text-gray-400 text-sm sm:text-base">emin@coskunhafriyat.com</span>
               </li>
             </ul>
             <div className="mt-6">
