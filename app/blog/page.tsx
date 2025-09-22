@@ -188,7 +188,7 @@ function FeaturedBlogCard({ post }: { post: any }) {
           src={post.featured_image || "/placeholder.svg?height=400&width=600"}
           alt={post.title}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110"
+          className="object-cover"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
@@ -240,7 +240,7 @@ function BlogCard({ post }: { post: any }) {
           src={post.featured_image || "/placeholder.svg?height=300&width=400"}
           alt={post.title}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110"
+          className="object-cover"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
       </div>
