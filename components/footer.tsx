@@ -166,6 +166,12 @@ export function Footer() {
                 </span>
               </li>
               <li className="flex items-start justify-center sm:justify-start">
+                <MapPin className="h-5 w-5 text-amber-500 dark:text-amber-400 mr-3 mt-1 flex-shrink-0" />
+                <span className="text-gray-300 dark:text-gray-400 text-sm sm:text-base text-left">
+                Mudarlı Mahallesi, Şehit Emin Doğan Caddesi No:23, Mudarlı/Kocaeli
+                </span>
+              </li>
+              <li className="flex items-start justify-center sm:justify-start">
                 <Phone className="h-5 w-5 text-amber-500 dark:text-amber-400 mr-3 mt-1 flex-shrink-0" />
                 <span className="text-gray-300 dark:text-gray-400 text-sm sm:text-base">0533 323 93 71</span>
               </li>
