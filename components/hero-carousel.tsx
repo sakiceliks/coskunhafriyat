@@ -228,8 +228,7 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
             </motion.div>
           </div>
         </div>
-
-        {/* Navigation Arrows */}
+{/* 
         {activeSlides.length > 1 && (
           <>
             <button
@@ -247,10 +246,10 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
               <ChevronRight className="h-6 w-6" />
             </button>
           </>
-        )}
+        )} */}
 
         {/* Dots Indicator */}
-        {activeSlides.length > 1 && (
+     {/*    {activeSlides.length > 1 && (
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-40 flex space-x-2">
             {activeSlides.map((_, index) => (
               <button
@@ -265,7 +264,7 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
               />
             ))}
           </div>
-        )}
+        )} */}
       </div>
     </section>
   )
