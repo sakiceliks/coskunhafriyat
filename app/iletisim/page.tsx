@@ -151,7 +151,7 @@ export default function ContactPage() {
               {/* Tepeören Şubesi */}
               <div className="space-y-6">
                 <div className="text-center">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                  <h3 className="text-2xl sm:text-left font-bold text-gray-900 dark:text-white mb-3">
                   Tepeören Şubemiz
                   </h3>
                   <p className="text-gray-700 dark:text-gray-300 text-lg">
