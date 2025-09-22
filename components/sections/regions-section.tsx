@@ -42,39 +42,40 @@ export default function RegionsSection({ regions }: RegionsSectionProps) {
         </FadeIn>
 
         <StaggerIn direction="up" staggerDelay={0.1}>
-          <div className="relative">
-            {/* Responsive Grid - 2 columns on mobile, more on larger screens */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
-              {regions.length > 0 ? regions.map((region: Region) => (
-                <Link key={region.id} href={`/bolgelerimiz/${region.slug}`}>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-white dark:bg-gray-700 rounded-xl p-4 h-28 max-w-1/2 flex flex-col items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
-                  >
-                    {/* Map Pin Icon */}
-                    <div className="relative mb-2">
-                      <MapPin className="h-6 w-6 text-red-500 group-hover:text-red-600 transition-colors duration-300" />
-                      <div className="absolute -top-1 -right-1 w-2 h-2 bg-white rounded-full shadow-sm"></div>
-                    </div>
-                    
-                    {/* Region Name */}
-                    <h3 className="text-gray-900 dark:text-white font-bold text-center text-xs group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-300 leading-tight">
-                      {region.name}
-                    </h3>
-                  </motion.div>
-                </Link>
-              )) : (
-                <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-6 flex items-center justify-center py-12">
-                  <div className="bg-gray-700 dark:bg-gray-800 rounded-2xl p-8 max-w-md mx-auto">
-                    <MapPin className="h-12 w-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold text-white dark:text-white mb-2">Bölgelerimiz Yakında</h3>
-                    <p className="text-gray-300 dark:text-gray-400 text-sm">Hizmet verdiğimiz bölgeler şu anda güncelleniyor. Lütfen daha sonra tekrar kontrol edin.</p>
-                  </div>
-                </div>
-              )}
-            </div>
+        <div className="relative">
+  {/* Responsive Grid - 2 columns on mobile, more on larger screens */}
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
+    {regions.length > 0 ? regions.map((region: Region) => (
+      <Link key={region.id} href={`/bolgelerimiz/${region.slug}`}>
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="bg-white dark:bg-gray-700 rounded-xl p-4 h-28 flex flex-col items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
+        >
+          {/* Map Pin Icon */}
+          <div className="relative mb-2">
+            <MapPin className="h-6 w-6 text-red-500 group-hover:text-red-600 transition-colors duration-300" />
+            <div className="absolute -top-1 -right-1 w-2 h-2 bg-white rounded-full shadow-sm"></div>
           </div>
+          
+          {/* Region Name */}
+          <h3 className="text-gray-900 dark:text-white font-bold text-center text-xs group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-300 leading-tight">
+            {region.name}
+          </h3>
+        </motion.div>
+      </Link>
+    )) : (
+      <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-6 flex items-center justify-center py-12">
+        <div className="bg-gray-700 dark:bg-gray-800 rounded-2xl p-8 max-w-md mx-auto">
+          <MapPin className="h-12 w-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
+          <h3 className="text-lg font-semibold text-white mb-2">Bölgelerimiz Yakında</h3>
+          <p className="text-gray-300 dark:text-gray-400 text-sm">Hizmet verdiğimiz bölgeler şu anda güncelleniyor. Lütfen daha sonra tekrar kontrol edin.</p>
+        </div>
+      </div>
+    )}
+  </div>
+</div>
+
         </StaggerIn>
 
         <div className="text-center mt-10">
