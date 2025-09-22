@@ -41,7 +41,7 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
     // Show loading for a minimum time to ensure smooth UX
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 800)
+    }, 400)
 
     return () => clearTimeout(timer)
   }, [slides])
@@ -128,7 +128,7 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
             initial={{ opacity: 0, scale: 1.1 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
             className="absolute inset-0"
           >
             <Image
@@ -144,10 +144,10 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
         </AnimatePresence>
 
         {/* Dark Overlay */}
-        <div className="relative inset-0 bg-black/50 z-10" />
+        <div className="absolute inset-0 bg-black/50 z-10" />
 
         {/* Content */}
-        <div className="relative inset-0 z-30 flex items-center justify-center">
+        <div className="absolute inset-0 z-30 flex items-center justify-center">
           <div className="container mx-auto px-4">
             <motion.div
               key={`content-${currentSlide}`}
