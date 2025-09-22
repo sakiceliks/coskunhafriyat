@@ -14,6 +14,7 @@ interface BlogPost {
   id: number
   title: string
   slug: string
+  featured_image?:string
   excerpt: string
   image_url?: string
   author: string
@@ -51,7 +52,7 @@ export default function BlogSection({ blogPosts }: BlogSectionProps) {
                 <div className="bg-gray-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-600">
                   <div className="relative h-48 md:h-56 overflow-hidden">
                     <Image
-                      src={post.image_url || "/images/hero-1.png"}
+                      src={post.featured_image || "/images/hero-1.png"}
                       alt={post.title}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
