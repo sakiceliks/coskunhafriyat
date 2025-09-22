@@ -17,7 +17,7 @@ export default function ContactPage() {
 
 
       {/* CTA Section 1 */}
-    <div className="mt-8">
+    <div className="mt-16">
     <CTASection
         title="Hemen İletişime Geçin"
         description="Projeleriniz için uzman ekibimizle görüşün ve ücretsiz fiyat teklifi alın. Size en uygun çözümü sunmaya hazırız."
