@@ -1,8 +1,8 @@
 import Image from "next/image"
-import { Mail, MapPin, Phone, Clock, ArrowRight } from "lucide-react"
+import { Mail, MapPin, Phone, Clock } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
 import { CTASection } from "@/components/cta-section"
+import { ContactForm } from "@/components/contact-form"
 
 export const metadata = {
   title: "Bize Ulaşın | Coşkun Hafriyat",
@@ -84,78 +84,7 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
-            <div className="w-full">
-              <div id="quote-form" className="scroll-mt-24">
-                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white text-center md:text-left">Ücretsiz Fiyat Teklifi Alın</h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-6 text-center md:text-left">
-                  İş makinesi kiralama projeniz için detaylı ve taahhütsüz bir fiyat teklifi almak için formu doldurun. Ekibimiz ihtiyaçlarınızı analiz edecek ve kapsamlı bir teklif sunacaktır.
-                </p>
-                <form className="bg-gray-50 dark:bg-gray-800 p-6 md:p-10 rounded-2xl shadow-sm w-full">
-                  <h3 className="text-xl md:text-2xl font-bold mb-6 text-gray-900 dark:text-white text-center md:text-left">Bize Bir Mesaj Gönderin</h3>
-                  <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Adınız Soyadınız
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-amber-400 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                        placeholder="Ahmet Yılmaz"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        E-Posta Adresiniz
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-amber-400 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                        placeholder="ahmet@ornek.com"
-                      />
-                    </div>
-                  </div>
-                  <div className="mb-6">
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Telefon Numaranız
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-amber-400 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                      placeholder="(5xx) xxx-xx-xx"
-                    />
-                  </div>
-                  <div className="mb-6">
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Konu
-                    </label>
-                    <input
-                      type="text"
-                      id="subject"
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-amber-400 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                      placeholder="Fiyat Teklifi Talebi"
-                    />
-                  </div>
-                  <div className="mb-6">
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Mesajınız
-                    </label>
-                    <textarea
-                      id="message"
-                      rows={4}
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-amber-400 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                      placeholder="Hafriyat, yıkım, kanal kazısı gibi projenizin detaylarını anlatın..."
-                    ></textarea>
-                  </div>
-                  <Button className="w-full bg-amber-500 dark:bg-amber-600 hover:bg-amber-600 dark:hover:bg-amber-700 text-black dark:text-white font-medium py-3">
-                    Mesajı Gönder
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </form>
-              </div>
-            </div>
+            <ContactForm />
           </div>
         </div>
       </section>
