@@ -158,7 +158,7 @@ export default async function RegionPage({ params }: RegionPageProps) {
                           {region.services_offered.map((service: string, index: number) => (
                             <div key={index} className="flex items-center">
                               <CheckCircle className="h-5 w-5 text-amber-500 mr-3 flex-shrink-0" />
-                              <span className="text-gray-700 dark:text-gray-300">{service}</span>
+                              <span className="text-gray-700 dark:text-gray-300">{region.name} {service}</span>
                             </div>
                           ))}
                         </div>
