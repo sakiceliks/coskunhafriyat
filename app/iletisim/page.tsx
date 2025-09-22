@@ -37,6 +37,17 @@ export default function ContactPage() {
               <p className="text-gray-700 dark:text-gray-300 mb-10 text-base md:text-lg">
                 Hizmetlerimizle ilgili bir sorunuz mu var, fiyat teklifi mi almak istiyorsunuz, yoksa projenize başlamaya hazır mısınız? Yardımcı olmak için buradayız.
               </p>
+
+
+              <div className="flex items-start justify-center md:justify-start">
+                  <div className="bg-amber-100 dark:bg-amber-900 p-3 rounded-full mr-4 flex-shrink-0">
+                    <Phone className="h-6 w-6 text-amber-600 dark:text-amber-400" />
+                  </div>
+                  <div className="text-center md:text-left">
+                    <h3 className="font-semibold text-lg text-gray-900 dark:text-white">Telefon Numaramız</h3>
+                    <p className="text-gray-700 dark:text-gray-300">0533 323 93 71</p>
+                  </div>
+                </div>
               <div className="space-y-6 md:space-y-8">
                 <div className="flex items-start justify-center md:justify-start">
                   <div className="bg-amber-100 dark:bg-amber-900 p-3 rounded-full mr-4 flex-shrink-0">
@@ -56,15 +67,7 @@ export default function ContactPage() {
                     <p className="text-gray-700 dark:text-gray-300">Mudarlı, 41400 Gebze/Kocaeli</p>
                   </div>
                 </div>
-                <div className="flex items-start justify-center md:justify-start">
-                  <div className="bg-amber-100 dark:bg-amber-900 p-3 rounded-full mr-4 flex-shrink-0">
-                    <Phone className="h-6 w-6 text-amber-600 dark:text-amber-400" />
-                  </div>
-                  <div className="text-center md:text-left">
-                    <h3 className="font-semibold text-lg text-gray-900 dark:text-white">Telefon Numaramız</h3>
-                    <p className="text-gray-700 dark:text-gray-300">0533 323 93 71</p>
-                  </div>
-                </div>
+           
                 <div className="flex items-start justify-center md:justify-start">
                   <div className="bg-amber-100 dark:bg-amber-900 p-3 rounded-full mr-4 flex-shrink-0">
                     <Mail className="h-6 w-6 text-amber-600 dark:text-amber-400" />
