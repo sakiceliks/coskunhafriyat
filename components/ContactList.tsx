@@ -7,19 +7,19 @@ const ContactInfo = () => {
       id: 1,
       name: "Tepeören Şubesi",
       type: "Ana Şube",
-      address: "Tepeören, Eski Ankara Asfaltı Cad., 34959 Tuzla/İstanbul",
-      phone: "+90 216 446 40 40",
+      address: "Tepeören, Eski Ankara Asfaltı Cad., 34959 Tuzla/İstanbul (Total Benzinlik Yanı )",
+      phone: "+90 533 323 93 71",
       phoneLabel: "Ana Hat",
-      email: "tepeoren@coskunhafriyat.com"
+      email: "emin@coskunhafriyat.com"
     },
     {
       id: 2,
       name: "Mudarlı Şubesi", 
       type: "Bölge Şubesi",
-      address: "Mudarlı, 41400 Gebze/Kocaeli",
-      phone: "+90 262 542 30 30",
-      phoneLabel: "Şube Hattı",
-      email: "mudarli@coskunhafriyat.com"
+      address: "Mudarlı, 41400 Gebze/Kocaeli (Deniz Gıda Yanı)",
+      phone: "+90 533 323 93 71",
+      phoneLabel: "Ana Hat",
+      email: "emin@coskunhafriyat.com"
     }
   ];
 
