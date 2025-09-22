@@ -43,28 +43,28 @@ export default function RegionsSection({ regions }: RegionsSectionProps) {
 
         <StaggerIn direction="up" staggerDelay={0.1}>
         <div className="relative">
-  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2 sm:gap-3 md:gap-4 max-w-6xl mx-auto">
     {regions.length > 0 ? regions.map((region: Region) => (
       <Link key={region.id} href={`/bolgelerimiz/${region.slug}`}>
         <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-white dark:bg-gray-700 rounded-xl p-4 h-28 flex flex-col items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
+          className="bg-white dark:bg-gray-700 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 h-20 sm:h-24 md:h-28 flex flex-col items-center justify-center shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group"
         >
           {/* Icon */}
-          <div className="relative mb-2">
-            <MapPin className="h-6 w-6 text-red-500 group-hover:text-red-600 transition-colors duration-300" />
-            <div className="absolute -top-1 -right-1 w-2 h-2 bg-white rounded-full shadow-sm"></div>
+          <div className="relative mb-1 sm:mb-2">
+            <MapPin className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-red-500 group-hover:text-red-600 transition-colors duration-300" />
+            <div className="absolute -top-0.5 -right-0.5 sm:-top-1 sm:-right-1 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full shadow-sm"></div>
           </div>
 
           {/* Title */}
-          <h3 className="text-gray-900 dark:text-white font-bold text-center text-xs group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-300 leading-tight">
+          <h3 className="text-gray-900 dark:text-white font-bold text-center text-[10px] sm:text-xs md:text-sm group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-300 leading-tight px-1">
             {region.name}
           </h3>
         </motion.div>
       </Link>
     )) : (
-      <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-6 flex items-center justify-center py-12">
+      <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-6 xl:col-span-8 flex items-center justify-center py-12">
         <div className="bg-gray-700 dark:bg-gray-800 rounded-2xl p-8 max-w-md mx-auto">
           <MapPin className="h-12 w-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
           <h3 className="text-lg font-semibold text-white mb-2">Bölgelerimiz Yakında</h3>
