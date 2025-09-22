@@ -70,6 +70,9 @@ export default async function ServicesPage() {
     services = []
   }
 
+  // ID'ye göre sırala (en küçük ID ilk sırada)
+  services = services.sort((a, b) => a.id - b.id)
+
   const breadcrumbItems = [
     { name: "Ana Sayfa", url: "/" },
     { name: "Hizmetlerimiz", url: "/hizmetler" },

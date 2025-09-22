@@ -5,6 +5,7 @@ import { SingleServiceJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld"
 
 import { Button } from "@/components/ui/button"
 import { getRegionBySlug, getRegionById } from "@/lib/database"
+import { createSlug, createRegionServiceSlug } from "@/lib/slug-utils"
 import { notFound } from "next/navigation"
 import { FadeIn } from "@/components/animations/fade-in"
 import { StaggerIn } from "@/components/animations/stagger-in"
@@ -70,10 +71,12 @@ export default async function RegionPage({ params }: RegionPageProps) {
     regionServices = region.services_offered.map((serviceName: string, index: number) => ({
       id: `service-${index}`,
       title: `${region.name} ${serviceName}`,
-      slug: `${region.name.toLowerCase().replace(/\s+/g, '-')}-${serviceName.toLowerCase().replace(/\s+/g, '-')}`,
+      slug: createRegionServiceSlug(region.name, serviceName),
+      regionSlug: region.slug,
+      serviceSlug: createSlug(serviceName),
       short_description: `${region.name} bölgesinde ${serviceName.toLowerCase()} hizmetleri`,
       description: `${region.name} bölgesinde profesyonel ${serviceName.toLowerCase()} hizmetleri sunuyoruz. Modern ekipmanlarımız ve deneyimli ekibimizle güvenilir hizmet alabilirsiniz.`,
-      image_url: `/images/services/${serviceName.toLowerCase().replace(/\s+/g, '-')}.jpg`,
+      image_url: `/images/services/${createSlug(serviceName)}.jpg`,
       is_featured: index < 2, // İlk 2 hizmeti öne çıkan olarak işaretle
     }))
   }
@@ -282,7 +285,7 @@ export default async function RegionPage({ params }: RegionPageProps) {
                           {service.description || service.short_description}
                         </p>
                         <div className="flex items-center justify-between">
-                          <Link href={`/hizmetler/${service.slug}`}>
+                          <Link href={`/bolgelerimiz/${service.regionSlug}/${service.serviceSlug}`}>
                             <Button
                               size="sm"
                               className="bg-amber-500 hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-700 text-black dark:text-white font-semibold"

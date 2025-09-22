@@ -5,6 +5,7 @@ import { SingleServiceJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld"
 
 import { Button } from "@/components/ui/button"
 import { getServiceBySlug, getServiceById } from "@/lib/database"
+import { createSlug, convertTurkishToEnglish } from "@/lib/slug-utils"
 import { notFound } from "next/navigation"
 import { CTASection } from "@/components/cta-section"
 
@@ -29,12 +30,12 @@ export async function generateMetadata({ params }: ServicePageProps) {
       const { getRegions } = await import('@/lib/database')
       const regions = await getRegions()
       const matchingRegion = regions.find(region => 
-        region.name.toLowerCase().replace(/\s+/g, '-') === slugParts[0]
+        createSlug(region.name) === slugParts[0]
       )
       
       if (matchingRegion && matchingRegion.services_offered) {
         const matchingService = matchingRegion.services_offered.find(s => 
-          s.toLowerCase().replace(/\s+/g, '-') === slugParts.slice(1).join('-')
+          createSlug(s) === slugParts.slice(1).join('-')
         )
         
         if (matchingService) {
@@ -43,7 +44,7 @@ export async function generateMetadata({ params }: ServicePageProps) {
             title: `${regionName} ${matchingService}`,
             short_description: `${regionName} bölgesinde ${matchingService.toLowerCase()} hizmetleri`,
             slug: params.slug,
-            image_url: `/images/services/${matchingService.toLowerCase().replace(/\s+/g, '-')}.jpg`
+            image_url: `/images/services/${createSlug(matchingService)}.jpg`
           }
         }
       }
@@ -104,12 +105,12 @@ export default async function ServicePage({ params }: ServicePageProps) {
       const { getRegions } = await import('@/lib/database')
       const regions = await getRegions()
       const matchingRegion = regions.find(region => 
-        region.name.toLowerCase().replace(/\s+/g, '-') === slugParts[0]
+        createSlug(region.name) === slugParts[0]
       )
       
       if (matchingRegion && matchingRegion.services_offered) {
         const matchingService = matchingRegion.services_offered.find(s => 
-          s.toLowerCase().replace(/\s+/g, '-') === slugParts.slice(1).join('-')
+          createSlug(s) === slugParts.slice(1).join('-')
         )
         
         if (matchingService) {
@@ -120,7 +121,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             slug: params.slug,
             short_description: `${regionName} bölgesinde ${matchingService.toLowerCase()} hizmetleri`,
             description: `${regionName} bölgesinde profesyonel ${matchingService.toLowerCase()} hizmetleri sunuyoruz. Modern ekipmanlarımız ve deneyimli ekibimizle güvenilir hizmet alabilirsiniz.`,
-            image_url: `/images/services/${matchingService.toLowerCase().replace(/\s+/g, '-')}.jpg`,
+            image_url: `/images/services/${createSlug(matchingService)}.jpg`,
             price_range: "Fiyat için iletişime geçin",
             features: [
               "Profesyonel ekipman",
