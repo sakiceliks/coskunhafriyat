@@ -141,7 +141,7 @@ const ContactInfo = () => {
           </div>
 
           {/* Bottom Info */}
-          <div className="mt-12 text-center">
+    {/*       <div className="mt-12 text-center">
             <div className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-xl p-6 border border-amber-100 dark:border-amber-800">
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 <span className="font-semibold text-gray-900 dark:text-white">7/24 Acil Durum Hattı:</span>
@@ -154,7 +154,7 @@ const ContactInfo = () => {
                 +90 532 123 45 67
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
