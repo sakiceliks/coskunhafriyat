@@ -198,7 +198,7 @@ export default function ContactPage() {
       </div>
       
       {/* Bottom CTA */}
-      <div className="mt-16 text-center">
+  {/*     <div className="mt-16 text-center">
         <div className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-2xl p-8 border border-amber-100 dark:border-amber-800">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
             Size En Yakın Şubemizi Bulun
@@ -216,7 +216,7 @@ export default function ContactPage() {
             İletişime Geçin
           </a>
         </div>
-      </div>
+      </div> */}
     </div>
   </div>
 </section>
