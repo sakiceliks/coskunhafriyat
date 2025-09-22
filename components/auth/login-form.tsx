@@ -102,14 +102,7 @@ export function LoginForm() {
               )}
             </Button>
           </form>
-          
-          <div className="mt-6 p-4 bg-amber-50 rounded-lg">
-            <h4 className="font-semibold text-amber-800 mb-2">Demo Giriş Bilgileri:</h4>
-            <p className="text-sm text-amber-700">
-              <strong>Kullanıcı Adı:</strong> admin<br />
-              <strong>Şifre:</strong> admin123
-            </p>
-          </div>
+        -
         </CardContent>
       </Card>
     </div>
