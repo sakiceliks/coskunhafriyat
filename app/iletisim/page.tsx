@@ -17,11 +17,13 @@ export default function ContactPage() {
 
 
       {/* CTA Section 1 */}
-      <CTASection
+    <div className="mt-5">
+    <CTASection
         title="Hemen İletişime Geçin"
         description="Projeleriniz için uzman ekibimizle görüşün ve ücretsiz fiyat teklifi alın. Size en uygun çözümü sunmaya hazırız."
         variant="primary"
       />
+    </div>
 
       {/* Contact Information */}
       <section className="py-20 bg-white dark:bg-gray-900">
