@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { Phone, Mail, MapPin, X, ChevronRight } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 interface MobileMenuProps {
   navigationItems: Array<{ name: string; href: string }>
