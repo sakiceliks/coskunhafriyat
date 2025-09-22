@@ -253,13 +253,13 @@ export default async function RegionPage({ params }: RegionPageProps) {
                   {regionServices.map((service: any, index: number) => (
                     <div key={service.id} className="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-100 dark:border-gray-700">
                       <div className="relative h-48 w-full">
-                        <Image
+                       {/*  <Image
                           src={service.image_url || "/placeholder.svg?height=300&width=400"}
                           alt={`${region.name} ${service.title}`}
                           fill
                           className="object-cover transition-transform duration-300 group-hover:scale-110"
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        />
+                        /> */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         <div className="absolute bottom-4 left-4 right-4">
                           <h3 className="text-white font-bold text-lg mb-1">
