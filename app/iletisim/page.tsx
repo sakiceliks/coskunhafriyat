@@ -14,16 +14,7 @@ export default function ContactPage() {
   return (
     <div className="flex min-h-screen flex-col">
       {/* Hero Section */}
-      <section className="relative h-[400px] w-full overflow-hidden">
-        <div className="absolute inset-0 bg-black/60 z-10" />
-        <Image src="https://cm8xsbawnj19nezd.public.blob.vercel-storage.com/1758442242390-slide-3.webp" alt="Bize ulaşın" fill className="object-cover" priority />
-        <div className="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
-      {/*     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">İletişim</h1> */}
-          <p className="text-xl text-white/90 max-w-2xl">
-            Proje ihtiyaçlarınızı görüşmek veya fiyat teklifi almak için ekibimizle iletişime geçin.
-          </p>
-        </div>
-      </section>
+
 
       {/* CTA Section 1 */}
       <CTASection
