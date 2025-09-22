@@ -5,6 +5,7 @@ import { Separator } from "@/components/ui/separator"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu"
 import { Phone, Mail, MapPin, X, ChevronRight, Menu, Instagram, Facebook, Twitter, Linkedin, Star, Clock, Users } from "lucide-react"
+import logo from "@/public/coskunlogo.svg"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
@@ -38,7 +39,7 @@ export function Navbar({ services }: NavbarProps) {
             <Link href="/" className="flex items-center gap-3">
               <div className="w-full h-full relative">
                 <Image 
-                  src="/coskunlogo.svg" 
+                  src={logo}
                   alt="Coşkun Hafriyat Logo" 
                   fill
                   className="object-contain"
@@ -191,12 +192,12 @@ function MobileMenu({ navigationItems, services, onClose }: MobileMenuProps) {
             <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">İletişim</h3>
             <div className="space-y-3">
               <Link
-                href="tel:+905333239371"
+                href="tel:+905362160992"
                 className="flex items-center gap-3 p-3 rounded-lg hover:bg-amber-50 dark:hover:bg-amber-500/20 transition-colors text-gray-900 dark:text-white"
               >
                 <Phone className="h-5 w-5 text-amber-500 dark:text-amber-400" />
                 <div>
-                  <div className="font-medium">+90 533 323 93 71</div>
+                  <div className="font-medium">+90 536 216 09 92</div>
                   <div className="text-sm text-gray-500 dark:text-gray-400">Hemen ara</div>
                 </div>
               </Link>

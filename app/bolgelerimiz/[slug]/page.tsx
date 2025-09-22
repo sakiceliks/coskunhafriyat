@@ -4,7 +4,7 @@ import { ArrowLeft, CheckCircle, Phone, Mail, MapPin, Star, Clock, Users } from 
 import { SingleServiceJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld"
 
 import { Button } from "@/components/ui/button"
-import { getRegionBySlug, getRegionById, getServicesByRegion } from "@/lib/database"
+import { getRegionBySlug, getRegionById } from "@/lib/database"
 import { notFound } from "next/navigation"
 import { FadeIn } from "@/components/animations/fade-in"
 import { StaggerIn } from "@/components/animations/stagger-in"
@@ -64,18 +64,18 @@ export default async function RegionPage({ params }: RegionPageProps) {
     notFound()
   }
 
-  // Get services for this region
+  // Create services from region.services_offered data
   let regionServices: any[] = []
-  try {
-    regionServices = await getServicesByRegion(region.name)
-  } catch (error) {
-    console.error("Bölge hizmetleri yüklenirken hata:", error)
-    regionServices = []
-  }
-
-  // Güvenlik kontrolü
-  if (!Array.isArray(regionServices)) {
-    regionServices = []
+  if (region.services_offered && Array.isArray(region.services_offered)) {
+    regionServices = region.services_offered.map((serviceName: string, index: number) => ({
+      id: `service-${index}`,
+      title: serviceName,
+      slug: serviceName.toLowerCase().replace(/\s+/g, '-'),
+      short_description: `${region.name} bölgesinde ${serviceName.toLowerCase()} hizmetleri`,
+      description: `${region.name} bölgesinde profesyonel ${serviceName.toLowerCase()} hizmetleri sunuyoruz. Modern ekipmanlarımız ve deneyimli ekibimizle güvenilir hizmet alabilirsiniz.`,
+      image_url: `/images/services/${serviceName.toLowerCase().replace(/\s+/g, '-')}.jpg`,
+      is_featured: index < 2, // İlk 2 hizmeti öne çıkan olarak işaretle
+    }))
   }
 
   const breadcrumbItems = [
