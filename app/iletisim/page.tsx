@@ -49,7 +49,7 @@ export default function ContactPage() {
           <div className="relative">
             <div className="h-[350px] overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d96372.73197343168!2d29.4662985!3d40.9891908!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb2d0000837927%3A0xdc380dccf4b2fa78!2za2lyYWzEsWsga2Vww6dl!5e0!3m2!1str!2str!4v1758569938131!5m2!1str!2str"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d96478.79242069142!2d29.3254412!3d40.9165733!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cad9696f4bc093%3A0xa5916071ec5604d6!2zS2lyYWzEsWsgS2Vww6dlIENvxZ9rdW4gSGFmcml5YXQ!5e0!3m2!1str!2str!4v1758579962860!5m2!1str!2str"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
