@@ -23,113 +23,183 @@ export default function ContactPage() {
       </div>
 
       {/* Contact Information */}
-      <section className="py-20 bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 max-w-7xl mx-auto">
-            {/* Contact Info */}
-            <div className="space-y-8">
-              <div className="text-left">
-                <div className="inline-block px-4 py-2 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full text-sm font-medium mb-6">
-                  İletişime Geçin
-                </div>
-                <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
-                  Sizden Haber Almaktan Mutluluk Duyarız
-                </h2>
-                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                  Hizmetlerimizle ilgili bir sorunuz mu var, fiyat teklifi mi almak istiyorsunuz, yoksa projenize başlamaya hazır mısınız? Yardımcı olmak için buradayız.
-                </p>
-              </div>
-
-              {/* Contact Details */}
-              <div className="space-y-6">
-                {/* Phone */}
-                <div className="flex items-start space-x-4">
-                  <div className="bg-amber-100 dark:bg-amber-900 p-3 rounded-full flex-shrink-0">
-                    <Phone className="h-6 w-6 text-amber-600 dark:text-amber-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-gray-900 dark:text-white mb-1">
-                      Telefon Numaramız
-                    </h3>
-                    <p className="text-gray-700 dark:text-gray-300 text-lg font-medium">
-                      0533 323 93 71
-                    </p>
-                  </div>
-                </div>
-
-                {/* Email */}
-                <div className="flex items-start space-x-4">
-                  <div className="bg-amber-100 dark:bg-amber-900 p-3 rounded-full flex-shrink-0">
-                    <Mail className="h-6 w-6 text-amber-600 dark:text-amber-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-gray-900 dark:text-white mb-1">
-                      E-Posta Adresimiz
-                    </h3>
-                    <p className="text-gray-700 dark:text-gray-300">
-                      emin@coskunhafriyat.com
-                    </p>
-                  </div>
-                </div>
-
-                {/* Working Hours */}
-                <div className="flex items-start space-x-4">
-                  <div className="bg-amber-100 dark:bg-amber-900 p-3 rounded-full flex-shrink-0">
-                    <Clock className="h-6 w-6 text-amber-600 dark:text-amber-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-gray-900 dark:text-white mb-1">
-                      Çalışma Saatlerimiz
-                    </h3>
-                    <p className="text-gray-700 dark:text-gray-300 font-medium">
-                      7/24 Hizmet
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">
-                      Her gün kesintisiz hizmet
-                    </p>
-                  </div>
-                </div>
-
-                {/* Locations */}
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-amber-100 dark:bg-amber-900 p-3 rounded-full flex-shrink-0">
-                      <MapPin className="h-6 w-6 text-amber-600 dark:text-amber-400" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg text-gray-900 dark:text-white mb-1">
-                        Tepeören Şubemiz
-                      </h3>
-                      <p className="text-gray-700 dark:text-gray-300">
-                        Tepeören, Eski Ankara Asfaltı Cad., 34959 Tuzla/İstanbul
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-amber-100 dark:bg-amber-900 p-3 rounded-full flex-shrink-0">
-                      <MapPin className="h-6 w-6 text-amber-600 dark:text-amber-400" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg text-gray-900 dark:text-white mb-1">
-                        Mudarlı Şubemiz
-                      </h3>
-                      <p className="text-gray-700 dark:text-gray-300">
-                        Mudarlı, 41400 Gebze/Kocaeli
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+  <div className="container mx-auto px-4">
+    <div className="max-w-7xl mx-auto">
+      {/* Header */}
+      <div className="text-center mb-16">
+        <div className="inline-flex items-center gap-2 px-6 py-3 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full text-sm font-semibold mb-6">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          Lokasyonlarımız
+        </div>
+        <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+          Şubelerimiz
+        </h2>
+        <p className="text-gray-600 dark:text-gray-300 text-xl max-w-3xl mx-auto leading-relaxed">
+          İstanbul ve Kocaeli bölgelerinde modern tesislerimizle kaliteli hizmet sunuyoruz
+        </p>
+      </div>
+      
+      {/* Locations Grid */}
+      <div className="grid lg:grid-cols-2 gap-8 xl:gap-12">
+        {/* Tepeören Şubesi */}
+        <div className="bg-white dark:bg-gray-700 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 group">
+          <div className="relative">
+            <div className="h-[350px] overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d96372.73197343168!2d29.4662985!3d40.9891908!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb2d0000837927%3A0xdc380dccf4b2fa78!2za2lyYWzEsWsga2Vww6dl!5e0!3m2!1str!2str!4v1758569938131!5m2!1str!2str"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Coşkun Hafriyat - Tepeören Şubesi"
+                className="group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
-
-            {/* Contact Form */}
-            <div className="lg:pl-8">
-              <ContactForm />
+            <div className="absolute top-4 left-4">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-amber-500 text-white">
+                Ana Şube
+              </span>
+            </div>
+          </div>
+          
+          <div className="p-8">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-amber-600 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                Tepeören Şubesi
+              </h3>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <div className="w-5 h-5 text-gray-400 mt-1">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-gray-700 dark:text-gray-300 font-medium">
+                    Tepeören, Eski Ankara Asfaltı Cad.
+                  </p>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">
+                    34959 Tuzla/İstanbul
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-3 pt-2">
+                <button className="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-4 rounded-xl transition-colors duration-300">
+                  Yol Tarifi Al
+                </button>
+                <button className="p-3 border border-gray-300 dark:border-gray-600 hover:border-amber-500 dark:hover:border-amber-400 rounded-xl transition-colors duration-300">
+                  <svg className="w-5 h-5 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+
+        {/* Mudarlı Şubesi */}
+        <div className="bg-white dark:bg-gray-700 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 group">
+          <div className="relative">
+            <div className="h-[350px] overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d96372.73197343168!2d29.4662985!3d40.9891908!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb2d0000837927%3A0xdc380dccf4b2fa78!2za2lyYWzEsWsga2Vww6dl!5e0!3m2!1str!2str!4v1758569938131!5m2!1str!2str"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Coşkun Hafriyat - Mudarlı Şubesi"
+                className="group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div className="absolute top-4 left-4">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-500 text-white">
+                Bölge Şubesi
+              </span>
+            </div>
+          </div>
+          
+          <div className="p-8">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-amber-600 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                Mudarlı Şubesi
+              </h3>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <div className="w-5 h-5 text-gray-400 mt-1">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-gray-700 dark:text-gray-300 font-medium">
+                    Mudarlı
+                  </p>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">
+                    41400 Gebze/Kocaeli
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-3 pt-2">
+                <button className="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-4 rounded-xl transition-colors duration-300">
+                  Yol Tarifi Al
+                </button>
+                <button className="p-3 border border-gray-300 dark:border-gray-600 hover:border-amber-500 dark:hover:border-amber-400 rounded-xl transition-colors duration-300">
+                  <svg className="w-5 h-5 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Bottom CTA */}
+      <div className="mt-16 text-center">
+        <div className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-2xl p-8 border border-amber-100 dark:border-amber-800">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            Size En Yakın Şubemizi Bulun
+          </h3>
+          <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
+            Profesyonel ekibimiz ve modern donanımımızla her iki lokasyonda da kaliteli hizmet sunuyoruz
+          </p>
+          <button className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            İletişime Geçin
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Maps Section */}
       <section className="py-20 bg-gray-50 dark:bg-gray-800">
