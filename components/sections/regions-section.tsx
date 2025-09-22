@@ -50,7 +50,7 @@ export default function RegionsSection({ regions }: RegionsSectionProps) {
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-white dark:bg-gray-700 rounded-xl p-4 h-28 flex flex-col items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
+                    className="bg-white dark:bg-gray-700 rounded-xl p-4 h-28 max-w-1/2 flex flex-col items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
                   >
                     {/* Map Pin Icon */}
                     <div className="relative mb-2">
