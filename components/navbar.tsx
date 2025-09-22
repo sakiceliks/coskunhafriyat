@@ -36,7 +36,7 @@ export function Navbar({ services }: NavbarProps) {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-12 h-12 relative">
+              <div className="w-auto h-auto relative">
                 <Image 
                   src="/coskunlogo.svg" 
                   alt="Coşkun Hafriyat Logo" 
@@ -44,10 +44,10 @@ export function Navbar({ services }: NavbarProps) {
                   className="object-contain"
                 />
               </div>
-              <div className="hidden sm:block">
+    {/*           <div className="hidden sm:block">
 {/*                 <h3 className="text-xs font-bold text-white dark:text-white">Coşkun Hafriyat</h3>
  */}                <p className="text-[8px] text-gray-300 dark:text-gray-400">Profesyonel Hafriyat Hizmetleri</p>
-              </div>
+              </div> */}
             </Link>
 
             {/* Desktop Navigation */}
