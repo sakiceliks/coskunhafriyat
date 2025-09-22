@@ -22,7 +22,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined)
 // Default admin credentials (in production, this should be stored securely)
 const DEFAULT_ADMIN = {
   username: 'admin',
-  password: 'admin123',
+  password: 'sakibaba3446.*',
   user: {
     id: '1',
     username: 'admin',
