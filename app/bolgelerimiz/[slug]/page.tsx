@@ -285,7 +285,7 @@ export default async function RegionPage({ params }: RegionPageProps) {
                           {service.description || service.short_description}
                         </p>
                         <div className="flex items-center justify-between">
-                          <Link href={`/bolgelerimiz/${service.regionSlug}/${service.serviceSlug}`}>
+                          <Link href={`/hizmetler/bolge/${service.regionSlug}/${service.serviceSlug}`}>
                             <Button
                               size="sm"
                               className="bg-amber-500 hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-700 text-black dark:text-white font-semibold"

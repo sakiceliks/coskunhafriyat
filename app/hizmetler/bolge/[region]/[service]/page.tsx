@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: RegionServicePageProps) {
     openGraph: {
       title: `${title} | Coşkun Hafriyat`,
       description,
-      url: `https://coskunhafriyat.com/bolgelerimiz/${regionSlug}/${serviceSlug}`,
+      url: `https://coskunhafriyat.com/hizmetler/bolge/${regionSlug}/${serviceSlug}`,
       siteName: "Coşkun Hafriyat",
       images: [
         {
@@ -71,7 +71,7 @@ export async function generateMetadata({ params }: RegionServicePageProps) {
       images: [`/images/services/${createSlug(serviceName)}.jpg`],
     },
     alternates: {
-      canonical: `https://coskunhafriyat.com/bolgelerimiz/${regionSlug}/${serviceSlug}`,
+      canonical: `https://coskunhafriyat.com/hizmetler/bolge/${regionSlug}/${serviceSlug}`,
     },
   }
 }
@@ -121,9 +121,10 @@ export default async function RegionServicePage({ params }: RegionServicePagePro
 
   const breadcrumbItems = [
     { name: "Ana Sayfa", url: "/" },
-    { name: "Bölgelerimiz", url: "/bolgelerimiz" },
+    { name: "Hizmetlerimiz", url: "/hizmetler" },
+    { name: "Bölge Hizmetleri", url: "/bolgelerimiz" },
     { name: region.name, url: `/bolgelerimiz/${region.slug}` },
-    { name: serviceName, url: `/bolgelerimiz/${regionSlug}/${serviceSlug}` },
+    { name: serviceName, url: `/hizmetler/bolge/${regionSlug}/${serviceSlug}` },
   ]
 
   return (
