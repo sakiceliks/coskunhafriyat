@@ -12,7 +12,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="text-center sm:text-left">
             <Link href="/" className="flex items-center gap-2 mb-4 sm:mb-6 justify-center sm:justify-start">
-              <div className="w-8 h-8 relative">
+              <div className="w-16 h-16 relative">
                 <Image 
                   src="/coskunlogo.svg" 
                   alt="Coşkun Hafriyat Logo" 
@@ -20,7 +20,6 @@ export function Footer() {
                   className="object-contain"
                 />
               </div>
-              <span className="text-xl font-bold text-white dark:text-white">Coşkun Hafriyat</span>
             </Link>
             <p className="text-gray-300 dark:text-gray-400 mb-6 text-sm sm:text-base">
               İstanbul genelinde hafriyat, kazı, yıkım ve nakliye hizmetleri ile güvenilir ortağınız. 2010'dan beri
