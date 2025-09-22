@@ -40,7 +40,7 @@ export default function ContactPage() {
 
 
               <div className="flex items-start justify-center md:justify-start">
-                  <div className="bg-amber-100 dark:bg-amber-900 p-3 rounded-full mr-4 flex-shrink-0">
+                  <div className="space-y-6 md:space-y-8 bg-amber-100 dark:bg-amber-900 p-3 rounded-full mr-4 flex-shrink-0">
                     <Phone className="h-6 w-6 text-amber-600 dark:text-amber-400" />
                   </div>
                   <div className="text-center md:text-left">
