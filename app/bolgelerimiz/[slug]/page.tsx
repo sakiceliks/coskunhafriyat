@@ -69,8 +69,8 @@ export default async function RegionPage({ params }: RegionPageProps) {
   if (region.services_offered && Array.isArray(region.services_offered)) {
     regionServices = region.services_offered.map((serviceName: string, index: number) => ({
       id: `service-${index}`,
-      title: serviceName,
-      slug: serviceName.toLowerCase().replace(/\s+/g, '-'),
+      title: `${region.name} ${serviceName}`,
+      slug: `${region.name.toLowerCase().replace(/\s+/g, '-')}-${serviceName.toLowerCase().replace(/\s+/g, '-')}`,
       short_description: `${region.name} bölgesinde ${serviceName.toLowerCase()} hizmetleri`,
       description: `${region.name} bölgesinde profesyonel ${serviceName.toLowerCase()} hizmetleri sunuyoruz. Modern ekipmanlarımız ve deneyimli ekibimizle güvenilir hizmet alabilirsiniz.`,
       image_url: `/images/services/${serviceName.toLowerCase().replace(/\s+/g, '-')}.jpg`,
@@ -260,7 +260,7 @@ export default async function RegionPage({ params }: RegionPageProps) {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         <div className="absolute bottom-4 left-4 right-4">
                           <h3 className="text-white font-bold text-lg mb-1">
-                            {region.name} {service.title}
+                            {service.title}
                           </h3>
                           <p className="text-white/90 text-sm line-clamp-2">
                             {service.short_description}
