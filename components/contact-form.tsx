@@ -42,8 +42,12 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
+    console.log("🚀 Form submit başlatıldı")
+    console.log("📝 Form verileri:", formData)
+    
     // Validate required fields
     if (!formData.name || !formData.email || !formData.phone || !formData.message) {
+      console.log("❌ Gerekli alanlar eksik")
       setStatus({
         type: "error",
         message: "Lütfen tüm gerekli alanları doldurun."
@@ -54,6 +58,7 @@ export function ContactForm() {
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(formData.email)) {
+      console.log("❌ Geçersiz e-posta formatı:", formData.email)
       setStatus({
         type: "error",
         message: "Lütfen geçerli bir e-posta adresi girin."
@@ -61,9 +66,11 @@ export function ContactForm() {
       return
     }
 
+    console.log("✅ Form validasyonu başarılı")
     setStatus({ type: "loading", message: "Mesajınız gönderiliyor..." })
 
     try {
+      console.log("📡 API isteği gönderiliyor...")
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -72,9 +79,17 @@ export function ContactForm() {
         body: JSON.stringify(formData),
       })
 
+      console.log("📡 API yanıtı alındı:", {
+        status: response.status,
+        statusText: response.statusText,
+        ok: response.ok
+      })
+
       const result = await response.json()
+      console.log("📄 API yanıt içeriği:", result)
 
       if (response.ok) {
+        console.log("✅ Mesaj başarıyla gönderildi")
         setStatus({
           type: "success",
           message: "Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız."
@@ -88,12 +103,24 @@ export function ContactForm() {
           message: ""
         })
       } else {
+        console.error("❌ API hatası:", {
+          status: response.status,
+          statusText: response.statusText,
+          error: result.error
+        })
         setStatus({
           type: "error",
           message: result.error || "Mesaj gönderilirken bir hata oluştu. Lütfen tekrar deneyin."
         })
       }
     } catch (error) {
+      console.error("💥 Form submit hatası:", error)
+      console.error("💥 Hata detayları:", {
+        name: error instanceof Error ? error.name : "Unknown",
+        message: error instanceof Error ? error.message : "Unknown error",
+        stack: error instanceof Error ? error.stack : "No stack trace"
+      })
+      
       setStatus({
         type: "error",
         message: "Bağlantı hatası. Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin."
@@ -223,6 +250,28 @@ export function ContactForm() {
             {status.type === "loading" ? "Gönderiliyor..." : "Mesajı Gönder"}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
+          
+          {/* Development Debug Info */}
+          {process.env.NODE_ENV === "development" && (
+            <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+              <p className="text-sm text-blue-800 dark:text-blue-200 font-medium mb-2">
+                🔧 Geliştirme Modu - Console Logları
+              </p>
+              <p className="text-xs text-blue-600 dark:text-blue-300">
+                Form gönderildiğinde tarayıcı konsolunda (F12) detaylı logları görebilirsiniz.
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  console.log("🧪 Test log - Form durumu:", status)
+                  console.log("🧪 Test log - Form verileri:", formData)
+                }}
+                className="mt-2 text-xs bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 px-2 py-1 rounded hover:bg-blue-200 dark:hover:bg-blue-700"
+              >
+                Test Log Yazdır
+              </button>
+            </div>
+          )}
         </form>
       </div>
     </div>
