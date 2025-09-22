@@ -25,7 +25,7 @@ export default function ContactPage() {
 
 <ContactInfo/>
       {/* Contact Information */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-10 bg-gray-50 dark:bg-gray-800">
   <div className="container mx-auto px-4">
     <div className="max-w-7xl mx-auto">
       {/* Header */}
