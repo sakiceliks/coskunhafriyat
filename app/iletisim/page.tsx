@@ -3,6 +3,7 @@ import { Mail, MapPin, Phone, Clock } from "lucide-react"
 
 import { CTASection } from "@/components/cta-section"
 import { ContactForm } from "@/components/contact-form"
+import ContactInfo from "@/components/ContactList"
 
 export const metadata = {
   title: "Bize Ulaşın | Coşkun Hafriyat",
@@ -22,6 +23,8 @@ export default function ContactPage() {
         />
       </div>
 
+
+<ContactInfo/>
       {/* Contact Information */}
       <section className="py-20 bg-gray-50 dark:bg-gray-800">
   <div className="container mx-auto px-4">
