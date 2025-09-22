@@ -17,7 +17,7 @@ export function MobileMenu({ navigationItems, services, onClose }: MobileMenuPro
       {/* Header */}
       <div className="flex items-center justify-between p-6 border-b border-gray-600 dark:border-gray-700">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 relative">
+          <div className="w-32 h-32 relative">
             <Image 
               src="/coskunlogo.svg" 
               alt="Coşkun Hafriyat Logo" 
@@ -25,10 +25,7 @@ export function MobileMenu({ navigationItems, services, onClose }: MobileMenuPro
               className="object-contain"
             />
           </div>
-          <div>
-            <h3 className="text-sm font-bold text-white dark:text-white">Coşkun Hafriyat</h3>
-            <p className="text-xs text-gray-300 dark:text-gray-400">Profesyonel Hafriyat Hizmetleri</p>
-          </div>
+          
         </div>
         <Button variant="ghost" size="icon" onClick={onClose} className="text-white dark:text-white hover:bg-amber-500/20 dark:hover:bg-amber-500/20">
           <X className="h-5 w-5" />
