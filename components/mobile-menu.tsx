@@ -115,9 +115,11 @@ export function MobileMenu({ navigationItems, services, onClose }: MobileMenuPro
               <Phone className="h-4 w-4 mr-2" />
               Ücretsiz Keşif
             </Button>
-            <Button variant="outline" className="flex-1 border-amber-500 dark:border-amber-400 text-amber-500 dark:text-amber-400 hover:bg-amber-500 dark:hover:bg-amber-500 hover:text-black dark:hover:text-white bg-transparent dark:bg-transparent" onClick={onClose}>
-              Teklif Al
-            </Button>
+            <Link href="/teklif-al" onClick={onClose}>
+              <Button variant="outline" className="flex-1 border-amber-500 dark:border-amber-400 text-amber-500 dark:text-amber-400 hover:bg-amber-500 dark:hover:bg-amber-500 hover:text-black dark:hover:text-white bg-transparent dark:bg-transparent">
+                Teklif Al
+              </Button>
+            </Link>
           </div>
          
         </div>

@@ -297,16 +297,15 @@ export default function Home() {
               ve mükemmellikle hayata geçirmeye hazır.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Link href="/iletisim" className="w-full sm:w-auto">
-                <HoverButton
-                  size="lg"
-                  className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-6 md:px-8 w-full sm:w-auto"
-                  hoverEffect="ripple"
-                >
-                  Ücretsiz Teklif Alın
-                  <ChevronRight className="ml-2 h-4 w-4" />
-                </HoverButton>
-              </Link>
+              <HoverButton
+                size="lg"
+                className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-6 md:px-8 w-full sm:w-auto"
+                hoverEffect="ripple"
+                href="/teklif-al"
+              >
+                Ücretsiz Teklif Alın
+                <ChevronRight className="ml-2 h-4 w-4" />
+              </HoverButton>
               <Link href="/iletisim" className="w-full sm:w-auto">
                 <AnimatedButton
                   size="lg"

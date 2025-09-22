@@ -73,7 +73,7 @@ export function Navbar({ services }: NavbarProps) {
                   Hemen Ara
                 </Button>
               </Link>
-              <Link href="/iletisim">
+              <Link href="/teklif-al">
                 <Button size="sm" className="bg-amber-500 dark:bg-amber-600 hover:bg-amber-600 dark:hover:bg-amber-700 text-black dark:text-white">
                   <Mail className="h-4 w-4 mr-2" />
                   Teklif Al

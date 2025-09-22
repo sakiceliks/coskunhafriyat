@@ -265,15 +265,14 @@ export default async function ServicesPage() {
               geçirebileceğini keşfedin.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Link href="/iletisim">
-                <Button
-                  size="lg"
-                  className="bg-amber-500 hover:bg-amber-600 text-black font-medium px-6 md:px-8 w-full sm:w-auto"
-                >
-                  Ücretsiz Teklif Alın
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
+              <Button
+                size="lg"
+                className="bg-amber-500 hover:bg-amber-600 text-black font-medium px-6 md:px-8 w-full sm:w-auto"
+                href="/teklif-al"
+              >
+                Ücretsiz Teklif Alın
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
             </div>
           </div>
         </section>

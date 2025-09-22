@@ -2,7 +2,6 @@ import Image from "next/image"
 import { Mail, MapPin, Phone, Clock } from "lucide-react"
 
 import { CTASection } from "@/components/cta-section"
-import { ContactForm } from "@/components/contact-form"
 import ContactInfo from "@/components/ContactList"
 
 export const metadata = {
@@ -197,26 +196,7 @@ export default function ContactPage() {
         </div>
       </div>
       
-      {/* Bottom CTA */}
-      <div className="mt-16 text-center">
-        <div className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-2xl p-8 border border-amber-100 dark:border-amber-800">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Size En Yakın Şubemizi Bulun
-          </h3>
-          <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-            Profesyonel ekibimiz ve modern donanımımızla her iki lokasyonda da kaliteli hizmet sunuyoruz
-          </p>
-          <a 
-            href="tel:+905333239371"
-            className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-            </svg>
-            İletişime Geçin
-          </a>
-        </div>
-      </div>
+ 
     </div>
   </div>
 </section>
@@ -240,7 +220,6 @@ export default function ContactPage() {
                 </div>
               ))}
             </div>
-            <ContactForm/>
           </div>
         </div>
       </section>

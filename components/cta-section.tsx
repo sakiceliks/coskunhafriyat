@@ -60,7 +60,7 @@ export function CTASection({
                 Hemen Ara
               </Button>
             </a>
-            <a href="https://wa.me/905333239371?text=Merhaba, hafriyat hizmetleri için fiyat teklifi almak istiyorum." target="_blank" rel="noopener noreferrer">
+            <Link href="/teklif-al">
               <Button 
                 size="lg" 
                 variant="outline" 
@@ -70,7 +70,7 @@ export function CTASection({
                 Fiyat Teklifi Al
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

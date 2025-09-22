@@ -245,16 +245,15 @@ export default async function RegionsPage() {
                     Ücretsiz Keşif İsteyin
                   </Button>
                 </Link>
-                <Link href="/iletisim" className="w-full sm:w-auto">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="text-white border-white hover:bg-white/10 hover:text-white font-semibold px-6 md:px-8 w-full sm:w-auto"
-                  >
-                    <Mail className="mr-2 h-5 w-5" />
-                    Teklif Alın
-                  </Button>
-                </Link>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-white border-white hover:bg-white/10 hover:text-white font-semibold px-6 md:px-8 w-full sm:w-auto"
+                  href="/teklif-al"
+                >
+                  <Mail className="mr-2 h-5 w-5" />
+                  Teklif Alın
+                </Button>
               </div>
             </FadeIn>
           </div>

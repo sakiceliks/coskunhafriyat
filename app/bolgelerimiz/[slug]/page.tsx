@@ -293,15 +293,14 @@ export default async function RegionPage({ params }: RegionPageProps) {
                               Detayları Gör
                             </Button>
                           </Link>
-                          <Link href="/iletisim">
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white dark:border-amber-400 dark:text-amber-400 dark:hover:bg-amber-400 dark:hover:text-black"
-                            >
-                              Teklif Al
-                            </Button>
-                          </Link>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white dark:border-amber-400 dark:text-amber-400 dark:hover:bg-amber-400 dark:hover:text-black"
+                            href="/teklif-al"
+                          >
+                            Teklif Al
+                          </Button>
                         </div>
                       </div>
                     </div>
