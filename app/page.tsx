@@ -268,7 +268,7 @@ export default function Home() {
             <FadeIn direction="up" delay={0.3}>
               <div className="p-4 md:p-6">
                 <div className="text-3xl md:text-4xl font-bold text-white mb-1 md:mb-2">
-                  <CountUp end={50} suffix="+" />
+                  <CountUp end={10} suffix="+" />
                 </div>
                 <p className="text-black dark:text-white font-medium text-sm md:text-base">Uzman Ekip Üyesi</p>
               </div>

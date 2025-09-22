@@ -128,7 +128,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   <p className="text-gray-700 dark:text-gray-300 text-base md:text-lg mb-8 leading-relaxed">{project.description}</p>
 
                   {/* Project Gallery */}
-                  {project.gallery_images && project.gallery_images.length > 0 && (
+          {/*         {project.gallery_images && project.gallery_images.length > 0 && (
                     <div className="mb-8">
                       <h3 className="text-xl font-semibold mb-4 dark:text-white">Proje Galerisi</h3>
                       <div className="grid sm:grid-cols-2 gap-4">
@@ -145,7 +145,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         ))}
                       </div>
                     </div>
-                  )}
+                  )} */}
                 </div>
 
                 {/* Sidebar */}

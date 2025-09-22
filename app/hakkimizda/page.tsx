@@ -298,7 +298,7 @@ export default async function AboutPage() {
               <p className="text-black dark:text-gray-100 font-medium">Yıllık Deneyim</p>
             </div>
             <div className="p-6">
-              <div className="text-4xl font-bold text-white mb-2">150+</div>
+              <div className="text-4xl font-bold text-white mb-2">10+</div>
               <p className="text-black dark:text-gray-100 font-medium">Uzman Ekip Üyesi</p>
             </div>
             <div className="p-6">

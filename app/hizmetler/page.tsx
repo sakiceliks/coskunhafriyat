@@ -89,7 +89,7 @@ export default async function ServicesPage() {
         <section className="relative h-[300px] sm:h-[400px] w-full overflow-hidden">
           <div className="absolute inset-0 bg-black/60 z-10" />
           <Image
-            src="/placeholder-g3gfp.png"
+            src="https://cm8xsbawnj19nezd.public.blob.vercel-storage.com/1758442054644-slide.webp"
             alt="Hafriyat hizmetleri"
             fill
             className="object-cover"
