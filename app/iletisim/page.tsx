@@ -28,7 +28,7 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 max-w-7xl mx-auto">
             {/* Contact Info */}
             <div className="space-y-8">
-              <div className="text-center lg:text-left">
+              <div className="text-left">
                 <div className="inline-block px-4 py-2 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full text-sm font-medium mb-6">
                   İletişime Geçin
                 </div>
