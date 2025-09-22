@@ -16,9 +16,9 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-black/60 z-10" />
-        <Image src="/images/contact-hero.png" alt="Bize ulaşın" fill className="object-cover" priority />
+        <Image src="https://cm8xsbawnj19nezd.public.blob.vercel-storage.com/1758442242390-slide-3.webp" alt="Bize ulaşın" fill className="object-cover" priority />
         <div className="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Bize Ulaşın</h1>
+      {/*     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">İletişim</h1> */}
           <p className="text-xl text-white/90 max-w-2xl">
             Proje ihtiyaçlarınızı görüşmek veya fiyat teklifi almak için ekibimizle iletişime geçin.
           </p>
@@ -87,8 +87,8 @@ export default function ContactPage() {
                   </div>
                   <div className="text-center md:text-left">
                     <h3 className="font-semibold text-lg text-gray-900 dark:text-white">Çalışma Saatlerimiz</h3>
-                    <p className="text-gray-700 dark:text-gray-300">Pazartesi - Cuma: 08:00 - 17:00</p>
-                    <p className="text-gray-700 dark:text-gray-300">Cumartesi: 09:00 - 14:00</p>
+                    <p className="text-gray-700 dark:text-gray-300">7/24 Hizmet</p>
+                    <p className="text-gray-700 dark:text-gray-300">Her gün kesintisiz hizmet</p>
                   </div>
                 </div>
               </div>
@@ -99,11 +99,14 @@ export default function ContactPage() {
       </section>
 
       {/* CTA Section 2 */}
-      <CTASection
+{/*       <CTASection
         title="Hemen Arayın, Hemen Başlayalım"
         description="Projeleriniz için en uygun çözümü sunmak için hazırız. Hemen arayın ve size özel teklifimizi alın."
         variant="secondary"
       />
+ */}
+
+
 
       {/* Maps Section */}
       <section className="py-10 bg-gray-50 dark:bg-gray-800">
@@ -121,37 +124,25 @@ export default function ContactPage() {
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Tepeören Şubesi</h3>
                   <p className="text-gray-700 dark:text-gray-300">Tepeören, Eski Ankara Asfaltı Cad., 34959 Tuzla/İstanbul</p>
                 </div>
-                <div className="h-[350px] rounded-2xl overflow-hidden relative shadow-lg bg-gray-100 dark:bg-gray-700">
-                  <a 
-                    href="https://maps.app.goo.gl/U3S89TTaNzMFsS24A" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="block w-full h-full relative group"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-amber-600/20 flex items-center justify-center">
-                      <div className="text-center p-6">
-                        <MapPin className="h-16 w-16 text-amber-500 mx-auto mb-4" />
-                        <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Tepeören Şubesi</h4>
-                        <p className="text-gray-700 dark:text-gray-300 mb-4">Haritayı görüntülemek için tıklayın</p>
-                        <div className="inline-flex items-center px-4 py-2 bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-lg transition-colors">
-                          <MapPin className="h-4 w-4 mr-2" />
-                          Google Maps'te Aç
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div className="text-center">
-                  <a 
-                    href="https://maps.app.goo.gl/U3S89TTaNzMFsS24A" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-lg transition-colors"
-                  >
-                    <MapPin className="h-4 w-4 mr-2" />
-                    Haritada Görüntüle
-                  </a>
-                </div>
+                <section className="py-10 bg-gray-50 dark:bg-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="h-[400px] rounded-2xl overflow-hidden relative">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d96478.79242069142!2d29.3254412!3d40.9165733!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cad9696f4bc093%3A0xa5916071ec5604d6!2zS2lyYWzEsWsgS2Vww6dlIENvxZ9rdW4gSGFmcml5YXQ!5e0!3m2!1str!2str!4v1758570052669!5m2!1str!2str"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-2xl"
+                title="Coşkun Hafriyat - Tepeören Mahallesi, Sanayi Caddesi No:123, Tuzla/İstanbul"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
               </div>
 
               {/* Mudarlı Şubesi */}
@@ -160,37 +151,25 @@ export default function ContactPage() {
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Mudarlı Şubesi</h3>
                   <p className="text-gray-700 dark:text-gray-300">Mudarlı, 41400 Gebze/Kocaeli</p>
                 </div>
-                <div className="h-[350px] rounded-2xl overflow-hidden relative shadow-lg bg-gray-100 dark:bg-gray-700">
-                  <a 
-                    href="https://maps.app.goo.gl/fWrmx1XZDpQFtbLQA" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="block w-full h-full relative group"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-amber-600/20 flex items-center justify-center">
-                      <div className="text-center p-6">
-                        <MapPin className="h-16 w-16 text-amber-500 mx-auto mb-4" />
-                        <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Mudarlı Şubesi</h4>
-                        <p className="text-gray-700 dark:text-gray-300 mb-4">Haritayı görüntülemek için tıklayın</p>
-                        <div className="inline-flex items-center px-4 py-2 bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-lg transition-colors">
-                          <MapPin className="h-4 w-4 mr-2" />
-                          Google Maps'te Aç
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div className="text-center">
-                  <a 
-                    href="https://maps.app.goo.gl/fWrmx1XZDpQFtbLQA" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-lg transition-colors"
-                  >
-                    <MapPin className="h-4 w-4 mr-2" />
-                    Haritada Görüntüle
-                  </a>
-                </div>
+                <section className="py-10 bg-gray-50 dark:bg-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="h-[400px] rounded-2xl overflow-hidden relative">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d96372.73197343168!2d29.4662985!3d40.9891908!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb2d0000837927%3A0xdc380dccf4b2fa78!2za2lyYWzEsWsga2Vww6dl!5e0!3m2!1str!2str!4v1758569938131!5m2!1str!2str"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-2xl"
+                title="Coşkun Hafriyat - Tepeören Mahallesi, Sanayi Caddesi No:123, Tuzla/İstanbul"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
               </div>
             </div>
           </div>
