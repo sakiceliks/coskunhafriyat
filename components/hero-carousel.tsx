@@ -144,10 +144,10 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
         </AnimatePresence>
 
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/50 z-10" />
+        <div className="relative inset-0 bg-black/50 z-10" />
 
         {/* Content */}
-        <div className="absolute inset-0 z-30 flex items-center justify-center">
+        <div className="relative inset-0 z-30 flex items-center justify-center">
           <div className="container mx-auto px-4">
             <motion.div
               key={`content-${currentSlide}`}
