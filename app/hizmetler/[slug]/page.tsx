@@ -15,7 +15,40 @@ interface ServicePageProps {
 }
 
 export async function generateMetadata({ params }: ServicePageProps) {
-  const service = await getServiceBySlug(params.slug)
+  let service = await getServiceBySlug(params.slug)
+
+  // If service not found in database, check if it's a region service
+  if (!service) {
+    // Check if slug matches pattern: region-name-service-name
+    const slugParts = params.slug.split('-')
+    if (slugParts.length >= 2) {
+      // Try to find matching region and service
+      const regionName = slugParts[0].charAt(0).toUpperCase() + slugParts[0].slice(1)
+      
+      // Get all regions to find matching one
+      const { getRegions } = await import('@/lib/database')
+      const regions = await getRegions()
+      const matchingRegion = regions.find(region => 
+        region.name.toLowerCase().replace(/\s+/g, '-') === slugParts[0]
+      )
+      
+      if (matchingRegion && matchingRegion.services_offered) {
+        const matchingService = matchingRegion.services_offered.find(s => 
+          s.toLowerCase().replace(/\s+/g, '-') === slugParts.slice(1).join('-')
+        )
+        
+        if (matchingService) {
+          // Create dynamic service object for metadata
+          service = {
+            title: `${regionName} ${matchingService}`,
+            short_description: `${regionName} bölgesinde ${matchingService.toLowerCase()} hizmetleri`,
+            slug: params.slug,
+            image_url: `/images/services/${matchingService.toLowerCase().replace(/\s+/g, '-')}.jpg`
+          }
+        }
+      }
+    }
+  }
 
   if (!service) {
     return {
@@ -56,7 +89,54 @@ export async function generateMetadata({ params }: ServicePageProps) {
 }
 
 export default async function ServicePage({ params }: ServicePageProps) {
-  const service = await getServiceBySlug(params.slug)
+  let service = await getServiceBySlug(params.slug)
+
+  // If service not found in database, check if it's a region service
+  if (!service) {
+    // Check if slug matches pattern: region-name-service-name
+    const slugParts = params.slug.split('-')
+    if (slugParts.length >= 2) {
+      // Try to find matching region and service
+      const regionName = slugParts[0].charAt(0).toUpperCase() + slugParts[0].slice(1)
+      const serviceName = slugParts.slice(1).join(' ').replace(/\b\w/g, l => l.toUpperCase())
+      
+      // Get all regions to find matching one
+      const { getRegions } = await import('@/lib/database')
+      const regions = await getRegions()
+      const matchingRegion = regions.find(region => 
+        region.name.toLowerCase().replace(/\s+/g, '-') === slugParts[0]
+      )
+      
+      if (matchingRegion && matchingRegion.services_offered) {
+        const matchingService = matchingRegion.services_offered.find(s => 
+          s.toLowerCase().replace(/\s+/g, '-') === slugParts.slice(1).join('-')
+        )
+        
+        if (matchingService) {
+          // Create dynamic service object
+          service = {
+            id: `region-${matchingRegion.id}-${slugParts.slice(1).join('-')}`,
+            title: `${regionName} ${matchingService}`,
+            slug: params.slug,
+            short_description: `${regionName} bölgesinde ${matchingService.toLowerCase()} hizmetleri`,
+            description: `${regionName} bölgesinde profesyonel ${matchingService.toLowerCase()} hizmetleri sunuyoruz. Modern ekipmanlarımız ve deneyimli ekibimizle güvenilir hizmet alabilirsiniz.`,
+            image_url: `/images/services/${matchingService.toLowerCase().replace(/\s+/g, '-')}.jpg`,
+            price_range: "Fiyat için iletişime geçin",
+            features: [
+              "Profesyonel ekipman",
+              "Deneyimli personel", 
+              "Hızlı ve güvenli hizmet",
+              "7/24 destek"
+            ],
+            is_featured: false,
+            is_active: true,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+          }
+        }
+      }
+    }
+  }
 
   if (!service) {
     notFound()

@@ -47,9 +47,9 @@ export async function getServices(featured?: boolean) {
   try {
     const sql = getDatabase()
     if (featured) {
-      return await sql`SELECT * FROM services WHERE is_active = true AND is_featured = true ORDER BY created_at DESC`
+      return await sql`SELECT * FROM services WHERE is_active = true AND is_featured = true ORDER BY id ASC`
     } else {
-      return await sql`SELECT * FROM services WHERE is_active = true ORDER BY created_at DESC`
+      return await sql`SELECT * FROM services WHERE is_active = true ORDER BY id ASC`
     }
   } catch (error) {
     console.error("Error fetching services:", error)
@@ -89,7 +89,7 @@ export async function getServicesByRegion(regionName: string) {
   try {
     const sql = getDatabase()
     // Get all active services and filter by region name in title or description
-    const result = await sql`SELECT * FROM services WHERE is_active = true ORDER BY created_at DESC`
+    const result = await sql`SELECT * FROM services WHERE is_active = true ORDER BY id ASC`
     
     // Filter services that might be relevant to the region
     // This is a simple implementation - in a real app you might have a proper region-service relationship table
