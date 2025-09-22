@@ -74,7 +74,7 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
       <section className="relative w-full overflow-hidden h-[600px] md:h-[700px] lg:h-[800px] bg-gray-800">
         {/* Skeleton Background */}
         <div className="absolute inset-0 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 animate-pulse">
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-800/50 to-gray-900/50"></div>
+          <div className="rel inset-0 bg-gradient-to-br from-gray-800/50 to-gray-900/50"></div>
         </div>
 
         {/* Skeleton Content */}
@@ -125,10 +125,10 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
             className="absolute inset-0"
           >
             <Image
@@ -151,16 +151,16 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
           <div className="container mx-auto px-4">
             <motion.div
               key={`content-${currentSlide}`}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               className="max-w-3xl mx-auto text-center"
             >
               {activeSlides[currentSlide].subtitle && (
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
+                  transition={{ duration: 0.4, delay: 0.15 }}
                   className="inline-block px-4 py-2 bg-amber-500/90 text-white rounded-full text-sm font-medium mb-4"
                 >
                   {activeSlides[currentSlide].subtitle}
@@ -168,9 +168,9 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
               )}
 
               <motion.h1
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 drop-shadow-md"
                 dangerouslySetInnerHTML={{
                   __html: activeSlides[currentSlide].title.replace(
@@ -182,9 +182,9 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
 
               {activeSlides[currentSlide].description && (
                 <motion.p
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
+                  transition={{ duration: 0.4, delay: 0.25 }}
                   className="text-base sm:text-lg md:text-xl text-white/90 mb-6 md:mb-10 max-w-xl md:max-w-2xl mx-auto drop-shadow-md"
                 >
                   {activeSlides[currentSlide].description}
@@ -192,9 +192,9 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
               )}
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
+                transition={{ duration: 0.4, delay: 0.3 }}
                 className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
               >
                 {activeSlides[currentSlide].button_text && activeSlides[currentSlide].button_link && (
@@ -258,7 +258,7 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
                 onClick={() => goToSlide(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-200 ${
                   index === currentSlide
-                    ? "bg-amber-500 scale-125"
+                    ? "bg-amber-500"
                     : "bg-white/50 hover:bg-white/70"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
