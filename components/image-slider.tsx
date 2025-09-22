@@ -285,7 +285,7 @@ export function ImageSlider({
         )
       case "number":
         return (
-          <div className="absolute bottom-6 md:bottom-10 right-6 md:right-10 z-30">
+          <div className="relative bottom-6 md:bottom-10 right-6 md:right-10 z-30">
             <div className="bg-black/50 text-white px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">
               {currentIndex + 1} / {images.length}
             </div>
@@ -293,7 +293,7 @@ export function ImageSlider({
         )
       case "thumbnail":
         return (
-          <div className="absolute bottom-6 md:bottom-10 left-1/2 z-30 flex -translate-x-1/2 space-x-2 overflow-x-auto max-w-[90%] pb-2">
+          <div className="relative bottom-6 md:bottom-10 left-1/2 z-30 flex -translate-x-1/2 space-x-2 overflow-x-auto max-w-[90%] pb-2">
             {images.map((image, index) => (
               <button
                 key={index}
