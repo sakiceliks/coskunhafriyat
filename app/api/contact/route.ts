@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 
 const TELEGRAM_BOT_TOKEN = "8425974547:AAG6POpc_siWKEQ-YDcvuBUg31q8CNVpxuk"
-const TELEGRAM_CHAT_ID = "905717380"
+const TELEGRAM_CHAT_ID = "733126860"
 
 export async function POST(request: NextRequest) {
   console.log("🚀 API Route: Contact form POST isteği alındı")
