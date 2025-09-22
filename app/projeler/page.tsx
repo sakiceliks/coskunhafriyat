@@ -242,7 +242,7 @@ export default async function ProjectsPage() {
               </div>
               <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl mt-8 md:mt-0">
                 <Image
-                  src="/excavation-process-quality.jpg"
+                  src="/images/excavation-process-quality.jpg"
                   alt="Hafriyat süreci"
                   fill
                   className="object-cover"
