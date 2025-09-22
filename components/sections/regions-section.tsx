@@ -77,7 +77,6 @@ export default function RegionsSection({ regions }: RegionsSectionProps) {
   </div>
 </div>
 
-
         </StaggerIn>
 
         <div className="text-center mt-10">
