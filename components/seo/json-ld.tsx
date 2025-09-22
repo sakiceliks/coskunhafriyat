@@ -149,7 +149,7 @@ export function ArticleJsonLd({ article }: { article: any }) {
       name: "Coşkun Hafriyat",
       logo: {
         "@type": "ImageObject",
-        url: "https://coskunhafriyat.com/logo.png",
+        url: "https://coskunhafriyat.com/coskunlogo.svg",
       },
     },
     datePublished: article.published_date,

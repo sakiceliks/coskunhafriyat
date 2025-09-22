@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Phone, Mail, ArrowRight } from "lucide-react"
+import { Phone, MessageCircle, ArrowRight } from "lucide-react"
 import Link from "next/link"
 
 interface CTASectionProps {
@@ -54,23 +54,23 @@ export function CTASection({
             {description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/iletisim">
+            <a href="tel:+905362160992">
               <Button size="lg" className={`${getButtonStyles()} px-8 py-3`}>
                 <Phone className="mr-2 h-5 w-5" />
                 Hemen Ara
               </Button>
-            </Link>
-            <Link href="/iletisim">
+            </a>
+            <a href="https://wa.me/905362160992?text=Merhaba, hafriyat hizmetleri için fiyat teklifi almak istiyorum." target="_blank" rel="noopener noreferrer">
               <Button 
                 size="lg" 
                 variant="outline" 
                 className={`border-white dark:border-gray-300 text-white dark:text-white hover:bg-white/10 dark:hover:bg-gray-700 px-8 py-3`}
               >
-                <Mail className="mr-2 h-5 w-5" />
-                Teklif Al
+                <MessageCircle className="mr-2 h-5 w-5" />
+                Fiyat Teklifi Al
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </div>

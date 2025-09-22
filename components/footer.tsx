@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { HardHat, Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -11,7 +12,14 @@ export function Footer() {
           {/* Company Info */}
           <div className="text-center sm:text-left">
             <Link href="/" className="flex items-center gap-2 mb-4 sm:mb-6 justify-center sm:justify-start">
-              <HardHat className="h-7 w-7 text-amber-500 dark:text-amber-400" />
+              <div className="w-8 h-8 relative">
+                <Image 
+                  src="/coskunlogo.svg" 
+                  alt="Coşkun Hafriyat Logo" 
+                  fill
+                  className="object-contain"
+                />
+              </div>
               <span className="text-xl font-bold text-white dark:text-white">Coşkun Hafriyat</span>
             </Link>
             <p className="text-gray-300 dark:text-gray-400 mb-6 text-sm sm:text-base">
