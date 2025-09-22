@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, MapPin, Calendar, User, Ruler } from "lucide-react"
 import { OrganizationJsonLd, BreadcrumbJsonLd, ProjectsJsonLd } from "@/components/seo/json-ld"
-
+import projectHero from "../../public/construction-quality-excavation-work.jpg"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -242,7 +242,7 @@ export default async function ProjectsPage() {
               </div>
               <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl mt-8 md:mt-0">
                 <Image
-                  src="/images/excavation-process-quality.jpg"
+                  src={projectHero}
                   alt="Hafriyat süreci"
                   fill
                   className="object-cover"
