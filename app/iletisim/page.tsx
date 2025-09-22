@@ -33,7 +33,6 @@ export default function ContactPage() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
-          Lokasyonlarımız
         </div>
         <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
           Şubelerimiz
@@ -200,76 +199,6 @@ export default function ContactPage() {
     </div>
   </div>
 </section>
-
-      {/* Maps Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <div className="inline-block px-4 py-2 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full text-sm font-medium mb-6">
-                Lokasyonlarımız
-              </div>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
-                Şubelerimiz
-              </h2>
-              <p className="text-gray-700 dark:text-gray-300 text-lg max-w-2xl mx-auto">
-                İstanbul'un farklı bölgelerinde hizmet veren şubelerimizi ziyaret edebilirsiniz
-              </p>
-            </div>
-            
-            <div className="grid lg:grid-cols-2 gap-12">
-              {/* Tepeören Şubesi */}
-              <div className="space-y-6">
-                <div className="text-center">
-                  <h3 className="text-2xl sm:text-left font-bold text-gray-900 dark:text-white mb-3">
-                  Tepeören Şubemiz
-                  </h3>
-                  <p className="text-gray-700 dark:text-gray-300 text-lg">
-                  Tepeören, Eski Ankara Asfaltı Cad., 34959 Tuzla/İstanbul
-
-</p>
-                </div>
-                <div className="h-[400px] rounded-2xl overflow-hidden shadow-lg">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d96372.73197343168!2d29.4662985!3d40.9891908!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb2d0000837927%3A0xdc380dccf4b2fa78!2za2lyYWzEsWsga2Vww6dl!5e0!3m2!1str!2str!4v1758569938131!5m2!1str!2str"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Coşkun Hafriyat - Mudarlı Şubesi"
-                  />
-                </div>
-              </div>
-
-              {/* Mudarlı Şubesi */}
-              <div className="space-y-6">
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
-                    Mudarlı Şubesi
-                  </h3>
-                  <p className="text-gray-700 dark:text-gray-300 text-lg">
-                    Mudarlı, 41400 Gebze/Kocaeli
-                  </p>
-                </div>
-                <div className="h-[400px] rounded-2xl overflow-hidden shadow-lg">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d96372.73197343168!2d29.4662985!3d40.9891908!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb2d0000837927%3A0xdc380dccf4b2fa78!2za2lyYWzEsWsga2Vww6dl!5e0!3m2!1str!2str!4v1758569938131!5m2!1str!2str"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Coşkun Hafriyat - Mudarlı Şubesi"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
