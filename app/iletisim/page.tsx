@@ -60,7 +60,7 @@ export default function ContactPage() {
                   </div>
                   <div className="text-center md:text-left">
                     <h3 className="font-semibold text-lg text-gray-900 dark:text-white">Telefon Numaramız</h3>
-                    <p className="text-gray-700 dark:text-gray-300">0536 216 09 92</p>
+                    <p className="text-gray-700 dark:text-gray-300">0533 323 93 71</p>
                   </div>
                 </div>
                 <div className="flex items-start justify-center md:justify-start">

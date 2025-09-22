@@ -54,13 +54,13 @@ export function CTASection({
             {description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+905362160992">
+            <a href="tel:+905333239371">
               <Button size="lg" className={`${getButtonStyles()} px-8 py-3`}>
                 <Phone className="mr-2 h-5 w-5" />
                 Hemen Ara
               </Button>
             </a>
-            <a href="https://wa.me/905362160992?text=Merhaba, hafriyat hizmetleri için fiyat teklifi almak istiyorum." target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/905333239371?text=Merhaba, hafriyat hizmetleri için fiyat teklifi almak istiyorum." target="_blank" rel="noopener noreferrer">
               <Button 
                 size="lg" 
                 variant="outline" 

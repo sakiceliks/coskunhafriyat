@@ -36,7 +36,7 @@ export function Navbar({ services }: NavbarProps) {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-auto h-auto relative">
+              <div className="w-full h-full relative">
                 <Image 
                   src="/coskunlogo.svg" 
                   alt="Coşkun Hafriyat Logo" 
@@ -46,7 +46,6 @@ export function Navbar({ services }: NavbarProps) {
               </div>
     {/*           <div className="hidden sm:block">
 {/*                 <h3 className="text-xs font-bold text-white dark:text-white">Coşkun Hafriyat</h3>
- */}                <p className="text-[8px] text-gray-300 dark:text-gray-400">Profesyonel Hafriyat Hizmetleri</p>
               </div> */}
             </Link>
 
@@ -192,12 +191,12 @@ function MobileMenu({ navigationItems, services, onClose }: MobileMenuProps) {
             <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">İletişim</h3>
             <div className="space-y-3">
               <Link
-                href="tel:+905362160992"
+                href="tel:+905333239371"
                 className="flex items-center gap-3 p-3 rounded-lg hover:bg-amber-50 dark:hover:bg-amber-500/20 transition-colors text-gray-900 dark:text-white"
               >
                 <Phone className="h-5 w-5 text-amber-500 dark:text-amber-400" />
                 <div>
-                  <div className="font-medium">+90 536 216 09 92</div>
+                  <div className="font-medium">+90 533 323 93 71</div>
                   <div className="text-sm text-gray-500 dark:text-gray-400">Hemen ara</div>
                 </div>
               </Link>

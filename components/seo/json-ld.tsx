@@ -21,7 +21,7 @@ export function OrganizationJsonLd() {
     name: "Coşkun Hafriyat",
     description: "İstanbul'da profesyonel hafriyat, kazı, yıkım ve nakliye hizmetleri",
     url: "https://coskunhafriyat.com",
-    telephone: "+90-536-216-09-92",
+    telephone: "+90-533-323-93-71",
     email: "info@coskunhafriyat.com",
     address: {
       "@type": "PostalAddress",

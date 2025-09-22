@@ -13,7 +13,7 @@ export function FloatingContactButton() {
     {
       icon: Phone,
       label: "Ara",
-      href: "tel:+905362160992",
+      href: "tel:+905333239371",
       color: "bg-green-500 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700",
     },
     {
