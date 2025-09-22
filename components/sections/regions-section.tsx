@@ -44,7 +44,7 @@ export default function RegionsSection({ regions }: RegionsSectionProps) {
         <StaggerIn direction="up" staggerDelay={0.1}>
         <div className="relative">
   {/* Responsive Grid - 2 columns on mobile, more on larger screens */}
-  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 max-w-6xl mx-auto">
     {regions.length > 0 ? regions.map((region: Region) => (
       <Link key={region.id} href={`/bolgelerimiz/${region.slug}`}>
         <motion.div
